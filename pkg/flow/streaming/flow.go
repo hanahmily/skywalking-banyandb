@@ -41,6 +41,7 @@ func New(source flow.Source) flow.Flow {
 		source: source,
 		ops:    make([]flow.Operator, 0),
 		drain:  make(chan error),
+		ctx:    context.Background(), // Use background context by default
 	}
 }
 
@@ -52,7 +53,8 @@ func (f *streamingFlow) init() error {
 
 func (f *streamingFlow) prepareContext() {
 	if f.ctx == nil {
-		f.ctx = context.TODO()
+		// Use a background context with reasonable timeout for streaming operations
+		f.ctx = context.Background()
 	}
 
 	// TODO: add more runtime utilities
@@ -60,6 +62,12 @@ func (f *streamingFlow) prepareContext() {
 
 func (f *streamingFlow) To(sink flow.Sink) flow.Flow {
 	f.sink = sink
+	return f
+}
+
+// WithContext sets the context for the streaming flow
+func (f *streamingFlow) WithContext(ctx context.Context) flow.Flow {
+	f.ctx = ctx
 	return f
 }
 

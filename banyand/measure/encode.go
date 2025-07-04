@@ -32,7 +32,8 @@ var (
 	intervalFn                            = func(key []byte) time.Duration {
 		_, interval, err := pbv1.DecodeFieldFlag(key)
 		if err != nil {
-			panic(err)
+			// Return zero duration instead of panicking - let caller handle this
+			return time.Duration(0)
 		}
 		return interval
 	}

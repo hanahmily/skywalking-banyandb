@@ -87,13 +87,17 @@ func (p *streamQueryProcessor) Rev(message bus.Message) (resp bus.Message) {
 		return
 	}
 
-	s, err := analyzer.BuildSchema(context.TODO(), meta)
+	// Use context with timeout for query operations
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	s, err := analyzer.BuildSchema(ctx, meta)
 	if err != nil {
 		resp = bus.NewMessage(bus.MessageID(now), common.NewError("fail to build schema for stream %s: %v", meta.GetName(), err))
 		return
 	}
 
-	plan, err := analyzer.Analyze(context.TODO(), queryCriteria, meta, s)
+	plan, err := analyzer.Analyze(ctx, queryCriteria, meta, s)
 	if err != nil {
 		resp = bus.NewMessage(bus.MessageID(now), common.NewError("fail to analyze the query request for stream %s: %v", meta.GetName(), err))
 		return
@@ -139,13 +143,17 @@ func (p *measureQueryProcessor) Rev(message bus.Message) (resp bus.Message) {
 		return
 	}
 
-	s, err := analyzer.BuildSchema(context.TODO(), meta)
+	// Use context with timeout for query operations
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	s, err := analyzer.BuildSchema(ctx, meta)
 	if err != nil {
 		resp = bus.NewMessage(bus.MessageID(now), common.NewError("fail to build schema for measure %s: %v", meta.GetName(), err))
 		return
 	}
 
-	plan, err := analyzer.Analyze(context.TODO(), queryCriteria, meta, s)
+	plan, err := analyzer.Analyze(ctx, queryCriteria, meta, s)
 	if err != nil {
 		resp = bus.NewMessage(bus.MessageID(now), common.NewError("fail to analyze the query request for measure %s: %v", meta.GetName(), err))
 		return

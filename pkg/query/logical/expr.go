@@ -43,7 +43,7 @@ func (f *TagRef) Equal(expr Expr) bool {
 
 func (f *TagRef) DataType() int32 {
 	if f.Spec == nil {
-		panic("should be resolved first")
+		panic("TagRef.DataType(): TagRef not resolved - call Resolve() first before accessing DataType")
 	}
 	return int32(f.Spec.Spec.GetType())
 }
@@ -91,7 +91,7 @@ func (f *FieldRef) String() string {
 
 func (f *FieldRef) DataType() int32 {
 	if f.Spec == nil {
-		panic("should be resolved first")
+		panic("FieldRef.DataType(): FieldRef not resolved - call Resolve() first before accessing DataType")
 	}
 	return int32(f.Spec.Spec.GetFieldType())
 }
