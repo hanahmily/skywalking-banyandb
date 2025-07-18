@@ -314,3 +314,29 @@ type StreamQueryResult interface {
 	Pull(context.Context) *StreamResult
 	Release()
 }
+
+// TraceQueryOptions is the options of a trace query.
+type TraceQueryOptions struct {
+	Name           string
+	TimeRange      *timestamp.TimeRange
+	TraceID        string
+	Tags           map[string]string
+	Order          *index.OrderBy
+	TagProjection  []TagProjection
+	MaxTraceSize   int
+}
+
+// TraceResult is the result of a trace query.
+type TraceResult struct {
+	Error       error
+	TraceID     string
+	Timestamps  []int64
+	TagFamilies []TagFamily
+	SID         common.SeriesID
+}
+
+// TraceQueryResult is the result of a trace query.
+type TraceQueryResult interface {
+	Pull(context.Context) *TraceResult
+	Release()
+}
