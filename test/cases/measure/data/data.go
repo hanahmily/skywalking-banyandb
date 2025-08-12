@@ -40,6 +40,7 @@ import (
 	measurev1 "github.com/apache/skywalking-banyandb/api/proto/banyandb/measure/v1"
 	"github.com/apache/skywalking-banyandb/pkg/test/flags"
 	"github.com/apache/skywalking-banyandb/pkg/test/helpers"
+	"sort"
 )
 
 //go:embed input/*.yaml
@@ -75,6 +76,14 @@ func verifyWithContext(ctx context.Context, innerGm gm.Gomega, sharedContext hel
 	innerGm.Expect(err).NotTo(gm.HaveOccurred())
 	want := &measurev1.QueryResponse{}
 	helpers.UnmarshalYAML(ww, want)
+
+	// Stabilize order for index-mode scans without explicit ordering to avoid
+	// cross-segment nondeterminism near day boundaries (midnight).
+	if args.Input == "index_mode_all" || args.Want == "index_mode_all_xl" || args.Want == "index_mode_all_segs" {
+		sortDataPointsByID(resp)
+		sortDataPointsByID(want)
+	}
+
 	for i := range resp.DataPoints {
 		if resp.DataPoints[i].Timestamp != nil {
 			innerGm.Expect(resp.DataPoints[i].Version).Should(gm.BeNumerically(">", 0))
@@ -199,4 +208,32 @@ func WriteOnly(conn *grpclib.ClientConn, name, group, dataFile string,
 	gm.Expect(err).NotTo(gm.HaveOccurred())
 	loadData(metadata, writeClient, dataFile, baseTime, interval)
 	return writeClient
+}
+
+// sortDataPointsByID sorts QueryResponse.DataPoints by the "id" tag under the
+// "default" tag family, ascending. Falls back to Sid if the tag is missing.
+func sortDataPointsByID(resp *measurev1.QueryResponse) {
+	getID := func(dp *measurev1.DataPoint) (string, uint64) {
+		var id string
+		for _, tf := range dp.TagFamilies {
+			if tf.GetName() != "default" {
+				continue
+			}
+			for _, tag := range tf.Tags {
+				if tag.GetKey() == "id" && tag.GetValue() != nil && tag.GetValue().GetStr() != nil {
+					id = tag.GetValue().GetStr().GetValue()
+					return id, dp.GetSid()
+				}
+			}
+		}
+		return id, dp.GetSid()
+	}
+	sort.Slice(resp.DataPoints, func(i, j int) bool {
+		idi, sidi := getID(resp.DataPoints[i])
+		idj, sidj := getID(resp.DataPoints[j])
+		if idi == idj {
+			return sidi < sidj
+		}
+		return idi < idj
+	})
 }
