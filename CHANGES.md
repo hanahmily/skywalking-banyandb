@@ -17,6 +17,7 @@ Release Notes.
 - Persist series metadata in liaison queue for measure, stream and trace models.
 - Update the dump tool to support analyzing the parts with smeta files.
 - Add eBPF-based KTM I/O monitor for FODC agent.
+- Activate the property repair mechanism by default.
 
 ### Bug Fixes
 
