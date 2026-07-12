@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/stretchr/testify/require"
 
 	"github.com/apache/skywalking-banyandb/api/common"
 	"github.com/apache/skywalking-banyandb/pkg/bytes"
@@ -328,7 +329,7 @@ func Test_marshalAndUnmarshalTagFamily(t *testing.T) {
 	unmarshaled.timestamps = make([]int64, len(b.timestamps))
 	unmarshaled.resizeTagFamilies(1)
 
-	unmarshaled.unmarshalTagFamily(decoder, tfIndex, name, bm.getTagFamilyMetadata(name), tagProjection[name], metaBuffer, dataBuffer, 1)
+	unmarshaled.unmarshalTagFamily(decoder, tfIndex, name, bm.getTagFamilyMetadata(name), tagProjection[name], metaBuffer, dataBuffer, 1, nil)
 
 	if diff := cmp.Diff(unmarshaled.tagFamilies[0], b.tagFamilies[0],
 		cmp.AllowUnexported(columnFamily{}, column{}),
@@ -383,6 +384,19 @@ func Test_marshalAndUnmarshalBlock(t *testing.T) {
 	bm := blockMetadata{}
 
 	b.mustWriteTo(sid, &bm, ww)
+	require.Equal(t, tagType{
+		"arrTag": {
+			"strArrTag": pbv1.ValueTypeStrArr,
+			"intArrTag": pbv1.ValueTypeInt64Arr,
+		},
+		"binaryTag": {
+			"binaryTag": pbv1.ValueTypeBinaryData,
+		},
+		"singleTag": {
+			"strTag": pbv1.ValueTypeStr,
+			"intTag": pbv1.ValueTypeInt64,
+		},
+	}, bm.tagType)
 
 	tagFamilyMetadataReaders := make(map[string]fs.Reader)
 	tagFamilyReaders := make(map[string]fs.Reader)
@@ -405,7 +419,7 @@ func Test_marshalAndUnmarshalBlock(t *testing.T) {
 		})
 	}
 	bm.tagProjection = tp
-	unmarshaled.mustReadFrom(decoder, p, bm)
+	unmarshaled.mustReadFrom(decoder, p, bm, nil)
 	// blockMetadata is using a map, so the order of tag families is not guaranteed
 	unmarshaled.sortTagFamilies()
 

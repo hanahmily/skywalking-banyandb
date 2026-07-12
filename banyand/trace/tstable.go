@@ -49,17 +49,21 @@ const (
 )
 
 type tsTable struct {
-	fileSystem       fs.FileSystem
-	pm               protector.Memory
-	inFlight         map[uint64]struct{}
-	handoffCtrl      *handoffController
-	metrics          *metrics
-	snapshot         *snapshot
-	loopCloser       *run.Closer
-	getNodes         func() []string
-	l                *logger.Logger
-	sidxMap          map[string]sidx.SIDX
-	introductions    chan *introduction
+	fileSystem    fs.FileSystem
+	pm            protector.Memory
+	inFlight      map[uint64]struct{}
+	handoffCtrl   *handoffController
+	metrics       *metrics
+	snapshot      *snapshot
+	loopCloser    *run.Closer
+	getNodes      func() []string
+	l             *logger.Logger
+	sidxMap       map[string]sidx.SIDX
+	introductions chan *introduction
+	// mergeCh is the introducer loop's merged-introduction channel, retained so the
+	// finalize worker (an external goroutine) can introduce its force-merged part
+	// through the same serialized introducer loop the hot merges use.
+	mergeCh          chan *mergerIntroduction
 	p                common.Position
 	group            string
 	root             string
@@ -67,9 +71,18 @@ type tsTable struct {
 	option           option
 	curPartID        uint64
 	pendingDataCount atomic.Int64
-	inFlightMu       sync.RWMutex
+	// finalizeGenCached mirrors the shard's persisted finalizeState.FinalizeGeneration.
+	// Seeded at open, bumped by each finalize round. Read O(1) on the hot introduction
+	// path to decide whether a newly-flushed part is new unsampled data.
+	finalizeGenCached atomic.Uint64
+	// unsampledBytes mirrors finalizeState.UnsampledBytes: uncompressed span bytes of
+	// parts that arrived after this shard was first finalized. Incremented on the hot
+	// introduction path (atomic add only), reset by a successful finalize round.
+	unsampledBytes atomic.Int64
+	inFlightMu     sync.RWMutex
 	sync.RWMutex
 	shardID common.ShardID
+	isHot   bool
 }
 
 func (tst *tsTable) loadSnapshot(epoch uint64, loadedParts []uint64) error {
@@ -126,6 +139,7 @@ func (tst *tsTable) startLoop(cur uint64) {
 	tst.introductions = make(chan *introduction)
 	flushCh := make(chan *flusherIntroduction)
 	mergeCh := make(chan *mergerIntroduction)
+	tst.mergeCh = mergeCh
 	introducerWatcher := make(watcher.Channel, 1)
 	flusherWatcher := make(watcher.Channel, 1)
 	// Each loop already calls tst.loopCloser.Done via defer, so a panic
@@ -152,6 +166,7 @@ func (tst *tsTable) startLoopWithConditionalMerge(cur uint64) {
 	flushCh := make(chan *flusherIntroduction)
 	syncCh := make(chan *syncIntroduction)
 	mergeCh := make(chan *mergerIntroduction)
+	tst.mergeCh = mergeCh
 	introducerWatcher := make(watcher.Channel, 1)
 	flusherWatcher := make(watcher.Channel, 1)
 	// See startLoop for the rationale on routing through run.Go and the
@@ -229,11 +244,19 @@ func initTSTable(fileSystem fs.FileSystem, rootPath string, p common.Position,
 		option:     option,
 		l:          l,
 		p:          p,
+		group:      p.Database,
 		pm:         option.protector,
+		isHot:      option.isHot,
 	}
 	if m != nil {
 		tst.metrics = m.(*metrics)
 	}
+	// Seed the cached finalize state from the shard's persisted finalizeState so the
+	// hot introduction path and the finalize scanner see the on-disk generation and
+	// unsampled-bytes counter after a restart (a missing file yields zero).
+	fst := readFinalizeState(fileSystem, rootPath)
+	tst.finalizeGenCached.Store(fst.FinalizeGeneration)
+	tst.unsampledBytes.Store(fst.UnsampledBytes)
 	tst.gc.init(&tst)
 	ee := fileSystem.ReadDir(rootPath)
 	if len(ee) == 0 {

@@ -45,6 +45,7 @@ const (
 	streamSeriesMetadataName = "smeta"
 
 	metadataFilename               = "metadata.json"
+	tagTypeFilename                = "tag.type"
 	primaryFilename                = streamPrimaryName + ".bin"
 	metaFilename                   = streamMetaName + ".bin"
 	timestampsFilename             = streamTimestampsName + ".bin"
@@ -62,6 +63,7 @@ type part struct {
 	tagFamilyMetadata    map[string]fs.Reader
 	tagFamilies          map[string]fs.Reader
 	tagFamilyFilter      map[string]fs.Reader
+	tagType              tagType
 	seriesMetadata       fs.Reader // Optional: series metadata reader
 	path                 string
 	primaryBlockMetadata []primaryBlockMetadata
@@ -92,6 +94,7 @@ func (p *part) String() string {
 func openMemPart(mp *memPart) *part {
 	var p part
 	p.partMetadata = mp.partMetadata
+	p.tagType = mp.tagType
 
 	p.primaryBlockMetadata = mustReadPrimaryBlockMetadata(p.primaryBlockMetadata[:0], &mp.meta)
 
@@ -118,6 +121,7 @@ type memPart struct {
 	tagFamilyMetadata map[string]*bytes.Buffer
 	tagFamilies       map[string]*bytes.Buffer
 	tagFamilyFilter   map[string]*bytes.Buffer
+	tagType           tagType
 	meta              bytes.Buffer
 	primary           bytes.Buffer
 	timestamps        bytes.Buffer
@@ -149,6 +153,11 @@ func (mp *memPart) mustCreateMemTagFamilyWriters(name string) (fs.Writer, fs.Wri
 
 func (mp *memPart) reset() {
 	mp.partMetadata.reset()
+	if mp.tagType == nil {
+		mp.tagType = make(tagType)
+	} else {
+		mp.tagType.reset()
+	}
 	mp.meta.Reset()
 	mp.primary.Reset()
 	mp.timestamps.Reset()
@@ -203,7 +212,7 @@ func (mp *memPart) mustInitFromElements(es *elements) {
 		uncompressedBlockSizeBytes += uncompressedElementSizeBytes(i, es)
 	}
 	bsw.MustWriteElements(sidPrev, es.timestamps[indexPrev:], es.elementIDs[indexPrev:], es.tagFamilies[indexPrev:])
-	bsw.Flush(&mp.partMetadata)
+	bsw.Flush(&mp.partMetadata, &mp.tagType)
 	releaseBlockWriter(bsw)
 }
 
@@ -231,6 +240,7 @@ func (mp *memPart) mustFlush(fileSystem fs.FileSystem, path string) {
 		fs.MustFlushAtomic(fileSystem, mp.seriesMetadata.Buf, filepath.Join(path, seriesMetadataFilename), storage.FilePerm)
 	}
 
+	mp.tagType.mustWriteTagType(fileSystem, path)
 	mp.partMetadata.mustWriteMetadata(fileSystem, path)
 	// No SyncPath: mustWriteMetadata goes through WriteAtomic which already
 	// fsyncs the parent directory after rename, covering the dirent changes
@@ -318,6 +328,8 @@ func mustOpenFilePart(id uint64, root string, fileSystem fs.FileSystem) *part {
 	fs.CleanupLeftoverTmp(fileSystem, partPath)
 	p.partMetadata.mustReadMetadata(fileSystem, partPath)
 	p.partMetadata.ID = id
+	p.tagType = make(tagType)
+	p.tagType.mustReadTagType(fileSystem, partPath)
 
 	metaPath := path.Join(partPath, metaFilename)
 	pr := mustOpenReader(metaPath, fileSystem)
@@ -421,6 +433,18 @@ func CreatePartFileReaderFromPath(partPath string, lfs fs.FileSystem) ([]queue.F
 	for _, e := range ee {
 		if e.IsDir() {
 			continue
+		}
+		if e.Name() == tagTypeFilename {
+			tagTypePath := path.Join(partPath, e.Name())
+			tagTypeReader, openErr := lfs.OpenFile(tagTypePath)
+			if openErr != nil {
+				logger.Panicf("cannot open tag type file %q: %s", tagTypePath, openErr)
+			}
+			readers = append(readers, tagTypeReader)
+			files = append(files, queue.FileInfo{
+				Name:   tagTypeFilename,
+				Reader: tagTypeReader.SequentialRead(),
+			})
 		}
 		if filepath.Ext(e.Name()) == tagFamiliesMetadataFilenameExt {
 			tfmPath := path.Join(partPath, e.Name())

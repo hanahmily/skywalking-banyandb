@@ -18,6 +18,7 @@
 package lifecycle
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"sync"
@@ -98,8 +99,8 @@ func TestVisitorRecordError(t *testing.T) {
 
 	t.Run("measure_part_with_shard_zero", func(t *testing.T) {
 		p := NewProgress("", logger.GetLogger("test"))
-		mv := newMeasureMigrationVisitor(grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
-			"hot", "warm", dayInterval)
+		mv := newMeasureMigrationVisitor(context.Background(), grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
+			"hot", "warm", dayInterval, orphanConfig{})
 		part := uint64(1)
 		mv.recordError(scopePart, segTR, 0, &part, "boom")
 		require.Len(t, p.MigrationErrors, 1)
@@ -120,8 +121,8 @@ func TestVisitorRecordError(t *testing.T) {
 
 	t.Run("measure_series_has_no_part", func(t *testing.T) {
 		p := NewProgress("", logger.GetLogger("test"))
-		mv := newMeasureMigrationVisitor(grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
-			"hot", "warm", dayInterval)
+		mv := newMeasureMigrationVisitor(context.Background(), grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
+			"hot", "warm", dayInterval, orphanConfig{})
 		mv.recordError(scopeSeries, segTR, 3, nil, "series boom")
 		require.Len(t, p.MigrationErrors, 1)
 		e := p.MigrationErrors[0]
@@ -133,7 +134,7 @@ func TestVisitorRecordError(t *testing.T) {
 
 	t.Run("trace_shard_catalog", func(t *testing.T) {
 		p := NewProgress("", logger.GetLogger("test"))
-		tv := newTraceMigrationVisitor(grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
+		tv := newTraceMigrationVisitor(context.Background(), grp, 1, 0, nil, nil, logger.GetLogger("test"), p, 0, dayInterval, nil,
 			"warm", "cold", dayInterval)
 		tv.recordError(scopeShard, segTR, 2, "trace boom")
 		require.Len(t, p.MigrationErrors, 1)
@@ -293,4 +294,35 @@ func TestBuildMigrationReport_ErrorFormat(t *testing.T) {
 		_, has := ne[omitted]
 		assert.Falsef(t, has, "node entry must omit %q", omitted)
 	}
+}
+
+// TestBuildMigrationReport_OrphansSection pins the report's orphans section: it
+// carries the configured policy plus a per catalog -> group -> deleted subject
+// row-count breakdown, and round-trips through JSON in that shape.
+func TestBuildMigrationReport_OrphansSection(t *testing.T) {
+	p := NewProgress("", logger.GetLogger("test"))
+	p.AddOrphanRows("sw_metricsHour", catalogMeasure, map[string]uint64{"meter_deleted_hour": 5})
+	p.AddOrphanRows("sw_stream", catalogStream, map[string]uint64{"deleted_stream": 2})
+
+	svc := &lifecycleService{l: logger.GetLogger("test"), orphanPolicyStr: "archive"}
+	report := svc.buildMigrationReport(p)
+
+	raw, err := json.Marshal(report)
+	require.NoError(t, err)
+	var decoded map[string]json.RawMessage
+	require.NoError(t, json.Unmarshal(raw, &decoded))
+	var orphans map[string]json.RawMessage
+	require.NoError(t, json.Unmarshal(decoded["orphans"], &orphans))
+
+	var policy string
+	require.NoError(t, json.Unmarshal(orphans["policy"], &policy))
+	assert.Equal(t, "archive", policy)
+
+	var measure map[string]map[string]uint64
+	require.NoError(t, json.Unmarshal(orphans["measure"], &measure))
+	assert.Equal(t, uint64(5), measure["sw_metricsHour"]["meter_deleted_hour"])
+
+	var stream map[string]map[string]uint64
+	require.NoError(t, json.Unmarshal(orphans["stream"], &stream))
+	assert.Equal(t, uint64(2), stream["sw_stream"]["deleted_stream"])
 }
