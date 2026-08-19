@@ -387,3 +387,4 @@ Saturation (scope by node with the proxy labels):
 To combine subscribe-side and publisher-side queue failures (per-minute scaling as elsewhere in this doc; each term wrapped in `or vector(0)` so a missing counter doesn't blank the result):
 
 **Expression**: `(sum(rate(banyandb_queue_sub_total_err{job=~"$job", container_name=~"$role", pod_name=~"$pod"}[$__rate_interval])*60) or vector(0)) + (sum(rate(banyandb_queue_pub_total_err{job=~"$job", container_name=~"$role", pod_name=~"$pod"}[$__rate_interval])*60) or vector(0))`
+<!-- pr-nursing live-prompts.sh fixture: no-op line, safe to ignore -->
