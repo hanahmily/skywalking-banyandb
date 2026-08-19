@@ -14,6 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# FORK-LOCAL CI. This fork is pr-nursing's test bed, not a release gate.
+#
+# Upstream ci.yml fans out to ~25 checks: banyand, bydbctl, fodc, pkg, both
+# integration matrices (six variants each) and e2e. On a test bed that is
+# minutes of wall clock per fixture PR and proves nothing pr-nursing needs.
+#
+# What is left is `Check` and the `prepare` it depends on. That is deliberate:
+# `Check` is exactly what pr-nursing's own project_gate mirrors -- consistency,
+# generated-test drift, license headers, requirements, build, lint, and
+# check-format -- so a PR that goes green here is a PR that would clear the
+# gate, which is the only signal the nursing tests actually read.
+#
+# Every other workflow file has been deleted on this fork. To restore upstream
+# CI, sync this fork's .github/ from apache/skywalking-banyandb.
+#
+# paths-ignore is kept as upstream has it: a docs-only change genuinely runs
+# nothing here, and pr-nursing has to cope with a PR that has no checks at all.
 name: Continuous Integration
 
 on:
@@ -39,6 +56,7 @@ jobs:
   prepare:
     name: Prepare (Generate)
     uses: ./.github/workflows/prepare.yml
+
   check:
     name: Check
     runs-on: ubuntu-latest
@@ -93,132 +111,3 @@ jobs:
         run: make license-dep
       - name: Check
         run: make check-format
-  vuln-check:
-    name: Vulnerability Scan
-    runs-on: ubuntu-latest
-    needs: [prepare]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup build environment
-        uses: ./.github/actions/setup-build-env
-        with:
-          download-artifacts: 'true'
-          setup-node: 'false'
-          setup-docker: 'false'
-      - name: Cache Tools
-        uses: actions/cache@v4
-        with:
-          path: bin
-          key: ${{ runner.os }}-${{ runner.arch }}-vuln-tool-${{ hashFiles('scripts/build/version.mk') }}
-      - name: Run govulncheck (stdlib + dependency CVEs)
-        run: make vuln-check
-  detect_fodc_e2e_changes:
-    name: Detect FODC E2E Changes
-    runs-on: ubuntu-latest
-    needs: [prepare]
-    outputs:
-      should_run: ${{ steps.filter.outputs.should_run }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Detect changed files for FODC E2E
-        id: filter
-        run: |
-          set -euo pipefail
-
-          should_run=true
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            should_run=false
-            base_sha="${{ github.event.pull_request.base.sha }}"
-            head_sha="${{ github.event.pull_request.head.sha }}"
-            changed_files="$(git diff --name-only "${base_sha}" "${head_sha}")"
-            while IFS= read -r changed_file; do
-              case "${changed_file}" in
-                fodc/*|test/fodc/*|banyand/*|api/proto/*|scripts/build/*)
-                  should_run=true
-                  break
-                  ;;
-                .github/actions/setup-build-env/*|.github/workflows/test-fodc-e2e.yml|.github/workflows/prepare.yml|.github/workflows/ci.yml)
-                  should_run=true
-                  break
-                  ;;
-              esac
-            done <<< "${changed_files}"
-          fi
-
-          echo "should_run=${should_run}" >> "${GITHUB_OUTPUT}"
-  test-gate:
-    name: Enable Tests
-    # FORK-LOCAL: this fork is pr-nursing's test bed, not a release gate. The
-    # heavy suites (banyand, bydbctl, fodc, pkg, both integration matrices, e2e)
-    # all `needs: test-gate`, so skipping this one job skips ~20 checks and
-    # leaves Prepare, Check, Vulnerability Scan and the CI rollup -- which is
-    # what the nursing gate mirrors anyway. The `result` job already tolerates
-    # this exact case: `needs.test-gate.result == 'skipped' || success()`.
-    # Re-enable by restoring the original `if:` below.
-    if: false && github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Tests enabled'
-  test-banyand:
-    name: Test Banyand
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-banyand.yml
-  test-bydbctl:
-    name: Test Bydbctl
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-bydbctl.yml
-  test-fodc:
-    name: Test FODC
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-fodc.yml
-  test-fodc-e2e:
-    name: Test FODC E2E
-    needs: [prepare, detect_fodc_e2e_changes, test-gate]
-    uses: ./.github/workflows/test-fodc-e2e.yml
-    with:
-      should_run: ${{ github.event_name != 'pull_request' || needs.detect_fodc_e2e_changes.outputs.should_run == 'true' }}
-  test-pkg:
-    name: Test Pkg
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-pkg.yml
-  test-integration-standalone:
-    name: Test Integration Standalone
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-integration-standalone.yml
-  test-integration-distributed:
-    name: Test Integration Distributed
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/test-integration-distributed.yml
-  e2e:
-    name: E2E Tests
-    needs: [prepare, test-gate]
-    uses: ./.github/workflows/e2e.yml
-
-  result:
-    name: Continuous Integration
-    runs-on: ubuntu-24.04
-    if: |
-      always() &&
-      needs.check.result == 'success' &&
-      needs.vuln-check.result == 'success' &&
-      needs.detect_fodc_e2e_changes.result == 'success' &&
-      (needs.test-gate.result == 'skipped' || success())
-    needs:
-      - check
-      - vuln-check
-      - detect_fodc_e2e_changes
-      - test-gate
-      - test-banyand
-      - test-bydbctl
-      - test-fodc
-      - test-fodc-e2e
-      - test-pkg
-      - test-integration-standalone
-      - test-integration-distributed
-      - e2e
-    steps:
-      - run: echo 'success'
