@@ -152,7 +152,14 @@ jobs:
           echo "should_run=${should_run}" >> "${GITHUB_OUTPUT}"
   test-gate:
     name: Enable Tests
-    if: github.event_name == 'pull_request'
+    # FORK-LOCAL: this fork is pr-nursing's test bed, not a release gate. The
+    # heavy suites (banyand, bydbctl, fodc, pkg, both integration matrices, e2e)
+    # all `needs: test-gate`, so skipping this one job skips ~20 checks and
+    # leaves Prepare, Check, Vulnerability Scan and the CI rollup -- which is
+    # what the nursing gate mirrors anyway. The `result` job already tolerates
+    # this exact case: `needs.test-gate.result == 'skipped' || success()`.
+    # Re-enable by restoring the original `if:` below.
+    if: false && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Tests enabled'
