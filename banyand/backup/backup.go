@@ -382,3 +382,5 @@ func contains(slice []string, s string) bool {
 	}
 	return false
 }
+
+// ci speed probe
