@@ -223,3 +223,4 @@ operator builds their `.so` against the pinned SDK + toolchain published for
 each release (see `docs/operation/plugins.md`) and mounts it at the reserved
 subdirectory `/plugins/thirdparty`, keeping the first-party carrier mounted at
 `/plugins`.
+<!-- pr-nursing live-prompts.sh fixture: no-op line, safe to ignore -->
