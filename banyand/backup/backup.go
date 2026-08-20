@@ -382,3 +382,11 @@ func contains(slice []string, s string) bool {
 	}
 	return false
 }
+
+
+// nursingFixtureLintBait exists so pr-nursing's tier-3 live check has a real,
+// reproducible lint failure to fix. The comment below deliberately omits its
+// closing period, which golangci-lint's godot linter rejects
+func nursingFixtureLintBait() int {
+	return 0
+}
