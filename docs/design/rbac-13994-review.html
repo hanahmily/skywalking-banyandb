@@ -1,0 +1,1489 @@
+<!doctype html>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements. See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Design for Apache SkyWalking issue #13994: RBAC for the BanyanDB HTTP and gRPC APIs.">
+  <title>Issue #13994 · BanyanDB API RBAC Design</title>
+  <style>
+    :root {
+      --ink: #091821;
+      --ink-2: #112a35;
+      --ink-3: #1c3b46;
+      --paper: #f4efe4;
+      --paper-2: #e9e1d2;
+      --paper-3: #d9cdbb;
+      --signal: #ff5a36;
+      --signal-dark: #c93619;
+      --aqua: #35bcc1;
+      --acid: #d0e667;
+      --blue: #67aee8;
+      --white: #fffdf7;
+      --muted: #6a756f;
+      --danger: #b82829;
+      --success: #1c795c;
+      --line: rgba(9, 24, 33, 0.2);
+      --rail: 17.5rem;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+      --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --body: "Avenir Next", Avenir, "Century Gothic", "Trebuchet MS", sans-serif;
+      --mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 85% 8%, rgba(53, 188, 193, 0.12), transparent 28rem),
+        linear-gradient(135deg, #061018 0%, #0c202a 62%, #08141c 100%);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      z-index: 10;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: var(--signal-dark); }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    code, pre { font-family: var(--mono); }
+    code {
+      background: rgba(9, 24, 33, 0.08);
+      padding: 0.08rem 0.28rem;
+      border-radius: 0.15rem;
+      font-size: 0.9em;
+    }
+    pre {
+      position: relative;
+      overflow: auto;
+      margin: 1.1rem 0 0;
+      padding: 1.25rem 1.35rem;
+      color: #e9f2ec;
+      background: var(--ink);
+      border-left: 0.35rem solid var(--aqua);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      font-size: 0.84rem;
+      line-height: 1.6;
+      tab-size: 2;
+    }
+    .copy-button {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.55rem;
+      padding: 0.28rem 0.58rem;
+      border: 1px solid rgba(255,255,255,.3);
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .copy-button:hover { background: var(--signal); border-color: var(--signal); }
+
+    .skip-link {
+      position: fixed;
+      top: -5rem;
+      left: 1rem;
+      z-index: 100;
+      padding: .7rem 1rem;
+      color: var(--ink);
+      background: var(--acid);
+      font-weight: 800;
+    }
+    .skip-link:focus { top: 1rem; }
+    :focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
+
+    .progress-track {
+      position: fixed;
+      z-index: 90;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,.08);
+    }
+    .progress-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--signal), var(--acid)); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: var(--rail) minmax(0, 1fr);
+      gap: 0;
+      max-width: 106rem;
+      margin: 0 auto;
+    }
+    .rail {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      color: #dbe7e1;
+      padding: 2rem 1.6rem 1.4rem;
+      border-right: 1px solid rgba(255,255,255,.12);
+      background: rgba(5, 17, 24, 0.88);
+      backdrop-filter: blur(18px);
+    }
+    .rail-brand {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      align-items: center;
+      gap: .8rem;
+      padding-bottom: 1.35rem;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .issue-glyph {
+      display: grid;
+      place-items: center;
+      width: 3.2rem;
+      aspect-ratio: 1;
+      color: var(--ink);
+      background: var(--signal);
+      font-family: var(--mono);
+      font-weight: 900;
+      transform: rotate(-3deg);
+    }
+    .rail-brand strong { display: block; color: var(--white); font-family: var(--display); font-size: 1.15rem; line-height: 1.05; }
+    .rail-brand span { color: #8fa6a4; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; }
+    .rail nav { margin-top: 1.35rem; }
+    .rail nav ol { list-style: none; margin: 0; padding: 0; }
+    .rail nav a {
+      display: grid;
+      grid-template-columns: 1.7rem 1fr;
+      gap: .55rem;
+      align-items: baseline;
+      padding: .46rem .55rem;
+      color: #9db2b0;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+      font-size: .78rem;
+      line-height: 1.25;
+      transition: color .2s ease, background .2s ease, border .2s ease;
+    }
+    .rail nav a span { color: #5f7c7c; font-family: var(--mono); font-size: .66rem; }
+    .rail nav a:hover, .rail nav a.active {
+      color: var(--white);
+      border-left-color: var(--signal);
+      background: rgba(255,255,255,.06);
+    }
+    .rail nav a.active span { color: var(--signal); }
+    .rail-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: 1.35rem; }
+    .rail-actions button, .filter-button {
+      border: 1px solid rgba(255,255,255,.2);
+      padding: .55rem .6rem;
+      color: var(--white);
+      background: transparent;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .rail-actions button:hover { color: var(--ink); background: var(--acid); border-color: var(--acid); }
+    .rail-meta {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: #78908f;
+      font-family: var(--mono);
+      font-size: .63rem;
+      line-height: 1.65;
+    }
+
+    main { min-width: 0; padding: 2rem 2.2rem 6rem; }
+    .hero, .sheet {
+      width: min(100%, 82rem);
+      margin: 0 auto 1.35rem;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 35rem;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(5,20,27,.96) 0 56%, rgba(5,20,27,.52)),
+        repeating-linear-gradient(90deg, transparent 0 63px, rgba(255,255,255,.06) 64px),
+        repeating-linear-gradient(0deg, transparent 0 63px, rgba(255,255,255,.06) 64px),
+        var(--ink-2);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: clamp(2rem, 5vw, 5.5rem);
+    }
+    .hero::after {
+      content: "13994";
+      position: absolute;
+      right: -1.4rem;
+      bottom: -5.2rem;
+      color: rgba(53,188,193,.14);
+      font-family: var(--display);
+      font-size: clamp(9rem, 23vw, 21rem);
+      font-style: italic;
+      line-height: .8;
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+    .kicker {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.2rem;
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .status-stamp { padding: .35rem .58rem; color: var(--ink); background: var(--acid); font-weight: 900; transform: rotate(-1deg); }
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 12ch;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3.3rem, 7.7vw, 8rem);
+      font-weight: 500;
+      line-height: .88;
+      letter-spacing: -.055em;
+    }
+    .hero h1 em { color: var(--signal); font-weight: 600; }
+    .hero-deck {
+      position: relative;
+      z-index: 1;
+      max-width: 46rem;
+      margin: 2rem 0 0;
+      color: #b9cdca;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.5;
+    }
+    .hero-facts {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-top: 2.3rem;
+    }
+    .hero-facts span { padding: .4rem .6rem; border: 1px solid rgba(255,255,255,.25); font-family: var(--mono); font-size: .67rem; }
+    .hero-note {
+      position: relative;
+      z-index: 1;
+      max-width: 47rem;
+      margin-top: 2.5rem;
+      padding: 1rem 1.15rem;
+      border-left: .35rem solid var(--signal);
+      background: rgba(255,255,255,.07);
+      color: #e8efea;
+      font-weight: 650;
+    }
+
+    .sheet {
+      position: relative;
+      overflow: clip;
+      padding: clamp(1.5rem, 4vw, 4.1rem);
+      background:
+        linear-gradient(rgba(9,24,33,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(9,24,33,.028) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      border: 1px solid rgba(255,255,255,.2);
+      scroll-margin-top: 1.2rem;
+    }
+    .sheet::before {
+      content: attr(data-number);
+      position: absolute;
+      right: 1rem;
+      top: .3rem;
+      color: rgba(9,24,33,.055);
+      font-family: var(--display);
+      font-size: clamp(5rem, 12vw, 10rem);
+      font-style: italic;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .section-label {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin: 0 0 .7rem;
+      color: var(--signal-dark);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .section-label::before { content: ""; width: 2.3rem; height: 3px; background: var(--signal); }
+    h2, h3, h4 { color: var(--ink); }
+    h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 18ch;
+      margin: 0 0 1.1rem;
+      font-family: var(--display);
+      font-size: clamp(2.25rem, 5vw, 4.4rem);
+      font-weight: 500;
+      line-height: .98;
+      letter-spacing: -.04em;
+    }
+    h3 { margin: 2rem 0 .65rem; font-family: var(--display); font-size: 1.55rem; line-height: 1.15; }
+    h4 { margin: 1.35rem 0 .4rem; font-size: .88rem; letter-spacing: .08em; text-transform: uppercase; }
+    .lede { max-width: 64rem; margin: 0 0 1.7rem; color: #344b50; font-size: 1.05rem; }
+    .small { font-size: .82rem; color: var(--muted); }
+    .mono { font-family: var(--mono); }
+
+    .decision-grid, .two-col, .three-col, .role-grid, .fixture-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .decision-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three-col, .role-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fixture-grid { grid-template-columns: 1.2fr 1fr; }
+    .card {
+      position: relative;
+      padding: 1.1rem;
+      background: rgba(255,253,247,.78);
+      border: 1px solid var(--line);
+      box-shadow: 5px 5px 0 rgba(9,24,33,.08);
+    }
+    .card.signal { color: var(--white); background: var(--ink-2); border-color: var(--ink-2); }
+    .card h3, .card h4 { margin-top: 0; }
+    .decision-card { min-height: 10.8rem; }
+    .decision-card .num { display: block; color: var(--signal); font-family: var(--mono); font-size: .72rem; font-weight: 900; }
+    .decision-card strong { display: block; margin: .7rem 0 .45rem; font-family: var(--display); font-size: 1.35rem; line-height: 1.05; }
+    .decision-card p { margin: 0; color: #4b5f60; font-size: .82rem; line-height: 1.45; }
+    .decision-card.signal p { color: #b8cbc8; }
+    .callout {
+      margin: 1.4rem 0;
+      padding: 1.1rem 1.25rem;
+      background: rgba(53,188,193,.12);
+      border: 1px solid rgba(53,188,193,.5);
+      border-left-width: .45rem;
+    }
+    .callout.warning { background: rgba(255,90,54,.1); border-color: rgba(255,90,54,.6); }
+    .callout.success { background: rgba(208,230,103,.16); border-color: rgba(88,120,22,.55); }
+    .callout strong { color: var(--ink); }
+    .callout p:last-child, .card p:last-child { margin-bottom: 0; }
+
+    .check-list, .cross-list, .tight-list { margin: .8rem 0 0; padding: 0; list-style: none; }
+    .check-list li, .cross-list li { position: relative; padding: .45rem 0 .45rem 1.75rem; border-bottom: 1px solid rgba(9,24,33,.1); }
+    .check-list li::before, .cross-list li::before { position: absolute; left: .1rem; top: .47rem; font-family: var(--mono); font-weight: 900; }
+    .check-list li::before { content: "✓"; color: var(--success); }
+    .cross-list li::before { content: "×"; color: var(--danger); }
+    .tight-list { padding-left: 1rem; list-style: square; }
+    .tight-list li { margin: .3rem 0; }
+
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.35rem; border: 1px solid var(--line); background: rgba(255,253,247,.74); }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    th, td { padding: .72rem .78rem; vertical-align: top; text-align: left; border-bottom: 1px solid rgba(9,24,33,.13); }
+    th { color: var(--white); background: var(--ink-2); font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover td { background: rgba(53,188,193,.08); }
+    td:first-child { font-weight: 700; }
+    .tag {
+      display: inline-block;
+      margin: .08rem .18rem .08rem 0;
+      padding: .17rem .38rem;
+      color: var(--ink);
+      background: var(--paper-3);
+      border: 1px solid rgba(9,24,33,.18);
+      font-family: var(--mono);
+      font-size: .63rem;
+      font-weight: 800;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .tag.allow { color: #0e503e; background: #cde6d5; }
+    .tag.deny { color: #7f1718; background: #f0cdca; }
+    .tag.special { color: #71411a; background: #f4d69e; }
+    .tag.transport { color: #15455f; background: #c9e1f2; }
+
+    .equation {
+      margin: 1.3rem 0;
+      padding: 1.2rem;
+      color: var(--white);
+      background: var(--ink);
+      border-bottom: .45rem solid var(--acid);
+      font-family: var(--mono);
+      font-size: clamp(.82rem, 1.8vw, 1rem);
+      line-height: 1.7;
+    }
+    .equation b { color: var(--acid); }
+    .role-card { min-height: 12rem; }
+    .role-card .role-name { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+    .role-card .role-name strong { font-family: var(--display); font-size: 1.4rem; }
+    .role-card ul { padding-left: 1.1rem; font-family: var(--mono); font-size: .75rem; }
+
+    .flow {
+      display: grid;
+      gap: .55rem;
+      margin: 1.4rem 0;
+      padding: 1.25rem;
+      color: var(--white);
+      background: var(--ink);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .flow-row { display: grid; grid-template-columns: 9rem 1fr; gap: .8rem; align-items: stretch; }
+    .flow-source { display: grid; place-items: center; padding: .7rem; color: var(--ink); background: var(--aqua); font-family: var(--mono); font-size: .72rem; font-weight: 900; text-align: center; }
+    .flow-track { display: flex; flex-wrap: wrap; align-items: center; gap: .38rem; }
+    .flow-node { padding: .55rem .7rem; border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.06); font-size: .75rem; }
+    .flow-node.core { border-color: var(--signal); box-shadow: inset 0 -3px var(--signal); }
+    .flow-arrow { color: var(--signal); font-family: var(--mono); font-weight: 900; }
+    .snapshot-line {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .4rem;
+      margin: 1rem 0;
+    }
+    .snapshot-line div { padding: .75rem; border-top: .28rem solid var(--aqua); background: rgba(255,255,255,.65); font-size: .72rem; text-align: center; }
+    .snapshot-line b { display: block; margin-bottom: .25rem; font-family: var(--mono); font-size: .65rem; }
+
+    details { margin: .75rem 0; border: 1px solid var(--line); background: rgba(255,253,247,.72); }
+    summary { padding: .8rem 1rem; font-weight: 750; cursor: pointer; }
+    summary:hover { background: rgba(53,188,193,.09); }
+    details[open] summary { border-bottom: 1px solid var(--line); background: rgba(53,188,193,.08); }
+    .details-body { padding: .5rem 1rem 1rem; }
+
+    .test-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1rem 0 1.4rem;
+      padding: .7rem;
+      color: var(--white);
+      background: var(--ink);
+    }
+    .test-toolbar strong { margin-right: auto; font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+    .filter-button { padding: .38rem .62rem; }
+    .filter-button:hover, .filter-button.active { color: var(--ink); background: var(--acid); border-color: var(--acid); }
+    tr[data-layer].filtered-out { display: none; }
+    .test-id { color: var(--signal-dark); font-family: var(--mono); font-size: .7rem; font-weight: 900; white-space: nowrap; }
+    .gate { font-family: var(--mono); font-size: .68rem; font-weight: 800; }
+    .gate.required { color: var(--success); }
+    .gate.nightly { color: #8a5b10; }
+
+    .trace-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 1rem; }
+    .acceptance-item { display: grid; grid-template-columns: 2.2rem 1fr; gap: .7rem; padding: .8rem 0; border-bottom: 1px solid rgba(9,24,33,.12); }
+    .acceptance-item .mark { display: grid; place-items: center; width: 2rem; height: 2rem; color: var(--ink); background: var(--acid); font-family: var(--mono); font-weight: 900; }
+
+    .footer-note {
+      width: min(100%, 82rem);
+      margin: 1.5rem auto 0;
+      padding: 1.4rem;
+      color: #93aaa7;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(5,17,24,.7);
+      font-family: var(--mono);
+      font-size: .68rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1060px) {
+      :root { --rail: 14rem; }
+      .decision-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .three-col, .role-grid { grid-template-columns: 1fr; }
+      .snapshot-line { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 780px) {
+      .layout { display: block; }
+      .rail { position: relative; width: 100%; height: auto; max-height: none; }
+      .rail nav ol { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .rail-actions, .rail-meta { display: none; }
+      main { padding: 1rem .65rem 4rem; }
+      .hero { min-height: 0; padding: 2.2rem 1.35rem 3rem; }
+      .hero::after { font-size: 10rem; bottom: -2rem; }
+      .sheet { padding: 1.5rem 1rem 2.2rem; }
+      .two-col, .fixture-grid, .trace-grid { grid-template-columns: 1fr; }
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-source { justify-self: start; }
+      .snapshot-line { grid-template-columns: 1fr; }
+      .table-wrap { margin-left: -.3rem; margin-right: -.3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+    @media print {
+      :root { --paper: #fff; --white: #fff; }
+      body { color: #000; background: #fff; font-size: 10pt; }
+      body::before, .rail, .progress-track, .copy-button, .test-toolbar { display: none !important; }
+      .layout { display: block; max-width: none; }
+      main { padding: 0; }
+      .hero, .sheet { width: 100%; margin: 0 0 12pt; box-shadow: none; break-inside: avoid; }
+      .hero { min-height: 0; color: #000; background: #fff; border: 2px solid #000; padding: 28pt; }
+      .hero h1, .hero-note { color: #000; }
+      .hero-deck { color: #333; }
+      .hero::after { color: #eee; }
+      .sheet { overflow: visible; border: 1px solid #777; padding: 24pt; background: #fff; }
+      .sheet::before { color: #eee; }
+      .card, details, .table-wrap { background: #fff; box-shadow: none; }
+      details { break-inside: avoid; }
+      details > * { display: block !important; }
+      pre, .flow, .equation { color: #000; background: #f4f4f4; border: 1px solid #777; }
+      .flow-source { color: #000; background: #ddd; }
+      .flow-node { border-color: #777; }
+      a { text-decoration: none; }
+      tr[data-layer].filtered-out { display: table-row; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to design</a>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+
+  <div class="layout">
+    <aside class="rail" aria-label="Design document navigation">
+      <div class="rail-brand">
+        <div class="issue-glyph">#</div>
+        <div><strong>BanyanDB<br>RBAC</strong><span>Issue 13994 dossier</span></div>
+      </div>
+      <nav aria-label="Sections">
+        <ol>
+          <li><a href="#decision"><span>00</span>Decision summary</a></li>
+          <li><a href="#scope"><span>01</span>Scope &amp; goals</a></li>
+          <li><a href="#reconciliation"><span>02</span>Issue reconciliation</a></li>
+          <li><a href="#model"><span>03</span>Authorization model</a></li>
+          <li><a href="#configuration"><span>04</span>Configuration</a></li>
+          <li><a href="#architecture"><span>05</span>Architecture</a></li>
+          <li><a href="#policy-map"><span>06</span>API policy map</a></li>
+          <li><a href="#operations"><span>07</span>Runtime operations</a></li>
+          <li><a href="#implementation"><span>08</span>Implementation shape</a></li>
+          <li><a href="#test-strategy"><span>09</span>Test strategy</a></li>
+          <li><a href="#unit-tests"><span>10</span>Unit plan</a></li>
+          <li><a href="#integration-tests"><span>11</span>Integration plan</a></li>
+          <li><a href="#e2e-tests"><span>12</span>E2E plan</a></li>
+          <li><a href="#acceptance"><span>13</span>Acceptance gates</a></li>
+        </ol>
+      </nav>
+      <div class="rail-actions">
+        <button type="button" id="expand-all">Expand</button>
+        <button type="button" onclick="window.print()">Print</button>
+      </div>
+      <div class="rail-meta">
+        PROPOSED DESIGN · 2026-08-26<br>
+        TARGET · BANYANDB 0.12.0<br>
+        TRANSPORTS · GRPC + HTTP<br>
+        POLICY · STATIC YAML<br>
+        STATUS · PROPOSED
+      </div>
+    </aside>
+
+    <main id="main-content">
+      <header class="hero" id="top">
+        <div class="kicker">
+          <span class="status-stamp">Implementation plan filed</span>
+          <a href="https://github.com/apache/skywalking/issues/13994">Apache SkyWalking · Issue #13994</a>
+        </div>
+        <h1>RBAC for the BanyanDB <em>API</em></h1>
+        <p class="hero-deck">A deliberately small authorization layer for every public BanyanDB gRPC and grpc-gateway request—built on the authentication file that operators already deploy.</p>
+        <div class="hero-facts" aria-label="Design constraints">
+          <span>gRPC · 17912</span><span>HTTP · 17913</span><span>Basic AuthN</span><span>Exact Group Scope</span><span>Default Off</span><span>Fail Closed</span>
+        </div>
+        <div class="hero-note">One policy engine. One method registry. No duplicate HTTP authorization table, external policy server, role inheritance, regex scope, or row-level filtering.</div>
+      </header>
+
+      <section class="sheet" id="decision" data-number="00">
+        <p class="section-label">Decision summary</p>
+        <h2>The minimum complete design</h2>
+        <p class="lede">When RBAC is enabled, a successfully authenticated username becomes the principal. BanyanDB expands that principal’s scoped role bindings into immutable permission bits and authorizes the semantic gRPC operation before business logic runs.</p>
+
+        <div class="decision-grid">
+          <article class="card decision-card signal">
+            <span class="num">D-01</span><strong>gRPC is authoritative</strong>
+            <p>Direct gRPC and HTTP gateway traffic pass through the same method policy and evaluator. HTTP does not maintain a second route policy.</p>
+          </article>
+          <article class="card decision-card">
+            <span class="num">D-02</span><strong>Six coarse permissions</strong>
+            <p><code>schema</code>, <code>data</code>, and <code>cluster</code>, each with the smallest useful action set. Group schemas, property records, and pipelines fold into those areas.</p>
+          </article>
+          <article class="card decision-card">
+            <span class="num">D-03</span><strong>Exact scopes only</strong>
+            <p>A role binding applies to named BanyanDB groups or <code>*</code>. No regular expressions, prefixes, tags, rows, fields, or identity groups.</p>
+          </article>
+          <article class="card decision-card">
+            <span class="num">D-04</span><strong>Atomic security snapshot</strong>
+            <p>Credentials and compiled grants reload as one validated snapshot. Invalid changes retain the last-known-good policy.</p>
+          </article>
+        </div>
+
+        <div class="callout success">
+          <strong>Core decision:</strong> group scoping is part of phase 1, not a follow-up. It is an acceptance criterion in #13994 and affects query, list, streaming-write, and ByDBQL semantics throughout the implementation.
+        </div>
+      </section>
+
+      <section class="sheet" id="scope" data-number="01">
+        <p class="section-label">Scope &amp; goals</p>
+        <h2>Only what #13994 needs</h2>
+        <div class="two-col">
+          <article class="card">
+            <h3>Goals</h3>
+            <ul class="check-list">
+              <li>Authorize every externally registered liaison gRPC method and every grpc-gateway request.</li>
+              <li>Bind authenticated usernames and service accounts to built-in or custom roles.</li>
+              <li>Separate read, write, and cluster-level operations.</li>
+              <li>Scope schema and data access to exact BanyanDB groups.</li>
+              <li>Preserve current behavior when RBAC is absent or disabled.</li>
+              <li>Hot-reload policy safely and expose bounded decision metrics.</li>
+              <li>Keep direct OAP/bydbctl clients and the Canopy proxy operational.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Non-goals</h3>
+            <ul class="cross-list">
+              <li>OAuth2, OIDC, SAML, LDAP, MFA, or token issuance.</li>
+              <li>Row, tag, field, label, time-range, or query-predicate ABAC.</li>
+              <li>Nested roles, role inheritance, explicit deny, or grant delegation.</li>
+              <li>Regex/prefix scopes, one-group-per-tenant assumptions, or identity groups.</li>
+              <li>A policy management API, UI, distributed policy store, or decision cache.</li>
+              <li>Per-browser-user propagation from Canopy to BanyanDB.</li>
+              <li>Authorization of data-node internal listeners unrelated to the public liaison API.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="sheet" id="reconciliation" data-number="02">
+        <p class="section-label">Issue reconciliation</p>
+        <h2>Resolve contradictions before code</h2>
+        <p class="lede">The issue mixes two trust models and contains requirements that are both mandatory and deferred. This design makes each ambiguous point explicit.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Issue statement</th><th>Resolved design</th><th>Reason</th></tr></thead>
+            <tbody>
+              <tr><td>“No multiple identities.”</td><td>BanyanDB already accepts multiple users. RBAC adds per-user authorization.</td><td>The existing <code>users:</code> list and reloader remain the authentication source.</td></tr>
+              <tr><td>Canopy authenticates; BanyanDB “never sees roles.”</td><td>For 0.12.0, BanyanDB authenticates the Basic username and resolves its roles locally.</td><td>No signed Canopy delegation format exists in #13994. Client-supplied verb headers are not trusted.</td></tr>
+              <tr><td>One shared Canopy upstream credential.</td><td>BanyanDB sees one Canopy service-account principal. Canopy keeps end-user <code>admin</code>/<code>readonly</code> enforcement.</td><td>Per-user database enforcement is impossible through one credential; it remains a future delegated-token concern.</td></tr>
+              <tr><td>Group scope is accepted but deferred to phase 2.</td><td>Group scope ships in phase 1.</td><td>It is foundational and explicitly required by the acceptance criteria.</td></tr>
+              <tr><td>gRPC interceptor plus HTTP middleware authorization.</td><td>One gRPC authorization decision; HTTP middleware performs Basic authentication and credential propagation.</td><td>The HTTP service is a grpc-gateway to the same gRPC server. Duplicate policies would drift and double-count.</td></tr>
+              <tr><td><code>property:*</code> and <code>pipeline:*</code>.</td><td>Property records use <code>data:*</code>; property schemas and pipeline-bearing group configuration use schema/admin classifications.</td><td>No demonstrated phase-1 isolation use case warrants four extra permissions.</td></tr>
+              <tr><td>Default-deny is an open choice and a required test.</td><td>RBAC enabled means explicit allow and otherwise deny.</td><td>Fail-closed behavior is the only coherent enabled mode.</td></tr>
+              <tr><td>Metric includes a <code>role</code> label.</td><td>Use <code>decision</code>, <code>permission</code>, and bounded <code>method</code>/<code>reason</code> labels.</td><td>A decision may be the union of several custom roles; role labels are ambiguous and operator-controlled.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sheet" id="model" data-number="03">
+        <p class="section-label">Authorization model</p>
+        <h2>Flat roles, compiled grants</h2>
+        <div class="equation">
+          <b>ALLOW</b> iff an authenticated principal has the required permission for <b>every</b> target group.<br>
+          effective(principal, group) = global[principal] ∪ scoped[principal][group]
+        </div>
+
+        <div class="three-col">
+          <article class="card">
+            <h3>Principal</h3>
+            <p>The normalized username established by successful Basic authentication. A service account is simply a dedicated username; no additional principal type is introduced.</p>
+          </article>
+          <article class="card">
+            <h3>Role</h3>
+            <p>A named, flat set of permissions. Roles are configuration conveniences and are expanded during compilation; request evaluation does not traverse a role graph.</p>
+          </article>
+          <article class="card">
+            <h3>Binding</h3>
+            <p>A tuple of principal, role, and exact group names or <code>*</code>. Multiple bindings union their grants. There is no explicit deny.</p>
+          </article>
+        </div>
+
+        <h3>Permission vocabulary</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Permission</th><th>Meaning</th><th>Scope</th></tr></thead>
+            <tbody>
+              <tr><td><code>schema:read</code></td><td>Get, list, exist, or await state for group-owned schema metadata.</td><td>Exact groups or <code>*</code></td></tr>
+              <tr><td><code>schema:write</code></td><td>Create, update, and delete groups plus stream, measure, trace, property, TopN, index-rule, and binding schemas.</td><td>Exact groups or <code>*</code></td></tr>
+              <tr><td><code>data:read</code></td><td>Query stream, measure, trace, property, TopN, and ByDBQL results.</td><td>Exact groups or <code>*</code></td></tr>
+              <tr><td><code>data:write</code></td><td>Write stream, measure, trace, and apply/delete property records.</td><td>Exact groups or <code>*</code></td></tr>
+              <tr><td><code>cluster:read</code></td><td>Inspect topology, node state, and group storage/runtime details.</td><td>Global binding only</td></tr>
+              <tr><td><code>cluster:admin</code></td><td>Group lifecycle/configuration, snapshots, retention deletion, and internal maintenance APIs.</td><td>Global binding only</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Built-in roles</h3>
+        <div class="role-grid">
+          <article class="card role-card">
+            <div class="role-name"><strong>reader</strong><span class="tag allow">built-in</span></div>
+            <p>Read group-owned schemas and data.</p>
+            <ul><li>schema:read</li><li>data:read</li></ul>
+          </article>
+          <article class="card role-card">
+            <div class="role-name"><strong>writer</strong><span class="tag allow">built-in</span></div>
+            <p>Reader capabilities plus child-schema management and ingestion.</p>
+            <ul><li>schema:read</li><li>schema:write</li><li>data:read</li><li>data:write</li></ul>
+          </article>
+          <article class="card role-card signal">
+            <div class="role-name"><strong style="color:var(--white)">admin</strong><span class="tag special">global only</span></div>
+            <p>All present and future permissions. An admin binding must use <code>*</code>.</p>
+            <ul><li>*</li></ul>
+          </article>
+        </div>
+
+        <div class="callout warning">
+          <strong>Group-name semantics:</strong> a binding is attached to a name, not a group UUID. If a group is deleted and later recreated with the same name, the configured grant applies again. A <code>*</code> binding also covers groups created after policy load.
+        </div>
+      </section>
+
+      <section class="sheet" id="configuration" data-number="04">
+        <p class="section-label">Configuration contract</p>
+        <h2>Extend the file operators already secure</h2>
+        <p class="lede">The existing <code>--auth-config-file</code> remains the single source for credentials and RBAC. A separate nested application configuration system or database-backed policy store is not introduced.</p>
+
+        <div class="fixture-grid">
+          <div>
+            <pre><code>users:
+  - username: oap
+    password: replace-me
+  - username: analyst
+    password: replace-me-too
+  - username: operations
+    password: another-secret
+
+rbac:
+  enabled: true
+
+  roles:
+    monitor:
+      permissions:
+        - cluster:read
+
+  bindings:
+    - principal: oap
+      role: writer
+      groups: ["*"]
+
+    - principal: analyst
+      role: reader
+      groups: [sw_metric]
+
+    - principal: operations
+      role: admin
+      groups: ["*"]</code></pre>
+          </div>
+          <article class="card">
+            <h3>Validation rules</h3>
+            <ul class="tight-list">
+              <li><code>rbac.enabled</code> defaults to <code>false</code>.</li>
+              <li>Enabled RBAC requires authentication and at least one user.</li>
+              <li>Duplicate usernames, custom roles, permissions, groups, or equivalent bindings are rejected.</li>
+              <li>Bindings must reference an existing user and role.</li>
+              <li>Built-in role names cannot be overridden.</li>
+              <li>Group names are non-empty exact strings; <code>*</code> cannot be mixed with names.</li>
+              <li>Roles containing <code>cluster:*</code> require a <code>*</code> binding.</li>
+              <li>Unknown RBAC keys and permission names are rejected.</li>
+              <li>The existing owner-only file-mode requirement remains.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3>Compatibility modes</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Auth file</th><th>RBAC</th><th>Behavior</th></tr></thead>
+            <tbody>
+              <tr><td>Absent</td><td>Unavailable/off</td><td>Current unauthenticated behavior; no change.</td></tr>
+              <tr><td>Users only</td><td>Implicitly off</td><td>Current authenticate-then-allow behavior; no change.</td></tr>
+              <tr><td>Users + <code>enabled: false</code></td><td>Off</td><td>Current authenticate-then-allow behavior.</td></tr>
+              <tr><td>Users + <code>enabled: true</code></td><td>On</td><td>Authenticate, then explicit allow; an unbound user receives permission denied.</td></tr>
+              <tr><td>RBAC enabled without usable authentication</td><td>Invalid</td><td>Liaison startup fails with a configuration error.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sheet" id="architecture" data-number="05">
+        <p class="section-label">Architecture</p>
+        <h2>One decision path for two transports</h2>
+        <p class="lede">The HTTP gateway authenticates Basic credentials and forwards them as gRPC metadata. The gRPC authentication interceptor establishes a trusted principal context; authorization never rereads caller-controlled identity metadata.</p>
+
+        <div class="flow" role="img" aria-label="HTTP and direct gRPC requests converge on one gRPC authentication and authorization pipeline">
+          <div class="flow-row">
+            <div class="flow-source">HTTP :17913</div>
+            <div class="flow-track">
+              <span class="flow-node">Basic middleware</span><span class="flow-arrow">→</span>
+              <span class="flow-node">grpc-gateway</span><span class="flow-arrow">→</span>
+              <span class="flow-node core">gRPC AuthN</span><span class="flow-arrow">→</span>
+              <span class="flow-node">Validate</span><span class="flow-arrow">→</span>
+              <span class="flow-node core">RBAC</span><span class="flow-arrow">→</span>
+              <span class="flow-node">Handler</span>
+            </div>
+          </div>
+          <div class="flow-row">
+            <div class="flow-source">gRPC :17912</div>
+            <div class="flow-track">
+              <span class="flow-node core">gRPC AuthN</span><span class="flow-arrow">→</span>
+              <span class="flow-node">Validate</span><span class="flow-arrow">→</span>
+              <span class="flow-node core">RBAC</span><span class="flow-arrow">→</span>
+              <span class="flow-node">Handler</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Interceptor order</h3>
+        <div class="snapshot-line">
+          <div><b>01</b>Breadcrumb</div>
+          <div><b>02</b>Recovery</div>
+          <div><b>03</b>Authentication</div>
+          <div><b>04</b>Validation</div>
+          <div><b>05</b>Authorization</div>
+        </div>
+        <p class="small">Authentication precedes request validation so malformed unauthenticated calls still receive <code>Unauthenticated</code>. Authorization precedes every business handler invocation.</p>
+
+        <div class="two-col">
+          <article class="card">
+            <h3>Unary calls</h3>
+            <ol class="tight-list">
+              <li>Load the current immutable security snapshot.</li>
+              <li>Resolve the full gRPC method to a rule.</li>
+              <li>Extract and deduplicate every target group.</li>
+              <li>Require the permission for every group.</li>
+              <li>Record one decision and invoke or reject the handler.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <h3>Streaming writes</h3>
+            <ol class="tight-list">
+              <li>Authenticate when the stream opens.</li>
+              <li>Reject immediately if the principal has no <code>data:write</code> grant anywhere.</li>
+              <li>Wrap <code>RecvMsg</code>; validate then authorize each resource-bearing frame.</li>
+              <li>Load the newest snapshot per frame, making revocation effective on the next frame.</li>
+              <li>Never pass an unauthorized frame to the handler.</li>
+            </ol>
+          </article>
+        </div>
+
+        <div class="callout warning">
+          <strong>Canopy boundary:</strong> with the current single upstream Basic credential, BanyanDB authorizes the Canopy service account—not the browser user. Canopy’s local <code>admin</code>/<code>readonly</code> checks remain authoritative for browser sessions. Per-user propagation requires a separately designed signed delegation mechanism and is not part of #13994.
+        </div>
+
+        <h3>Special request paths</h3>
+        <div class="three-col">
+          <article class="card"><h4>ByDBQL</h4><p>Parse, bind, and transform first; authorize the resulting native request groups before invoking the native service handler. Raw query text is not the authorization resource.</p></article>
+          <article class="card"><h4>Group.List</h4><p>Require at least one <code>schema:read</code> grant, then filter the returned groups to exact visible scopes. A wildcard reader sees all groups.</p></article>
+          <article class="card"><h4>Multi-group query</h4><p>Use all-or-nothing semantics. If one requested group is unauthorized, reject the entire query; never silently run an authorized subset.</p></article>
+        </div>
+      </section>
+
+      <section class="sheet" id="policy-map" data-number="06">
+        <p class="section-label">API policy map</p>
+        <h2>Every method is classified</h2>
+        <p class="lede">A canonical table keyed by full gRPC method is part of the binary. Registration is exhaustive: after services are registered, startup and CI compare the policy table with <code>grpc.Server.GetServiceInfo()</code>. An unclassified externally registered method is a build/startup failure, not an implicit allow.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Service / methods</th><th>Permission</th><th>Resource extraction</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Common Service / <code>GetAPIVersion</code></td><td><span class="tag allow">authenticated</span></td><td>None</td><td>Any valid identity may negotiate the API version, even without a role binding.</td></tr>
+              <tr><td>gRPC Health / <code>Check</code>; HTTP <code>/api/healthz</code></td><td><span class="tag special">health policy</span></td><td>None</td><td>Preserve existing <code>health-auth-enabled</code> behavior. Static web assets remain public.</td></tr>
+              <tr><td>Stream, Measure, Trace, IndexRule, IndexRuleBinding, TopN, Property registries / <code>Get</code>, <code>List</code>, <code>Exist</code></td><td><span class="tag allow">schema:read</span></td><td><code>metadata.group</code>, request <code>group</code>, or every entry in repeated group objects</td><td>Exist returns permission denied—not false—for an unauthorized group.</td></tr>
+              <tr><td>Same registries / <code>Create</code>, <code>Update</code>, <code>Delete</code></td><td><span class="tag allow">schema:write</span></td><td>Nested resource <code>metadata.group</code></td><td>TopN and Property registries are schema, not separate permission areas.</td></tr>
+              <tr><td>Group Registry / <code>Get</code>, <code>Exist</code></td><td><span class="tag allow">schema:read</span></td><td>Request <code>group</code></td><td>Authorization runs before lookup so group existence is not disclosed.</td></tr>
+              <tr><td>Group Registry / <code>List</code></td><td><span class="tag allow">schema:read</span></td><td>Post-handler response filter</td><td>Deny if the principal has no schema-read grant; otherwise return only visible groups.</td></tr>
+              <tr><td>Group Registry / <code>Create</code>, <code>Update</code>, <code>Delete</code></td><td><span class="tag allow">schema:write</span></td><td>Group <code>metadata.name</code> or request <code>group</code></td><td>The issue places groups in the schema area. This also lets a global OAP writer initialize its required groups without granting cluster administration.</td></tr>
+              <tr><td>Group Registry / <code>Inspect</code>, deletion-task <code>Query</code></td><td><span class="tag special">cluster:read</span></td><td>Global permission; request group retained for audit context</td><td>Responses expose node, storage, and pending-operation details.</td></tr>
+              <tr><td>Stream, Measure, Trace / <code>Query</code>; Measure / <code>TopN</code>; Property / <code>Query</code></td><td><span class="tag allow">data:read</span></td><td>Every value in repeated <code>groups</code></td><td>All requested groups must be allowed.</td></tr>
+              <tr><td>ByDBQL / <code>Query</code></td><td><span class="tag allow">data:read</span></td><td>Groups from the transformed native request</td><td>Authorization occurs inside the ByDBQL handler after parse/bind/transform and before direct native-handler invocation.</td></tr>
+              <tr><td>Stream, Measure, Trace / <code>Write</code></td><td><span class="tag allow">data:write</span></td><td>Each frame’s <code>metadata.group</code></td><td>Every received frame is independently checked against the current snapshot.</td></tr>
+              <tr><td>Property / <code>Apply</code>, <code>Delete</code></td><td><span class="tag allow">data:write</span></td><td>Property <code>metadata.group</code> or request <code>group</code></td><td>Denied operations must have no storage side effect.</td></tr>
+              <tr><td>ClusterState / <code>GetClusterState</code>; NodeQuery / <code>GetCurrentNode</code></td><td><span class="tag special">cluster:read</span></td><td>Global</td><td>Suitable for a custom monitor role.</td></tr>
+              <tr><td>Snapshot / <code>Snapshot</code></td><td><span class="tag deny">cluster:admin</span></td><td>Global; groups retained for audit context</td><td>The liaison has a real Snapshot handler. Denied calls must create no snapshot side effect.</td></tr>
+              <tr><td>Stream, Measure, Trace / <code>DeleteExpiredSegments</code>; Measure / <code>InternalQuery</code></td><td><span class="tag deny">cluster:admin</span></td><td>Global</td><td>The liaison currently exposes generated <code>Unimplemented</code> fallbacks. Admin passes authorization and retains that handler result; other roles receive <code>PermissionDenied</code>.</td></tr>
+              <tr><td>Optional NodeSchemaStatus methods</td><td><span class="tag deny">cluster:admin</span></td><td>Global</td><td>Externally reachable conditional internal methods fail closed. A future internal-principal mechanism can narrow this separately.</td></tr>
+              <tr><td>SchemaBarrier / <code>AwaitSchemaApplied</code>, <code>AwaitSchemaDeleted</code></td><td><span class="tag allow">schema:read</span></td><td>Every key’s group</td><td>All key groups must be visible.</td></tr>
+              <tr><td>SchemaBarrier / <code>AwaitRevisionApplied</code></td><td><span class="tag allow">schema:read</span></td><td>Global (<code>*</code>) schema-read grant</td><td>The request contains no group and reports cluster-wide convergence.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details>
+          <summary>Registry families covered by the generic schema rules</summary>
+          <div class="details-body">
+            <p>The same six-method rule family applies to <code>StreamRegistryService</code>, <code>MeasureRegistryService</code>, <code>TraceRegistryService</code>, <code>IndexRuleRegistryService</code>, <code>IndexRuleBindingRegistryService</code>, <code>TopNAggregationRegistryService</code>, and <code>PropertyRegistryService</code>.</p>
+            <p><code>Create</code>/<code>Update</code>/<code>Delete</code> require <code>schema:write</code>; <code>Get</code>/<code>List</code>/<code>Exist</code> require <code>schema:read</code>. The implementation still registers every full method explicitly so a newly added RPC cannot inherit a policy accidentally.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Typed resource extractor families</summary>
+          <div class="details-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Extractor</th><th>Examples</th><th>Contract</th></tr></thead>
+                <tbody>
+                  <tr><td><code>directGroup</code></td><td>Group Get, registry List, Property Delete</td><td>One non-empty request string.</td></tr>
+                  <tr><td><code>metadataGroup</code></td><td>Registry Get/Delete/Exist</td><td>Nested <code>Metadata.Group</code>.</td></tr>
+                  <tr><td><code>resourceMetadataGroup</code></td><td>Registry Create/Update, Property Apply</td><td>Metadata inside the resource body.</td></tr>
+                  <tr><td><code>repeatedGroups</code></td><td>Stream/Measure/Trace/Property Query, TopN</td><td>Deduplicate and require every group.</td></tr>
+                  <tr><td><code>repeatedObjectGroups</code></td><td>Snapshot and registry batch/exist shapes</td><td>Extract every embedded group field.</td></tr>
+                  <tr><td><code>schemaKeyGroups</code></td><td>SchemaBarrier key requests</td><td>Deduplicate every key group.</td></tr>
+                  <tr><td><code>global</code></td><td>Cluster state, node query, internal maintenance</td><td>Only wildcard/global grants can satisfy the rule.</td></tr>
+                  <tr><td><code>postTransform</code></td><td>ByDBQL</td><td>Authorize the typed native request, not query text.</td></tr>
+                  <tr><td><code>responseFilter</code></td><td>Group List</td><td>Filter after the handler using the same decision snapshot.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <div class="callout">
+          <strong>No generic protobuf reflection rule:</strong> BanyanDB request shapes differ too much for “find a field named group.” Each method points to a typed extractor, and the coverage test proves that the method and extractor remain paired.
+        </div>
+      </section>
+
+      <section class="sheet" id="operations" data-number="07">
+        <p class="section-label">Runtime operations</p>
+        <h2>Fail closed without becoming brittle</h2>
+
+        <h3>Atomic load and reload</h3>
+        <div class="snapshot-line">
+          <div><b>01 · Read</b>owner-only YAML</div>
+          <div><b>02 · Parse</b>credentials + RBAC</div>
+          <div><b>03 · Validate</b>all references</div>
+          <div><b>04 · Compile</b>immutable maps</div>
+          <div><b>05 · Swap</b>one atomic pointer</div>
+        </div>
+        <ul class="tight-list">
+          <li>Credentials and authorization grants are published together as one <code>SecuritySnapshot</code>; callers never observe a new user with an old policy or the reverse.</li>
+          <li>A reload error is logged without secrets, increments a bounded failure metric, and leaves the previous snapshot active.</li>
+          <li>Unary calls use the snapshot selected at the authorization point. Existing streaming writes reload the current snapshot for each frame.</li>
+          <li>Removing a user or binding revokes the next unary call and the next received stream frame. There is no TTL decision cache.</li>
+        </ul>
+
+        <h3>Failure semantics</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Condition</th><th>gRPC</th><th>HTTP</th><th>Handler invoked?</th></tr></thead>
+            <tbody>
+              <tr><td>Missing or invalid credentials</td><td><code>Unauthenticated</code></td><td><code>401</code></td><td>No</td></tr>
+              <tr><td>Malformed Basic header</td><td>Not applicable</td><td>Existing <code>400</code></td><td>No</td></tr>
+              <tr><td>Authenticated but no matching grant</td><td><code>PermissionDenied</code></td><td><code>403</code></td><td>No</td></tr>
+              <tr><td>Authenticated malformed request</td><td><code>InvalidArgument</code></td><td><code>400</code></td><td>No</td></tr>
+              <tr><td>Authorized, resource absent</td><td><code>NotFound</code></td><td><code>404</code></td><td>Yes</td></tr>
+              <tr><td>Policy method missing</td><td colspan="2">Startup/CI failure; never a runtime allow</td><td>No server</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Metrics and audit context</h3>
+        <pre><code>banyandb_rbac_decisions_total{
+  decision="allow|deny",
+  permission="schema:read|...",
+  method="banyandb.measure.v1.MeasureService/Query",
+  reason="granted|no_binding|wrong_scope|..."
+}
+
+banyandb_rbac_policy_reload_total{result="success|failure"}
+banyandb_rbac_policy_revision 17</code></pre>
+        <p>Metric labels are bounded by compiled enums and the registered API surface. Username, role name, password, group name, query text, and resource name are forbidden metric labels. Optional structured decision logs may include principal, groups, policy revision, method, and decision, but never credentials or full request bodies.</p>
+        <p>Unary calls record one decision. Streaming write frames record one decision per resource-bearing frame. An HTTP gateway call is counted only by the gRPC authorizer, preventing double observations.</p>
+      </section>
+
+      <section class="sheet" id="implementation" data-number="08">
+        <p class="section-label">Implementation shape</p>
+        <h2>Small packages, explicit seams</h2>
+        <div class="two-col">
+          <div>
+            <pre><code>banyand/internal/auth/rbac/
+  model.go          # Permission, Role, Binding, Scope
+  compiler.go       # validated config → immutable grants
+  authorizer.go     # O(1) decisions, visibility helpers
+  authorizer_test.go
+
+banyand/liaison/pkg/auth/
+  reloader.go       # Users + RBAC, atomic SecuritySnapshot
+  principal.go      # trusted context principal
+  reloader_test.go
+
+banyand/liaison/grpc/
+  rbac.go           # unary + stream interceptors
+  rbac_rules.go     # exhaustive full-method registry
+  rbac_extractors.go
+  rbac_special.go   # Group.List and ByDBQL hooks
+
+banyand/liaison/http/
+  auth.go           # authentication/metadata only
+
+test/integration/{standalone,distributed}/rbac/
+test/e2e-v2/cases/rbac/</code></pre>
+          </div>
+          <article class="card">
+            <h3>Compiled representation</h3>
+            <pre><code>type Grants struct {
+  Global PermissionBits
+  Groups map[string]PermissionBits
+}
+
+type SecuritySnapshot struct {
+  Revision uint64
+  Users CredentialIndex
+  Grants map[string]Grants
+}</code></pre>
+            <p>Roles disappear from the request hot path. A scoped decision is two map lookups and a bit test. Global methods consult only <code>Global</code>.</p>
+          </article>
+        </div>
+
+        <h3>Implementation sequence</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>PR</th><th>Complete TDD workflow</th><th>Merge gate</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://github.com/apache/skywalking/issues/14014">W-PR1 · #14014</a></td><td>Security runtime and global authorization: A1–A4 then D1–D4 as eight sequential internal TDD rounds.</td><td>The workflow tracer and direct global/bootstrap E2E are GREEN; later schema/data methods remain denied.</td></tr>
+              <tr><td><a href="https://github.com/apache/skywalking/issues/14015">W-PR2 · #14015</a></td><td>Group-scoped schema authorization: B1–B10 as ten sequential internal TDD rounds.</td><td>The workflow tracer and direct schema/Group.List/SchemaBarrier E2E are GREEN.</td></tr>
+              <tr><td><a href="https://github.com/apache/skywalking/issues/14016">W-PR3 · #14016</a></td><td>Data and release: C1–C8 as eight sequential internal TDD rounds, followed by all direct integration/E2E and docs stages.</td><td>Native data, Property mutations, stream frames, ByDBQL, direct deployment proof, and documentation complete #13994 without OAP or Canopy E2E.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warning">
+          <strong>Three-workflow invariant:</strong> #13994 produces exactly three PRs. W-PR1, W-PR2, and W-PR3 are sequential and each is
+          independently mergeable against <code>main</code>. Every PR runs a complete TDD workflow: take one agreed round boundary, observe RED,
+          make the minimum GREEN change, run focused real-liaison proof, then begin the next round. Each PR also owns a workflow-level RED→GREEN
+          tracer and direct E2E stage; proof is never deferred to W-PR3. Do not write all tests first.
+        </div>
+        <div class="callout">
+          <strong>Internal TDD rounds:</strong> A1–D4 are 26 checklist rounds, each with one strict boundary and one RED→GREEN cycle inside its
+          owning workflow issue and PR. A round is not a GitHub issue and never receives an independent PR. If a round must split,
+          the smaller checklist items stay in the same workflow and do not create another issue or fourth PR. See the
+          <a href="rbac-13994-tickets/SUB-TDD-CYCLES.md">internal round catalog</a> and
+          <a href="rbac-13994-tickets/HIERARCHY.md">three-PR hierarchy</a>.
+        </div>
+      </section>
+
+      <section class="sheet" id="test-strategy" data-number="09">
+        <p class="section-label">Complete test strategy</p>
+        <h2>Security behavior, not just code paths</h2>
+        <p class="lede">The test plan uses narrow unit tests for policy logic, real in-process liaison integration tests for the complete API contract, and containerized end-to-end tests for direct transports, reload, and cluster behavior. Every denied mutation is followed by a side-effect check.</p>
+
+        <div class="callout">
+          <strong>Test ownership:</strong> the 86 IDs below are the cumulative acceptance matrix, not separate PRs. Every internal round owns
+          its unit RED and focused real-liaison integration subcase inside W-PR1, W-PR2, or W-PR3; cumulative role, registry, transport, and
+          metrics rows are filled only during the round that activates that method/extractor. See the
+          <a href="rbac-13994-tickets/TEST-OWNERSHIP.md">complete test-to-round ownership map</a>.
+        </div>
+
+        <div class="test-toolbar" role="group" aria-label="Filter test plan by layer">
+          <strong>Filter test cases</strong>
+          <button type="button" class="filter-button active" data-filter="all">All</button>
+          <button type="button" class="filter-button" data-filter="unit">Unit</button>
+          <button type="button" class="filter-button" data-filter="integration">Integration</button>
+          <button type="button" class="filter-button" data-filter="e2e">E2E</button>
+        </div>
+
+        <div class="three-col">
+          <article class="card">
+            <h3>Unit</h3>
+            <p>Pure compiler/evaluator tests, interceptor tests with fake handlers and streams, response filtering, descriptor coverage, fuzzing, and race tests.</p>
+            <span class="tag transport">fast</span><span class="tag allow">every PR</span>
+          </article>
+          <article class="card">
+            <h3>Integration</h3>
+            <p>A real standalone or distributed liaison with temporary <code>0600</code> policy files, real gRPC/HTTP clients, real schema/data paths, and real metrics.</p>
+            <span class="tag transport">real server</span><span class="tag allow">every PR</span>
+          </article>
+          <article class="card signal">
+            <h3 style="color:var(--white)">End to end</h3>
+            <p>Docker deployments exercising direct gRPC/HTTP clients against standalone and multi-liaison BanyanDB topologies.</p>
+            <span class="tag special">deployment proof</span><span class="tag allow">required</span>
+          </article>
+        </div>
+
+        <h3>Canonical fixtures</h3>
+        <div class="callout">
+          <strong>Real-world actors only:</strong> the executable plan models an operator administrator and group-scoped tenant readers/writers. It does not invent approval workflows, identity-provider groups, policy delegation, or other enterprise-only personas.
+        </div>
+        <div class="fixture-grid">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Principal</th><th>Binding</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><code>reader_alpha</code></td><td>reader on <code>rbac-alpha</code></td><td>Exact read scope.</td></tr>
+                <tr><td><code>writer_alpha</code></td><td>writer on <code>rbac-alpha</code></td><td>Exact schema/data write scope.</td></tr>
+                <tr><td><code>reader_all</code></td><td>reader on <code>*</code></td><td>Wildcard and future-group semantics.</td></tr>
+                <tr><td><code>monitor</code></td><td>custom <code>cluster:read</code> on <code>*</code></td><td>Global read-only operations.</td></tr>
+                <tr><td><code>admin</code></td><td>admin on <code>*</code></td><td>Bootstrap and administrative allow cases.</td></tr>
+                <tr><td><code>unbound</code></td><td>No binding</td><td>Authenticated default-deny case.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <article class="card">
+            <h3>Resource fixture</h3>
+            <ul class="tight-list">
+              <li>Groups: <code>rbac-alpha</code> and <code>rbac-beta</code>.</li>
+              <li>Equivalent stream, measure, trace, property, TopN, and registry schemas in each group.</li>
+              <li>Data rows contain group-unique marker values to make leakage observable.</li>
+              <li>Admin creates fixtures before role assertions.</li>
+              <li>Each mutation uses a unique resource ID and verifies persistence or absence afterward.</li>
+              <li>Tests never depend on execution order and clean up their own resources.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3>Assertions common to every layer</h3>
+        <ul class="check-list">
+          <li>Authentication failures are distinct from authorization failures.</li>
+          <li>A denied call does not invoke the target handler or mutate storage.</li>
+          <li>Authorization is evaluated before resource existence is disclosed.</li>
+          <li>Both allow and deny are asserted; success-only tests are insufficient.</li>
+          <li>HTTP and direct gRPC produce equivalent semantic decisions.</li>
+          <li>Passwords, raw authorization headers, and request bodies never appear in errors, logs, or metric labels.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="unit-tests" data-number="10">
+        <p class="section-label">Unit test plan</p>
+        <h2>Prove the policy engine in isolation</h2>
+        <p class="lede">Primary locations: <code>banyand/internal/auth/rbac/*_test.go</code>, <code>banyand/liaison/pkg/auth/reloader_test.go</code>, <code>banyand/liaison/grpc/rbac*_test.go</code>, and new <code>banyand/liaison/http/auth_test.go</code>.</p>
+
+        <div class="table-wrap">
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Area</th><th>Scenario</th><th>Expected proof</th></tr></thead>
+            <tbody>
+              <tr data-layer="unit"><td class="test-id">U-CFG-01</td><td>Compatibility parse</td><td>Load the existing users-only YAML format.</td><td>Credentials work; RBAC is disabled; no migration required.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-02</td><td>Valid compile</td><td>Built-ins, one custom role, exact and wildcard bindings.</td><td>Immutable credential/grant snapshot contains expected permission bits.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-03</td><td>Required AuthN</td><td>RBAC enabled without users or without an auth file.</td><td>Configuration/startup validation fails.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-04</td><td>References</td><td>Unknown principal, role, or permission; reserved built-in override.</td><td>Compile fails with a contextual, secret-free error.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-05</td><td>Duplicates</td><td>Duplicate username, role, permission, group, or equivalent binding.</td><td>Compile rejects ambiguous input.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-06</td><td>Scopes</td><td>Empty group, whitespace-only group, <code>*</code> mixed with names, cluster permission on exact scope.</td><td>Compile rejects every invalid scope.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-07</td><td>File security</td><td>Missing file and non-owner-only permissions.</td><td>Existing secure-file behavior remains enforced.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-CFG-08</td><td>Unknown fields</td><td>Misspelled RBAC key or unsupported permission.</td><td>Strict RBAC parsing fails rather than silently weakening policy.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-RLD-01</td><td>Valid reload</td><td>Atomically replace credentials and bindings.</td><td>One new revision exposes both changes together.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-RLD-02</td><td>Invalid reload</td><td>Write malformed YAML or an invalid binding after a valid load.</td><td>Last-known-good snapshot remains active; failure metric increments.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-RLD-03</td><td>Concurrency</td><td>Continuously authorize while repeatedly reloading valid snapshots under <code>-race</code>.</td><td>No race, panic, mutable-map exposure, or partially compiled decision.</td></tr>
+
+              <tr data-layer="unit"><td class="test-id">U-EVL-01</td><td>Default deny</td><td>Authenticated user with no binding or unrelated permission.</td><td>Denied with bounded <code>no_binding</code>/<code>permission_missing</code> reason.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-02</td><td>Exact scope</td><td>Reader bound to alpha asks for alpha then beta.</td><td>Alpha allowed; beta denied; no substring or case-fold match.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-03</td><td>Wildcard</td><td>Wildcard reader accesses existing and newly named groups.</td><td>Both allowed without recompiling the binding.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-04</td><td>Additive union</td><td>Principal has reader on alpha and writer on beta.</td><td>Effective permissions union independently per group.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-05</td><td>No implicit action</td><td>Custom role contains only <code>data:write</code>.</td><td>Write allowed; read denied. Write never implies read.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-06</td><td>Global permission</td><td>Exact-group grant attempts a cluster method.</td><td>Denied; only global bits satisfy global methods.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-07</td><td>Name lifecycle</td><td>Grant refers to an absent group that is later recreated.</td><td>The exact-name grant applies consistently by documented semantics.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EVL-08</td><td>All groups</td><td>Multi-group request contains duplicates and one forbidden group.</td><td>Groups deduplicate; one forbidden group denies the whole request.</td></tr>
+
+              <tr data-layer="unit"><td class="test-id">U-EXT-01</td><td>Extractors</td><td>Direct group, metadata, nested resource metadata, repeated strings, repeated objects, and schema keys.</td><td>Every supported typed request shape yields the exact normalized group set.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EXT-02</td><td>Malformed input</td><td>Nil resource/metadata, empty group, wrong request type.</td><td>No panic; authenticated malformed requests become <code>InvalidArgument</code>, never allow.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-EXT-03</td><td>Coverage registry</td><td>Enumerate all services registered by liaison, including conditional services and health.</td><td>Every method has exactly one explicit rule; stale/unknown rules also fail.</td></tr>
+
+              <tr data-layer="unit"><td class="test-id">U-INT-01</td><td>Unary interceptor</td><td>Disabled, unauthenticated, denied, and allowed paths with a fake handler.</td><td>Correct code and handler invocation count for each path.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-INT-02</td><td>Principal trust</td><td>Send duplicate/spoofed username metadata after valid authentication.</td><td>Authorization uses only the trusted context principal; spoofing has no effect.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-INT-03</td><td>Precedence</td><td>Malformed unauthenticated request, then malformed authenticated request.</td><td>First is <code>Unauthenticated</code>; second is <code>InvalidArgument</code>.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-STR-01</td><td>Stream open</td><td>Reader opens Stream/Measure/Trace write.</td><td>Rejected without waiting for a frame because no write grant exists.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-STR-02</td><td>Per-frame scope</td><td>Writer sends alpha frame followed by beta frame.</td><td>First reaches the fake handler; second returns <code>PermissionDenied</code> and never reaches it.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-STR-03</td><td>Mid-stream revoke</td><td>Remove the binding after an allowed frame.</td><td>The next frame consults the new revision and is denied.</td></tr>
+
+              <tr data-layer="unit"><td class="test-id">U-SPC-01</td><td>Group list filter</td><td>Response contains alpha, beta, and a newly created group.</td><td>Exact reader sees alpha only; wildcard sees all; no-read principal is denied.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-SPC-02</td><td>ByDBQL hook</td><td>Raw query transforms into each native query type and a forbidden multi-group request.</td><td>Authorization evaluates the transformed groups before native handler invocation.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-OBS-01</td><td>Metrics</td><td>Allow/deny/reload outcomes and streaming-frame decisions.</td><td>Exact bounded labels and counts; no principal, role, group, query, or secret labels.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-OBS-02</td><td>Redaction</td><td>Authentication, parser, and policy errors with distinctive credentials/query values.</td><td>Captured logs and errors contain none of the secret markers or full query body.</td></tr>
+              <tr data-layer="unit"><td class="test-id">U-FUZ-01</td><td>Fuzz</td><td>Fuzz YAML RBAC nodes and extractor inputs.</td><td>No panic/hang; arbitrary input never compiles to unintended wildcard/admin grants.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sheet" id="integration-tests" data-number="11">
+        <p class="section-label">Integration test plan</p>
+        <h2>Exercise a real liaison</h2>
+        <p class="lede">Create dedicated suites under <code>test/integration/standalone/rbac</code> and <code>test/integration/distributed/rbac</code>. Reuse <code>setup.StandaloneWithAuth</code>, temporary <code>0600</code> files, generated clients, and the existing schema/data helpers. Negative cases use direct clients so exact status codes and side effects remain observable.</p>
+
+        <div class="callout">
+          <strong>Full-method matrix:</strong> a table of request factories invokes every registered external gRPC method once with an allowed principal and once with a denied principal. Business fixtures make allowed calls succeed where practical; otherwise a handler spy proves authorization passed before the expected business error. HTTP bindings receive the same parity table.
+        </div>
+
+        <div class="table-wrap">
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Scenario</th><th>Transport / fixture</th><th>Pass criteria</th></tr></thead>
+            <tbody>
+              <tr data-layer="integration"><td class="test-id">I-BOOT-01</td><td>RBAC absent and explicitly disabled.</td><td>Standalone; legacy auth file.</td><td>Existing unauthenticated/authenticated behavior remains unchanged.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-BOOT-02</td><td>Enabled RBAC with unbound user.</td><td>gRPC + HTTP.</td><td>Valid credentials authenticate, then receive <code>PermissionDenied</code>/403.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-AUT-01</td><td>Missing, bad, and correct credentials.</td><td>Ordinary gRPC connection with per-RPC metadata.</td><td>Missing/bad are immediately <code>Unauthenticated</code>; correct proceeds to RBAC.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-AUT-02</td><td>Missing, malformed, bad, and correct Basic header.</td><td>HTTP gateway.</td><td>401/400/401 then semantic allow or 403; <code>WWW-Authenticate</code> retained.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-AUT-03</td><td>Caller supplies forged <code>Grpc-Metadata-Username</code> headers.</td><td>HTTP gateway.</td><td>Middleware overwrites/removes forged identity; authorization follows validated Basic user.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-ROL-01</td><td>Reader role matrix.</td><td>Representative schema/data reads and writes.</td><td>Reads succeed; schema/data writes and cluster operations deny.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-ROL-02</td><td>Writer role matrix.</td><td>Representative group/registry CRUD, queries, writes, and admin calls.</td><td>Schema/data operations, including group schema lifecycle, succeed within scope; cluster-read/admin methods deny.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-ROL-03</td><td>Admin role matrix.</td><td>All registered method families.</td><td>Authorization never denies; business behavior remains correct.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-ROL-04</td><td>Custom monitor role.</td><td>ClusterState, NodeQuery, Group Inspect, then data/schema calls.</td><td>Cluster reads succeed; data/schema/admin calls deny.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-SCH-01</td><td>All seven registry families.</td><td>Direct gRPC Create/Update/Get/List/Exist/Delete.</td><td>Writer/admin succeed in alpha; reader can read but cannot mutate; denied mutations remain absent/unchanged.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCH-02</td><td>All grpc-gateway registry bindings.</td><td>HTTP GET/POST/PUT/DELETE.</td><td>Same permission and scope outcomes as gRPC, with correct status codes.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCH-03</td><td>Group and child-schema lifecycle.</td><td>Group Create/Update/Delete and Measure Create.</td><td>Writer succeeds only for its exact scope; reader denies; a wildcard service writer can bootstrap required groups without cluster administration.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-DAT-01</td><td>Stream, Measure, Trace, Property, and TopN reads.</td><td>gRPC and all HTTP POST query routes.</td><td>Reader/writer/admin succeed in alpha; beta markers never appear.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-DAT-02</td><td>Property Apply/Delete.</td><td>gRPC + HTTP PUT/DELETE.</td><td>Writer/admin mutate; reader denial leaves the property unchanged.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-DAT-03</td><td>Stream, Measure, Trace streaming writes.</td><td>Real bidirectional clients.</td><td>Writer/admin persist alpha frames; reader receives denial on stream response and persists nothing.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-SCP-01</td><td>Exact alpha versus forbidden beta.</td><td>Every extractor family.</td><td>Alpha allowed; beta denied; identical resource names do not cross scopes.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCP-02</td><td>Global Group List visibility.</td><td>gRPC + HTTP.</td><td>Exact reader receives alpha only; wildcard receives alpha and beta; monitor is denied.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCP-03</td><td>Multi-group alpha+beta query.</td><td>Stream, Measure, Trace, Property, TopN.</td><td>Exact alpha reader gets 403/PermissionDenied and no partial results; wildcard reader succeeds.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCP-04</td><td>Unauthorized absent resource.</td><td>Get/Exist in beta for alpha reader.</td><td>Permission denied takes precedence over NotFound/false.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-SCP-05</td><td>Wildcard and recreated group.</td><td>Create a new group after policy load; delete/recreate same exact name.</td><td>Wildcard remains valid; exact-name behavior matches the documented contract.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-STR-01</td><td>Allowed frame followed by forbidden frame.</td><td>All three streaming write services.</td><td>Stream terminates on forbidden frame; admin query proves the frame was not stored.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-STR-02</td><td>Binding removed while stream is open.</td><td>Write, reload, write again.</td><td>First frame persists; next frame is denied under the new revision.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-BQL-01</td><td>ByDBQL targets each native result type.</td><td>gRPC + HTTP ByDBQL endpoint.</td><td>Allowed stream/measure/trace/property/TopN queries succeed.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-BQL-02</td><td>Forbidden and multi-group ByDBQL.</td><td>Comments, mixed case, and bound parameters included.</td><td>Transformation cannot bypass scope checks; native handler is not invoked when denied.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-ADM-01</td><td>Snapshot.</td><td>Admin versus monitor/writer/reader.</td><td>Only admin reaches the real handler; denied calls create no snapshot side effect.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-ADM-02</td><td>ClusterState, NodeQuery, Group Inspect/task Query.</td><td>Monitor/admin versus writer/reader.</td><td>Monitor/admin succeed; group-scoped roles deny.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-INT-01</td><td>Conditional NodeSchemaStatus.</td><td>Public liaison listener with the service enabled.</td><td>Admin reaches the real handler; normal reader/writer/monitor deny before it.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-INT-02</td><td>InternalQuery and Stream/Measure/Trace DeleteExpiredSegments.</td><td>Public liaison generated fallback methods.</td><td>Admin passes authorization then receives <code>Unimplemented</code>; other roles receive <code>PermissionDenied</code>.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-BAR-01</td><td>SchemaBarrier key and revision methods.</td><td>Conditional service enabled.</td><td>Scoped key methods check all groups; revision method requires wildcard schema read.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-RLD-01</td><td>Grant and revoke without restart.</td><td>Real fsnotify reload; repeat gRPC and HTTP calls.</td><td>New decisions appear after update notification; connections need not reconnect.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-RLD-02</td><td>Malformed reload.</td><td>Valid → invalid YAML/reference → valid.</td><td>Old policy remains throughout invalid interval; later valid revision applies.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-RLD-03</td><td>Concurrent request/reload stress.</td><td>Parallel readers/writers under <code>-race</code>.</td><td>Each request observes one complete old or new revision; never an impossible partial state.</td></tr>
+
+              <tr data-layer="integration"><td class="test-id">I-HTP-01</td><td>Complete grpc-gateway parity table.</td><td>Every registered HTTP binding.</td><td>Required permission/scope matches its gRPC method; no route bypass.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-HTP-02</td><td>Gateway metric de-duplication.</td><td>One HTTP allow and deny, then scrape metrics.</td><td>Exactly one decision increment per unary HTTP call.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-OBS-01</td><td>Metrics and redacted logs.</td><td>Allow, scope deny, unbound deny, invalid reload.</td><td>Expected bounded deltas/reasons; no fixture usernames/groups/passwords/query markers in labels or errors.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-HLT-01</td><td>Health policy toggle.</td><td>gRPC health and <code>/api/healthz</code>.</td><td>Behavior exactly follows existing <code>health-auth-enabled</code> in RBAC-on and RBAC-off modes.</td></tr>
+              <tr data-layer="integration"><td class="test-id">I-DST-01</td><td>Distributed public-path smoke.</td><td>Real liaison + data node setup with authenticated readiness.</td><td>Public RBAC works while schema sync, internal query, and liaison-to-data writes remain healthy.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details>
+          <summary>Integration harness notes</summary>
+          <div class="details-body">
+            <ul class="tight-list">
+              <li><code>setup.StandaloneWithAuth</code> already starts a real standalone process with arbitrary flags, authenticated health checks, preloaded schemas, and schema synchronization.</li>
+              <li>Extend its bootstrap path so one global admin can perform readiness calls when RBAC is enabled.</li>
+              <li><code>grpchelper.ConnWithAuth</code> uses credentials only for readiness; each test RPC must still attach outgoing username/password metadata.</li>
+              <li>Negative gRPC tests use an ordinary connection rather than a polling authenticated connection, otherwise expected authentication failures become timeouts.</li>
+              <li>Streaming denial can surface on <code>Recv</code>, not <code>Send</code>; close the send side and inspect the response status.</li>
+              <li>HTTP helpers must return status and body; a boolean “200 or not” assertion cannot distinguish 401 from 403.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="sheet" id="e2e-tests" data-number="12">
+        <p class="section-label">End-to-end test plan</p>
+        <h2>Prove real deployments and clients</h2>
+        <p class="lede">W-PR1 creates <code>test/e2e-v2/cases/rbac/</code> with the global/bootstrap stage, W-PR2 extends it with schema proof, and W-PR3 adds data/special paths plus <code>test/e2e-v2/cases/rbac-cluster/</code>. Build a small host-side Go <code>rbac-probe</code> during setup; it uses generated clients for precise gRPC status and streaming checks, while curl exercises HTTP against BanyanDB directly.</p>
+
+        <h3>E2E topologies</h3>
+        <div class="two-col">
+          <article class="card">
+            <h4>A · Direct standalone</h4>
+            <p>One standalone BanyanDB, mounted policy file, published gRPC/HTTP/metrics ports, and a host-built probe. This is the required fast E2E gate for both transports and live reload.</p>
+          </article>
+          <article class="card">
+            <h4>B · Distributed</h4>
+            <p>A separate case with two liaison endpoints and data nodes using one mounted policy revision. It proves consistent public decisions without breaking internal traffic.</p>
+          </article>
+        </div>
+
+        <div class="table-wrap">
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Topology</th><th>Journey</th><th>Pass criteria / evidence</th><th>Gate</th></tr></thead>
+            <tbody>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-01</td><td>Standalone</td><td>Admin provisions alpha/beta schemas over real gRPC, waits with SchemaBarrier, then seeds unique marker data.</td><td>W-PR2 proves schema/bootstrap; W-PR3 adds protected marker seeding, without timing sleeps.</td><td class="gate required">W-PR2–3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-02</td><td>Standalone</td><td>Direct gRPC reader/writer/admin/monitor/unbound matrix.</td><td>Expected codes and persisted/non-persisted side effects for each role.</td><td class="gate required">W-PR1–3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-03</td><td>Standalone</td><td>Equivalent HTTP Basic read/write/admin calls, including POST queries.</td><td>401 versus 403 is correct and decisions match direct gRPC.</td><td class="gate required">W-PR1–3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-04</td><td>Standalone</td><td>Alpha reader lists groups and queries alpha, beta, and alpha+beta.</td><td>List contains alpha only; beta and mixed request deny with no data leak.</td><td class="gate required">W-PR2–3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-05</td><td>Standalone</td><td>Each streaming write sends an allowed frame followed by a forbidden frame.</td><td>Stream closes with PermissionDenied; forbidden markers cannot be queried by admin.</td><td class="gate required">W-PR3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-06</td><td>Standalone</td><td>ByDBQL queries allowed and forbidden stream/measure/trace/property/TopN resources.</td><td>Transformed target scope is enforced over gRPC and HTTP.</td><td class="gate required">W-PR3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-07</td><td>Standalone</td><td>Remove reader binding and writer binding while clients and a write stream remain connected.</td><td>Next unary call/frame is denied without process restart.</td><td class="gate required">W-PR1/3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-08</td><td>Standalone</td><td>Replace valid config with malformed YAML, test, then restore valid expanded grant.</td><td>Old grants remain during failure; restored policy applies; process stays healthy.</td><td class="gate required">W-PR1</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-09</td><td>Standalone</td><td>Scrape metrics after known gRPC, HTTP, stream-frame, and reload decisions.</td><td>Exact counter deltas/revisions, bounded labels, and no double-counted HTTP call.</td><td class="gate required">W-PR1/3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DIR-10</td><td>Standalone</td><td>Send forged gRPC metadata headers with a lower-privileged HTTP Basic identity.</td><td>No privilege escalation; validated identity wins.</td><td class="gate required">W-PR1</td></tr>
+
+              <tr data-layer="e2e"><td class="test-id">E-DST-01</td><td>Distributed</td><td>Call both liaison endpoints with the same role/group matrix.</td><td>Decisions and filtered group lists match on both endpoints.</td><td class="gate required">W-PR3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DST-02</td><td>Distributed</td><td>Write through liaison A, query through liaison B, exercise schema barrier.</td><td>Internal data/schema flows stay healthy under public RBAC.</td><td class="gate required">W-PR3</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DST-03</td><td>Distributed</td><td>Update the mounted policy while both liaisons receive concurrent requests.</td><td>Both converge to the new revision; no fail-open interval.</td><td class="gate nightly">Nightly stress</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-DST-04</td><td>Distributed</td><td>Restart one liaison with RBAC enabled while the other serves traffic.</td><td>Restarted node loads policy before readiness; cluster remains available.</td><td class="gate nightly">Nightly</td></tr>
+
+              <tr data-layer="e2e"><td class="test-id">E-CMP-01</td><td>Standalone</td><td>Boot the same image with no auth file.</td><td>Legacy health, bydbctl, and representative API operations remain unchanged; users-only and explicit-disabled variants remain focused integration cases.</td><td class="gate required">W-PR1</td></tr>
+              <tr data-layer="e2e"><td class="test-id">E-CMP-02</td><td>Standalone negative-start script</td><td>Boot with RBAC enabled but no valid authentication outside the normal Compose readiness path.</td><td>Process never becomes ready and emits a clear configuration failure without secrets.</td><td class="gate required">W-PR1</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details>
+          <summary>E2E files and CI wiring</summary>
+          <div class="details-body">
+            <pre><code>test/e2e-v2/cases/rbac/
+  e2e.yaml
+  docker-compose.yml
+  rbac-cases.yaml
+  config/rbac-v1.yaml
+  config/rbac-v2.yaml
+  scripts/reload.sh
+  cmd/rbac-probe/main.go  # generated-client test command
+
+test/e2e-v2/cases/rbac-cluster/
+  e2e.yaml
+  docker-compose.yml
+  nodes.yaml
+  rbac-cluster-cases.yaml
+
+# Add an RBAC cell to .github/workflows/e2e.yml
+# Run with the existing apache/skywalking-infra-e2e action.</code></pre>
+            <ul class="tight-list">
+              <li>Reuse only the BanyanDB liaison/data-node service definitions from <code>test/e2e-v2/cases/cluster</code>.</li>
+              <li>Compose starts before e2e setup steps. A small init sidecar must copy the checked-in v1 fixture to a named volume, set mode <code>0600</code>, and become healthy before liaison starts.</li>
+              <li>Publish liaison ports <code>17912</code> and <code>2121</code> as well as HTTP <code>17913</code>; infra-e2e only creates host variables for published ports.</li>
+              <li>Build <code>rbac-probe</code> on the host during setup. Use generated clients because liaison does not expose gRPC reflection; attach <code>username</code>/<code>password</code> metadata and assert exact codes.</li>
+              <li>Overwrite the watched file in place for reload, retain mode <code>0600</code>, wait for the policy revision metric, and prove the liaison container ID/restart count did not change.</li>
+              <li>Set verification <code>concurrency: false</code> because reload journeys intentionally depend on v1 then v2 state.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="sheet" id="acceptance" data-number="13">
+        <p class="section-label">Acceptance &amp; release gates</p>
+        <h2>Trace every issue promise to evidence</h2>
+        <div class="trace-grid">
+          <div>
+            <div class="acceptance-item"><span class="mark">1</span><div><strong>RBAC disabled by default; no behavior change.</strong><br><span class="small">U-CFG-01 · I-BOOT-01 · E-CMP-01</span></div></div>
+            <div class="acceptance-item"><span class="mark">2</span><div><strong>Every gRPC and HTTP request is classified.</strong><br><span class="small">U-EXT-03 · I-HTP-01 · E-DIR-02/03</span></div></div>
+            <div class="acceptance-item"><span class="mark">3</span><div><strong>Reader cannot write.</strong><br><span class="small">U-EVL-05 · I-ROL-01 · E-DIR-02/03/05</span></div></div>
+            <div class="acceptance-item"><span class="mark">4</span><div><strong>Writer cannot perform cluster administration.</strong><br><span class="small">I-ROL-02 · I-ADM-01 · E-DIR-02</span></div></div>
+            <div class="acceptance-item"><span class="mark">5</span><div><strong>Group-scoped roles see only their groups.</strong><br><span class="small">U-EVL-02/08 · I-SCP-01..05 · E-DIR-04/05/06</span></div></div>
+            <div class="acceptance-item"><span class="mark">6</span><div><strong>Deny by default when enabled.</strong><br><span class="small">U-EVL-01 · I-BOOT-02 · E-DIR-02</span></div></div>
+            <div class="acceptance-item"><span class="mark">7</span><div><strong>Decision metrics are correct and bounded.</strong><br><span class="small">U-OBS-01 · I-HTP-02/I-OBS-01 · E-DIR-09</span></div></div>
+            <div class="acceptance-item"><span class="mark">8</span><div><strong>The Canopy service-account boundary remains documented.</strong><br><span class="small">Architecture and security documentation define the proxy trust boundary.</span></div></div>
+            <div class="acceptance-item"><span class="mark">9</span><div><strong>Configuration and example documentation ship.</strong><br><span class="small">Parser fixture, example auth/RBAC file, security docs, and Canopy boundary documentation reviewed together.</span></div></div>
+          </div>
+          <article class="card signal">
+            <h3 style="color:var(--white)">Merge gate</h3>
+            <ul class="check-list" style="color:#d8e6df">
+              <li>All required unit tests pass under the race detector.</li>
+              <li>Standalone and distributed RBAC integration suites pass.</li>
+              <li>Standalone and distributed direct-client E2E cells pass.</li>
+              <li>Method registry coverage reports zero missing or stale methods.</li>
+              <li>Denied mutation side-effect assertions pass.</li>
+              <li>No metric/log secret or cardinality violations.</li>
+              <li>Example legacy config and enabled config both boot.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3>Focused commands</h3>
+        <pre><code># Generate protobuf/UI artifacts when starting from a fresh checkout.
+make generate
+
+# Policy, reload, interceptor, HTTP, and race coverage.
+go test -race ./banyand/internal/auth/rbac/... ./banyand/liaison/pkg/auth/...
+go test -race -tags slim ./banyand/liaison/grpc ./banyand/liaison/http
+
+# Dedicated real-server suites.
+TEST_CI_OPTS='--vv --fail-fast' \
+  make test-ci PKG=./test/integration/standalone/rbac/...
+TEST_CI_OPTS='--vv --fail-fast' \
+  make test-ci PKG=./test/integration/distributed/rbac/...
+
+# E2E executes through the existing skywalking-infra-e2e workflow with
+# test/e2e-v2/cases/rbac/e2e.yaml and rbac-cluster/e2e.yaml.</code></pre>
+
+        <div class="callout success">
+          <strong>Definition of done:</strong> #13994 is complete only when the policy is exhaustive, both transports agree, group scope survives every special path, denied writes leave no side effect, config reload never fails open, and standalone/distributed direct-client E2E gates pass.
+        </div>
+      </section>
+
+      <div class="footer-note">
+        PROPOSED DESIGN · APACHE SKYWALKING BANYANDB · ISSUE #13994 · SCOPE ENDS AT STATIC BASIC-AUTH PRINCIPALS, FLAT RBAC, AND EXACT GROUP SCOPES
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const progressBar = document.getElementById('progress-bar');
+      const navLinks = [...document.querySelectorAll('.rail nav a')];
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      const updateProgress = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+        });
+      }, { rootMargin: '-15% 0px -68% 0px', threshold: [0, .1, .35] });
+      sections.forEach((section) => observer.observe(section));
+
+      document.querySelectorAll('pre').forEach((pre) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'copy-button';
+        button.textContent = 'Copy';
+        button.addEventListener('click', async () => {
+          const content = pre.querySelector('code')?.innerText ?? pre.innerText;
+          try {
+            await navigator.clipboard.writeText(content);
+            button.textContent = 'Copied';
+            window.setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+          } catch {
+            button.textContent = 'Select text';
+          }
+        });
+        pre.append(button);
+      });
+
+      const expandButton = document.getElementById('expand-all');
+      let expanded = false;
+      expandButton.addEventListener('click', () => {
+        expanded = !expanded;
+        document.querySelectorAll('details').forEach((details) => { details.open = expanded; });
+        expandButton.textContent = expanded ? 'Collapse' : 'Expand';
+      });
+
+      document.querySelectorAll('.filter-button').forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          document.querySelectorAll('.filter-button').forEach((candidate) => {
+            candidate.classList.toggle('active', candidate === button);
+          });
+          document.querySelectorAll('tr[data-layer]').forEach((row) => {
+            row.classList.toggle('filtered-out', filter !== 'all' && row.dataset.layer !== filter);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
