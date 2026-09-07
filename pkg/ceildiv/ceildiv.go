@@ -30,10 +30,10 @@ import "fmt"
 // of) a meaningless value.
 func Div(numerator, denominator int) (int, error) {
 	if denominator <= 0 {
-		return 0, fmt.Errorf("ceildiv: denominator must be positive, got %d", denominator)
+		return 0, fmt.Errorf("ceildiv: denominator must be positive, got %d (numerator %d)", denominator, numerator)
 	}
 	if numerator < 0 {
-		return 0, fmt.Errorf("ceildiv: numerator must not be negative, got %d", numerator)
+		return 0, fmt.Errorf("ceildiv: numerator must not be negative, got %d (denominator %d)", numerator, denominator)
 	}
 	return (numerator + denominator - 1) / denominator, nil
 }
