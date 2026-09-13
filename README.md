@@ -51,3 +51,4 @@ For developers who want to contribute to this project, see the [Contribution Gui
 ## License
 
 [Apache 2.0 License.](LICENSE)
+<!-- pr-nursing check-github-deps.sh fixture, safe to ignore -->
