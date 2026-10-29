@@ -1,0 +1,115 @@
+[DEBUG-p1-native] scan_workspace cursors=5120 columns=7 workspace=4325376
+[DEBUG-p1-native] scan_plan cursors=5120 units=1 max_windows=5120 time_order=true
+[DEBUG-p1-native] lease_failure used=100662925 assigned=100663296 request=34656 pool_reserved=100662925
+[DEBUG-p1-native] scan_failure held=272226 active=2307 shared_live=99614093 workspace=4325376 columns=7 request=34656
+[DEBUG-p1-native] lease_failure used=100640841 assigned=100663296 request=34656 pool_reserved=100640841
+[DEBUG-p1-native] scan_failure held=182900 active=1550 shared_live=99582537 workspace=4325376 columns=7 request=34656
+
+First rejection stack:
+[DEBUG-p1-native] lease_failure used=100662925 assigned=100663296 request=34656 pool_reserved=100662925
+goroutine 7075 [running]:
+runtime/debug.Stack()
+	/mnt/d/gomodcache/golang.org/toolchain@v0.0.1-go1.26.10.linux-amd64/src/runtime/debug/stack.go:26 +0x5e
+github.com/apache/skywalking-banyandb/banyand/protector.(*QueryReservation).chargeLocked(0x174ab110e480, 0x8760)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/protector/query_budget.go:103 +0xe5
+github.com/apache/skywalking-banyandb/banyand/protector.(*QueryReservation).Charge(0x8?, 0x174ab1188080?)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/protector/query_budget.go:78 +0x85
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.newQueryMemoryTracker.func1(0x8760)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/memory.go:120 +0x4d
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*MemoryTracker).Reserve(0x174ab07fdc98, 0x8760)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/memory.go:68 +0x77
+github.com/apache/skywalking-banyandb/banyand/measure.(*scanBudget).tryReserve(0x174ab066a000, 0x76, 0x1?, 0x174ab2b2ca60)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_decode_pool.go:377 +0x119
+github.com/apache/skywalking-banyandb/banyand/measure.(*prefetcher).pump(0x174ab26ec3f0)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_prefetch.go:170 +0xe5
+github.com/apache/skywalking-banyandb/banyand/measure.(*prefetcher).take(0x174ab26ec3f0, {0x2ab4e78, 0x174ab2dcbb60}, 0x0?)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_prefetch.go:231 +0x355
+github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).loadCursor(...)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_window.go:216
+github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).fill(0x174ab0dbe300)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_merge.go:456 +0xf0
+github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).mergeKeys(0x174ab0dbe300, 0x174ab1882288)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_merge.go:548 +0x68
+github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).nextPage(0x174ab0dbe300, {0x2ab4e78, 0x174ab3d7d140})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_merge.go:503 +0x1ae
+github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextPiece(0x174ab3b26d80, {0x2ab4e78, 0x174ab3d7d140})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_window.go:398 +0x1c5
+github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextUnmarked(0x174ab3b26d80, {0x2ab4e78, 0x174ab3d7d140})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_window.go:367 +0xa7
+github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).next(0x174ab3b26d80, {0x2ab4e78?, 0x174ab3d7d140?})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/scan_window.go:337 +0x25
+github.com/apache/skywalking-banyandb/banyand/measure.(*queryResult).PullBatch(0x174ab2722750, {0x2ab4e78, 0x174ab3d7d140})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/measure/query_batch.go:78 +0x2b2
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).NextBatch(0x174ab16e4230, {0x2ab4e78, 0x174ab3d7d140})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/batchsource.go:124 +0x13a
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*countedBatchSource).NextBatch(0x2ab4e78?, {0x2ab4e78?, 0x174ab3d7d140?})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/plan/dispatch.go:501 +0x25
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*allocationScopeSource).NextBatch(0x174ab3ef8320, {0x2ab4e78?, 0x174ab3d7d110?})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/plan/dispatch.go:525 +0x63
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*fusedStage).NextBatch(0x174ab3d7c900, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/fused.go:72 +0x42
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*Pipeline).Next(...)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/pipeline.go:43
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*pipelineBatchSource).NextBatch(0x174ab1f02048, {0x2ab4e78?, 0x174ab3d7d110?})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/plan/executor.go:102 +0x85
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*BatchResult).NextBatch(0x174ab16e42a0, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/plan/batch_result.go:91 +0x5e
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*NativeScan).NextBatch(0x174ab1f02060, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/native_scan.go:52 +0x8a
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*filterOperator).NextBatch(0x174ab0227680, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/filter.go:130 +0xfa
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*rawOperator).NextBatch(0x174ab02277c0, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/raw.go:273 +0xc2
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).consumeAll(0x174ab024e000, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/aggregate.go:397 +0xbe
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).NextBatch(0x174ab024e000, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/aggregate.go:377 +0xb3
+github.com/apache/skywalking-banyandb/pkg/query/ql.(*rawOperator).NextBatch(0x174ab0227900, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/ql/raw.go:273 +0xc2
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*fusedStage).NextBatch(0x174ab3d7cf30, {0x2ab4e78, 0x174ab3d7d110})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/fused.go:72 +0x42
+github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*Pipeline).Next(...)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/pipeline.go:43
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*vectorizedMIterator).Next(0x174ab26ec2d0)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/adapter.go:126 +0x7e
+github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*VectorizedMIterator).Next(0x2ab4e78?)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/query/vectorized/measure/integration.go:282 +0x16
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.collectPlannedMeasure({0x2ab4e78, 0x174ab2dcb830}, {0x2ab5268?, 0x174ab1f02060?}, 0x0, 0x18e2e8a2e06bac28?)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure_ql_raw.go:84 +0x21a
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureRawQueryResponse({0x2ab4e78, 0x174ab2dcb830}, {0x27e5720, 0x174ab16e42a0}, 0x0, 0x174ab26ec5a0)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure_ql_raw.go:54 +0x20a
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureQueryResponseWithPlan({0x2ab4e78?, 0x174ab2dcb830?}, {0x27e5720?, 0x174ab16e42a0?}, 0x28ecae0?, 0x5?)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure_ql_raw.go:41 +0x2c
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan(0x174ab01cae00, {0x2ab4e78, 0x174ab2dcb830}, 0x174ab3dd8a90, 0x1, 0x174ab26ec5a0, 0x1)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure.go:566 +0xf05
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan(0x174ab01cae00, {0x2ab4e78?, 0x174ab0676d80?}, 0x174ab3dd8a90, 0x1, 0x174ab26ec5a0, 0x1)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure.go:427 +0x154
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure(0x174ab02ec000, {0x2ab4e78, 0x174ab0676d80}, 0x174ab3dd8a90, 0x174ab26ec5a0)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/measure_ql_membership.go:36 +0x6e
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query(0x174ab02ec000, {0x2ab4e78?, 0x174ab0676d80?}, 0x174ab3ae21e0)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/banyand/liaison/grpc/bydbql.go:190 +0x8a5
+github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1({0x2ab4e78?, 0x174ab0676d80?}, {0x27dc020?, 0x174ab3ae21e0?})
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/api/proto/banyandb/bydbql/v1/rpc_grpc.pb.go:129 +0xcb
+github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1({0x2ab4e78?, 0x174ab0676d80?}, {0x27dc020?, 0x174ab3ae21e0?}, 0x756d25ea6a00?, 0x40?)
+	/mnt/d/gomodcache/github.com/grpc-ecosystem/go-grpc-middleware/v2@v2.3.3/interceptors/recovery/interceptors.go:34 +0x8a
+google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1({0x2ab4e78, 0x174ab0676d80}, {0x27dc020, 0x174ab3ae21e0})
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1256 +0xa8
+github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1({0x2ab4e78, 0x174ab0676d80}, {0x27dc020, 0x174ab3ae21e0}, 0x25dcc80?, 0x174ab10cb840)
+	/mnt/d/gomodcache/github.com/grpc-ecosystem/go-grpc-middleware/v2@v2.3.3/interceptors/validator/interceptors.go:23 +0x6a
+google.golang.org/grpc.getChainUnaryHandler.func1({0x2ab4e78?, 0x174ab0676d80?}, {0x27dc020?, 0x174ab3ae21e0?})
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1256 +0x153
+github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6({0x2ab4e78?, 0x174ab0676d20?}, {0x27dc020, 0x174ab3ae21e0}, 0x174ab17d2a20?, 0x174ab10cb800)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/pkg/panicdiag/grpcinterceptors.go:32 +0x43
+google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1({0x2ab4e78, 0x174ab0676d20}, {0x27dc020, 0x174ab3ae21e0}, 0x174ab17d2a20, 0x78?)
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1247 +0x7c
+github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler({0x2810120, 0x174ab02ec000}, {0x2ab4e78, 0x174ab0676d20}, 0x174ab11a4200, 0x174ab0408b40)
+	/mnt/d/skywalking-banyandb-worktrees/ql-p1-memory-baseline/api/proto/banyandb/bydbql/v1/rpc_grpc.pb.go:131 +0x143
+google.golang.org/grpc.(*Server).processUnaryRPC(0x174ab041e908, {0x2ab4e78, 0x174ab01b92f0}, 0x174ab0322540, 0x174ab05d12c0, 0x3d3c940, 0x0)
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1443 +0x11dc
+google.golang.org/grpc.(*Server).handleStream(0x174ab041e908, {0x2ab7618, 0x174ab04761a0}, 0x174ab0322540)
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1858 +0xae6
+google.golang.org/grpc.(*Server).serveStreams.func2.1()
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1078 +0x7f
+created by google.golang.org/grpc.(*Server).serveStreams.func2 in goroutine 369
+	/mnt/d/gomodcache/google.golang.org/grpc@v1.83.2/server.go:1089 +0x11d
+

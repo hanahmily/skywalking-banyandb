@@ -1,0 +1,107 @@
+{
+  "utc": "2026-10-29T04:04:10.406919+00:00",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--name",
+    "ql-p1-standalone",
+    "--cpus=2",
+    "--memory=4g",
+    "--memory-swap=4g",
+    "-e",
+    "GOMAXPROCS=2",
+    "-e",
+    "P1_EXPECT_WORKERS=1",
+    "-e",
+    "P1_VERIFY=1",
+    "-v",
+    "/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike:/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike:ro",
+    "-v",
+    "/tmp/ql-p1-final:/evidence",
+    "-w",
+    "/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/test/integration/standalone/query",
+    "banyandb-distributed-querybench:go1.26.10",
+    "/evidence/standalone.test",
+    "-test.timeout=45m",
+    "-ginkgo.label-filter=measure-ql && QL-P1",
+    "-ginkgo.fail-on-empty",
+    "-ginkgo.no-color",
+    "-ginkgo.json-report=/evidence/standalone.ginkgo.json"
+  ],
+  "load_before": "2.80 1.79 1.08 1/1995 1449111",
+  "resources": {
+    "NanoCpus": 2000000000,
+    "Memory": 4294967296,
+    "MemorySwap": 4294967296,
+    "CpusetCpus": ""
+  },
+  "image_id": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877",
+  "exit_code": 1,
+  "wall_seconds": 39.10858998820186,
+  "load_after": "2.82 1.91 1.15 2/1980 1450260",
+  "specs": [
+    {
+      "name": "p1_in",
+      "state": "failed",
+      "failure": "P1 full-cohort correctness remains unqualified when native admission rejects\nExpected\n    <int>: 4\nto be zero-valued",
+      "evidence": [
+        "P1 visibility: pages=64 actual_readiness_rpcs=64 (retry-inclusive)",
+        "P1 capacity rejection: case=p1_in_contract_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_in_contract_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_in_contract_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_in_contract_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted"
+      ]
+    },
+    {
+      "name": "p1_not_in",
+      "state": "failed",
+      "failure": "P1 full-cohort correctness remains unqualified when native admission rejects\nExpected\n    <int>: 16\nto be zero-valued",
+      "evidence": [
+        "P1 capacity rejection: case=p1_not_in_binding_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_2 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_3 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_4 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_5 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_contract_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_contract_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_2 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_3 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_4 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_binding_5 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_contract_0 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_not_in_contract_1 error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted"
+      ]
+    },
+    {
+      "name": "p1_case_2",
+      "state": "failed",
+      "failure": "P1 full-cohort correctness remains unqualified when native admission rejects\nExpected\n    <int>: 6\nto be zero-valued",
+      "evidence": [
+        "P1 capacity rejection: case=p1_case_2_normal error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_2_swap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_2_overlap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_2_normal error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_2_swap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_2_overlap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted"
+      ]
+    },
+    {
+      "name": "p1_case_16",
+      "state": "failed",
+      "failure": "P1 full-cohort correctness remains unqualified when native admission rejects\nExpected\n    <int>: 6\nto be zero-valued",
+      "evidence": [
+        "P1 capacity rejection: case=p1_case_16_normal error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_16_swap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_16_overlap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_16_normal error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_16_swap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 capacity rejection: case=p1_case_16_overlap error=query QL: rpc error: code = ResourceExhausted desc = interrupt: hit 0: query memory pool exhausted",
+        "P1 generated: completed_specs=0 registered_specs=4 verification_rpcs=44 fixture=cde02cbfca428d7d4069cbbba68f48af6fbce6c93da7c9c8fab50e3b7df650c8"
+      ]
+    }
+  ]
+}

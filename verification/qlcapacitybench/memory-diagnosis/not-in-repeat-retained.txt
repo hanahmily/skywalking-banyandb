@@ -1,0 +1,25 @@
+Command: go tool pprof -top -nodecount=16 -sample_index=inuse_space -base /tmp/ql-p1-memory-diagnosis/warmed/not_in_10_00_twice.heap.pprof /tmp/ql-p1-memory-diagnosis/warmed/not_in_10_15_twice.heap.pprof
+
+File: warmed.test
+Build ID: 9362af0bc697db1e8c0d013a61f4c5613604461f
+Type: inuse_space
+Time: 2026-10-29 05:25:13 UTC
+Showing nodes accounting for -0.02kB, 0.29% of 8.09kB total
+Showing top 16 nodes out of 27
+      flat  flat%   sum%        cum   cum%
+   -4.05kB 50.14% 50.14%    -4.05kB 50.14%  time.newTimer
+    4.03kB 49.86%  0.29%     4.03kB 49.86%  fmt.(*fmt).fmtSbx
+         0     0%  0.29%     4.03kB 49.86%  fmt.(*fmt).fmtBx (inline)
+         0     0%  0.29%     4.03kB 49.86%  fmt.(*pp).doPrintf
+         0     0%  0.29%     4.03kB 49.86%  fmt.(*pp).fmtBytes
+         0     0%  0.29%     4.03kB 49.86%  fmt.(*pp).printArg
+         0     0%  0.29%     4.03kB 49.86%  fmt.Sprintf
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).drainPersistence
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).runPersistence
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/index/native.NewOwner.func1
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/index/native.waitPersistInterval
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithRecovery
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/run.launchTask.func1
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered
+         0     0%  0.29%    -4.05kB 50.14%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered.func1
+         0     0%  0.29%     4.03kB 49.86%  github.com/apache/skywalking-banyandb/verification/qlcapacitybench.TestP1RepeatedRejectionMemory

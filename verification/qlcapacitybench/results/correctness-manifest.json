@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-29T04:04:07.810535+00:00",
+  "revision": "efc0c18988ecbc18a10ffbdd49c7491299d8c8e7",
+  "branch": "verify/measure-ql-p1",
+  "source_sha256": "802a420829721904a0f59c0e923cb996ef0e1a4d59b9b4df23f84d4b30938924",
+  "runner_sha256": "4d26d31e6bfd479d46295fe488edaf8503eda422164410724ded85b8acb52f67",
+  "go": "go version go1.26.10 linux/amd64",
+  "image": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877",
+  "build_tags": [
+    "querymetrics"
+  ],
+  "seed": 1412,
+  "fixture": {
+    "services": 1024,
+    "entities_per_service": 5,
+    "active_per_service": 4,
+    "timestamps": 2,
+    "rows": 10240,
+    "active_distinct": 4096,
+    "positive_rows": 8192
+  },
+  "protocol": {
+    "rounds": 5,
+    "warmups": 20,
+    "timed": 200,
+    "callers": 1,
+    "query_allowance_mib": 256,
+    "process_protector": "default cgroup-derived"
+  },
+  "binaries": {
+    "standalone": "a852ab6c074e0f9a7c407df70342c0e838b6937ba90b1687bb3452f82cda4320",
+    "distributed": "57c0635195b576c8364aa55732108acf33067c90b4f568cc0d598ec67057f6d8",
+    "bench": "8c384d0abffaf35240c2953a7af21e7e559bf8e46d565c1d37ed734d808caf80"
+  }
+}

@@ -1,0 +1,43 @@
+File: bench.test
+Build ID: e69fc58849061bd7fe234e832ad1a1e458e87a7d
+Type: alloc_space
+Time: 2026-10-29 04:15:52 UTC
+Showing nodes accounting for 2839.10MB, 32.07% of 8853.69MB total
+Dropped 792 nodes (cum <= 44.27MB)
+Showing top 35 nodes out of 188
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%  7837.22MB 88.52%  google.golang.org/grpc.(*Server).handleStream
+         0     0%     0%  7837.22MB 88.52%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0%     0%  7739.16MB 87.41%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0%     0%  7737.66MB 87.39%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0%     0%  7449.06MB 84.14%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0%     0%  7449.06MB 84.14%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0%     0%  7449.06MB 84.14%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0%     0%  7449.06MB 84.14%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0%     0%  7449.06MB 84.14%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1
+         0     0%     0%  7448.06MB 84.12%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0%     0%  7448.06MB 84.12%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0%     0%  7448.06MB 84.12%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0%     0%  5882.08MB 66.44%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0%     0%  5882.08MB 66.44%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+         0     0%     0%  5882.08MB 66.44%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan
+         0     0%     0%  3576.45MB 40.40%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.collectPlannedMeasure
+         0     0%     0%  3576.45MB 40.40%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureQueryResponseWithPlan
+         0     0%     0%  3576.45MB 40.40%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureRawQueryResponse
+         0     0%     0%  3374.30MB 38.11%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapRaw
+         0     0%     0%  3373.80MB 38.11%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapFilterQuery
+         0     0%     0%  3369.80MB 38.06%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapFilter (inline)
+         0     0%     0%  3369.80MB 38.06%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapPredicateFilter
+ 2837.10MB 32.04% 32.04%  2837.60MB 32.05%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile
+         0     0% 32.04%  2367.32MB 26.74%  github.com/apache/skywalking-banyandb/pkg/bus.(*Bus).Publish
+         0     0% 32.04%  2305.63MB 26.04%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).Rev
+         0     0% 32.04%  2305.63MB 26.04%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).executeBatchQuery
+         0     0% 32.04%  2305.63MB 26.04%  github.com/apache/skywalking-banyandb/banyand/queue.(*local).Publish
+         0     0% 32.04%  2305.13MB 26.04%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasureBatches
+         0     0% 32.04%  2305.13MB 26.04%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.DispatchBatches
+         0     0% 32.04%  2303.13MB 26.01%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).Query
+       2MB 0.023% 32.07%  2284.17MB 25.80%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchSeriesList
+         0     0% 32.07%  2264.66MB 25.58%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0% 32.07%  2264.66MB 25.58%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0% 32.07%  1640.87MB 18.53%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse
+         0     0% 32.07%  1640.87MB 18.53%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).MatchTermsSet

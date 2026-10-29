@@ -1,0 +1,81 @@
+{
+  "routing_unit": {
+    "source": "/tmp/ql-series-routing-unit.log",
+    "sha256": "95a12e44eb7139e2d19f5d36eddc9b4d38dcbd5b61055cb45abbc00c93357ef1",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan\t0.913s\nok  \tgithub.com/apache/skywalking-banyandb/banyand/query\t0.040s\nok  \tgithub.com/apache/skywalking-banyandb/banyand/liaison/grpc\t35.331s\n"
+  },
+  "native_unit": {
+    "source": "/tmp/ql-series-native-unit.log",
+    "sha256": "db66d9edfc45ad656e45a936bf62e330f7ccb4d875e4d4b691933c5b3ca7c478",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/banyand/measure\t72.246s\n"
+  },
+  "eligibility_unit": {
+    "source": "/tmp/ql-series-eligibility-packages.log",
+    "sha256": "e21d16bfea41b05686bbb5c5f003f75a59103e5158db0ce7d67ebc15289f9f82",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/pkg/query/ql\t8.529s\nok  \tgithub.com/apache/skywalking-banyandb/pkg/bydbql\t0.523s\n"
+  },
+  "native_poison_race": {
+    "source": "/tmp/ql-series-poison-race.log",
+    "sha256": "c21daeddc167efbc6970429c0647af68ef86285b288b1c13d088acb9bac63180",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/banyand/measure\t3.621s\n"
+  },
+  "routing_race": {
+    "source": "/tmp/ql-series-routing-race.log",
+    "sha256": "0372b79ecaeb8990a606ce9d61b2cc698c4c4e461df1061804bdef6822a2adce",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/pkg/query/ql\t1.044s [no tests to run]\nok  \tgithub.com/apache/skywalking-banyandb/pkg/bydbql\t1.096s\nok  \tgithub.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan\t1.070s\n"
+  },
+  "routing_and_harness_lint": {
+    "source": "/tmp/ql-series-routing-lint.log",
+    "sha256": "e92606b0bf483111dff0a120c315ea165821348f31365020e2468a0059095c47",
+    "output": "0 issues.\n"
+  },
+  "native_lint": {
+    "source": "/tmp/scan-reuse-lint.log",
+    "sha256": "e92606b0bf483111dff0a120c315ea165821348f31365020e2468a0059095c47",
+    "output": "0 issues.\n"
+  },
+  "harness_and_generator_unit": {
+    "source": "/tmp/ql-series-harness-unit.log",
+    "sha256": "6f67768e96f767e6497daf63bc808ed78d1570c09e5b6500de7f100eca3bbd49",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/verification/qlcapacitybench\t1.005s\nok  \tgithub.com/apache/skywalking-banyandb/test/cases/measure/qlgen\t129.505s\n"
+  },
+  "format": {
+    "source": "/tmp/ql-series-format.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "output": ""
+  },
+  "native_format": {
+    "source": "/tmp/ql-series-native-format.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "output": ""
+  },
+  "license": {
+    "source": "/tmp/ql-series-license.log",
+    "sha256": "ff10f57ff7ca28662e986cfd20b09809a268d661097e6fdb66bd614e35cc6089",
+    "output": "\u001b[36mINFO\u001b[0m Loading configuration from file: .licenserc.yaml \n\u001b[36mINFO\u001b[0m Totally checked 5512 files, valid: 4124, invalid: 0, ignored: 1388, fixed: 0 \n"
+  },
+  "native_red": {
+    "source": "/tmp/scan-reuse-red.log",
+    "sha256": "95d29a8e2af942bec8edfdb0cfeb7dbd1af3edd6b61396781c76cdc9dd4449e8",
+    "output": "{\"level\":\"info\",\"time\":\"2026-10-29T09:21:45Z\",\"message\":\"honoring GOMAXPROCS=\\\"4\\\" as set in environment\"}\n--- FAIL: TestSeriesScanReusesDecodedStorageWithinMonotonicLease (0.03s)\n    scan_reuse_test.go:69: \n        \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/banyand/measure/scan_reuse_test.go:69\n        \tError:      \tReceived unexpected error:\n        \t            \tmonotonic scan lease exceeded\n        \t            \tinterrupt: hit 0\n        \tTest:       \tTestSeriesScanReusesDecodedStorageWithinMonotonicLease\nFAIL\nFAIL\tgithub.com/apache/skywalking-banyandb/banyand/measure\t0.052s\nFAIL\n"
+  },
+  "routing_red": {
+    "source": "/tmp/ql-series-dispatch-red.log",
+    "sha256": "7acbad38a5043e3030d95d1f761b42befbe3755aa705d4f5e7a9a1fa5cbc9cc1",
+    "output": "{\"level\":\"info\",\"time\":\"2026-10-29T09:25:19Z\",\"message\":\"honoring GOMAXPROCS=\\\"4\\\" as set in environment\"}\n--- FAIL: TestDispatchSeriesBatchesCompleteRawInput (0.00s)\n    dispatch_series_test.go:41: \n        \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:41\n        \tError:      \tExpected value not to be nil.\n        \tTest:       \tTestDispatchSeriesBatchesCompleteRawInput\n--- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput (0.00s)\n    --- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput/limited (0.00s)\n        dispatch_series_test.go:72: \n            \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:72\n            \tError:      \tAn error is expected but got nil.\n            \tTest:       \tTestDispatchSeriesBatchesRejectsOrderSensitiveInput/limited\n    --- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput/offset (0.00s)\n        dispatch_series_test.go:72: \n            \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:72\n            \tError:      \tAn error is expected but got nil.\n            \tTest:       \tTestDispatchSeriesBatchesRejectsOrderSensitiveInput/offset\n    --- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput/ordered (0.00s)\n        dispatch_series_test.go:72: \n            \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:72\n            \tError:      \tAn error is expected but got nil.\n            \tTest:       \tTestDispatchSeriesBatchesRejectsOrderSensitiveInput/ordered\n    --- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput/top (0.00s)\n        dispatch_series_test.go:72: \n            \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:72\n            \tError:      \tAn error is expected but got nil.\n            \tTest:       \tTestDispatchSeriesBatchesRejectsOrderSensitiveInput/top\n    --- FAIL: TestDispatchSeriesBatchesRejectsOrderSensitiveInput/multiple_groups (0.00s)\n        dispatch_series_test.go:72: \n            \tError Trace:\t/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/pkg/query/vectorized/measure/plan/dispatch_series_test.go:72\n            \tError:      \tAn error is expected but got nil.\n            \tTest:       \tTestDispatchSeriesBatchesRejectsOrderSensitiveInput/multiple_groups\nFAIL\nFAIL\tgithub.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan\t0.013s\nFAIL\n"
+  },
+  "lifecycle_harness_unit": {
+    "source": "/tmp/ql-series-lifecycle-unit.log",
+    "sha256": "00c41de388f73cf723ce810a5c5b1268feadcc57b25b2c9f49debd20c7bc354f",
+    "output": "ok  \tgithub.com/apache/skywalking-banyandb/verification/qlcapacitybench\t0.980s\n"
+  },
+  "lifecycle_harness_lint": {
+    "source": "/tmp/ql-series-lifecycle-lint.log",
+    "sha256": "e92606b0bf483111dff0a120c315ea165821348f31365020e2468a0059095c47",
+    "output": "0 issues.\n"
+  },
+  "lifecycle_format": {
+    "output": "",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

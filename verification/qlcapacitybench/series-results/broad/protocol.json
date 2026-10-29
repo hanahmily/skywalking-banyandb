@@ -1,0 +1,10 @@
+{
+  "arms": [
+    "not_in_10",
+    "case_16"
+  ],
+  "rounds": 5,
+  "warmups": 20,
+  "timed": 200,
+  "baseline": "capacity rejection, no successful latency comparison"
+}

@@ -1,0 +1,217 @@
+{
+  "unit": {
+    "command": [
+      "go",
+      "test",
+      "./pkg/query/ql",
+      "./pkg/bydbql",
+      "./banyand/liaison/grpc",
+      "-count=1"
+    ],
+    "exit": 0,
+    "seconds": 38.37490699440241
+  },
+  "generator_and_harness": {
+    "command": [
+      "go",
+      "test",
+      "-tags=querymetrics",
+      "./test/cases/measure/qlgen",
+      "./verification/qlcapacitybench",
+      "-run",
+      "TestP1",
+      "-count=1"
+    ],
+    "exit": 0,
+    "seconds": 4.723285662941635
+  },
+  "race": {
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "./pkg/bydbql",
+      "./banyand/liaison/grpc",
+      "-run",
+      "TestMeasure(LargeStringMembership|StringMembership|FilterEmpty|FilterNotInNull)|TestQLEmptyBoundFilter|TestQLNotInNull",
+      "-count=1"
+    ],
+    "exit": 0,
+    "seconds": 13.599371289368719
+  },
+  "generation": {
+    "command": [
+      "go",
+      "run",
+      "./test/cases/measure/cmd/generate",
+      "generate-ql",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 3.519938910845667
+  },
+  "lint": {
+    "command": [
+      "golangci-lint",
+      "run",
+      "--build-tags=querymetrics",
+      "./pkg/query/ql/...",
+      "./pkg/bydbql/...",
+      "./banyand/liaison/grpc/...",
+      "./test/cases/measure/qlgen/...",
+      "./verification/qlcapacitybench/..."
+    ],
+    "exit": 0,
+    "seconds": 10.286348348017782
+  },
+  "initial_license": {
+    "command": [
+      "/mnt/d/skywalking-banyandb/bin/license-eye",
+      "header",
+      "check"
+    ],
+    "exit": 1,
+    "seconds": 86.5363307511434
+  },
+  "format": {
+    "command": [
+      "golangci-lint",
+      "fmt",
+      "-c",
+      ".golangci-format.yml",
+      "--diff",
+      "banyand/liaison/grpc/measure_ql_empty_filter_test.go",
+      "banyand/liaison/grpc/measure_ql_raw.go",
+      "pkg/bydbql/plan_measure_expression.go",
+      "pkg/bydbql/plan_measure_filter.go",
+      "pkg/bydbql/plan_measure_filter_criteria.go",
+      "pkg/bydbql/plan_measure_filter_empty.go",
+      "pkg/bydbql/plan_measure_filter_empty_test.go",
+      "pkg/bydbql/plan_measure_filter_review_test.go",
+      "pkg/bydbql/plan_measure_having_test.go",
+      "pkg/bydbql/plan_measure_membership_test.go",
+      "pkg/query/ql/expression.go",
+      "pkg/query/ql/expression_boolean.go",
+      "pkg/query/ql/expression_membership.go",
+      "pkg/query/ql/expression_operator.go",
+      "pkg/query/ql/expression_resolve.go",
+      "test/cases/measure/ql_generated.go",
+      "test/cases/measure/ql_generated_capacity.go",
+      "test/cases/measure/qlgen/capacity_fixture.go",
+      "test/cases/measure/qlgen/capacity_generate.go",
+      "test/cases/measure/qlgen/capacity_test.go",
+      "test/cases/measure/qlgen/coverage_contract.go",
+      "test/cases/measure/qlgen/generate.go",
+      "test/cases/measure/qlgen/suite.go",
+      "verification/qlcapacitybench/diagnosis_test.go",
+      "verification/qlcapacitybench/p1_test.go"
+    ],
+    "exit": 0,
+    "seconds": 0.2310876869596541,
+    "diff_empty": true
+  },
+  "license": {
+    "command": [
+      "/mnt/d/skywalking-banyandb/bin/license-eye",
+      "header",
+      "check"
+    ],
+    "exit": 0,
+    "seconds": 86.92690775403753
+  },
+  "diff": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.3633608352392912
+  },
+  "correctness": {
+    "standalone": {
+      "exit": 1,
+      "verification_rpcs": 48,
+      "correct_responses": 20,
+      "native_capacity_rejections": 28,
+      "passed_specs": 1,
+      "specs": 4
+    },
+    "distributed": {
+      "exit": 0,
+      "verification_rpcs": 48,
+      "correct_responses": 48,
+      "native_capacity_rejections": 0,
+      "passed_specs": 4,
+      "specs": 4
+    }
+  },
+  "comparison": {
+    "timed_rpcs": 8000,
+    "successful_timed_rpcs": 8000,
+    "process_pairs": 5,
+    "all_query_result_and_byte_digests_equal": true,
+    "native_rows_per_rpc": 80,
+    "all_containers_two_cpus_four_gib_no_extra_swap": true,
+    "no_oom_events": true
+  },
+  "frozen_identity_after_execution": {
+    "exit": 0,
+    "source_binaries_toolchain_image_unchanged": true
+  },
+  "full_make_check": {
+    "run": false,
+    "reason": "requires clean committed tree and rewrites/stages files; scoped checks run directly; no commit requested"
+  },
+  "python_syntax": {
+    "exit": 0,
+    "method": "ast.parse on all harness Python files"
+  },
+  "logs": [
+    {
+      "path": "/tmp/ql-p1-fixed/checks/diff.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/generation.log",
+      "sha256": "7709733eedb24548244f7bab1c629a0177758866c4333ba8233466eff52e717e",
+      "bytes": 107
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/generator_and_harness.log",
+      "sha256": "a11d55cb18a8c33b406ef400541bb2f36c35e4eb3d89ee0e5c44fd8c31917ca6",
+      "bytes": 154
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/initial_license.log",
+      "sha256": "b2ba0a4ac79feec23e710ce3343b5319e5a77aa15bbca891beb2104ac5e714c0",
+      "bytes": 922
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/license.log",
+      "sha256": "b5d7f512859388cd4c2fcbcb9e67327ebb7a6d5104f6de8c653ecadb414ccff1",
+      "bytes": 156
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/lint.log",
+      "sha256": "e92606b0bf483111dff0a120c315ea165821348f31365020e2468a0059095c47",
+      "bytes": 10
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/race.log",
+      "sha256": "c64686c2fb93212b9d92d115a08c3128a273293b7f4e1a58b0ab0de13f55ac0a",
+      "bytes": 132
+    },
+    {
+      "path": "/tmp/ql-p1-fixed/checks/unit.log",
+      "sha256": "101d36ccbfe425cb60896fc8e4933c3602da7a1e83607d4337e73ebb292974de",
+      "bytes": 196
+    }
+  ]
+}

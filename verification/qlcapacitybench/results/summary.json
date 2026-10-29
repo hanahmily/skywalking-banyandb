@@ -1,0 +1,606 @@
+{
+  "analysis_sha256": "528c3562c80bf360d433778343789956cc5dcc93bd736ac63f7e7ee6ae574e31",
+  "processes": {
+    "in_10": [
+      {
+        "round": 0,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.806869,
+        "p95_ms": 38.375749,
+        "cpu_ns_per_rpc": 37300340,
+        "allocated_bytes_per_rpc": 4132937.92,
+        "allocated_objects_per_rpc": 85428.76,
+        "gc_cpu_seconds_per_rpc": 0.0010743660500000002,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 286,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2270,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 1,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.94337,
+        "p95_ms": 38.226299,
+        "cpu_ns_per_rpc": 37248045,
+        "allocated_bytes_per_rpc": 4132665.56,
+        "allocated_objects_per_rpc": 85436.89,
+        "gc_cpu_seconds_per_rpc": 0.00104236357,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 730,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2714,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 2,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.81037,
+        "p95_ms": 37.01637,
+        "cpu_ns_per_rpc": 36882925,
+        "allocated_bytes_per_rpc": 4138871.56,
+        "allocated_objects_per_rpc": 85432.205,
+        "gc_cpu_seconds_per_rpc": 0.0009494717399999997,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 508,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2492,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 3,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 35.11988,
+        "p95_ms": 37.93471,
+        "cpu_ns_per_rpc": 37426225,
+        "allocated_bytes_per_rpc": 4133758.4,
+        "allocated_objects_per_rpc": 85429,
+        "gc_cpu_seconds_per_rpc": 0.0010269009000000002,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 508,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2492,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 4,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.98143,
+        "p95_ms": 37.598079,
+        "cpu_ns_per_rpc": 37151810,
+        "allocated_bytes_per_rpc": 4140795.44,
+        "allocated_objects_per_rpc": 85428.75,
+        "gc_cpu_seconds_per_rpc": 0.0009562880000000001,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 508,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2492,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      }
+    ],
+    "in_1000": [
+      {
+        "round": 0,
+        "request_bytes": 14159,
+        "list_bytes": 12000,
+        "successes": 200,
+        "p50_ms": 36.502309,
+        "p95_ms": 39.703079,
+        "cpu_ns_per_rpc": 39820040,
+        "allocated_bytes_per_rpc": 6702031.68,
+        "allocated_objects_per_rpc": 97338.29,
+        "gc_cpu_seconds_per_rpc": 0.0018365902550000002,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 508,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2492,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 1,
+        "request_bytes": 14159,
+        "list_bytes": 12000,
+        "successes": 200,
+        "p50_ms": 36.663939,
+        "p95_ms": 39.796729,
+        "cpu_ns_per_rpc": 39910810,
+        "allocated_bytes_per_rpc": 6691330.28,
+        "allocated_objects_per_rpc": 97337.47,
+        "gc_cpu_seconds_per_rpc": 0.0017733579749999984,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 952,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2936,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 2,
+        "request_bytes": 14159,
+        "list_bytes": 12000,
+        "successes": 200,
+        "p50_ms": 36.692119,
+        "p95_ms": 39.48787,
+        "cpu_ns_per_rpc": 39842405,
+        "allocated_bytes_per_rpc": 6690506.16,
+        "allocated_objects_per_rpc": 97345.985,
+        "gc_cpu_seconds_per_rpc": 0.0017485625199999998,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 730,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2714,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 3,
+        "request_bytes": 14159,
+        "list_bytes": 12000,
+        "successes": 200,
+        "p50_ms": 36.835979,
+        "p95_ms": 39.8725,
+        "cpu_ns_per_rpc": 40047660,
+        "allocated_bytes_per_rpc": 6704990.44,
+        "allocated_objects_per_rpc": 97345.81,
+        "gc_cpu_seconds_per_rpc": 0.0017957905749999997,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 730,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2714,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 4,
+        "request_bytes": 14159,
+        "list_bytes": 12000,
+        "successes": 200,
+        "p50_ms": 37.158839,
+        "p95_ms": 40.324539,
+        "cpu_ns_per_rpc": 40535370,
+        "allocated_bytes_per_rpc": 6707744.04,
+        "allocated_objects_per_rpc": 97347.105,
+        "gc_cpu_seconds_per_rpc": 0.0018450746350000002,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 730,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2714,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      }
+    ],
+    "in_10000": [
+      {
+        "round": 0,
+        "request_bytes": 140161,
+        "list_bytes": 120000,
+        "successes": 200,
+        "p50_ms": 55.364579,
+        "p95_ms": 60.679839,
+        "cpu_ns_per_rpc": 66442725,
+        "allocated_bytes_per_rpc": 31300304,
+        "allocated_objects_per_rpc": 205451.925,
+        "gc_cpu_seconds_per_rpc": 0.008378644535,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 730,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2714,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 1,
+        "request_bytes": 140161,
+        "list_bytes": 120000,
+        "successes": 200,
+        "p50_ms": 55.668968,
+        "p95_ms": 61.352319,
+        "cpu_ns_per_rpc": 67186695,
+        "allocated_bytes_per_rpc": 31314725.48,
+        "allocated_objects_per_rpc": 205448.785,
+        "gc_cpu_seconds_per_rpc": 0.008590085790000002,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 286,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2270,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 2,
+        "request_bytes": 140161,
+        "list_bytes": 120000,
+        "successes": 200,
+        "p50_ms": 54.473589,
+        "p95_ms": 60.591009,
+        "cpu_ns_per_rpc": 65622050,
+        "allocated_bytes_per_rpc": 31388924.88,
+        "allocated_objects_per_rpc": 205447.61,
+        "gc_cpu_seconds_per_rpc": 0.008303694015,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 952,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2936,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 3,
+        "request_bytes": 140161,
+        "list_bytes": 120000,
+        "successes": 200,
+        "p50_ms": 54.624499,
+        "p95_ms": 59.905808,
+        "cpu_ns_per_rpc": 65698025,
+        "allocated_bytes_per_rpc": 31291250.6,
+        "allocated_objects_per_rpc": 205444.605,
+        "gc_cpu_seconds_per_rpc": 0.00826964573,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 952,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2936,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 4,
+        "request_bytes": 140161,
+        "list_bytes": 120000,
+        "successes": 200,
+        "p50_ms": 54.736079,
+        "p95_ms": 60.674589,
+        "cpu_ns_per_rpc": 65956080,
+        "allocated_bytes_per_rpc": 31344834.56,
+        "allocated_objects_per_rpc": 205443.055,
+        "gc_cpu_seconds_per_rpc": 0.00830878545,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 952,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2936,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      }
+    ],
+    "in_10_bypass": [
+      {
+        "round": 0,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 35.45168,
+        "p95_ms": 38.557589,
+        "cpu_ns_per_rpc": 37834355,
+        "allocated_bytes_per_rpc": 4163071.32,
+        "allocated_objects_per_rpc": 85583.6,
+        "gc_cpu_seconds_per_rpc": 0.0010513790049999994,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 952,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2936,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 1,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 35.288029,
+        "p95_ms": 37.682399,
+        "cpu_ns_per_rpc": 37547365,
+        "allocated_bytes_per_rpc": 4169504.44,
+        "allocated_objects_per_rpc": 85583.975,
+        "gc_cpu_seconds_per_rpc": 0.0010084405000000008,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 508,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2492,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 2,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.9906,
+        "p95_ms": 37.536349,
+        "cpu_ns_per_rpc": 37283610,
+        "allocated_bytes_per_rpc": 4170074.56,
+        "allocated_objects_per_rpc": 85584.21,
+        "gc_cpu_seconds_per_rpc": 0.001013976605,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 286,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2270,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 3,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 35.15707,
+        "p95_ms": 37.989259,
+        "cpu_ns_per_rpc": 37613785,
+        "allocated_bytes_per_rpc": 4162238.12,
+        "allocated_objects_per_rpc": 85583.305,
+        "gc_cpu_seconds_per_rpc": 0.00102920602,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 286,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2270,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      },
+      {
+        "round": 4,
+        "request_bytes": 299,
+        "list_bytes": 120,
+        "successes": 200,
+        "p50_ms": 34.997859,
+        "p95_ms": 37.28375,
+        "cpu_ns_per_rpc": 37202735,
+        "allocated_bytes_per_rpc": 4162721.52,
+        "allocated_objects_per_rpc": 85584.205,
+        "gc_cpu_seconds_per_rpc": 0.001030104945,
+        "batch": {
+          "NativeBatchExecutions": 0,
+          "QLBatchExecutions": 286,
+          "IntermediateDataPoints": 0,
+          "FinalDataPoints": 2270,
+          "LiveResults": 0,
+          "NativeLeafCalls": 200,
+          "NativeInputRows": 16000,
+          "NativeFrameRows": 0
+        }
+      }
+    ]
+  },
+  "paired": {
+    "in_1000/in_10": {
+      "p50_ms": {
+        "mean_effect": 1.8382531999999983,
+        "effect_95pct": [
+          1.7087293999999986,
+          2.0218831999999978
+        ],
+        "mean_ratio": 1.052622918331676,
+        "ratio_95pct": [
+          1.0488773402561657,
+          1.057900239455479
+        ]
+      },
+      "p95_ms": {
+        "mean_effect": 2.0067020000000015,
+        "effect_95pct": [
+          1.546662000000002,
+          2.466742000000001
+        ],
+        "mean_ratio": 1.0532072230806562,
+        "ratio_95pct": [
+          1.040484519557783,
+          1.0659299266035294
+        ]
+      },
+      "allocated_bytes_per_rpc": {
+        "mean_effect": 2563514.744,
+        "effect_95pct": [
+          2556960.112,
+          2569520.04
+        ],
+        "mean_ratio": 1.619835241787887,
+        "ratio_95pct": [
+          1.618081047970058,
+          1.6214324410038534
+        ]
+      },
+      "cpu_ns_per_rpc": {
+        "mean_effect": 2829388,
+        "effect_95pct": [
+          2589007,
+          3125972
+        ],
+        "mean_ratio": 1.0760791007343633,
+        "ratio_95pct": [
+          1.0693352327298573,
+          1.0842026369151736
+        ]
+      }
+    },
+    "in_10000/in_10": {
+      "p50_ms": {
+        "mean_effect": 20.041158999999997,
+        "effect_95pct": [
+          19.618064999999998,
+          20.479544599999997
+        ],
+        "mean_ratio": 1.5737398585412719,
+        "ratio_95pct": [
+          1.5610096466962002,
+          1.5869398420891059
+        ]
+      },
+      "p95_ms": {
+        "mean_effect": 22.8104714,
+        "effect_95pct": [
+          22.2686808,
+          23.2955656
+        ],
+        "mean_ratio": 1.6032000592776552,
+        "ratio_95pct": [
+          1.5851491961372073,
+          1.6212509224181033
+        ]
+      },
+      "allocated_bytes_per_rpc": {
+        "mean_effect": 27192202.128,
+        "effect_95pct": [
+          27166355.296,
+          27222444.799999997
+        ],
+        "mean_ratio": 7.574825253319668,
+        "ratio_95pct": [
+          7.570454562346071,
+          7.579770408481147
+        ]
+      },
+      "cpu_ns_per_rpc": {
+        "mean_effect": 28979246,
+        "effect_95pct": [
+          28552195,
+          29484898
+        ],
+        "mean_ratio": 1.7789933047378332,
+        "ratio_95pct": [
+          1.7653382157604351,
+          1.7935791510857035
+        ]
+      }
+    },
+    "in_10_bypass/in_10": {
+      "p50_ms": {
+        "mean_effect": 0.2446637999999993,
+        "effect_95pct": [
+          0.05749359999999655,
+          0.4632564000000016
+        ],
+        "mean_ratio": 1.0070189655473607,
+        "ratio_95pct": [
+          1.0016469334618603,
+          1.013299697714273
+        ]
+      },
+      "p95_ms": {
+        "mean_effect": -0.02037220000000133,
+        "effect_95pct": [
+          -0.35283780000000037,
+          0.29163739999999905
+        ],
+        "mean_ratio": 0.999526997221395,
+        "ratio_95pct": [
+          0.9907385790823152,
+          1.007801866397239
+        ]
+      },
+      "allocated_bytes_per_rpc": {
+        "mean_effect": 29716.216000000015,
+        "effect_95pct": [
+          25422.928000000025,
+          33856.31999999993
+        ],
+        "mean_ratio": 1.0071857607130716,
+        "ratio_95pct": [
+          1.006143091850782,
+          1.008190285360034
+        ]
+      },
+      "cpu_ns_per_rpc": {
+        "mean_effect": 294501,
+        "effect_95pct": [
+          148204,
+          438058
+        ],
+        "mean_ratio": 1.007919673830027,
+        "ratio_95pct": [
+          1.0039974680434658,
+          1.0117650069861397
+        ]
+      }
+    }
+  },
+  "interpretation": "Five fresh-process diagnostic rounds; no regression/SLO percentage threshold. Bootstrap resamples paired processes, never individual RPCs."
+}

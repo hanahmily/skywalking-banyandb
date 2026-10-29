@@ -1,0 +1,109 @@
+{
+  "revision": "efc0c18988ecbc18a10ffbdd49c7491299d8c8e7",
+  "production_changed": false,
+  "committed": false,
+  "pushed": false,
+  "unit": {
+    "command": "go test -tags=querymetrics ./test/cases/measure/qlgen ./test/cases/measure/data ./verification/qlcapacitybench -count=1",
+    "exit": 0,
+    "package_seconds": {
+      "qlgen": 130.806,
+      "data": 0.345,
+      "qlcapacitybench": 1.045
+    }
+  },
+  "final_harness": {
+    "command": "go test -tags=querymetrics ./verification/qlcapacitybench -count=1",
+    "exit": 0,
+    "seconds": 1.006
+  },
+  "generation": {
+    "command": "go run ./test/cases/measure/cmd/generate generate-ql --check",
+    "exit": 0
+  },
+  "lint": {
+    "command": "golangci-lint run --build-tags=querymetrics ./test/cases/measure/qlgen/... ./verification/qlcapacitybench/... ./test/cases/measure/...",
+    "exit": 0,
+    "issues": 0
+  },
+  "format": {
+    "command": "golangci-lint fmt -c .golangci-format.yml <changed Go files>",
+    "exit": 0
+  },
+  "license": {
+    "command": "license-eye header check",
+    "exit": 0,
+    "checked": 5424,
+    "valid": 4110,
+    "invalid": 0,
+    "ignored": 1314
+  },
+  "final_new_source_license": {
+    "command": "license-eye -c /tmp/p1-license-scoped.yaml header check",
+    "exit": 0,
+    "checked": 5461,
+    "valid": 7,
+    "invalid": 0,
+    "ignored": 5454
+  },
+  "frozen_identity_after_execution": {
+    "exit": 0,
+    "source_binaries_toolchain_image_unchanged": true
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "exit": 0
+  },
+  "full_make_check": {
+    "run": false,
+    "reason": "requires clean committed tree; no commit authorized or created"
+  },
+  "topology": {
+    "standalone": {
+      "exit": 1,
+      "specs": 4,
+      "passed_specs": 0,
+      "capacity_failed_specs": 4,
+      "correct_rpcs": 12,
+      "capacity_rejections": 32,
+      "attempted_verification_rpcs": 44,
+      "readiness_rpcs": 64
+    },
+    "distributed": {
+      "exit": 0,
+      "specs": 4,
+      "passed_specs": 4,
+      "correct_rpcs": 44,
+      "capacity_rejections": 0,
+      "attempted_verification_rpcs": 44,
+      "readiness_rpcs": 64,
+      "workers": 2
+    }
+  },
+  "measurement": {
+    "timed_successful_rpcs": 4000,
+    "warmup_rpcs": 400,
+    "separate_cache_stats_rpcs": 40,
+    "rounds": 5,
+    "successful_per_arm_per_round": 200,
+    "feasibility_successes": 8,
+    "feasibility_rejections": 12,
+    "post_rejection_recoveries": 6,
+    "cancellation_underway": true,
+    "cancellation_status": "Canceled",
+    "cancellation_recovery": true,
+    "eight_callers_success": 8,
+    "eight_callers_rejected": 0,
+    "eight_callers_recovery": true,
+    "profiled_rpcs_excluded_from_latency": true
+  },
+  "original_full_logs": "/tmp/ql-p1-final",
+  "local_check_logs": [
+    "/tmp/p1-unit-final.log",
+    "/tmp/p1-harness-final.log",
+    "/tmp/p1-lint-final.log",
+    "/tmp/p1-generation.log",
+    "/tmp/p1-license.log",
+    "/tmp/p1-license-scoped.log"
+  ]
+}

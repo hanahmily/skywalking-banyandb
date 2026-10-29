@@ -1,0 +1,12 @@
+{
+  "timing": {
+    "sha256": "f9ef577e39d68efc6ea6ebf3b5017745c10d83321e301b02bbb4c1fd9dbe670b",
+    "scope": "all Go/module sources outside verification; includes tests and generated code",
+    "files": 2679
+  },
+  "lifecycle": {
+    "sha256": "f9ef577e39d68efc6ea6ebf3b5017745c10d83321e301b02bbb4c1fd9dbe670b",
+    "files": 2679
+  },
+  "difference": "verification/qlcapacitybench/p1_test.go only: quiet-interval ownership check and recording its checked memory snapshot; production code unchanged"
+}

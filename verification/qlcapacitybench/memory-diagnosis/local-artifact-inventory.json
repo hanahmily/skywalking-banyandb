@@ -1,0 +1,70 @@
+{
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_00_twice.heap.pprof": {
+    "sha256": "633a964c94e413c0aabc79b324f9df2af27317a08df0aca8bce98ce87f1e6ac6",
+    "bytes": 340981
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_after.heap.pprof": {
+    "sha256": "a948f256437a89fbb4bc1114f70098643de3a684f842a4d2330a56950e1dde77",
+    "bytes": 347328
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_15_once.heap.pprof": {
+    "sha256": "48e6d558f026fce0a79d429345f2c13ce7e104fe9c2a203e075c89ca2fcd5735",
+    "bytes": 347030
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_after.heap.pprof": {
+    "sha256": "24c77d4f55ec40a869ab76041e125966193733c833c4b2b57171731d6bb57d18",
+    "bytes": 334750
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/diagnosis.log": {
+    "sha256": "9a5947e27b4318e7902c039e31477ab4c66c1deeed05a24b9fbd391dee82e9a1",
+    "bytes": 1326
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/final.heap.pprof": {
+    "sha256": "59528dda59083847dc85316fcdaabbae8f604d15e634022fc8b9ddb8354a56db",
+    "bytes": 347560
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_00_once.heap.pprof": {
+    "sha256": "3602e6d7dcd0194fc7c4042ac96eee97c8cba68de164823305538a32044cf71d",
+    "bytes": 340450
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_00_twice.heap.pprof": {
+    "sha256": "bb53fcfc499346b0576ac96659b52f2c293aa28075154e3866a5044099b91f91",
+    "bytes": 327196
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_15_twice.heap.pprof": {
+    "sha256": "e2cbb321ab3265d3824a5694d1cd8f8796484d83e68b4f7e77337db024635d8e",
+    "bytes": 335196
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_before.heap.pprof": {
+    "sha256": "20e446044bd42127a474a852207f9345b81aed466c4875a7d0adcb7e23aa106b",
+    "bytes": 324887
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/baseline.heap.pprof": {
+    "sha256": "cee9fb064b79c06d256dbcd4ea3be7b83d1b1b292d01c20ee7c255e26f64c341",
+    "bytes": 317146
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_before.heap.pprof": {
+    "sha256": "0e52ba8430890d3143ce78e464ae2c57eb97760b67b2e190519fac0165772f9d",
+    "bytes": 339376
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/manifest.json": {
+    "sha256": "7c6bf509ac67f067f92fcd4ed75fcbef1e1211de3ff68ff8ef79feb797b74efb",
+    "bytes": 1403
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_15_once.heap.pprof": {
+    "sha256": "cf7268c4c57ef50844cd3e1b7e490be2800809d7e6a98aa4cd91c165259b8d6e",
+    "bytes": 334692
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/case_16_15_twice.heap.pprof": {
+    "sha256": "03b5a0b286e25cdce74c78342ff92bc9a27a3a8268bc6c7fa038e0ba22a5ecc5",
+    "bytes": 347470
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/not_in_10_00_once.heap.pprof": {
+    "sha256": "baa61385bd0dd2c48711819f8eea7fe2d0dbb34b890a07eacccb09fd5390d342",
+    "bytes": 325405
+  },
+  "/tmp/ql-p1-memory-diagnosis/warmed/retention.jsonl": {
+    "sha256": "c5fe95168b9799defdaf563530de10812e8a9447ce7093aa1ee3d9b9945702f4",
+    "bytes": 594323
+  }
+}

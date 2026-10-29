@@ -1,0 +1,26 @@
+Command: go tool pprof -top -nodecount=16 -sample_index=inuse_space -base /tmp/ql-p1-memory-diagnosis/warmed/case_16_before.heap.pprof /tmp/ql-p1-memory-diagnosis/warmed/case_16_00_once.heap.pprof
+
+File: warmed.test
+Build ID: 9362af0bc697db1e8c0d013a61f4c5613604461f
+Type: inuse_space
+Time: 2026-10-29 05:25:16 UTC
+Showing nodes accounting for 4.47MB, 99.65% of 4.49MB total
+Dropped 1 node (cum <= 0.02MB)
+Showing top 16 nodes out of 107
+      flat  flat%   sum%        cum   cum%
+    2.10MB 46.68% 46.68%     2.10MB 46.68%  github.com/apache/skywalking-banyandb/banyand/measure.generateBlockCursor
+    1.14MB 25.47% 72.15%     1.14MB 25.47%  google.golang.org/grpc/internal/mem.(*sizedBufferPool).Get
+    0.45MB 10.08% 82.23%     0.45MB 10.08%  github.com/apache/skywalking-banyandb/banyand/measure.(*columnFamilyMetadata).resizeColumnMetadata (inline)
+    0.33MB  7.28% 89.51%     0.34MB  7.63%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).loadData
+    0.24MB  5.25% 94.77%     0.24MB  5.25%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockMetadata).reset
+    0.13MB  2.86% 97.62%     0.13MB  2.86%  sync.(*poolChain).pushHead
+    0.04MB  0.79% 98.41%     0.04MB  0.79%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.AcquireColumn
+    0.03MB   0.7% 99.11%     0.03MB   0.7%  google.golang.org/grpc/internal/mem.(*SimpleBufferPool).Get
+    0.02MB  0.54% 99.65%     0.06MB  1.33%  github.com/apache/skywalking-banyandb/pkg/query/model.acquireMeasureBatch
+         0     0% 99.65%        1MB 22.28%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1.(*bydbQLServiceClient).Query
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+         0     0% 99.65%     2.97MB 66.20%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan

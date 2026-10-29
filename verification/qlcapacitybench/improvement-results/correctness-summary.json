@@ -1,0 +1,18 @@
+{
+  "standalone": {
+    "exit": 1,
+    "verification_rpcs": 48,
+    "correct_responses": 20,
+    "native_capacity_rejections": 28,
+    "passed_specs": 1,
+    "specs": 4
+  },
+  "distributed": {
+    "exit": 0,
+    "verification_rpcs": 48,
+    "correct_responses": 48,
+    "native_capacity_rejections": 0,
+    "passed_specs": 4,
+    "specs": 4
+  }
+}

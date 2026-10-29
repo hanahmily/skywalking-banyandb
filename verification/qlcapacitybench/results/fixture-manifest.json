@@ -1,0 +1,62 @@
+{
+  "digest": "cde02cbfca428d7d4069cbbba68f48af6fbce6c93da7c9c8fab50e3b7df650c8",
+  "seed": 1412,
+  "group": "qlperf",
+  "measure": "activity",
+  "shards": 2,
+  "replicas": 0,
+  "explicit_sharding_key": false,
+  "entity": "storage-only.entity_id",
+  "entity_type": "scalar STRING",
+  "entity_indexed": false,
+  "service": "searchable.service_id",
+  "service_type": "scalar STRING",
+  "service_index": {
+    "type": "INVERTED",
+    "analyzer": "keyword",
+    "tags": [
+      "service_id"
+    ]
+  },
+  "integer_fields": [
+    "value",
+    "summation",
+    "count"
+  ],
+  "services": 1024,
+  "entities_per_service": 5,
+  "positive_entities_per_service": 4,
+  "timestamps_per_entity": 2,
+  "timestamp_offsets_seconds": [
+    0,
+    1
+  ],
+  "window_offsets_seconds": [
+    0,
+    2
+  ],
+  "rows": 10240,
+  "active_distinct": 4096,
+  "positive_rows": 8192,
+  "entity_template": "entity-%04d-%d",
+  "service_template": "present-%04d",
+  "absent_template": "absent-%05d",
+  "value_and_summation": "1 for entity ordinals 0..3; 0 for ordinal 4",
+  "count": 1,
+  "timed_present_cohorts": [
+    [
+      0,
+      7
+    ],
+    [
+      8,
+      15
+    ]
+  ],
+  "digest_clock": "2026-10-29T00:00:00Z (execution timestamps rebound relative to fixture base)",
+  "generator_files": {
+    "test/cases/measure/qlgen/capacity_fixture.go": "8f29ae7259e416e7368a3d03b9bedc7e8358ef87ab61374d8edd2d3feb66d2d7",
+    "test/cases/measure/qlgen/capacity_generate.go": "fb664abc75d3683a5c5579317c5cedd0d73883d96d1cb47c93cd45ceba92c8ea",
+    "test/cases/measure/qlgen/capacity_test.go": "29509b6eae934cbb3cc5b8bb8fbdad203401a2d37ade71072ee533bc5e27356a"
+  }
+}

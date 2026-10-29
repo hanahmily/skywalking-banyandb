@@ -1,0 +1,25 @@
+Command: go tool pprof -top -nodecount=16 -sample_index=inuse_space -base /tmp/ql-p1-memory-diagnosis/warmed/case_16_00_twice.heap.pprof /tmp/ql-p1-memory-diagnosis/warmed/case_16_15_twice.heap.pprof
+
+File: warmed.test
+Build ID: 9362af0bc697db1e8c0d013a61f4c5613604461f
+Type: inuse_space
+Time: 2026-10-29 05:25:17 UTC
+Showing nodes accounting for 42.77kB, 100% of 42.77kB total
+Showing top 16 nodes out of 84
+      flat  flat%   sum%        cum   cum%
+   16.10kB 37.65% 37.65%    16.10kB 37.65%  github.com/prometheus/client_golang/prometheus.MakeLabelPairs
+    9.25kB 21.63% 59.28%     9.25kB 21.63%  bytes.growSlice
+    5.23kB 12.23% 71.50%     5.23kB 12.23%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodePool).submit
+    4.13kB  9.65% 81.15%     4.13kB  9.65%  sync.(*Pool).pinSlow
+    4.03kB  9.43% 90.57%     4.03kB  9.43%  encoding/json.newEncodeState
+    4.03kB  9.43%   100%    20.13kB 47.07%  github.com/prometheus/client_golang/prometheus.v2.NewGaugeVec.func1
+         0     0%   100%     9.25kB 21.63%  bytes.(*Buffer).Write
+         0     0%   100%     9.25kB 21.63%  bytes.(*Buffer).grow
+         0     0%   100%    13.28kB 31.06%  encoding/json.(*Encoder).Encode
+         0     0%   100%     9.25kB 21.63%  encoding/json.(*encodeState).marshal
+         0     0%   100%     9.25kB 21.63%  encoding/json.(*encodeState).reflectValue
+         0     0%   100%     9.25kB 21.63%  encoding/json.interfaceEncoder
+         0     0%   100%     9.25kB 21.63%  encoding/json.mapEncoder.encode
+         0     0%   100%     4.13kB  9.65%  fmt.Sprintf
+         0     0%   100%     4.13kB  9.65%  fmt.newPrinter
+         0     0%   100%     5.23kB 12.23%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler

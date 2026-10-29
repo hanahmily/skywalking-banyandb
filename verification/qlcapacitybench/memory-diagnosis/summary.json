@@ -1,0 +1,107 @@
+{
+  "queries": {
+    "in_10": 42,
+    "not_in_10": 17,
+    "case_16": 17
+  },
+  "expected_rejections": 34,
+  "successful_queries": 42,
+  "curves": {
+    "baseline": {
+      "samples": 1,
+      "first": 31191200,
+      "last": 31191200,
+      "min": 31191200,
+      "max": 31191200
+    },
+    "idle_before": {
+      "samples": 5,
+      "first": 31191424,
+      "last": 31190720,
+      "min": 31190720,
+      "max": 31191424
+    },
+    "admitted_control": {
+      "samples": 5,
+      "first": 32427232,
+      "last": 32460368,
+      "min": 32426512,
+      "max": 32460368
+    },
+    "admitted_control_twice": {
+      "samples": 5,
+      "first": 31232952,
+      "last": 31266144,
+      "min": 31199576,
+      "max": 31266144
+    },
+    "not_in_10_before": {
+      "samples": 1,
+      "first": 31238936,
+      "last": 31238936,
+      "min": 31238936,
+      "max": 31238936
+    },
+    "not_in_10": {
+      "samples": 16,
+      "first": 34636040,
+      "last": 34645944,
+      "min": 34636040,
+      "max": 34653896
+    },
+    "not_in_10_twice": {
+      "samples": 16,
+      "first": 31215256,
+      "last": 31216296,
+      "min": 31214968,
+      "max": 31216296
+    },
+    "not_in_10_after": {
+      "samples": 1,
+      "first": 31207144,
+      "last": 31207144,
+      "min": 31207144,
+      "max": 31207144
+    },
+    "case_16_before": {
+      "samples": 1,
+      "first": 31258408,
+      "last": 31258408,
+      "min": 31258408,
+      "max": 31258408
+    },
+    "case_16": {
+      "samples": 16,
+      "first": 35837024,
+      "last": 35869216,
+      "min": 35837024,
+      "max": 35895824
+    },
+    "case_16_twice": {
+      "samples": 16,
+      "first": 31267296,
+      "last": 31289248,
+      "min": 31266392,
+      "max": 31289248
+    },
+    "case_16_after": {
+      "samples": 1,
+      "first": 31280360,
+      "last": 31280360,
+      "min": 31280360,
+      "max": 31280360
+    },
+    "idle_after": {
+      "samples": 5,
+      "first": 31280328,
+      "last": 31280328,
+      "min": 31280328,
+      "max": 31280328
+    }
+  },
+  "native_runtime_sources_changed": false,
+  "checks": {
+    "repeated_rpc": "exit 0; 17.11 s",
+    "scoped_golangci_lint": "exit 0; zero issues"
+  }
+}

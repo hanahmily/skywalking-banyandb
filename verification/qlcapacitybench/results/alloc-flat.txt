@@ -1,0 +1,33 @@
+File: bench.test
+Build ID: e69fc58849061bd7fe234e832ad1a1e458e87a7d
+Type: alloc_space
+Time: 2026-10-29 04:15:52 UTC
+Showing nodes accounting for 7.56GB, 87.40% of 8.65GB total
+Dropped 792 nodes (cum <= 0.04GB)
+Showing top 25 nodes out of 188
+      flat  flat%   sum%        cum   cum%
+    2.77GB 32.04% 32.04%     2.77GB 32.05%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile
+    1.02GB 11.76% 43.81%     1.02GB 11.76%  github.com/apache/skywalking-banyandb/pkg/query/ql.ResolveExpression
+    0.56GB  6.46% 50.27%     0.56GB  6.46%  github.com/apache/skywalking-banyandb/pkg/bydbql.appendBoundExpressionArgument
+    0.37GB  4.22% 54.49%     0.90GB 10.37%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+    0.33GB  3.87% 58.36%     0.33GB  3.87%  github.com/apache/skywalking-banyandb/pkg/bydbql.necessaryFilterCriteria
+    0.31GB  3.64% 62.00%     0.31GB  3.64%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).decodeDocumentIntoContext
+    0.31GB  3.56% 65.56%     0.31GB  3.56%  github.com/RoaringBitmap/roaring.New (inline)
+    0.27GB  3.12% 68.68%     0.27GB  3.12%  github.com/apache/skywalking-banyandb/pkg/index/native.appendQueryHits
+    0.22GB  2.60% 71.28%     0.22GB  2.60%  github.com/RoaringBitmap/roaring.NewBitmap
+    0.18GB  2.07% 73.35%     0.18GB  2.07%  google.golang.org/protobuf/internal/impl.consumeStringSliceValidateUTF8
+    0.17GB  1.93% 75.28%     0.48GB  5.51%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).filterHits
+    0.13GB  1.45% 76.73%     0.13GB  1.45%  reflect.unsafe_New
+    0.11GB  1.27% 78.00%     0.11GB  1.27%  google.golang.org/grpc/internal/mem.(*sizedBufferPool).Get
+    0.10GB  1.21% 79.21%     0.16GB  1.87%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates.func1
+    0.09GB  0.99% 80.20%     0.09GB  0.99%  github.com/apache/skywalking-banyandb/pkg/query/logical.(*strArrLiteral).Bytes
+    0.07GB  0.83% 81.04%     0.07GB  0.83%  bytes.growSlice
+    0.07GB  0.78% 81.82%     0.07GB  0.78%  github.com/apache/skywalking-banyandb/pkg/bydbql.measureEntityValues
+    0.07GB  0.76% 82.57%     0.07GB  0.76%  slices.Clone[go.shape.[]string,go.shape.string]
+    0.06GB  0.73% 83.31%     0.06GB  0.73%  github.com/RoaringBitmap/roaring.(*roaringArray).insertNewKeyValueAt
+    0.06GB  0.71% 84.02%     0.28GB  3.29%  github.com/google/go-cmp/cmp.(*state).compareMap
+    0.06GB   0.7% 84.72%     0.06GB  0.71%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*DictionaryTermIterator).NextKey
+    0.06GB  0.69% 85.41%     0.55GB  6.31%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).visitDocument
+    0.06GB  0.67% 86.09%     0.06GB  0.68%  github.com/apache/skywalking-banyandb/test/cases/measure/qlgen.jsonValue
+    0.06GB  0.66% 86.75%     0.11GB  1.29%  github.com/apache/skywalking-banyandb/pkg/query/model.acquireMeasureBatch
+    0.06GB  0.66% 87.40%     0.06GB  0.66%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates.func1.1

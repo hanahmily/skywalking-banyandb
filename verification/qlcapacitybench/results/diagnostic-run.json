@@ -1,0 +1,56 @@
+{
+  "utc": "2026-10-29T04:15:25.379206+00:00",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--name",
+    "ql-p1-diagnostic",
+    "--cpus=2",
+    "--memory=4g",
+    "--memory-swap=4g",
+    "-e",
+    "GOMAXPROCS=2",
+    "-e",
+    "P1_EXPECT_WORKERS=1",
+    "-e",
+    "P1_VERIFY=1",
+    "-v",
+    "/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike:/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike:ro",
+    "-v",
+    "/tmp/ql-p1-final:/evidence",
+    "-w",
+    "/mnt/d/skywalking-banyandb-worktrees/ql-like-ilike/verification/qlcapacitybench",
+    "-e",
+    "P1_MODE=round",
+    "-e",
+    "P1_OUTPUT=/evidence/diagnostic.jsonl",
+    "-e",
+    "P1_ROUND=0",
+    "-e",
+    "P1_ADMITTED=in_10,in_10000",
+    "banyandb-distributed-querybench:go1.26.10",
+    "/evidence/bench.test",
+    "-test.timeout=45m",
+    "-test.run=^TestP1RPC$",
+    "-test.v",
+    "-test.cpuprofile=/evidence/diagnostic.cpu.pprof",
+    "-test.memprofile=/evidence/diagnostic.alloc.pprof"
+  ],
+  "purpose": "CPU and default-sampled allocations: IN10 versus IN10000; all profiling/setup excluded from latency campaign",
+  "sampling": "Go default MemProfileRate=524288; whole process includes setup/client/server/background",
+  "load_before": "0.37 1.05 1.13 1/1941 1467875",
+  "exit_code": 0,
+  "wall_seconds": 27.04778085509315,
+  "load_after": "0.74 1.08 1.13 1/1935 1468703",
+  "profiles": {
+    "diagnostic.cpu.pprof": {
+      "sha256": "457917880c9a2d95a747845d935b7a10436dc4dd2542be72348efd46831382d8",
+      "bytes": 92881
+    },
+    "diagnostic.alloc.pprof": {
+      "sha256": "10ad32151e28291896ee2e13499f6a27795b150a07d709d304e564c0a87a5669",
+      "bytes": 76826
+    }
+  }
+}
