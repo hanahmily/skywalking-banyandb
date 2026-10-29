@@ -1,0 +1,34 @@
+[
+  {
+    "label": "1000-0-timing",
+    "cgroup_peak_bytes": 26660864
+  },
+  {
+    "label": "1000-1-timing",
+    "cgroup_peak_bytes": 26857472
+  },
+  {
+    "label": "1000-2-timing",
+    "cgroup_peak_bytes": 26058752
+  },
+  {
+    "label": "1000-0-memory",
+    "cgroup_peak_bytes": 25026560
+  },
+  {
+    "label": "10000-0-timing",
+    "cgroup_peak_bytes": 67014656
+  },
+  {
+    "label": "10000-1-timing",
+    "cgroup_peak_bytes": 77287424
+  },
+  {
+    "label": "10000-2-timing",
+    "cgroup_peak_bytes": 71667712
+  },
+  {
+    "label": "10000-0-memory",
+    "cgroup_peak_bytes": 69541888
+  }
+]

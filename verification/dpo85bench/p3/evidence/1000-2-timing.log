@@ -1,0 +1,29 @@
+{"level":"info","time":"2026-10-29T23:13:14Z","message":"honoring GOMAXPROCS=\"2\" as set in environment"}
+
+██████╗  █████╗ ███╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██████╗ 
+██╔══██╗██╔══██╗████╗  ██║╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔══██╗
+██████╔╝███████║██╔██╗ ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ██║██████╔╝
+██╔══██╗██╔══██║██║╚██╗██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗
+██████╔╝██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═════╝ 
+P3_FIXTURE base=2026-10-29T22:00:00Z names=1000 selected=8
+P3_REQUEST arm=IN sha256=3af03f8a5be68093242dd3ac78e058d53c70b4249d4578d68073a968dce55b0f want=8
+goos: linux
+goarch: amd64
+pkg: github.com/apache/skywalking-banyandb/verification/dpo85bench/p3
+cpu: AMD EPYC 7B13
+BenchmarkPatternsRPC/names_1000/IN-2         	     100	    568749 ns/op	    736710 cpu-ns/op	        16.00 native-rows/op	   1705272 peak-tracked-B	  129360 B/op	    1220 allocs/op
+P3_REQUEST arm=LIKE_no_match sha256=f3061a8bc074ba774a99fc417e21311dc97ed6cd711e3f9cba3a11c59a0fadab want=0
+BenchmarkPatternsRPC/names_1000/LIKE_no_match-2         	     100	   4152441 ns/op	   5231550 cpu-ns/op	         0 native-rows/op	   1093964 peak-tracked-B	  993922 B/op	   19387 allocs/op
+P3_REQUEST arm=ILIKE_no_match sha256=9939747771133a8876922ed3d6d29ef35527dcb94ea92807f256e533966dcf14 want=0
+BenchmarkPatternsRPC/names_1000/ILIKE_no_match-2        	     100	   4659664 ns/op	   5768690 cpu-ns/op	         0 native-rows/op	   1093964 peak-tracked-B	  992655 B/op	   19371 allocs/op
+P3_REQUEST arm=IN_no_match sha256=abd051b6e30e4fdfb0ae3e41d3d37f1d8d4ee5d38207326fd050396a8d797ad4 want=0
+BenchmarkPatternsRPC/names_1000/IN_no_match-2           	     100	    305799 ns/op	    434400 cpu-ns/op	         0 native-rows/op	     14880 peak-tracked-B	   35745 B/op	     563 allocs/op
+P3_REQUEST arm=exact_control sha256=76ce5a708d606d340754212ee880b72d78cffc96362d939709491d6e4173274a want=1
+BenchmarkPatternsRPC/names_1000/exact_control-2         	     100	    360639 ns/op	    554040 cpu-ns/op	         2.000 native-rows/op	   1232542 peak-tracked-B	   98045 B/op	     711 allocs/op
+P3_REQUEST arm=LIKE sha256=04bdca4570b05f96bea88bb57b90034b3b0e9bf58199e94afff3dc8da295d02c want=8
+BenchmarkPatternsRPC/names_1000/LIKE-2                  	     100	   4289384 ns/op	   5294580 cpu-ns/op	        16.00 native-rows/op	   2785056 peak-tracked-B	 1075490 B/op	   19841 allocs/op
+P3_REQUEST arm=ILIKE sha256=c60a988ca89c92908574834afb1c83a98482f8c13ad9c684437e23f65a03a8ae want=8
+BenchmarkPatternsRPC/names_1000/ILIKE-2                 	     100	   4350634 ns/op	   5523490 cpu-ns/op	        16.00 native-rows/op	   2785056 peak-tracked-B	 1075226 B/op	   19843 allocs/op
+PASS
+P3_CGROUP_PEAK 26058752

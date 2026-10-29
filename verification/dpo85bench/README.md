@@ -1,5 +1,10 @@
 # Indexed LIKE/ILIKE query benchmark
 
+The [P3 current-source campaign](p3/results.md) measures the later integrated
+source separately, with fresh RPC timings, isolated memory probes and current
+standalone/distributed correctness checks. The original results below remain
+historical evidence.
+
 This focused harness runs real standalone BydbQL RPCs against 1,000 or 10,000
 whole-value indexed names, with two timestamps per name. Exactly eight names
 match both the LIKE and ILIKE predicates. A no-match pair exercises dictionary

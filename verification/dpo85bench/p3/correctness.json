@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-29T23:11:26.205414+00:00",
+  "revision": "5e78df39d0ca171aa61b97dbb4383dab32c434e6",
+  "go": "go version go1.26.10 linux/amd64",
+  "image_id": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877",
+  "filter": "measure-ql && QL-patterns",
+  "build_tags": "querymetrics",
+  "fixture_suite_sha256": "6ff28f2b263c6172f0aae9b2d797060ad42e4bf9e06c4d7c9be7430bcd4a7ef9",
+  "runs": {
+    "standalone": {
+      "suite_succeeded": true,
+      "specs": 34,
+      "states": {
+        "passed": 34
+      },
+      "summary": [
+        "Pattern generated: completed_specs=34 registered_specs=34 verification_rpcs=246 fixture=a1f3342de28c28746fe6a1904dfb9c39a96f05e3edddac57a0ff4933f4e20258"
+      ],
+      "binary_sha256": "cf439aafaf61b25bd211a046044ad0834fa1eecd5e0d183d52a0c05dba2d0dc8",
+      "report_sha256": "a15568a79af83b80f5319784af4b44b147a8c5c818bf9f44c1b073cb332cadb9",
+      "cpus": 2,
+      "memory_gib": 4,
+      "extra_swap": 0
+    },
+    "distributed": {
+      "suite_succeeded": true,
+      "specs": 34,
+      "states": {
+        "passed": 34
+      },
+      "summary": [
+        "Pattern generated: completed_specs=34 registered_specs=34 verification_rpcs=246 fixture=a1f3342de28c28746fe6a1904dfb9c39a96f05e3edddac57a0ff4933f4e20258"
+      ],
+      "binary_sha256": "ad2c98d05b4ec6ab6a430a6f8bd1d9262b7a1f79802fcb2d2be7acfe34b0b968",
+      "report_sha256": "1f5b2946a8020234a474a50ff510d2f161b2788397c2642a51cb87537e848c33",
+      "cpus": 4,
+      "memory_gib": 8,
+      "extra_swap": 0
+    }
+  },
+  "focused_checks": [
+    "go test ./test/cases/measure/qlgen ./pkg/bydbql -run 'Pattern|Like|LIKE' -count=1",
+    "go test -p 4 -tags=querymetrics ./pkg/index/native -run 'Wildcard|Pattern' -count=1"
+  ],
+  "focused_checks_status": "passed"
+}

@@ -1,0 +1,842 @@
+[
+  {
+    "arm": "LIKE",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 30,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 30,
+      "LiveResults": 0,
+      "NativeLeafCalls": 30,
+      "NativeInputRows": 2352,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 28,
+      "Misses": 2,
+      "Compiles": 2,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 2,
+      "EntryBytes": 10105,
+      "RetainedBytes": 10105,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6356920,
+    "heap_before_gc_bytes": 6275616,
+    "heap_delta_bytes": 81304,
+    "mallocs_delta": 403404,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 2785056,
+      "LeaseChargedBytes": 101819008
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 46051388
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 26786976,
+    "names": 1000
+  },
+  {
+    "arm": "ILIKE",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 52,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 52,
+      "LiveResults": 0,
+      "NativeLeafCalls": 52,
+      "NativeInputRows": 2704,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 49,
+      "Misses": 3,
+      "Compiles": 3,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 3,
+      "EntryBytes": 16287,
+      "RetainedBytes": 16287,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6311160,
+    "heap_before_gc_bytes": 6316472,
+    "heap_delta_bytes": -5312,
+    "mallocs_delta": 402184,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 2785056,
+      "LeaseChargedBytes": 163163390
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 107395770
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 26714360,
+    "names": 1000
+  },
+  {
+    "arm": "IN",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 74,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 74,
+      "LiveResults": 0,
+      "NativeLeafCalls": 74,
+      "NativeInputRows": 3056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 70,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6384640,
+    "heap_before_gc_bytes": 6292456,
+    "heap_delta_bytes": 92184,
+    "mallocs_delta": 29566,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1705272,
+      "LeaseChargedBytes": 200738796
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 166579336
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 7787968,
+    "names": 1000
+  },
+  {
+    "arm": "LIKE_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 96,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 96,
+      "LiveResults": 0,
+      "NativeLeafCalls": 96,
+      "NativeInputRows": 3056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 92,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6177824,
+    "heap_before_gc_bytes": 6231432,
+    "heap_delta_bytes": -53608,
+    "mallocs_delta": 392436,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1093964,
+      "LeaseChargedBytes": 225194546
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 202962046
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 24923680,
+    "names": 1000
+  },
+  {
+    "arm": "ILIKE_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 118,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 118,
+      "LiveResults": 0,
+      "NativeLeafCalls": 118,
+      "NativeInputRows": 3056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 114,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6212152,
+    "heap_before_gc_bytes": 6231480,
+    "heap_delta_bytes": -19328,
+    "mallocs_delta": 392404,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1093964,
+      "LeaseChargedBytes": 249650296
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 227417796
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 24891920,
+    "names": 1000
+  },
+  {
+    "arm": "IN_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 140,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 140,
+      "LiveResults": 0,
+      "NativeLeafCalls": 140,
+      "NativeInputRows": 3056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 136,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6132632,
+    "heap_before_gc_bytes": 6209248,
+    "heap_delta_bytes": -76616,
+    "mallocs_delta": 16238,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 14880,
+      "LeaseChargedBytes": 250062774
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 249687794
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 5851760,
+    "names": 1000
+  },
+  {
+    "arm": "exact_control",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 162,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 162,
+      "LiveResults": 0,
+      "NativeLeafCalls": 162,
+      "NativeInputRows": 3100,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 157,
+      "Misses": 5,
+      "Compiles": 5,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 5,
+      "EntryBytes": 24126,
+      "RetainedBytes": 24126,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 6364760,
+    "heap_before_gc_bytes": 6270312,
+    "heap_delta_bytes": 94448,
+    "mallocs_delta": 19416,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1232542,
+      "LeaseChargedBytes": 277243444
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 252533744
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 7235488,
+    "names": 1000
+  },
+  {
+    "arm": "LIKE",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 101,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 101,
+      "LiveResults": 0,
+      "NativeLeafCalls": 101,
+      "NativeInputRows": 20352,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 99,
+      "Misses": 2,
+      "Compiles": 2,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 2,
+      "EntryBytes": 10105,
+      "RetainedBytes": 10105,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29427680,
+    "heap_before_gc_bytes": 29448152,
+    "heap_delta_bytes": -20472,
+    "mallocs_delta": 3324382,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 11999277,
+      "LeaseChargedBytes": 668021649
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 427969609
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 166573712,
+    "names": 10000
+  },
+  {
+    "arm": "ILIKE",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 123,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 123,
+      "LiveResults": 0,
+      "NativeLeafCalls": 123,
+      "NativeInputRows": 20704,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 120,
+      "Misses": 3,
+      "Compiles": 3,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 3,
+      "EntryBytes": 16287,
+      "RetainedBytes": 16287,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29587600,
+    "heap_before_gc_bytes": 29504080,
+    "heap_delta_bytes": 83520,
+    "mallocs_delta": 3324016,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 11999277,
+      "LeaseChargedBytes": 932078893
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 692026853
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 166473832,
+    "names": 10000
+  },
+  {
+    "arm": "IN",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 145,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 145,
+      "LiveResults": 0,
+      "NativeLeafCalls": 145,
+      "NativeInputRows": 21056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 141,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29593384,
+    "heap_before_gc_bytes": 29509304,
+    "heap_delta_bytes": 84080,
+    "mallocs_delta": 33064,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1713988,
+      "LeaseChargedBytes": 969846051
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 935512271
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 8032624,
+    "names": 10000
+  },
+  {
+    "arm": "LIKE_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 167,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 167,
+      "LiveResults": 0,
+      "NativeLeafCalls": 167,
+      "NativeInputRows": 21056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 163,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29404528,
+    "heap_before_gc_bytes": 29421056,
+    "heap_delta_bytes": -16528,
+    "mallocs_delta": 3319357,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 10308185,
+      "LeaseChargedBytes": 1197014663
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 990497743
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 164993496,
+    "names": 10000
+  },
+  {
+    "arm": "ILIKE_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 189,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 189,
+      "LiveResults": 0,
+      "NativeLeafCalls": 189,
+      "NativeInputRows": 21056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 185,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29362984,
+    "heap_before_gc_bytes": 29401312,
+    "heap_delta_bytes": -38328,
+    "mallocs_delta": 3343732,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 10308185,
+      "LeaseChargedBytes": 1424183275
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 1217666355
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 165419104,
+    "names": 10000
+  },
+  {
+    "arm": "IN_no_match",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 211,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 211,
+      "LiveResults": 0,
+      "NativeLeafCalls": 211,
+      "NativeInputRows": 21056,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 207,
+      "Misses": 4,
+      "Compiles": 4,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 4,
+      "EntryBytes": 20231,
+      "RetainedBytes": 20231,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29354672,
+    "heap_before_gc_bytes": 29343608,
+    "heap_delta_bytes": 11064,
+    "mallocs_delta": 19273,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 14880,
+      "LeaseChargedBytes": 1424595753
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 1424220773
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 6263592,
+    "names": 10000
+  },
+  {
+    "arm": "exact_control",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 233,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 233,
+      "LiveResults": 0,
+      "NativeLeafCalls": 233,
+      "NativeInputRows": 21100,
+      "NativeFrameRows": 0
+    },
+    "cache": {
+      "Hits": 228,
+      "Misses": 5,
+      "Compiles": 5,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 5,
+      "EntryBytes": 24126,
+      "RetainedBytes": 24126,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 29522040,
+    "heap_before_gc_bytes": 29404040,
+    "heap_delta_bytes": 118000,
+    "mallocs_delta": 22341,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 1232554,
+      "LeaseChargedBytes": 1451776687
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 1427066747
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 2
+    },
+    "total_alloc_delta_bytes": 7567088,
+    "names": 10000
+  }
+]

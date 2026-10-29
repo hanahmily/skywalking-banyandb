@@ -69,6 +69,12 @@ substitute for the package and real RPC tests above. Local commands use
 
 ## Benchmark evidence
 
+The subsequent [P3 LIKE/ILIKE campaign](../../../../verification/dpo85bench/p3/results.md)
+records fresh standalone RPC timings and isolated memory observations on revision
+`5e78df39d`, plus 34 pattern scenarios / 246 verification RPCs passing in each
+topology. It measures the declared 1,000/10,000-name fixtures on that revision;
+it does not replace the historical comparisons below or establish a speedup.
+
 The included [aggregate composition](../../../../verification/qg2bench/README.md),
 [bounded decimal](../../../../verification/qg3bench/README.md) and
 [shared wildcard](../../../../verification/dpo85bench/wildcard-reuse/README.md)
