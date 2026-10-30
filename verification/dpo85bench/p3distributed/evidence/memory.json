@@ -1,0 +1,179 @@
+[
+  {
+    "arm": "LIKE",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 102,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 102,
+      "LiveResults": 0,
+      "NativeLeafCalls": 204,
+      "NativeInputRows": 20368,
+      "NativeFrameRows": 20368
+    },
+    "cache": {
+      "Hits": 99,
+      "Misses": 3,
+      "Compiles": 3,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 3,
+      "EntryBytes": 16365,
+      "RetainedBytes": 16365,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 34301584,
+    "heap_before_gc_bytes": 34015624,
+    "heap_delta_bytes": 285960,
+    "mallocs_delta": 3453001,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 65729504,
+      "LeaseChargedBytes": 5258759394
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 4230751814
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 8
+    },
+    "total_alloc_delta_bytes": 191473736
+  },
+  {
+    "arm": "exact_control",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 125,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 125,
+      "LiveResults": 0,
+      "NativeLeafCalls": 250,
+      "NativeInputRows": 20414,
+      "NativeFrameRows": 20414
+    },
+    "cache": {
+      "Hits": 120,
+      "Misses": 5,
+      "Compiles": 5,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 5,
+      "EntryBytes": 24236,
+      "RetainedBytes": 24236,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 33801344,
+    "heap_before_gc_bytes": 33595472,
+    "heap_delta_bytes": 205872,
+    "mallocs_delta": 44047,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 51832363,
+      "LeaseChargedBytes": 6440526109
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 5412908249
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 8
+    },
+    "total_alloc_delta_bytes": 8794144
+  },
+  {
+    "arm": "LIKE_computed_sum",
+    "batch": {
+      "NativeBatchExecutions": 0,
+      "QLBatchExecutions": 148,
+      "IntermediateDataPoints": 0,
+      "FinalDataPoints": 148,
+      "LiveResults": 0,
+      "NativeLeafCalls": 296,
+      "NativeInputRows": 20782,
+      "NativeFrameRows": 20782
+    },
+    "cache": {
+      "Hits": 141,
+      "Misses": 7,
+      "Compiles": 7,
+      "Stale": 0,
+      "Bypass": 0,
+      "Oversize": 0,
+      "Coalesced": 0,
+      "Errors": 0,
+      "Evictions": 0,
+      "CanceledCompiles": 0,
+      "Entries": 7,
+      "EntryBytes": 41271,
+      "RetainedBytes": 41271,
+      "RetiredBytes": 0,
+      "InFlight": 0,
+      "CompileReservedBytes": 0,
+      "Waiters": 0,
+      "UncachedBytes": 0
+    },
+    "heap_after_gc_bytes": 34300584,
+    "heap_before_gc_bytes": 33980328,
+    "heap_delta_bytes": 320256,
+    "mallocs_delta": 3453612,
+    "memory_after": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 65728210,
+      "LeaseChargedBytes": 7623488768
+    },
+    "memory_before": {
+      "LiveReservedBytes": 0,
+      "PeakReservedBytes": 0,
+      "LeaseChargedBytes": 6594834028
+    },
+    "owner_pins": 0,
+    "quiet_ms": 20,
+    "requests": 20,
+    "scan": {
+      "CursorRefs": 0,
+      "OwnerPins": 0,
+      "QueryResults": 0,
+      "ReservedBytes": 0,
+      "DecodeTasks": 0,
+      "DecodeWorkers": 8
+    },
+    "total_alloc_delta_bytes": 191072504
+  }
+]

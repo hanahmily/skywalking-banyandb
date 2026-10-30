@@ -1,0 +1,101 @@
+[
+  {
+    "process": "round-0",
+    "arm": "LIKE",
+    "requests": 30,
+    "ns/op": 15078434.0,
+    "cpu-ns/op": 33368900.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65729430.0,
+    "B/op": 9287642.0,
+    "allocs/op": 172387.0
+  },
+  {
+    "process": "round-0",
+    "arm": "exact_control",
+    "requests": 30,
+    "ns/op": 671164.0,
+    "cpu-ns/op": 1650900.0,
+    "native-rows/op": 2.0,
+    "peak-tracked-B": 51832363.0,
+    "B/op": 183133.0,
+    "allocs/op": 1944.0
+  },
+  {
+    "process": "round-0",
+    "arm": "LIKE_computed_sum",
+    "requests": 30,
+    "ns/op": 15478498.0,
+    "cpu-ns/op": 33096633.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65728136.0,
+    "B/op": 9226820.0,
+    "allocs/op": 172401.0
+  },
+  {
+    "process": "round-1",
+    "arm": "LIKE",
+    "requests": 30,
+    "ns/op": 14737757.0,
+    "cpu-ns/op": 32422433.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65729430.0,
+    "B/op": 9303089.0,
+    "allocs/op": 172377.0
+  },
+  {
+    "process": "round-1",
+    "arm": "exact_control",
+    "requests": 30,
+    "ns/op": 721819.0,
+    "cpu-ns/op": 1740300.0,
+    "native-rows/op": 2.0,
+    "peak-tracked-B": 51833275.0,
+    "B/op": 182476.0,
+    "allocs/op": 1943.0
+  },
+  {
+    "process": "round-1",
+    "arm": "LIKE_computed_sum",
+    "requests": 30,
+    "ns/op": 15235112.0,
+    "cpu-ns/op": 33485300.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65728136.0,
+    "B/op": 9252100.0,
+    "allocs/op": 172402.0
+  },
+  {
+    "process": "round-2",
+    "arm": "LIKE",
+    "requests": 30,
+    "ns/op": 14744634.0,
+    "cpu-ns/op": 32345133.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65729430.0,
+    "B/op": 9275330.0,
+    "allocs/op": 172372.0
+  },
+  {
+    "process": "round-2",
+    "arm": "exact_control",
+    "requests": 30,
+    "ns/op": 643895.0,
+    "cpu-ns/op": 1609933.0,
+    "native-rows/op": 2.0,
+    "peak-tracked-B": 51832363.0,
+    "B/op": 183604.0,
+    "allocs/op": 1943.0
+  },
+  {
+    "process": "round-2",
+    "arm": "LIKE_computed_sum",
+    "requests": 30,
+    "ns/op": 15507541.0,
+    "cpu-ns/op": 34089900.0,
+    "native-rows/op": 16.0,
+    "peak-tracked-B": 65728136.0,
+    "B/op": 9236066.0,
+    "allocs/op": 172404.0
+  }
+]

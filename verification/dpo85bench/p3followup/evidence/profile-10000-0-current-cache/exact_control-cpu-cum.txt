@@ -1,0 +1,38 @@
+File: current.test
+Build ID: d1982678fbd27c67185fd2812b8a31ebf68fbff2
+Type: cpu
+Time: 2026-10-30 01:16:07 UTC
+Duration: 30.05ms, Total samples = 50ms (166.38%)
+Showing nodes accounting for 40ms, 80.00% of 50ms total
+Showing top 30 nodes out of 59
+      flat  flat%   sum%        cum   cum%
+      40ms 80.00% 80.00%       40ms 80.00%  internal/runtime/syscall/linux.Syscall6
+         0     0% 80.00%       40ms 80.00%  syscall.RawSyscall6
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).CollectGarbage
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).runMaintenance
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithRecovery
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/run.launchTask.func1
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered
+         0     0% 80.00%       30ms 60.00%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered.func1
+         0     0% 80.00%       30ms 60.00%  os.ignoringEINTR (inline)
+         0     0% 80.00%       30ms 60.00%  syscall.Syscall6
+         0     0% 80.00%       20ms 40.00%  syscall.fstatat
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.queryAdmissionStatsHandler.TagRPC
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/fs.(*LocalFile).Size
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).Lstat
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).ReadDirLimit
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata.func1
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.openStrictWith
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.parseSnapshotSegments
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/native.(*FileRootLease).Validate
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).validateLease
+         0     0% 80.00%       10ms 20.00%  github.com/apache/skywalking-banyandb/pkg/query.NewTransportScope (inline)
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc.(*Server).handleStream
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc/internal/transport.(*bufWriter).Flush
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc/internal/transport.(*bufWriter).flushKeepBuffer
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc/internal/transport.(*loopyWriter).run
+         0     0% 80.00%       10ms 20.00%  google.golang.org/grpc/internal/transport.NewServerTransport.func3
+         0     0% 80.00%       10ms 20.00%  internal/poll.(*FD).Write
+         0     0% 80.00%       10ms 20.00%  internal/poll.ignoringEINTRIO (inline)

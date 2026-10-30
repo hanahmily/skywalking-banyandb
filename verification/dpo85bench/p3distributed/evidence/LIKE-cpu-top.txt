@@ -1,0 +1,39 @@
+File: bench.test
+Build ID: 1f022de4ad4e5d44e8143db01be0d14bb1f233a1
+Type: cpu
+Time: 2026-10-30 01:15:12 UTC
+Duration: 1.60s, Total samples = 3.71s (232.54%)
+Showing nodes accounting for 2.40s, 64.69% of 3.71s total
+Dropped 190 nodes (cum <= 0.02s)
+Showing top 30 nodes out of 322
+      flat  flat%   sum%        cum   cum%
+     0.26s  7.01%  7.01%      0.26s  7.01%  internal/runtime/syscall/linux.Syscall6
+     0.21s  5.66% 12.67%      0.21s  5.66%  indexbytebody
+     0.19s  5.12% 17.79%      0.19s  5.12%  github.com/RoaringBitmap/roaring.union2by2
+     0.19s  5.12% 22.91%      0.55s 14.82%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).node
+     0.14s  3.77% 26.68%      0.14s  3.77%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).bytes
+     0.13s  3.50% 30.19%      0.20s  5.39%  runtime.tryDeferToSpanScan
+     0.12s  3.23% 33.42%      0.12s  3.23%  runtime.memclrNoHeapPointers
+     0.11s  2.96% 36.39%      0.11s  2.96%  sync/atomic.(*Int64).Load (inline)
+     0.09s  2.43% 38.81%      0.20s  5.39%  runtime.scanObjectsSmall
+     0.08s  2.16% 40.97%      0.20s  5.39%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).byteAt (inline)
+     0.07s  1.89% 42.86%      0.22s  5.93%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).next
+     0.06s  1.62% 44.47%      0.06s  1.62%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.packedUint (inline)
+     0.06s  1.62% 46.09%      0.06s  1.62%  runtime.(*mspan).writeHeapBitsSmall
+     0.06s  1.62% 47.71%      0.30s  8.09%  runtime.mallocgcSmallScanNoHeader
+     0.06s  1.62% 49.33%      0.06s  1.62%  runtime.nextFreeFast (inline)
+     0.05s  1.35% 50.67%      0.08s  2.16%  github.com/apache/skywalking-banyandb/pkg/filter.(*BloomFilter).MightContain
+     0.05s  1.35% 52.02%      0.11s  2.96%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).node.func2 (inline)
+     0.05s  1.35% 53.37%      0.19s  5.12%  github.com/apache/skywalking-banyandb/pkg/query.ReserveAllocation
+     0.05s  1.35% 54.72%      0.19s  5.12%  runtime.growslice
+     0.04s  1.08% 55.80%      0.14s  3.77%  github.com/RoaringBitmap/roaring.(*roaringArray).insertNewKeyValueAt (inline)
+     0.04s  1.08% 56.87%      0.12s  3.23%  github.com/apache/skywalking-banyandb/pkg/query.ReserveAllocationOnce
+     0.04s  1.08% 57.95%      0.04s  1.08%  runtime.efaceeq
+     0.04s  1.08% 59.03%      0.04s  1.08%  runtime.spanClass.sizeclass (inline)
+     0.03s  0.81% 59.84%      0.03s  0.81%  aeshashbody
+     0.03s  0.81% 60.65%      0.03s  0.81%  encoding/binary.Uvarint (inline)
+     0.03s  0.81% 61.46%      0.25s  6.74%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).decodeDocumentIntoContext
+     0.03s  0.81% 62.26%      0.03s  0.81%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).documentOffset
+     0.03s  0.81% 63.07%      1.88s 50.67%  github.com/apache/skywalking-banyandb/pkg/index/native.dictionaryMatchCandidates
+     0.03s  0.81% 63.88%      0.58s 15.63%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+     0.03s  0.81% 64.69%      0.03s  0.81%  github.com/cespare/xxhash/v2.Sum64

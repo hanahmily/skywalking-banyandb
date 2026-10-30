@@ -5,6 +5,10 @@ source separately, with fresh RPC timings, isolated memory probes and current
 standalone/distributed correctness checks. The original results below remain
 historical evidence.
 
+Its [standalone follow-up](p3followup/results.md) and
+[partitioned two-worker replay](p3distributed/results.md) address the remaining
+default-policy, unchanged-query comparison, cache and attribution checks.
+
 This focused harness runs real standalone BydbQL RPCs against 1,000 or 10,000
 whole-value indexed names, with two timestamps per name. Exactly eight names
 match both the LIKE and ILIKE predicates. A no-match pair exercises dictionary

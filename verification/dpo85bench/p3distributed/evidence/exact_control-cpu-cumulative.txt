@@ -1,0 +1,48 @@
+File: bench.test
+Build ID: 1f022de4ad4e5d44e8143db01be0d14bb1f233a1
+Type: cpu
+Time: 2026-10-30 01:15:14 UTC
+Duration: 68.69ms, Total samples = 180ms (262.04%)
+Showing nodes accounting for 50ms, 27.78% of 180ms total
+Showing top 40 nodes out of 149
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%       50ms 27.78%  google.golang.org/grpc.(*Server).handleStream
+         0     0%     0%       50ms 27.78%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+      50ms 27.78% 27.78%       50ms 27.78%  internal/runtime/syscall/linux.Syscall6
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.openStrictWith
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).CollectGarbage
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).runMaintenance
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithRecovery
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/run.launchTask.func1
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered
+         0     0% 27.78%       40ms 22.22%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered.func1
+         0     0% 27.78%       40ms 22.22%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0% 27.78%       40ms 22.22%  google.golang.org/grpc/internal/transport.(*loopyWriter).run
+         0     0% 27.78%       30ms 16.67%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0% 27.78%       30ms 16.67%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0% 27.78%       30ms 16.67%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0% 27.78%       30ms 16.67%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0% 27.78%       30ms 16.67%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0% 27.78%       30ms 16.67%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0% 27.78%       30ms 16.67%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0% 27.78%       30ms 16.67%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0% 27.78%       30ms 16.67%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1
+         0     0% 27.78%       30ms 16.67%  google.golang.org/grpc/internal/transport.NewServerTransport.func3
+         0     0% 27.78%       30ms 16.67%  runtime.mcall
+         0     0% 27.78%       30ms 16.67%  runtime.park_m
+         0     0% 27.78%       30ms 16.67%  runtime.schedule
+         0     0% 27.78%       30ms 16.67%  syscall.RawSyscall6
+         0     0% 27.78%       30ms 16.67%  syscall.Syscall
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).planQueryWithCache
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).Bind
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).ReadDirLimit
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata.func1
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.committedSnapshots
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.openSegmentFile
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.parseSnapshotSegments
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.pinSegment
+         0     0% 27.78%       20ms 11.11%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.readDirectoryEntries
+         0     0% 27.78%       20ms 11.11%  golang.org/x/net/http2.(*Framer).ReadFrameHeader
+         0     0% 27.78%       20ms 11.11%  golang.org/x/net/http2.readFrameHeader
+         0     0% 27.78%       20ms 11.11%  google.golang.org/grpc.(*Server).handleRawConn.func1

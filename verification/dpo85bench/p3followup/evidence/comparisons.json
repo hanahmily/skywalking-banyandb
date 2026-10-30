@@ -1,0 +1,82 @@
+{
+  "base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.00228,
+    "p50_geomean_ratio": 0.9928490419009354,
+    "delta_ms_percentile_90_interval": [
+      -0.015590399999999999,
+      0.0106784
+    ],
+    "ratio_percentile_90_interval": [
+      0.9506253605463244,
+      1.0352524958364895
+    ],
+    "paired_p50_delta_ms": [
+      -0.030741,
+      0.004171,
+      0.01619,
+      -0.01545,
+      0.01443
+    ],
+    "paired_p50_ratios": [
+      0.9069272457537315,
+      1.01191207171804,
+      1.0568608857514137,
+      0.9488969007376046,
+      1.04824796041193
+    ],
+    "allocated_bytes_mean_paired_delta": 578.6720000000001,
+    "allocated_bytes_geomean_ratio": 1.0053445652898165,
+    "paired_allocated_bytes_deltas": [
+      1249.8399999999965,
+      573.679999999993,
+      227.75999999999476,
+      1302.4000000000087,
+      -460.31999999999243
+    ],
+    "cpu_ms_mean_paired_delta": -0.024412,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "cached_to_bypass": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.043822,
+    "p50_geomean_ratio": 1.141286549249689,
+    "delta_ms_percentile_90_interval": [
+      0.038168,
+      0.048972
+    ],
+    "ratio_percentile_90_interval": [
+      1.121612655655096,
+      1.1595030281541914
+    ],
+    "paired_p50_delta_ms": [
+      0.04704,
+      0.05194,
+      0.04942,
+      0.03602,
+      0.03469
+    ],
+    "paired_p50_ratios": [
+      1.1524500907441015,
+      1.1702727511146078,
+      1.1612187642721994,
+      1.1135131728223875,
+      1.1103371501272266
+    ],
+    "allocated_bytes_mean_paired_delta": 21950.8,
+    "allocated_bytes_geomean_ratio": 1.2238041715438936,
+    "paired_allocated_bytes_deltas": [
+      19838.320000000007,
+      21604.319999999992,
+      24018.880000000005,
+      20864.0,
+      23428.479999999996
+    ],
+    "cpu_ms_mean_paired_delta": 0.045808,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "dictionary_visits": null,
+  "expanded_terms": null,
+  "automaton_live_bytes": null,
+  "binding_cpu_ns": null,
+  "binding_allocations": null,
+  "owner_peak_reservations": {
+    "source_batches": null,
+    "distinct_state": null,
+    "expression_scratch": null,
+    "output": null,
+    "transport": null
+  },
+  "explanation": "RPC counters do not expose these quantities. Process CPU/allocations/GC and aggregate peak reservation are recorded. Sampled CPU/alloc profiles attribute call paths but do not measure individual owner live peaks or exact dictionary visit/term counts."
+}

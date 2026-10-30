@@ -1,0 +1,39 @@
+File: current.test
+Build ID: d1982678fbd27c67185fd2812b8a31ebf68fbff2
+Type: cpu
+Time: 2026-10-30 01:16:00 UTC
+Duration: 3.22s, Total samples = 3520ms (109.30%)
+Showing nodes accounting for 40ms, 1.14% of 3520ms total
+Dropped 190 nodes (cum <= 17.60ms)
+Showing top 30 nodes out of 204
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     3210ms 91.19%  google.golang.org/grpc.(*Server).handleStream
+         0     0%     0%     3210ms 91.19%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0%     0%     3200ms 90.91%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0%     0%     3200ms 90.91%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0%     0%     3200ms 90.91%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0%     0%     3200ms 90.91%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0%     0%     3200ms 90.91%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0%     0%     3200ms 90.91%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0%     0%     3200ms 90.91%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0%     0%     3200ms 90.91%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0%     0%     3200ms 90.91%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0%     0%     3200ms 90.91%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1
+         0     0%     0%     3190ms 90.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0%     0%     3190ms 90.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+         0     0%     0%     3190ms 90.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).Query
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).Rev
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).executeBatchQuery
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasureBatches
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/banyand/queue.(*local).Publish
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/pkg/bus.(*Bus).Publish
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.DispatchSeriesBatches
+         0     0%     0%     3180ms 90.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches
+         0     0%     0%     3170ms 90.06%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0%     0%     3170ms 90.06%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0%     0%     3170ms 90.06%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchSeriesList
+         0     0%     0%     3020ms 85.80%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse
+         0     0%     0%     3020ms 85.80%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).MatchTermsSet
+         0     0%     0%     2520ms 71.59%  github.com/apache/skywalking-banyandb/pkg/index/native.exactCandidates
+      40ms  1.14%  1.14%     2370ms 67.33%  github.com/apache/skywalking-banyandb/pkg/index/native.dictionaryMatchCandidates

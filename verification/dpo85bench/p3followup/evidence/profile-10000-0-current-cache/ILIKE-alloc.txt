@@ -1,0 +1,38 @@
+File: current.test
+Build ID: d1982678fbd27c67185fd2812b8a31ebf68fbff2
+Type: alloc_space
+Time: 2026-10-30 01:16:04 UTC
+Showing nodes accounting for 742.99MB, 96.40% of 770.77MB total
+Dropped 152 nodes (cum <= 3.85MB)
+Showing top 30 nodes out of 97
+      flat  flat%   sum%        cum   cum%
+  157.94MB 20.49% 20.49%   364.95MB 47.35%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+  131.85MB 17.11% 37.60%   131.85MB 17.11%  github.com/apache/skywalking-banyandb/pkg/index/native.appendQueryHits
+  111.51MB 14.47% 52.07%   111.51MB 14.47%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).decodeDocumentIntoContext
+   75.51MB  9.80% 61.86%    75.51MB  9.80%  github.com/RoaringBitmap/roaring.NewBitmap (inline)
+   69.01MB  8.95% 70.81%    77.51MB 10.06%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).filterHits
+      48MB  6.23% 77.04%    75.50MB  9.80%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates.func1
+   27.50MB  3.57% 80.61%    27.50MB  3.57%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates.func1.1
+   25.50MB  3.31% 83.92%    26.50MB  3.44%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*DictionaryTermIterator).NextKey
+      24MB  3.11% 87.03%       24MB  3.11%  github.com/RoaringBitmap/roaring.(*roaringArray).insertNewKeyValueAt (inline)
+      20MB  2.59% 89.63%   207.01MB 26.86%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).visitDocument
+   16.50MB  2.14% 91.77%    16.50MB  2.14%  github.com/RoaringBitmap/roaring.newArrayContainer (inline)
+    9.50MB  1.23% 93.00%     9.50MB  1.23%  github.com/RoaringBitmap/roaring.(*arrayContainer).iaddReturnMinimized
+    8.50MB  1.10% 94.10%    11.50MB  1.49%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).push
+    8.01MB  1.04% 95.14%     8.01MB  1.04%  github.com/RoaringBitmap/roaring.(*arrayContainer).iorArray
+    4.07MB  0.53% 95.67%     4.07MB  0.53%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewStringColumn (inline)
+    2.50MB  0.32% 96.00%    13.50MB  1.75%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).next
+    1.58MB  0.21% 96.20%     4.13MB  0.54%  runtime/pprof.(*profileBuilder).emitLocation
+       1MB  0.13% 96.33%    15.50MB  2.01%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).pointTo
+    0.50MB 0.065% 96.40%       16MB  2.08%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedFST).search
+         0     0% 96.40%       50MB  6.49%  github.com/RoaringBitmap/roaring.(*Bitmap).AddMany
+         0     0% 96.40%     8.01MB  1.04%  github.com/RoaringBitmap/roaring.(*Bitmap).Or
+         0     0% 96.40%       50MB  6.49%  github.com/RoaringBitmap/roaring.(*Bitmap).addwithptr
+         0     0% 96.40%     8.01MB  1.04%  github.com/RoaringBitmap/roaring.(*arrayContainer).ior
+         0     0% 96.40%     8.01MB  1.04%  github.com/RoaringBitmap/roaring.(*roaringArray).getUnionedWritableContainer
+         0     0% 96.40%   125.51MB 16.28%  github.com/RoaringBitmap/roaring.BitmapOf (inline)
+         0     0% 96.40%   753.94MB 97.82%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0% 96.40%   753.94MB 97.82%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0% 96.40%   743.34MB 96.44%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0% 96.40%   743.34MB 96.44%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0% 96.40%   664.83MB 86.26%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse

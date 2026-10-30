@@ -1,0 +1,8 @@
+{
+  "reason": "Successful 1k qualification retained; orchestration could not read root-owned mode0600 observations. Safe chmod recovered data. Wrapper now chmods generated files readable after exit. No query, binary, source or fixture change; no successful run repeated.",
+  "old_runner_sha256": "b43cc8aa33598a2c6691ee4f3eb450ddb3b4efa5e600f1b67a36ab0fc23d3b69",
+  "new_runner_sha256": "b4a697fd4a84de9cb5de55d74dba24ab8699bd900a39c2eecb2f07ba504d8368",
+  "preserved_run": "qualify-1000-0-current-cache",
+  "final_runner_sha256": "e194b9e3785593f577a5b11aac400d200a2d21405825e306d30c8474ef2f3504",
+  "additional_change": "Checksum-validated prerequisite resume and timing prerequisites for qualification, single-query memory and profiles. No source/binary or fixture change and no successful measurements rerun."
+}

@@ -1,5 +1,12 @@
 # P3 current-source LIKE/ILIKE verification
 
+This report covers the initial current-source campaign, not the entire P3
+investigation. The [standalone follow-up](../p3followup/results.md) adds
+default-policy qualification, the unchanged-query base/head comparison,
+changed-binding cache checks and profiles. The [two-worker replay](../p3distributed/results.md)
+covers partitioned worker contributions and composed aggregation. The original
+observations below remain unchanged.
+
 The current-source campaign passed: 42 retained process/arm timing samples
 (4,200 result-verified timed RPCs), 14 isolated memory observations (280 additional
 result-verified RPCs), and all expected native row counts. All six predetermined

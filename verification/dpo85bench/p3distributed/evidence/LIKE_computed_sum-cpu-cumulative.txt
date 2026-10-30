@@ -1,0 +1,49 @@
+File: bench.test
+Build ID: 1f022de4ad4e5d44e8143db01be0d14bb1f233a1
+Type: cpu
+Time: 2026-10-30 01:15:14 UTC
+Duration: 1.58s, Total samples = 3.75s (237.73%)
+Showing nodes accounting for 0.52s, 13.87% of 3.75s total
+Dropped 229 nodes (cum <= 0.02s)
+Showing top 40 nodes out of 313
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      2.98s 79.47%  google.golang.org/grpc.(*Server).handleStream
+         0     0%     0%      2.98s 79.47%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0%     0%      2.91s 77.60%  google.golang.org/grpc.(*Server).processStreamingRPC
+         0     0%     0%      2.90s 77.33%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.StreamServerInterceptor.func1
+         0     0%     0%      2.90s 77.33%  google.golang.org/grpc.NewServer.chainStreamServerInterceptors.chainStreamInterceptors.func2
+         0     0%     0%      2.90s 77.33%  google.golang.org/grpc.getChainStreamHandler.func1
+         0     0%     0%      2.87s 76.53%  github.com/apache/skywalking-banyandb/api/proto/banyandb/cluster/v1._Service_Send_Handler
+         0     0%     0%      2.87s 76.53%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).Send
+         0     0%     0%      2.87s 76.53%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).Serve.BreadcrumbStreamInterceptor.func8
+         0     0%     0%      2.87s 76.53%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).dispatchMessage
+         0     0%     0%      2.86s 76.27%  github.com/apache/skywalking-banyandb/banyand/query.(*measureInternalQueryProcessor).Rev
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).Query
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchSeriesList
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasure
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasureBatches
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/banyand/query.executeMeasurePlan
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.DispatchBatches
+         0     0%     0%      2.84s 75.73%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches
+         0     0%     0%      2.83s 75.47%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0%     0%      2.83s 75.47%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0%     0%      2.61s 69.60%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse
+         0     0%     0%      2.61s 69.60%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).MatchTermsSet
+         0     0%     0%      2.10s 56.00%  github.com/apache/skywalking-banyandb/pkg/index/native.exactCandidates
+     0.04s  1.07%  1.07%      1.93s 51.47%  github.com/apache/skywalking-banyandb/pkg/index/native.dictionaryMatchCandidates
+     0.01s  0.27%  1.33%      1.28s 34.13%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).TermPostingBitmapContext
+     0.01s  0.27%  1.60%      1.26s 33.60%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).termPostingBitmapContext
+     0.01s  0.27%  1.87%      0.84s 22.40%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.lookupTermPosting
+     0.01s  0.27%  2.13%      0.76s 20.27%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedFST).Get
+     0.08s  2.13%  4.27%      0.68s 18.13%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstLookup).get
+         0     0%  4.27%      0.61s 16.27%  runtime.systemstack
+     0.04s  1.07%  5.33%      0.59s 15.73%  runtime.mallocgc
+     0.01s  0.27%  5.60%      0.58s 15.47%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+     0.19s  5.07% 10.67%      0.51s 13.60%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).node
+         0     0% 10.67%      0.50s 13.33%  runtime.gcBgMarkWorker
+         0     0% 10.67%      0.50s 13.33%  runtime.gcBgMarkWorker.func2
+         0     0% 10.67%      0.50s 13.33%  runtime.gcDrain
+         0     0% 10.67%      0.38s 10.13%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).VisitDocumentContext
+         0     0% 10.67%      0.37s  9.87%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).visitDocument
+     0.03s   0.8% 11.47%      0.34s  9.07%  runtime.mallocgcSmallScanNoHeader
+     0.09s  2.40% 13.87%      0.28s  7.47%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).next

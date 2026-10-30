@@ -1,0 +1,16 @@
+{"level":"info","time":"2026-10-30T01:16:42Z","message":"honoring GOMAXPROCS=\"2\" as set in environment"}
+=== RUN   TestPatternsRPC
+
+██████╗  █████╗ ███╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██████╗ 
+██╔══██╗██╔══██╗████╗  ██║╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔══██╗
+██████╔╝███████║██╔██╗ ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ██║██████╔╝
+██╔══██╗██╔══██║██║╚██╗██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗
+██████╔╝██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═════╝ 
+[90m2026-10-30T01:16:42Z[0m | ERROR | [1mbanyand/liaison/grpc/measure.go:272[0m[36m >[0m [1mfailed to navigate to the write target[0m [36merror=[0m[31m[1m"finding the shard num by: group:\"patternbench\"  name:\"names\": the object doesn't exist"[0m[0m [36mmodule=[0mLIAISON-GRPC [36mwritten=[0m{"dataPoint":{"fields":[{"int":{"value":"1"}}],"tagFamilies":[{"tags":[{"str":{"value":"item-MaTcH-00000"}}]}],"timestamp":"2026-10-30T00:00:00Z"},"dataPointSpec":{"fieldNames":["value"],"tagFamilySpec":[{"name":"default","tagNames":["name"]}]},"messageId":"1","metadata":{"group":"patternbench","name":"names"}}
+[90m2026-10-30T01:16:42Z[0m | ERROR | [1mbanyand/liaison/grpc/measure.go:272[0m[36m >[0m [1mfailed to navigate to the write target[0m [36merror=[0m[31m[1m"finding the shard num by: group:\"patternbench\"  name:\"names\": the object doesn't exist"[0m[0m [36mmodule=[0mLIAISON-GRPC [36mwritten=[0m{"dataPoint":{"fields":[{"int":{"value":"1"}}],"tagFamilies":[{"tags":[{"str":{"value":"item-MaTcH-00000"}}]}],"timestamp":"2026-10-30T00:00:01Z"},"dataPointSpec":{"fieldNames":["value"],"tagFamilySpec":[{"name":"default","tagNames":["name"]}]},"messageId":"2"}
+[90m2026-10-30T01:16:42Z[0m | ERROR | [1mbanyand/liaison/grpc/measure.go:272[0m[36m >[0m [1mfailed to navigate to the write target[0m [36merror=[0m[31m[1m"finding the shard num by: group:\"patternbench\"  name:\"names\": the object doesn't exist"[0m[0m [36mmodule=[0mLIAISON-GRPC [36mwritten=[0m{"dataPoint":{"fields":[{"int":{"value":"1"}}],"tagFamilies":[{"tags":[{"str":{"value":"item-MaTcH-00001"}}]}],"timestamp":"2026-10-30T00:00:00Z"},"dataPointSpec":{"fieldNames":["value"],"tagFamilySpec":[{"name":"default","tagNames":["name"]}]},"messageId":"3"}
+[90m2026-10-30T01:16:42Z[0m | ERROR | [1mbanyand/liaison/grpc/measure.go:272[0m[36m >[0m [1mfailed to navigate to the write target[0m [36merror=[0m[31m[1m"finding the shard num by: group:\"patternbench\"  name:\"names\": the object doesn't exist"[0m[0m [36mmodule=[0mLIAISON-GRPC [36mwritten=[0m{"dataPoint":{"fields":[{"int":{"value":"1"}}],"tagFamilies":[{"tags":[{"str":{"value":"item-MaTcH-00001"}}]}],"timestamp":"2026-10-30T00:00:01Z"},"dataPointSpec":{"fieldNames":["value"],"tagFamilySpec":[{"name":"default","tagNames":["name"]}]},"messageId":"4"}
+P3_FIXTURE base=2026-10-30T00:00:00Z names=1000 selected=8
+--- PASS: TestPatternsRPC (3.05s)
+PASS

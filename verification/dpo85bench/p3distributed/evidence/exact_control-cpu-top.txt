@@ -1,0 +1,38 @@
+File: bench.test
+Build ID: 1f022de4ad4e5d44e8143db01be0d14bb1f233a1
+Type: cpu
+Time: 2026-10-30 01:15:14 UTC
+Duration: 68.69ms, Total samples = 180ms (262.04%)
+Showing nodes accounting for 180ms, 100% of 180ms total
+Showing top 30 nodes out of 149
+      flat  flat%   sum%        cum   cum%
+      50ms 27.78% 27.78%       50ms 27.78%  internal/runtime/syscall/linux.Syscall6
+      10ms  5.56% 33.33%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.collectPlannedMeasure
+      10ms  5.56% 38.89%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/observability/services.(*counterCollection).Inc
+      10ms  5.56% 44.44%       10ms  5.56%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).bindAggregateInputs
+      10ms  5.56% 50.00%       10ms  5.56%  github.com/apache/skywalking-banyandb/pkg/fs.StatFile
+      10ms  5.56% 55.56%       20ms 11.11%  google.golang.org/grpc/internal/transport.(*bufWriter).flushKeepBuffer
+      10ms  5.56% 61.11%       10ms  5.56%  google.golang.org/protobuf/proto.checkInitialized
+      10ms  5.56% 66.67%       10ms  5.56%  runtime.(*fixalloc).alloc
+      10ms  5.56% 72.22%       10ms  5.56%  runtime.(*stackObjectRecord).gcdata (inline)
+      10ms  5.56% 77.78%       10ms  5.56%  runtime.futex
+      10ms  5.56% 83.33%       10ms  5.56%  runtime.runqsteal
+      10ms  5.56% 88.89%       10ms  5.56%  runtime.selectgo
+      10ms  5.56% 94.44%       10ms  5.56%  runtime.tryDeferToSpanScan
+      10ms  5.56%   100%       10ms  5.56%  sync.(*Pool).pin
+         0     0%   100%       10ms  5.56%  gcWriteBarrier
+         0     0%   100%       30ms 16.67%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0%   100%       30ms 16.67%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/api/proto/banyandb/cluster/v1._Service_Send_Handler
+         0     0%   100%       30ms 16.67%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0%   100%       20ms 11.11%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).planQueryWithCache
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan
+         0     0%   100%       30ms 16.67%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureQueryResponseWithPlan
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureRawQueryResponse
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).Send
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).Send.func1
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/banyand/queue/sub.(*server).Serve.BreadcrumbStreamInterceptor.func8
+         0     0%   100%       10ms  5.56%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*GrammarIdentifierPath).ToString
