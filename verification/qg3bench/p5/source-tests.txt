@@ -1,0 +1,76 @@
+=== RUN   TestInt128Oracle
+--- PASS: TestInt128Oracle (0.04s)
+=== RUN   TestInt128AddAndFormat
+--- PASS: TestInt128AddAndFormat (0.00s)
+=== RUN   TestInt128AdditionAndComparison
+--- PASS: TestInt128AdditionAndComparison (0.00s)
+=== RUN   TestCompareScaled
+--- PASS: TestCompareScaled (0.00s)
+=== RUN   TestPrecisionLimit
+--- PASS: TestPrecisionLimit (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/decimal	0.042s
+{"level":"info","time":"2026-10-30T02:40:30Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestScaledDecimalAggregate
+--- PASS: TestScaledDecimalAggregate (0.00s)
+=== RUN   TestScaledDecimalAggregateBudgetAndCancellation
+--- PASS: TestScaledDecimalAggregateBudgetAndCancellation (0.00s)
+=== RUN   TestDecimalCoalesceZeroAndComparison
+--- PASS: TestDecimalCoalesceZeroAndComparison (0.00s)
+=== RUN   TestCopyDecimalViewPreservesValuesAndNulls
+--- PASS: TestCopyDecimalViewPreservesValuesAndNulls (0.00s)
+=== RUN   TestDecimalLiteralProjectionRespectsBudgetAndScale
+--- PASS: TestDecimalLiteralProjectionRespectsBudgetAndScale (0.00s)
+=== RUN   TestDecimalMembershipUsesEveryOperandType
+=== RUN   TestDecimalMembershipUsesEveryOperandType/integer_first/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/integer_first/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/decimal_last/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/decimal_last/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/integer_column/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/integer_column/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/decimal_first/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/decimal_first/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/different_scales/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/different_scales/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/null_candidate/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/null_candidate/not_in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/match_after_decimal/in
+=== RUN   TestDecimalMembershipUsesEveryOperandType/match_after_decimal/not_in
+--- PASS: TestDecimalMembershipUsesEveryOperandType (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/integer_first/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/integer_first/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/decimal_last/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/decimal_last/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/integer_column/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/integer_column/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/decimal_first/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/decimal_first/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/different_scales/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/different_scales/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/null_candidate/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/null_candidate/not_in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/match_after_decimal/in (0.00s)
+    --- PASS: TestDecimalMembershipUsesEveryOperandType/match_after_decimal/not_in (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/query/ql	0.009s
+{"level":"info","time":"2026-10-30T02:40:31Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestMeasureScaledDecimalAggregate
+--- PASS: TestMeasureScaledDecimalAggregate (0.00s)
+=== RUN   TestMeasureScaledDecimalOrderBy
+--- PASS: TestMeasureScaledDecimalOrderBy (0.00s)
+=== RUN   TestMeasureScaledDecimalBoundaries
+=== RUN   TestMeasureScaledDecimalBoundaries/negative_scale
+=== RUN   TestMeasureScaledDecimalBoundaries/scale_above_maximum
+=== RUN   TestMeasureScaledDecimalBoundaries/nonliteral_scale
+=== RUN   TestMeasureScaledDecimalBoundaries/decimal_arithmetic
+=== RUN   TestMeasureScaledDecimalBoundaries/float_comparison
+--- PASS: TestMeasureScaledDecimalBoundaries (0.00s)
+    --- PASS: TestMeasureScaledDecimalBoundaries/negative_scale (0.00s)
+    --- PASS: TestMeasureScaledDecimalBoundaries/scale_above_maximum (0.00s)
+    --- PASS: TestMeasureScaledDecimalBoundaries/nonliteral_scale (0.00s)
+    --- PASS: TestMeasureScaledDecimalBoundaries/decimal_arithmetic (0.00s)
+    --- PASS: TestMeasureScaledDecimalBoundaries/float_comparison (0.00s)
+=== RUN   TestMeasureScaledDecimalCoalesceZero
+--- PASS: TestMeasureScaledDecimalCoalesceZero (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/bydbql	0.019s

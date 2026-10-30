@@ -102,3 +102,5 @@ docker exec -i qg3-postgres-oracle psql -U postgres -d qg3 -At -v ON_ERROR_STOP=
   < verification/qg3bench/postgres-oracle.sql
 docker stop qg3-postgres-oracle
 ```
+
+Current-source P5 exact-decimal timing, ownership and profile evidence: [P5 results](p5/results.md). Historical observations above remain separate.

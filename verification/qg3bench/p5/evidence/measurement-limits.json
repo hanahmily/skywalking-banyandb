@@ -1,0 +1,11 @@
+{
+  "binding_only_cpu_ns": null,
+  "binding_only_allocated_bytes": null,
+  "wide_addition_cpu_ns": null,
+  "fixed_scale_formatting_cpu_ns": null,
+  "input_projection_only_cpu_ns": null,
+  "per_owner_live_peak_bytes": null,
+  "actual_heap_peak_bytes": null,
+  "server_only_cpu_ns": null,
+  "note": "Unmeasured, not zero. Global tracker reset peak is observed; profiles are sampled and cumulative stacks overlap."
+}

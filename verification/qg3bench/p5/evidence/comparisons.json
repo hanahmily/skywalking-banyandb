@@ -1,0 +1,362 @@
+{
+  "64_scalar_int_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.021566,
+    "p50_geomean_ratio": 0.9578419244897359,
+    "delta_ms_percentile_90_interval": [
+      -0.078004,
+      0.026082
+    ],
+    "ratio_percentile_90_interval": [
+      0.8531677483052561,
+      1.0639429871722994
+    ],
+    "paired_p50_delta_ms": [
+      -0.0203,
+      0.03049,
+      -0.15696,
+      -0.01143,
+      0.05037
+    ],
+    "paired_p50_ratios": [
+      0.9515813576301102,
+      1.0795501982884574,
+      0.7242978342203721,
+      0.9731128413822305,
+      1.1135252090423493
+    ],
+    "allocated_bytes_mean_paired_delta": 2358.640000000002,
+    "allocated_bytes_geomean_ratio": 1.02299986614291,
+    "paired_allocated_bytes_deltas": [
+      5076.639999999999,
+      1351.520000000004,
+      -913.8399999999965,
+      6399.680000000008,
+      -120.80000000000291
+    ],
+    "cpu_ms_mean_paired_delta": -0.00578,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_group_int_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.005748,
+    "p50_geomean_ratio": 1.0115840449293838,
+    "delta_ms_percentile_90_interval": [
+      -0.0214264,
+      0.0391566
+    ],
+    "ratio_percentile_90_interval": [
+      0.9556382167833074,
+      1.0844446838130593
+    ],
+    "paired_p50_delta_ms": [
+      -0.017311,
+      0.079431,
+      0.00913,
+      -0.04082,
+      -0.00169
+    ],
+    "paired_p50_ratios": [
+      0.9624033533142212,
+      1.1789675753499658,
+      1.0200452280062353,
+      0.918474136209307,
+      0.996470637373653
+    ],
+    "allocated_bytes_mean_paired_delta": 3239.7760000000067,
+    "allocated_bytes_geomean_ratio": 1.0229782086736767,
+    "paired_allocated_bytes_deltas": [
+      3969.920000000013,
+      2703.1199999999953,
+      2073.2000000000116,
+      6608.320000000007,
+      844.320000000007
+    ],
+    "cpu_ms_mean_paired_delta": 0.026174,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_scalar_decimal_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0147702,
+    "p50_geomean_ratio": 1.0360742497560826,
+    "delta_ms_percentile_90_interval": [
+      -0.0055198,
+      0.0344724
+    ],
+    "ratio_percentile_90_interval": [
+      0.9912425701235666,
+      1.0825242673666278
+    ],
+    "paired_p50_delta_ms": [
+      0.0007,
+      0.040481,
+      0.01502,
+      0.04535,
+      -0.0277
+    ],
+    "paired_p50_ratios": [
+      1.001754561860838,
+      1.0978345457621383,
+      1.0364253668000485,
+      1.109625797718043,
+      0.943933935149577
+    ],
+    "allocated_bytes_mean_paired_delta": 7938.991999999998,
+    "allocated_bytes_geomean_ratio": 1.0739170625879935,
+    "paired_allocated_bytes_deltas": [
+      6834.720000000001,
+      8242.64,
+      9185.039999999994,
+      7830.559999999998,
+      7602.0
+    ],
+    "cpu_ms_mean_paired_delta": -0.014262,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_group_decimal_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0035702,
+    "p50_geomean_ratio": 1.008813508851827,
+    "delta_ms_percentile_90_interval": [
+      -0.008556,
+      0.0142924
+    ],
+    "ratio_percentile_90_interval": [
+      0.9835792548868687,
+      1.0315286549441902
+    ],
+    "paired_p50_delta_ms": [
+      0.019591,
+      -0.02338,
+      0.01076,
+      0.01427,
+      -0.00339
+    ],
+    "paired_p50_ratios": [
+      1.0442106023302469,
+      0.9553185796735848,
+      1.0231597072750753,
+      1.031029833869705,
+      0.9928953159383842
+    ],
+    "allocated_bytes_mean_paired_delta": 14158.288,
+    "allocated_bytes_geomean_ratio": 1.0974576702310948,
+    "paired_allocated_bytes_deltas": [
+      14937.75999999998,
+      13781.279999999999,
+      14255.200000000012,
+      13978.080000000016,
+      13839.119999999995
+    ],
+    "cpu_ms_mean_paired_delta": 0.031326,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_scalar_int_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.0592318,
+    "p50_geomean_ratio": 0.9555851453158344,
+    "delta_ms_percentile_90_interval": [
+      -0.225206,
+      0.1041502
+    ],
+    "ratio_percentile_90_interval": [
+      0.8372048057155397,
+      1.0881420535957298
+    ],
+    "paired_p50_delta_ms": [
+      -0.068209,
+      -0.02726,
+      -0.46267,
+      -0.05976,
+      0.32174
+    ],
+    "paired_p50_ratios": [
+      0.9542847376745932,
+      0.98145250180304,
+      0.6879586165965254,
+      0.9599125266646096,
+      1.2882664946421531
+    ],
+    "allocated_bytes_mean_paired_delta": -1.0239999999874272,
+    "allocated_bytes_geomean_ratio": 0.9998334275892918,
+    "paired_allocated_bytes_deltas": [
+      4130.160000000033,
+      483.5999999999767,
+      -123916.08000000002,
+      7228.960000000079,
+      112068.23999999999
+    ],
+    "cpu_ms_mean_paired_delta": -0.02553,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_group_int_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.2347082,
+    "p50_geomean_ratio": 0.898437134361186,
+    "delta_ms_percentile_90_interval": [
+      -0.461656,
+      0.011151600000000001
+    ],
+    "ratio_percentile_90_interval": [
+      0.8078811366965792,
+      1.0048951743830326
+    ],
+    "paired_p50_delta_ms": [
+      -0.23754,
+      -0.19026,
+      -0.6413,
+      -0.41771,
+      0.313269
+    ],
+    "paired_p50_ratios": [
+      0.8973949176921847,
+      0.9191425523686481,
+      0.7318733328316149,
+      0.8360674395422399,
+      1.1598311224489797
+    ],
+    "allocated_bytes_mean_paired_delta": 5124.767999999982,
+    "allocated_bytes_geomean_ratio": 1.0098106047048063,
+    "paired_allocated_bytes_deltas": [
+      4324.320000000065,
+      1976.8000000000466,
+      -119408.56000000006,
+      11193.03999999992,
+      127538.23999999993
+    ],
+    "cpu_ms_mean_paired_delta": -0.228878,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_scalar_decimal_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0858198,
+    "p50_geomean_ratio": 1.0622519844482718,
+    "delta_ms_percentile_90_interval": [
+      0.059041199999999995,
+      0.1146864
+    ],
+    "ratio_percentile_90_interval": [
+      1.0455321005884155,
+      1.0809850737354219
+    ],
+    "paired_p50_delta_ms": [
+      0.070679,
+      0.053659,
+      0.04653,
+      0.13597,
+      0.122261
+    ],
+    "paired_p50_ratios": [
+      1.0496400204799587,
+      1.0371991292773557,
+      1.0456154110092644,
+      1.095018798306056,
+      1.085029836006287
+    ],
+    "allocated_bytes_mean_paired_delta": 10955.839999999978,
+    "allocated_bytes_geomean_ratio": 1.021958064812358,
+    "paired_allocated_bytes_deltas": [
+      12483.839999999967,
+      9017.76000000001,
+      14672.72000000003,
+      10857.919999999925,
+      7746.959999999963
+    ],
+    "cpu_ms_mean_paired_delta": 0.069978,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_group_decimal_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.1875684,
+    "p50_geomean_ratio": 1.0867521145288945,
+    "delta_ms_percentile_90_interval": [
+      0.1146282,
+      0.2721106
+    ],
+    "ratio_percentile_90_interval": [
+      1.055907806599458,
+      1.1215068480492316
+    ],
+    "paired_p50_delta_ms": [
+      0.22017,
+      0.13477,
+      0.07657,
+      0.123261,
+      0.383071
+    ],
+    "paired_p50_ratios": [
+      1.1059757887896802,
+      1.0623136070872077,
+      1.0437422878296239,
+      1.0578595066538363,
+      1.1685110737004727
+    ],
+    "allocated_bytes_mean_paired_delta": 11814.288000000035,
+    "allocated_bytes_geomean_ratio": 1.0203555358283238,
+    "paired_allocated_bytes_deltas": [
+      23574.0,
+      6767.839999999967,
+      850.8000000000466,
+      19291.68000000005,
+      8587.120000000112
+    ],
+    "cpu_ms_mean_paired_delta": 0.205352,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_decimal_cache_to_bypass": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.17141220000000001,
+    "p50_geomean_ratio": 1.3227098909029207,
+    "delta_ms_percentile_90_interval": [
+      0.055898,
+      0.309426
+    ],
+    "ratio_percentile_90_interval": [
+      1.0947885567764142,
+      1.6296765654432186
+    ],
+    "paired_p50_delta_ms": [
+      0.208361,
+      0.48869,
+      0.12107,
+      0.04053,
+      -0.00159
+    ],
+    "paired_p50_ratios": [
+      1.4147238604403982,
+      2.115934417245159,
+      1.2828011492373455,
+      1.0577943189596166,
+      0.9967553006958758
+    ],
+    "allocated_bytes_mean_paired_delta": 24034.560000000005,
+    "allocated_bytes_geomean_ratio": 1.2129761291627388,
+    "paired_allocated_bytes_deltas": [
+      23079.520000000004,
+      29607.36,
+      23063.28,
+      22674.320000000007,
+      21748.320000000007
+    ],
+    "cpu_ms_mean_paired_delta": 0.220068,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  }
+}

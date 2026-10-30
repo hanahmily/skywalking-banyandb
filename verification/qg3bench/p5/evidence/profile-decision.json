@@ -1,0 +1,32 @@
+{
+  "complete_rounds": 5,
+  "small_scalar_differences": [
+    {
+      "p50_ns": 700,
+      "allocated_bytes_per_rpc": 6834.720000000001
+    },
+    {
+      "p50_ns": 40481,
+      "allocated_bytes_per_rpc": 8242.64
+    },
+    {
+      "p50_ns": 15020,
+      "allocated_bytes_per_rpc": 9185.039999999994
+    },
+    {
+      "p50_ns": 45350,
+      "allocated_bytes_per_rpc": 7830.559999999998
+    },
+    {
+      "p50_ns": -27700,
+      "allocated_bytes_per_rpc": 7602.0
+    }
+  ],
+  "profile_triggered": true,
+  "group_state_capacity_bytes": 256,
+  "group_peak_reserved_bytes": 38947986,
+  "group_state_capacity_share": 6.572868748592033e-06,
+  "high_group_trigger": 0.1,
+  "high_group_needed": false,
+  "reason": "Profile if all five64-row scalar differences positive for p50 or allocated bytes; high-group diagnostic only when state capacity reaches10% of tracked peak, not an SLO."
+}

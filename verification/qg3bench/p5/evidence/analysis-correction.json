@@ -1,0 +1,1 @@
+{"stage":"postprocessing","initial_error":"KeyError: aggregate in memory validation","correction":"Read recorded aggregate_after.LiveBytes, preserving all raw measurements; no rerun."}
