@@ -1,0 +1,441 @@
+File: current.test
+Build ID: a4888c3f166786df71f236a5d46d16d2846dc19f
+Type: cpu
+Time: 2026-10-30 02:12:52 UTC
+Duration: 2.50s, Total samples = 2.95s (117.80%)
+Showing nodes accounting for 2.95s, 100% of 2.95s total
+      flat  flat%   sum%        cum   cum%
+     0.27s  9.15%  9.15%      0.99s 33.56%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).consumeBatch
+     0.22s  7.46% 16.61%      0.22s  7.46%  internal/runtime/syscall/linux.Syscall6
+     0.21s  7.12% 23.73%      0.64s 21.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).mergeKeys
+     0.21s  7.12% 30.85%      0.22s  7.46%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateReader).value
+     0.16s  5.42% 36.27%      0.30s 10.17%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).fixTop
+     0.13s  4.41% 40.68%      0.13s  4.41%  github.com/cespare/xxhash/v2.Sum64
+     0.12s  4.07% 44.75%      0.16s  5.42%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).cell
+     0.11s  3.73% 48.47%      0.13s  4.41%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateGroups).key (inline)
+     0.09s  3.05% 51.53%      0.09s  3.05%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).less (inline)
+     0.09s  3.05% 54.58%      0.13s  4.41%  runtime.tryDeferToSpanScan
+     0.06s  2.03% 56.61%      0.06s  2.03%  runtime.memmove
+     0.05s  1.69% 58.31%      0.08s  2.71%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).appendWinner (inline)
+     0.05s  1.69% 60.00%      0.13s  4.41%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateGroups).encode
+     0.05s  1.69% 61.69%      0.05s  1.69%  github.com/apache/skywalking-banyandb/pkg/query/ql.groupValueBytes (inline)
+     0.04s  1.36% 63.05%      0.04s  1.36%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateState).update
+     0.03s  1.02% 64.07%      0.04s  1.36%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).fill
+     0.03s  1.02% 65.08%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/encoding.BytesToInt64List
+     0.03s  1.02% 66.10%      0.09s  3.05%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionNode).arithmetic.func1
+     0.03s  1.02% 67.12%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionVector).isNull
+     0.03s  1.02% 68.14%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*TypedColumn[go.shape.int64]).Append (inline)
+     0.03s  1.02% 69.15%      0.03s  1.02%  runtime.futex
+     0.03s  1.02% 70.17%      0.03s  1.02%  runtime.memclrNoHeapPointers
+     0.03s  1.02% 71.19%      0.10s  3.39%  runtime.scanSpan
+     0.02s  0.68% 71.86%      0.02s  0.68%  aeshashbody
+     0.02s  0.68% 72.54%      0.07s  2.37%  gcWriteBarrier
+     0.02s  0.68% 73.22%      0.18s  6.10%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).gatherStrings
+     0.02s  0.68% 73.90%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/convert.BytesToString (inline)
+     0.02s  0.68% 74.58%      0.17s  5.76%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateGroups).lookup
+     0.02s  0.68% 75.25%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/ql.appendGroupValue
+     0.02s  0.68% 75.93%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).lend.func3 (inline)
+     0.02s  0.68% 76.61%      0.02s  0.68%  memeqbody
+     0.02s  0.68% 77.29%      0.02s  0.68%  runtime.arenaIndex (inline)
+     0.02s  0.68% 77.97%      0.02s  0.68%  runtime.asyncPreempt
+     0.02s  0.68% 78.64%      0.02s  0.68%  runtime.spanClass.sizeclass (inline)
+     0.02s  0.68% 79.32%      0.02s  0.68%  runtime.typePointers.next
+     0.01s  0.34% 79.66%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*segmentController[go.shape.*uint8,go.shape.d9cefdf9ce9ad14f7c1c4f574c0e8c6f9e5f0a54d4853e7b0a4a475a02ac2077]).selectSegments
+     0.01s  0.34% 80.00%      2.23s 75.59%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+     0.01s  0.34% 80.34%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*scanBudget).attachShared
+     0.01s  0.34% 80.68%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).slotOf (inline)
+     0.01s  0.34% 81.02%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/measure.appendTagValueAsTyped
+     0.01s  0.34% 81.36%      0.04s  1.36%  github.com/apache/skywalking-banyandb/banyand/measure.appendTagValueAt
+     0.01s  0.34% 81.69%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/bus.(*localFuture).Get
+     0.01s  0.34% 82.03%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).Bind
+     0.01s  0.34% 82.37%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).VisitDocumentContext
+     0.01s  0.34% 82.71%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*byteDecoder).uint32 (inline)
+     0.01s  0.34% 83.05%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstWindow).node
+     0.01s  0.34% 83.39%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/pool.(*Synced[go.shape.*uint8]).Get
+     0.01s  0.34% 83.73%      0.45s 15.25%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).groupID
+     0.01s  0.34% 84.07%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile
+     0.01s  0.34% 84.41%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionVector).intAt (inline)
+     0.01s  0.34% 84.75%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionVector).output
+     0.01s  0.34% 85.08%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*rawOperator).NextBatch
+     0.01s  0.34% 85.42%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.expressionArithmeticKernels.func1
+     0.01s  0.34% 85.76%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.expressionRow (inline)
+     0.01s  0.34% 86.10%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressions
+     0.01s  0.34% 86.44%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapRawProjection
+     0.01s  0.34% 86.78%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*Owners).Pin
+     0.01s  0.34% 87.12%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*RecordBatch).ActiveLen (inline)
+     0.01s  0.34% 87.46%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*TypedColumn[go.shape.*uint8]).Data (inline)
+     0.01s  0.34% 87.80%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchLimit).Process
+     0.01s  0.34% 88.14%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.validateProjectionParity
+     0.01s  0.34% 88.47%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.constrainLabelValues
+     0.01s  0.34% 88.81%      0.01s  0.34%  google.golang.org/grpc.(*clientStream).finish
+     0.01s  0.34% 89.15%      0.03s  1.02%  google.golang.org/grpc/encoding/proto.(*codecV2).Unmarshal
+     0.01s  0.34% 89.49%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).marshalAppendPointer
+     0.01s  0.34% 89.83%      0.01s  0.34%  internal/abi.(*Type).NumMethod
+     0.01s  0.34% 90.17%      0.02s  0.68%  internal/poll.(*FD).RawRead
+     0.01s  0.34% 90.51%      0.01s  0.34%  internal/runtime/atomic.(*Uint32).CompareAndSwap (inline)
+     0.01s  0.34% 90.85%      0.01s  0.34%  internal/runtime/atomic.(*Uint64).CompareAndSwap (inline)
+     0.01s  0.34% 91.19%      0.01s  0.34%  internal/runtime/maps.ctrlGroup.matchH2 (inline)
+     0.01s  0.34% 91.53%      0.01s  0.34%  internal/sync.(*Mutex).Lock (inline)
+     0.01s  0.34% 91.86%      0.01s  0.34%  reflect.Value.Elem
+     0.01s  0.34% 92.20%      0.01s  0.34%  runtime.(*mcentral).cacheSpan
+     0.01s  0.34% 92.54%      0.01s  0.34%  runtime.(*scavengeIndex).free
+     0.01s  0.34% 92.88%      0.01s  0.34%  runtime.(*stkframe).getStackMap
+     0.01s  0.34% 93.22%      0.03s  1.02%  runtime.(*unwinder).resolveInternal
+     0.01s  0.34% 93.56%      0.02s  0.68%  runtime.adjustframe
+     0.01s  0.34% 93.90%      0.06s  2.03%  runtime.findRunnable
+     0.01s  0.34% 94.24%      0.02s  0.68%  runtime.heapArenaOf (inline)
+     0.01s  0.34% 94.58%      0.01s  0.34%  runtime.makeSpanClass (inline)
+     0.01s  0.34% 94.92%      0.06s  2.03%  runtime.mallocgc
+     0.01s  0.34% 95.25%      0.04s  1.36%  runtime.mapaccess1
+     0.01s  0.34% 95.59%      0.01s  0.34%  runtime.mapaccess2_fast64
+     0.01s  0.34% 95.93%      0.01s  0.34%  runtime.mapassign_fast64
+     0.01s  0.34% 96.27%      0.01s  0.34%  runtime.nanotime (inline)
+     0.01s  0.34% 96.61%      0.02s  0.68%  runtime.pcvalue
+     0.01s  0.34% 96.95%      0.01s  0.34%  runtime.procyieldAsm
+     0.01s  0.34% 97.29%      0.01s  0.34%  runtime.resolveTypeOff
+     0.01s  0.34% 97.63%      0.08s  2.71%  runtime.scanObject
+     0.01s  0.34% 97.97%      0.02s  0.68%  runtime.scanObjectSmall
+     0.01s  0.34% 98.31%      0.05s  1.69%  runtime.scanObjectsSmall
+     0.01s  0.34% 98.64%      0.02s  0.68%  runtime.scanstack
+     0.01s  0.34% 98.98%      0.01s  0.34%  runtime.selectgo
+     0.01s  0.34% 99.32%      0.01s  0.34%  runtime.step
+     0.01s  0.34% 99.66%      0.03s  1.02%  runtime.sweepone
+     0.01s  0.34%   100%      0.05s  1.69%  runtime.wbBufFlush1
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1.(*bydbQLServiceClient).Query
+         0     0%   100%      2.26s 76.61%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0%   100%      2.25s 76.27%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*database[go.shape.*uint8,go.shape.d9cefdf9ce9ad14f7c1c4f574c0e8c6f9e5f0a54d4853e7b0a4a475a02ac2077]).SelectSegments
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse
+         0     0%   100%      2.25s 76.27%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).planQueryWithCache
+         0     0%   100%      2.23s 75.59%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).acquire
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).emitMetrics
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).publishStats
+         0     0%   100%      2.23s 75.59%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan
+         0     0%   100%      2.25s 76.27%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0%   100%      2.09s 70.85%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.collectPlannedMeasure
+         0     0%   100%      2.09s 70.85%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureQueryResponseWithPlan
+         0     0%   100%      2.09s 70.85%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureRawQueryResponse
+         0     0%   100%      0.08s  2.71%  github.com/apache/skywalking-banyandb/banyand/measure.(*block).mustReadFrom
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).loadData
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).copyRowsFrom (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).decodeColumnValues
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).decodeInt64Column
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).mustReadValues
+         0     0%   100%      0.13s  4.41%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodePool).run
+         0     0%   100%      0.13s  4.41%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodeTask).run
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodeTask).run.func1
+         0     0%   100%      0.08s  2.71%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).Query
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchBlocks
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchSeriesList
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*prefetcher).take
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*prefetcher).wait
+         0     0%   100%      0.87s 29.49%  github.com/apache/skywalking-banyandb/banyand/measure.(*queryResult).PullBatch
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).close
+         0     0%   100%      0.20s  6.78%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).gather
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).markSeriesRuns (inline)
+         0     0%   100%      0.86s 29.15%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).nextPage
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).finishMerge (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).loadCursor
+         0     0%   100%      0.87s 29.49%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).next
+         0     0%   100%      0.87s 29.49%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextPiece
+         0     0%   100%      0.87s 29.49%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextUnmarked
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/banyand/measure.decodeCursor
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/banyand/measure.gatherNumeric[go.shape.int64]
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.generateBlockCursor
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/banyand/measure.mustDecodeTimestampsWithVersions
+         0     0%   100%      0.06s  2.03%  github.com/apache/skywalking-banyandb/banyand/measure.mustReadTimestampsFrom
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/measure.signal (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/observability/services.(*counterCollection).Inc
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/banyand/observability/services.(*gaugeCollection).Set
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).Rev
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).executeBatchQuery
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/banyand/query.buildMeasureContext
+         0     0%   100%      0.09s  3.05%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasureBatches
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/banyand/queue.(*local).Publish
+         0     0%   100%      0.12s  4.07%  github.com/apache/skywalking-banyandb/pkg/bus.(*Bus).Publish
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/fs.(*LocalFile).Close
+         0     0%   100%      0.06s  2.03%  github.com/apache/skywalking-banyandb/pkg/fs.(*LocalFile).Read
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/fs.(*LocalFile).Size
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).OpenFile
+         0     0%   100%      0.04s  1.36%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).ReadDirLimit
+         0     0%   100%      0.05s  1.69%  github.com/apache/skywalking-banyandb/pkg/fs.MustReadData
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/fs.SyncDir
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/fs.syncDir
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).TermPostingBitmapContext
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*byteDecoder).segmentRecord
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*fstLookup).get
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedFST).Get
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).termPostingBitmapContext
+         0     0%   100%      0.08s  2.71%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata
+         0     0%   100%      0.04s  1.36%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.committedSnapshots
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.lookupTermPosting
+         0     0%   100%      0.08s  2.71%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.openStrictWith
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.parseSnapshotSegments
+         0     0%   100%      0.04s  1.36%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.readDirectoryEntries
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.readManifest
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.readManifest.func1
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/index/native.(*FileRootLease).Validate
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/native.(*FileRootLease).ValidatePath
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).CollectGarbage
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).runMaintenance
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).validateLease
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).MatchTermsSet
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/index/native.dictionaryMatchCandidates
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/index/native.exactCandidates
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/native.reserveBitmapMerge
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/index/native.syncOwnerDirectory (inline)
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/logger.(*Logger).Named
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/meter/prom.(*counter).Inc
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/meter/prom.(*gauge).Set
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithBreadcrumb
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithRecovery
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query.ReserveAllocationOnce
+         0     0%   100%      0.94s 31.86%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*NativeScan).NextBatch
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateGroups).grow
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).NextBatch
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).consumeAll
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).growGroups (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionNode).output
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).NextBatch
+         0     0%   100%      0.09s  3.05%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile.func2
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).groupKeyEvaluator (inline)
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapAggregate
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapExpressions (inline)
+         0     0%   100%      0.05s  1.69%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapRaw
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapAggregate
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapAggregateQuery
+         0     0%   100%      0.05s  1.69%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressionQuery
+         0     0%   100%      0.09s  3.05%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressions.(*expressionOperator).groupKeyEvaluator.func3
+         0     0%   100%      0.02s  0.68%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapGroupExpressions
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*BatchPool).Get
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*Pipeline).Next (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*TypedColumn[go.shape.string]).Append (inline)
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*fusedStage).NextBatch
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewBatchSchema
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewColumnForType
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewInt64Column (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewRecordBatch
+         0     0%   100%      0.93s 31.53%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).NextBatch
+         0     0%   100%      0.05s  1.69%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).lend
+         0     0%   100%      0.04s  1.36%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).lend.func2 (inline)
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).lend.func4 (inline)
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*VectorizedMIterator).Next
+         0     0%   100%      2.04s 69.15%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*vectorizedMIterator).Next
+         0     0%   100%      0.94s 31.86%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*BatchResult).NextBatch
+         0     0%   100%      0.93s 31.53%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*allocationScopeSource).NextBatch
+         0     0%   100%      0.93s 31.53%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*countedBatchSource).NextBatch
+         0     0%   100%      0.94s 31.86%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*pipelineBatchSource).NextBatch
+         0     0%   100%      0.09s  3.05%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.DispatchBatches
+         0     0%   100%      0.09s  3.05%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches.NewBatchPool.func2
+         0     0%   100%      0.01s  0.34%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.prepareBatchDispatch
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/run.launchTask.func1
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered
+         0     0%   100%      0.11s  3.73%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered.func1
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.TestCompositionRPC
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.profileArm
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runComposition
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runComposition.func1
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runHarness
+         0     0%   100%      0.03s  1.02%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runRequest
+         0     0%   100%      2.25s 76.27%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0%   100%      2.25s 76.27%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*CounterVec).GetMetricWithLabelValues (inline)
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*CounterVec).WithLabelValues
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*GaugeVec).GetMetricWithLabelValues (inline)
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*GaugeVec).WithLabelValues
+         0     0%   100%      0.02s  0.68%  github.com/prometheus/client_golang/prometheus.(*MetricVec).GetMetricWithLabelValues
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*metricMap).getMetricWithHashAndLabelValues
+         0     0%   100%      0.01s  0.34%  github.com/prometheus/client_golang/prometheus.(*metricMap).getOrCreateMetricWithLabelValues
+         0     0%   100%      0.01s  0.34%  github.com/rs/zerolog.Logger.With (inline)
+         0     0%   100%      0.02s  0.68%  golang.org/x/net/http2.(*Framer).ReadFrameHeader
+         0     0%   100%      0.02s  0.68%  golang.org/x/net/http2.readFrameHeader
+         0     0%   100%      0.03s  1.02%  golang.org/x/net/http2/hpack.(*Encoder).WriteField
+         0     0%   100%      0.02s  0.68%  golang.org/x/net/http2/hpack.(*Encoder).searchTable
+         0     0%   100%      0.01s  0.34%  golang.org/x/net/http2/hpack.(*dynamicTable).add
+         0     0%   100%      0.01s  0.34%  golang.org/x/net/http2/hpack.(*dynamicTable).evict
+         0     0%   100%      0.01s  0.34%  golang.org/x/net/http2/hpack.(*headerFieldTable).evictOldest
+         0     0%   100%      0.02s  0.68%  golang.org/x/net/http2/hpack.(*headerFieldTable).search
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc.(*ClientConn).Invoke
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc.(*Server).handleRawConn.func1
+         0     0%   100%      2.29s 77.63%  google.golang.org/grpc.(*Server).handleStream
+         0     0%   100%      2.29s 77.63%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc.(*Server).processUnaryRPC.func3
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc.(*Server).sendResponse
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc.(*Server).serveStreams
+         0     0%   100%      2.29s 77.63%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc.(*clientStream).RecvMsg
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc.(*clientStream).RecvMsg.func1
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc.(*clientStream).withRetry
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc.(*csAttempt).recvMsg
+         0     0%   100%      2.25s 76.27%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc.encode
+         0     0%   100%      2.25s 76.27%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0%   100%      2.25s 76.27%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc.invoke
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc.recv
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc/encoding/proto.(*codecV2).Marshal
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*ServerStream).Write (inline)
+         0     0%   100%      0.04s  1.36%  google.golang.org/grpc/internal/transport.(*bufWriter).Flush
+         0     0%   100%      0.04s  1.36%  google.golang.org/grpc/internal/transport.(*bufWriter).flushKeepBuffer
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*controlBuffer).executeAndPut
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc/internal/transport.(*framer).readFrame
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*http2Client).reader
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*http2Server).HandleStreams
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*http2Server).write
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*http2Server).writeHeader
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*http2Server).writeHeaderLocked
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport.(*loopyWriter).clientHeaderHandler
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc/internal/transport.(*loopyWriter).handle
+         0     0%   100%      0.07s  2.37%  google.golang.org/grpc/internal/transport.(*loopyWriter).run
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc/internal/transport.(*loopyWriter).serverHeaderHandler
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc/internal/transport.(*loopyWriter).writeHeader
+         0     0%   100%      0.03s  1.02%  google.golang.org/grpc/internal/transport.NewHTTP2Client.func6
+         0     0%   100%      0.04s  1.36%  google.golang.org/grpc/internal/transport.NewServerTransport.func3
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc/internal/transport/readyreader.(*bufReadyReader).Read
+         0     0%   100%      0.02s  0.68%  google.golang.org/grpc/internal/transport/readyreader.(*nonBlockingReader).ReadOnReady
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport/readyreader.NewNonBlocking.func1
+         0     0%   100%      0.01s  0.34%  google.golang.org/grpc/internal/transport/readyreader.sysRead (inline)
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).initOneofFieldCoders.func1
+         0     0%   100%      0.01s  0.34%  google.golang.org/protobuf/internal/impl.(*MessageInfo).initOneofFieldCoders.func2
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).initOneofFieldCoders.func4
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).marshal
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshal
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshalPointer
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshalPointerEager
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.appendMessageInfo
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.appendMessageSliceInfo
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.consumeMessageInfo
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/internal/impl.consumeMessageSliceInfo
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/proto.MarshalOptions.Marshal
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/proto.MarshalOptions.marshal
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/proto.Unmarshal
+         0     0%   100%      0.02s  0.68%  google.golang.org/protobuf/proto.UnmarshalOptions.unmarshal
+         0     0%   100%      0.02s  0.68%  internal/poll.(*FD).Close
+         0     0%   100%      0.06s  2.03%  internal/poll.(*FD).Pread
+         0     0%   100%      0.06s  2.03%  internal/poll.(*FD).Pread.func1 (inline)
+         0     0%   100%      0.03s  1.02%  internal/poll.(*FD).ReadDirent
+         0     0%   100%      0.04s  1.36%  internal/poll.(*FD).Write
+         0     0%   100%      0.02s  0.68%  internal/poll.(*FD).decref
+         0     0%   100%      0.02s  0.68%  internal/poll.(*FD).destroy
+         0     0%   100%      0.02s  0.68%  internal/poll.(*SysFile).destroy (inline)
+         0     0%   100%      0.06s  2.03%  internal/poll.ignoringEINTR2[go.shape.int] (inline)
+         0     0%   100%      0.07s  2.37%  internal/poll.ignoringEINTRIO (inline)
+         0     0%   100%      0.02s  0.68%  internal/runtime/syscall/linux.EpollWait
+         0     0%   100%      0.02s  0.68%  io.ReadAtLeast
+         0     0%   100%      0.02s  0.68%  io.ReadFull (inline)
+         0     0%   100%      0.04s  1.36%  net.(*conn).Write
+         0     0%   100%      0.04s  1.36%  net.(*netFD).Write
+         0     0%   100%      0.02s  0.68%  net.(*rawConn).Read
+         0     0%   100%      0.02s  0.68%  os.(*File).Close (inline)
+         0     0%   100%      0.06s  2.03%  os.(*File).ReadAt
+         0     0%   100%      0.03s  1.02%  os.(*File).ReadDir
+         0     0%   100%      0.06s  2.03%  os.(*File).pread (inline)
+         0     0%   100%      0.03s  1.02%  os.(*File).readdir
+         0     0%   100%      0.02s  0.68%  os.(*file).close
+         0     0%   100%      0.02s  0.68%  os.Open (inline)
+         0     0%   100%      0.02s  0.68%  os.OpenFile
+         0     0%   100%      0.02s  0.68%  os.Stat
+         0     0%   100%      0.04s  1.36%  os.ignoringEINTR (inline)
+         0     0%   100%      0.02s  0.68%  os.open
+         0     0%   100%      0.02s  0.68%  os.openFileNolog
+         0     0%   100%      0.02s  0.68%  os.openFileNolog.func1 (inline)
+         0     0%   100%      0.02s  0.68%  os.statNolog
+         0     0%   100%      0.02s  0.68%  os.statNolog.func1 (inline)
+         0     0%   100%      0.01s  0.34%  reflect.(*rtype).ptrTo
+         0     0%   100%      0.01s  0.34%  reflect.(*rtype).typeOff (inline)
+         0     0%   100%      0.01s  0.34%  reflect.New
+         0     0%   100%      0.01s  0.34%  reflect.Value.Set
+         0     0%   100%      0.01s  0.34%  reflect.Value.assignTo
+         0     0%   100%      0.01s  0.34%  reflect.ptrTo (inline)
+         0     0%   100%      0.01s  0.34%  reflect.resolveTypeOff
+         0     0%   100%      0.01s  0.34%  runtime.(*atomicHeadTailIndex).cas (inline)
+         0     0%   100%      0.01s  0.34%  runtime.(*mcache).nextFree
+         0     0%   100%      0.01s  0.34%  runtime.(*mcache).refill
+         0     0%   100%      0.01s  0.34%  runtime.(*mheap).freeSpan (inline)
+         0     0%   100%      0.01s  0.34%  runtime.(*mheap).freeSpanLocked
+         0     0%   100%      0.01s  0.34%  runtime.(*mheap).nextSpanForSweep
+         0     0%   100%      0.01s  0.34%  runtime.(*pageAlloc).free
+         0     0%   100%      0.01s  0.34%  runtime.(*spanSet).pop
+         0     0%   100%      0.01s  0.34%  runtime.(*sweepLocked).sweep
+         0     0%   100%      0.01s  0.34%  runtime.(*sweepLocked).sweep.(*mheap).freeSpan.func2
+         0     0%   100%      0.03s  1.02%  runtime.(*unwinder).next
+         0     0%   100%      0.03s  1.02%  runtime.bgsweep
+         0     0%   100%      0.02s  0.68%  runtime.callers
+         0     0%   100%      0.02s  0.68%  runtime.callers.func1
+         0     0%   100%      0.02s  0.68%  runtime.casgstatus
+         0     0%   100%      0.02s  0.68%  runtime.chansend
+         0     0%   100%      0.02s  0.68%  runtime.copystack
+         0     0%   100%      0.01s  0.34%  runtime.findObject
+         0     0%   100%      0.02s  0.68%  runtime.funcspdelta (inline)
+         0     0%   100%      0.02s  0.68%  runtime.futexsleep
+         0     0%   100%      0.01s  0.34%  runtime.futexwakeup
+         0     0%   100%      0.20s  6.78%  runtime.gcBgMarkWorker
+         0     0%   100%      0.20s  6.78%  runtime.gcBgMarkWorker.func2
+         0     0%   100%      0.20s  6.78%  runtime.gcDrain
+         0     0%   100%      0.05s  1.69%  runtime.gcDrainMarkWorkerFractional (inline)
+         0     0%   100%      0.15s  5.08%  runtime.gcDrainMarkWorkerIdle (inline)
+         0     0%   100%      0.01s  0.34%  runtime.goexit0
+         0     0%   100%      0.01s  0.34%  runtime.gopreempt_m (inline)
+         0     0%   100%      0.02s  0.68%  runtime.goready (inline)
+         0     0%   100%      0.01s  0.34%  runtime.goschedImpl
+         0     0%   100%      0.07s  2.37%  runtime.growslice
+         0     0%   100%      0.01s  0.34%  runtime.lock (inline)
+         0     0%   100%      0.01s  0.34%  runtime.lock2
+         0     0%   100%      0.01s  0.34%  runtime.lockWithRank (inline)
+         0     0%   100%      0.02s  0.68%  runtime.mPark (inline)
+         0     0%   100%      0.02s  0.68%  runtime.mProf_Malloc
+         0     0%   100%      0.03s  1.02%  runtime.makeslice
+         0     0%   100%      0.03s  1.02%  runtime.mallocgcSmallNoscan
+         0     0%   100%      0.02s  0.68%  runtime.mallocgcSmallScanNoHeader
+         0     0%   100%      0.02s  0.68%  runtime.markroot
+         0     0%   100%      0.02s  0.68%  runtime.markroot.func1
+         0     0%   100%      0.06s  2.03%  runtime.mcall
+         0     0%   100%      0.01s  0.34%  runtime.morestack
+         0     0%   100%      0.02s  0.68%  runtime.netpoll
+         0     0%   100%      0.01s  0.34%  runtime.newobject
+         0     0%   100%      0.03s  1.02%  runtime.newstack
+         0     0%   100%      0.02s  0.68%  runtime.notesleep
+         0     0%   100%      0.01s  0.34%  runtime.notewakeup
+         0     0%   100%      0.05s  1.69%  runtime.park_m
+         0     0%   100%      0.01s  0.34%  runtime.procyield (inline)
+         0     0%   100%      0.02s  0.68%  runtime.profilealloc
+         0     0%   100%      0.02s  0.68%  runtime.ready
+         0     0%   100%      0.01s  0.34%  runtime.rtype.typeOff (inline)
+         0     0%   100%      0.06s  2.03%  runtime.schedule
+         0     0%   100%      0.02s  0.68%  runtime.selectnbsend
+         0     0%   100%      0.02s  0.68%  runtime.send
+         0     0%   100%      0.02s  0.68%  runtime.send.goready.func1
+         0     0%   100%      0.01s  0.34%  runtime.spanOf (inline)
+         0     0%   100%      0.01s  0.34%  runtime.startm
+         0     0%   100%      0.02s  0.68%  runtime.stopm
+         0     0%   100%      0.30s 10.17%  runtime.systemstack
+         0     0%   100%      0.02s  0.68%  runtime.tracebackPCs
+         0     0%   100%      0.01s  0.34%  runtime.wakep
+         0     0%   100%      0.05s  1.69%  runtime.wbBufFlush
+         0     0%   100%      0.05s  1.69%  runtime.wbBufFlush.func1
+         0     0%   100%      0.01s  0.34%  sync.(*Mutex).Lock (inline)
+         0     0%   100%      0.01s  0.34%  sync.(*Pool).Get
+         0     0%   100%      0.02s  0.68%  syscall.Close
+         0     0%   100%      0.03s  1.02%  syscall.Getdents
+         0     0%   100%      0.02s  0.68%  syscall.Open (inline)
+         0     0%   100%      0.06s  2.03%  syscall.Pread (inline)
+         0     0%   100%      0.20s  6.78%  syscall.RawSyscall6
+         0     0%   100%      0.01s  0.34%  syscall.Read (inline)
+         0     0%   100%      0.03s  1.02%  syscall.ReadDirent (inline)
+         0     0%   100%      0.02s  0.68%  syscall.Stat (inline)
+         0     0%   100%      0.10s  3.39%  syscall.Syscall
+         0     0%   100%      0.10s  3.39%  syscall.Syscall6
+         0     0%   100%      0.04s  1.36%  syscall.Write (inline)
+         0     0%   100%      0.02s  0.68%  syscall.fstatat
+         0     0%   100%      0.02s  0.68%  syscall.openat
+         0     0%   100%      0.06s  2.03%  syscall.pread
+         0     0%   100%      0.01s  0.34%  syscall.read
+         0     0%   100%      0.04s  1.36%  syscall.write
+         0     0%   100%      0.03s  1.02%  testing.tRunner
+         0     0%   100%      0.02s  0.68%  type:.hash.golang.org/x/net/http2/hpack.pairNameValue

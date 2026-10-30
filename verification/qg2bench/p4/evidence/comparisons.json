@@ -1,0 +1,682 @@
+{
+  "64_float_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0112,
+    "p50_geomean_ratio": 1.0192310258185378,
+    "delta_ms_percentile_90_interval": [
+      -0.031314,
+      0.053714
+    ],
+    "ratio_percentile_90_interval": [
+      0.9400178032337663,
+      1.1046531334045477
+    ],
+    "paired_p50_delta_ms": [
+      -0.08123,
+      -0.00933,
+      0.02342,
+      0.02455,
+      0.09859
+    ],
+    "paired_p50_ratios": [
+      0.8503224617652478,
+      0.979232515692472,
+      1.0586232790988737,
+      1.060859218126379,
+      1.1762361016767366
+    ],
+    "allocated_bytes_mean_paired_delta": 1096.7520000000018,
+    "allocated_bytes_geomean_ratio": 1.0067147546077,
+    "paired_allocated_bytes_deltas": [
+      2122.959999999992,
+      740.1600000000035,
+      367.5200000000186,
+      59.279999999998836,
+      2193.8399999999965
+    ],
+    "cpu_ms_mean_paired_delta": 0.08612,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_scalar_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.045993599999999996,
+    "p50_geomean_ratio": 1.0991372323623505,
+    "delta_ms_percentile_90_interval": [
+      -0.009188,
+      0.0983274
+    ],
+    "ratio_percentile_90_interval": [
+      0.9731436471657573,
+      1.2368760771857998
+    ],
+    "paired_p50_delta_ms": [
+      -0.0647,
+      0.070289,
+      -0.00729,
+      0.09804,
+      0.133629
+    ],
+    "paired_p50_ratios": [
+      0.8551276309896999,
+      1.1566223985026072,
+      0.9830662020905924,
+      1.2349726775956285,
+      1.335970734650777
+    ],
+    "allocated_bytes_mean_paired_delta": -1020.4960000000021,
+    "allocated_bytes_geomean_ratio": 0.9907119754713533,
+    "paired_allocated_bytes_deltas": [
+      -2931.6800000000076,
+      345.6000000000058,
+      -5837.919999999998,
+      666.9599999999919,
+      2654.5599999999977
+    ],
+    "cpu_ms_mean_paired_delta": 0.121762,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_group_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.008714399999999999,
+    "p50_geomean_ratio": 1.0169589617742463,
+    "delta_ms_percentile_90_interval": [
+      -0.0225634,
+      0.039357800000000005
+    ],
+    "ratio_percentile_90_interval": [
+      0.9558985473636049,
+      1.0799799247060395
+    ],
+    "paired_p50_delta_ms": [
+      -0.02387,
+      -0.054098,
+      0.03213,
+      0.043119,
+      0.046291
+    ],
+    "paired_p50_ratios": [
+      0.9496328494260635,
+      0.9026539914238775,
+      1.0659415084658799,
+      1.0861878386778894,
+      1.095977889693122
+    ],
+    "allocated_bytes_mean_paired_delta": -1103.8400000000024,
+    "allocated_bytes_geomean_ratio": 0.9925239909761135,
+    "paired_allocated_bytes_deltas": [
+      -3146.720000000001,
+      322.88000000000466,
+      -5604.320000000007,
+      380.0799999999872,
+      2528.8800000000047
+    ],
+    "cpu_ms_mean_paired_delta": 0.040626,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_float_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.059540199999999995,
+    "p50_geomean_ratio": 0.8884650464174165,
+    "delta_ms_percentile_90_interval": [
+      -0.1258202,
+      -0.007338600000000001
+    ],
+    "ratio_percentile_90_interval": [
+      0.7941626868741692,
+      0.9825130034162729
+    ],
+    "paired_p50_delta_ms": [
+      -0.06725,
+      -0.02455,
+      -0.01267,
+      0.018369,
+      -0.2116
+    ],
+    "paired_p50_ratios": [
+      0.8542700500574252,
+      0.9441956674925557,
+      0.9700416154355433,
+      1.0429242417161284,
+      0.6784243400556222
+    ],
+    "allocated_bytes_mean_paired_delta": 10351.568,
+    "allocated_bytes_geomean_ratio": 1.0626221089967325,
+    "paired_allocated_bytes_deltas": [
+      12677.839999999997,
+      9247.920000000013,
+      9301.039999999979,
+      9576.23999999999,
+      10954.800000000017
+    ],
+    "cpu_ms_mean_paired_delta": -0.02457,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_scalar_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0430024,
+    "p50_geomean_ratio": 1.082981343278976,
+    "delta_ms_percentile_90_interval": [
+      0.0046743999999999996,
+      0.0953688
+    ],
+    "ratio_percentile_90_interval": [
+      1.0133413759358387,
+      1.1740459281018463
+    ],
+    "paired_p50_delta_ms": [
+      0.03767,
+      -0.008919,
+      0.02316,
+      0.00177,
+      0.161331
+    ],
+    "paired_p50_ratios": [
+      1.0986383870123069,
+      0.9828173133051675,
+      1.0547246048061245,
+      1.0034350256171403,
+      1.3036138728454238
+    ],
+    "allocated_bytes_mean_paired_delta": 8557.632000000001,
+    "allocated_bytes_geomean_ratio": 1.0783347963415266,
+    "paired_allocated_bytes_deltas": [
+      8542.0,
+      8514.559999999998,
+      8660.880000000005,
+      7844.720000000001,
+      9226.0
+    ],
+    "cpu_ms_mean_paired_delta": 0.03169,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_scalar_computed_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.0134296,
+    "p50_geomean_ratio": 0.9755931841492836,
+    "delta_ms_percentile_90_interval": [
+      -0.0391356,
+      0.0119544
+    ],
+    "ratio_percentile_90_interval": [
+      0.9247941916014838,
+      1.0276291175634769
+    ],
+    "paired_p50_delta_ms": [
+      0.01577,
+      0.007841,
+      0.01416,
+      -0.05847,
+      -0.046449
+    ],
+    "paired_p50_ratios": [
+      1.0412935323383083,
+      1.0151058915096067,
+      1.0334585666690295,
+      0.8865277130880298,
+      0.912586168933453
+    ],
+    "allocated_bytes_mean_paired_delta": 12940.032000000001,
+    "allocated_bytes_geomean_ratio": 1.1184610451276196,
+    "paired_allocated_bytes_deltas": [
+      12957.040000000008,
+      13295.51999999999,
+      13433.520000000004,
+      12385.919999999998,
+      12628.160000000003
+    ],
+    "cpu_ms_mean_paired_delta": -0.03255,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_group_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.012314,
+    "p50_geomean_ratio": 1.0216930270439286,
+    "delta_ms_percentile_90_interval": [
+      -0.025278,
+      0.050356
+    ],
+    "ratio_percentile_90_interval": [
+      0.952810518041581,
+      1.0955553299891592
+    ],
+    "paired_p50_delta_ms": [
+      0.03475,
+      0.0163,
+      -0.04278,
+      -0.03779,
+      0.09109
+    ],
+    "paired_p50_ratios": [
+      1.0772136429285635,
+      1.0324940045571347,
+      0.9176325619007278,
+      0.9304576654827846,
+      1.1723231176693152
+    ],
+    "allocated_bytes_mean_paired_delta": 10999.103999999998,
+    "allocated_bytes_geomean_ratio": 1.0746271098213012,
+    "paired_allocated_bytes_deltas": [
+      11461.679999999993,
+      11103.279999999999,
+      10659.440000000002,
+      11235.119999999995,
+      10536.0
+    ],
+    "cpu_ms_mean_paired_delta": -0.05567,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_group_computed_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0542516,
+    "p50_geomean_ratio": 1.0903308075422462,
+    "delta_ms_percentile_90_interval": [
+      -0.0111506,
+      0.1368394
+    ],
+    "ratio_percentile_90_interval": [
+      0.9785772972457712,
+      1.2375753950352915
+    ],
+    "paired_p50_delta_ms": [
+      0.0162,
+      0.062159,
+      -0.020169,
+      -0.032581,
+      0.245649
+    ],
+    "paired_p50_ratios": [
+      1.035996000444395,
+      1.1239137932065602,
+      0.9611671608456236,
+      0.9400434294547395,
+      1.464716231555051
+    ],
+    "allocated_bytes_mean_paired_delta": 17959.904000000002,
+    "allocated_bytes_geomean_ratio": 1.1218634110730124,
+    "paired_allocated_bytes_deltas": [
+      18160.79999999999,
+      18154.160000000003,
+      18059.52000000002,
+      18337.040000000008,
+      17088.0
+    ],
+    "cpu_ms_mean_paired_delta": 0.000636,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_float_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.007616,
+    "p50_geomean_ratio": 0.9957598047360321,
+    "delta_ms_percentile_90_interval": [
+      -0.052632,
+      0.047864
+    ],
+    "ratio_percentile_90_interval": [
+      0.9141265368262164,
+      1.1170556686271054
+    ],
+    "paired_p50_delta_ms": [
+      -0.09009,
+      -0.02522,
+      -0.00844,
+      0.11821,
+      -0.03254
+    ],
+    "paired_p50_ratios": [
+      0.860078277886497,
+      0.953346405712383,
+      0.9787421605420246,
+      1.2848776961079649,
+      0.9494107770280775
+    ],
+    "allocated_bytes_mean_paired_delta": 14318.192,
+    "allocated_bytes_geomean_ratio": 1.117028797824319,
+    "paired_allocated_bytes_deltas": [
+      1567.679999999993,
+      -2821.5199999999895,
+      687.7599999999948,
+      71877.83999999998,
+      279.20000000001164
+    ],
+    "cpu_ms_mean_paired_delta": -0.0239,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_scalar_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.10232580000000001,
+    "p50_geomean_ratio": 0.9492644724157087,
+    "delta_ms_percentile_90_interval": [
+      -0.325372,
+      0.1221806
+    ],
+    "ratio_percentile_90_interval": [
+      0.8219556546398606,
+      1.1150478549118732
+    ],
+    "paired_p50_delta_ms": [
+      -0.28026,
+      -0.01808,
+      -0.07353,
+      0.384371,
+      -0.52413
+    ],
+    "paired_p50_ratios": [
+      0.8387994800354313,
+      0.9878262274771742,
+      0.9301218330070515,
+      1.3612410939927388,
+      0.7347211466921757
+    ],
+    "allocated_bytes_mean_paired_delta": 25761.359999999997,
+    "allocated_bytes_geomean_ratio": 1.055822108850178,
+    "paired_allocated_bytes_deltas": [
+      630.5599999999395,
+      1574.8800000000047,
+      8640.800000000047,
+      114286.87999999995,
+      3673.680000000051
+    ],
+    "cpu_ms_mean_paired_delta": -0.13015,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_group_sum_base_to_current": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": -0.1935742,
+    "p50_geomean_ratio": 0.9228703408267094,
+    "delta_ms_percentile_90_interval": [
+      -0.41943240000000004,
+      0.053308
+    ],
+    "ratio_percentile_90_interval": [
+      0.8371449627680381,
+      1.033457042078467
+    ],
+    "paired_p50_delta_ms": [
+      -0.48032,
+      -0.19938,
+      -0.09426,
+      0.32722,
+      -0.521131
+    ],
+    "paired_p50_ratios": [
+      0.815838812951709,
+      0.9141535917882301,
+      0.9507108905610258,
+      1.1712736389759801,
+      0.8060705859587232
+    ],
+    "allocated_bytes_mean_paired_delta": 24496.192000000003,
+    "allocated_bytes_geomean_ratio": 1.0483543310819954,
+    "paired_allocated_bytes_deltas": [
+      2281.5999999999767,
+      -9768.640000000014,
+      -4500.719999999972,
+      120199.44,
+      14269.280000000028
+    ],
+    "cpu_ms_mean_paired_delta": -0.152762,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_float_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0043682,
+    "p50_geomean_ratio": 1.0136274568683432,
+    "delta_ms_percentile_90_interval": [
+      -0.0277938,
+      0.027526400000000003
+    ],
+    "ratio_percentile_90_interval": [
+      0.9578695265137998,
+      1.0594983501447541
+    ],
+    "paired_p50_delta_ms": [
+      0.00449,
+      0.02222,
+      0.03117,
+      0.031011,
+      -0.06705
+    ],
+    "paired_p50_ratios": [
+      1.0081080593025986,
+      1.043115492083204,
+      1.0802130780514168,
+      1.0581645284717534,
+      0.890204362350167
+    ],
+    "allocated_bytes_mean_paired_delta": 10281.919999999995,
+    "allocated_bytes_geomean_ratio": 1.069502935127372,
+    "paired_allocated_bytes_deltas": [
+      9091.119999999995,
+      11652.399999999994,
+      9971.440000000002,
+      10657.440000000002,
+      10037.199999999983
+    ],
+    "cpu_ms_mean_paired_delta": 0.069228,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_scalar_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.232588,
+    "p50_geomean_ratio": 1.1414353384055644,
+    "delta_ms_percentile_90_interval": [
+      0.030108,
+      0.60409
+    ],
+    "ratio_percentile_90_interval": [
+      1.021181950767069,
+      1.3746549905796932
+    ],
+    "paired_p50_delta_ms": [
+      0.02411,
+      0.04645,
+      0.08422,
+      0.01407,
+      0.99409
+    ],
+    "paired_p50_ratios": [
+      1.0165327225848921,
+      1.0316615317501432,
+      1.0860502896610915,
+      1.0097141673570837,
+      1.684804772533135
+    ],
+    "allocated_bytes_mean_paired_delta": 4533.5359999999755,
+    "allocated_bytes_geomean_ratio": 1.0087658021988095,
+    "paired_allocated_bytes_deltas": [
+      6746.880000000005,
+      -3448.8800000000047,
+      3746.8799999999464,
+      8803.76000000001,
+      6819.039999999921
+    ],
+    "cpu_ms_mean_paired_delta": 0.15792,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_scalar_computed_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.4128422,
+    "p50_geomean_ratio": 1.2657779070278996,
+    "delta_ms_percentile_90_interval": [
+      0.143318,
+      0.8626505999999999
+    ],
+    "ratio_percentile_90_interval": [
+      1.1088723236796822,
+      1.5333014793001611
+    ],
+    "paired_p50_delta_ms": [
+      0.24349,
+      0.105,
+      0.22765,
+      0.12798,
+      1.360091
+    ],
+    "paired_p50_ratios": [
+      1.166966097975753,
+      1.0715707391553289,
+      1.232597345539628,
+      1.0883595691797845,
+      1.936934088341462
+    ],
+    "allocated_bytes_mean_paired_delta": 77076.4,
+    "allocated_bytes_geomean_ratio": 1.150574825730829,
+    "paired_allocated_bytes_deltas": [
+      72727.28000000003,
+      73191.35999999999,
+      79137.51999999996,
+      80580.71999999997,
+      79745.12
+    ],
+    "cpu_ms_mean_paired_delta": 0.431922,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_group_coalesce_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.14164220000000002,
+    "p50_geomean_ratio": 1.058493867285066,
+    "delta_ms_percentile_90_interval": [
+      -0.020234,
+      0.3563806
+    ],
+    "ratio_percentile_90_interval": [
+      0.9886374668849796,
+      1.1523771836221852
+    ],
+    "paired_p50_delta_ms": [
+      0.11623,
+      0.07048,
+      -0.07228,
+      -0.03642,
+      0.630201
+    ],
+    "paired_p50_ratios": [
+      1.0546237246396564,
+      1.0331961151878821,
+      0.9602448669787089,
+      0.9837245780322023,
+      1.2909395689650796
+    ],
+    "allocated_bytes_mean_paired_delta": 13895.07200000001,
+    "allocated_bytes_geomean_ratio": 1.025874254437351,
+    "paired_allocated_bytes_deltas": [
+      -3220.6399999998976,
+      21043.839999999967,
+      18274.320000000007,
+      22990.160000000033,
+      10387.679999999935
+    ],
+    "cpu_ms_mean_paired_delta": 0.183554,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "8192_group_computed_over_direct": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.2327922,
+    "p50_geomean_ratio": 1.10574704715535,
+    "delta_ms_percentile_90_interval": [
+      0.10938,
+      0.3720426
+    ],
+    "ratio_percentile_90_interval": [
+      1.0517410856916796,
+      1.1687922841607505
+    ],
+    "paired_p50_delta_ms": [
+      0.1815,
+      0.28833,
+      0.03828,
+      0.10734,
+      0.548511
+    ],
+    "paired_p50_ratios": [
+      1.085298167616774,
+      1.1358035739517884,
+      1.0210546000561016,
+      1.0479682535426527,
+      1.2532264371408561
+    ],
+    "allocated_bytes_mean_paired_delta": 85147.76000000002,
+    "allocated_bytes_geomean_ratio": 1.1556930975210669,
+    "paired_allocated_bytes_deltas": [
+      76874.2400000001,
+      93979.68000000005,
+      88677.27999999997,
+      89650.95999999996,
+      76556.64000000001
+    ],
+    "cpu_ms_mean_paired_delta": 0.294936,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  },
+  "64_computed_cache_to_bypass": {
+    "pairs": 5,
+    "bootstrap_draws": 20000,
+    "seed": 1412,
+    "mean_paired_p50_delta_ms": 0.0274578,
+    "p50_geomean_ratio": 1.052555696498563,
+    "delta_ms_percentile_90_interval": [
+      -0.0020762,
+      0.061272
+    ],
+    "ratio_percentile_90_interval": [
+      0.9945867102104605,
+      1.1236891082646465
+    ],
+    "paired_p50_delta_ms": [
+      0.046699,
+      0.02301,
+      -0.02353,
+      0.09612,
+      -0.00501
+    ],
+    "paired_p50_ratios": [
+      1.0893025835197827,
+      1.0426901669758812,
+      0.9546959836728407,
+      1.2033425005288767,
+      0.9900731141889081
+    ],
+    "allocated_bytes_mean_paired_delta": 21586.416,
+    "allocated_bytes_geomean_ratio": 1.1778144197073106,
+    "paired_allocated_bytes_deltas": [
+      21747.359999999986,
+      22660.880000000005,
+      15732.720000000001,
+      24191.440000000017,
+      23599.679999999993
+    ],
+    "cpu_ms_mean_paired_delta": 0.078276,
+    "interpretation": "Fixed diagnostic; no practical tolerance declared, not a noninferiority/regression certification."
+  }
+}

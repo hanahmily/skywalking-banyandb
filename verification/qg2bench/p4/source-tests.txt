@@ -1,0 +1,146 @@
+{"level":"info","time":"2026-10-30T02:07:54Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestMeasureComputedAggregateInputs
+--- PASS: TestMeasureComputedAggregateInputs (0.00s)
+=== RUN   TestMeasureComputedAggregateInputParameter
+--- PASS: TestMeasureComputedAggregateInputParameter (0.00s)
+=== RUN   TestMeasureComputedAggregateInputDeduplication
+--- PASS: TestMeasureComputedAggregateInputDeduplication (0.00s)
+=== RUN   TestMeasureComputedAggregateInputAvoidsAmbiguousSourceName
+--- PASS: TestMeasureComputedAggregateInputAvoidsAmbiguousSourceName (0.00s)
+=== RUN   TestMeasureSQLAggregateBindingDoesNotMutateCachedTemplate
+--- PASS: TestMeasureSQLAggregateBindingDoesNotMutateCachedTemplate (0.00s)
+=== RUN   TestMeasureAggregateExpressionRetainsNativePushdown
+--- PASS: TestMeasureAggregateExpressionRetainsNativePushdown (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/bydbql	0.027s
+{"level":"info","time":"2026-10-30T02:07:54Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestAggregateExpressionFinalizesBeforeCoalesce
+--- PASS: TestAggregateExpressionFinalizesBeforeCoalesce (0.00s)
+=== RUN   TestAggregateCompositionReleasesOnCancellationAndBudgetFailure
+--- PASS: TestAggregateCompositionReleasesOnCancellationAndBudgetFailure (0.00s)
+=== RUN   TestAggregateCancellationAfterRetainingGroupsReleasesState
+--- PASS: TestAggregateCancellationAfterRetainingGroupsReleasesState (0.02s)
+=== RUN   TestAggregateIntegerSumOverflowAndFloatAverage
+--- PASS: TestAggregateIntegerSumOverflowAndFloatAverage (0.00s)
+=== RUN   TestAggregateScalarSQLNullsAndSharedState
+=== RUN   TestAggregateScalarSQLNullsAndSharedState/typed
+=== RUN   TestAggregateScalarSQLNullsAndSharedState/native-passthrough
+--- PASS: TestAggregateScalarSQLNullsAndSharedState (0.00s)
+    --- PASS: TestAggregateScalarSQLNullsAndSharedState/typed (0.00s)
+    --- PASS: TestAggregateScalarSQLNullsAndSharedState/native-passthrough (0.00s)
+=== RUN   TestAggregateScalarAndGroupedEmpty
+--- PASS: TestAggregateScalarAndGroupedEmpty (0.00s)
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/in-null
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not-in-null
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/empty-in
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/empty-not-in
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/and
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/or
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/null
+=== RUN   TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not-null
+--- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/in-null (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not-in-null (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/empty-in (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/empty-not-in (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/and (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/or (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/null (0.00s)
+    --- PASS: TestExpressionThreeValuedPredicatesAndMaskedBooleanBranches/not-null (0.00s)
+=== RUN   TestExpressionSimpleCaseNumericPromotionAndArrayValues
+--- PASS: TestExpressionSimpleCaseNumericPromotionAndArrayValues (0.00s)
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/add
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/subtract
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/multiply
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/negate
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/divide-overflow
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/divide-zero
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/remainder-zero
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-range
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-nan
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-infinite
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/invalid-string
+=== RUN   TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/timestamp-range
+--- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/add (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/subtract (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/multiply (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/negate (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/divide-overflow (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/divide-zero (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/remainder-zero (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-range (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-nan (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/double-infinite (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/invalid-string (0.00s)
+    --- PASS: TestExpressionCheckedNumericErrorsReleaseSourceAndBudget/timestamp-range (0.00s)
+=== RUN   TestExpressionTimestampCastsNormalizeUTCAndPreserveNanoseconds
+--- PASS: TestExpressionTimestampCastsNormalizeUTCAndPreserveNanoseconds (0.00s)
+=== RUN   TestExpressionSelectionBoundsEmptyBatchesAndCleanup
+=== RUN   TestExpressionSelectionBoundsEmptyBatchesAndCleanup/65536
+=== RUN   TestExpressionSelectionBoundsEmptyBatchesAndCleanup/65537
+--- PASS: TestExpressionSelectionBoundsEmptyBatchesAndCleanup (0.00s)
+    --- PASS: TestExpressionSelectionBoundsEmptyBatchesAndCleanup/65536 (0.00s)
+    --- PASS: TestExpressionSelectionBoundsEmptyBatchesAndCleanup/65537 (0.00s)
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/narrow16
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/wide16
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/wide256
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/cancel256
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/narrow16
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/wide16
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/wide256
+=== RUN   TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/cancel256
+--- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation (0.22s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/narrow16 (0.00s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/wide16 (0.03s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/wide256 (0.04s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=false/cancel256 (0.04s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/narrow16 (0.00s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/wide16 (0.02s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/wide256 (0.04s)
+    --- PASS: TestExpressionRealQueryBudgetsCoverWideProjectionAndCancellation/raw=true/cancel256 (0.04s)
+=== RUN   TestExpressionArrayConstantSharesPayloadAndChargesFinalProjectionHeaders
+--- PASS: TestExpressionArrayConstantSharesPayloadAndChargesFinalProjectionHeaders (0.00s)
+=== RUN   TestExpressionProjectionArithmeticPreservesNullSelectionAndMetadata
+--- PASS: TestExpressionProjectionArithmeticPreservesNullSelectionAndMetadata (0.00s)
+=== RUN   TestExpressionConditionalSkipsDivisionByZeroAndUnusedInvalidCast
+--- PASS: TestExpressionConditionalSkipsDivisionByZeroAndUnusedInvalidCast (0.00s)
+=== RUN   TestExpressionDecodesPassthroughSourceOnlyForEligibleRows
+--- PASS: TestExpressionDecodesPassthroughSourceOnlyForEligibleRows (0.00s)
+=== RUN   TestExpressionRemainderAndTypedNullConditional
+--- PASS: TestExpressionRemainderAndTypedNullConditional (0.00s)
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/=
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/>
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/<
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/!=
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/<=
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/>=
+=== RUN   TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/=#01
+--- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/= (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/> (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/< (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/!= (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/<= (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/>= (0.00s)
+    --- PASS: TestExpressionNonfiniteComparisonsAgreeWithAggregateOrdering/=#01 (0.00s)
+=== RUN   TestExpressionLiteralReservationPrecedesCopyAndOwnsSourceOnFailure
+--- PASS: TestExpressionLiteralReservationPrecedesCopyAndOwnsSourceOnFailure (0.00s)
+=== RUN   TestExpressionPassthroughNullBitmapTakesPriorityOverCellPayload
+--- PASS: TestExpressionPassthroughNullBitmapTakesPriorityOverCellPayload (0.00s)
+=== RUN   TestExpressionScalarCachingAndMaskedWorkStatistics
+--- PASS: TestExpressionScalarCachingAndMaskedWorkStatistics (0.00s)
+=== RUN   TestGroupExpressionBenchmarkFixtures
+--- PASS: TestGroupExpressionBenchmarkFixtures (0.00s)
+=== RUN   TestExpressionQueryFiltersBeforeEvaluationAndPaginatesAfter
+--- PASS: TestExpressionQueryFiltersBeforeEvaluationAndPaginatesAfter (0.00s)
+=== RUN   TestExpressionConstantTimestampUsesExistingTagEncoding
+--- PASS: TestExpressionConstantTimestampUsesExistingTagEncoding (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/query/ql	0.264s

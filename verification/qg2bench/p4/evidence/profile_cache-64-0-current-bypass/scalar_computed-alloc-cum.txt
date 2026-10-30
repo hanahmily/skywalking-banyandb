@@ -1,0 +1,345 @@
+File: current.test
+Build ID: a4888c3f166786df71f236a5d46d16d2846dc19f
+Type: alloc_space
+Time: 2026-10-30 02:12:57 UTC
+Showing nodes accounting for 144.77MB, 100% of 144.77MB total
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%   129.40MB 89.38%  google.golang.org/grpc.(*Server).handleStream
+         0     0%     0%   129.40MB 89.38%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0%     0%   127.90MB 88.35%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0%     0%   127.40MB 88.00%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0%     0%   127.40MB 88.00%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0%     0%   126.90MB 87.66%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0%     0%   126.40MB 87.31%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0%     0%   125.40MB 86.62%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0%     0%   125.40MB 86.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0%     0%   125.40MB 86.62%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0%     0%   125.40MB 86.62%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0%     0%   125.40MB 86.62%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1
+         0     0%     0%    96.84MB 66.89%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).queryQLMeasure
+         0     0%     0%    96.84MB 66.89%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).queryWithRawPlan
+    0.50MB  0.35%  0.35%    95.34MB 65.86%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*measureService).executeQueryWithRawPlan
+         0     0%  0.35%    67.84MB 46.86%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.collectPlannedMeasure
+         0     0%  0.35%    67.84MB 46.86%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureQueryResponseWithPlan
+         0     0%  0.35%    67.84MB 46.86%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.measureRawQueryResponse
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).NextBatch
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).consumeAll
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).NextBatch
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*rawOperator).NextBatch
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*Pipeline).Next (inline)
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*fusedStage).NextBatch
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*VectorizedMIterator).Next
+         0     0%  0.35%    56.33MB 38.91%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*vectorizedMIterator).Next
+         0     0%  0.35%    55.83MB 38.56%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*NativeScan).NextBatch
+         0     0%  0.35%    55.83MB 38.56%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*BatchResult).NextBatch
+         0     0%  0.35%    55.83MB 38.56%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*allocationScopeSource).NextBatch
+         0     0%  0.35%    55.83MB 38.56%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*pipelineBatchSource).NextBatch
+         0     0%  0.35%    55.33MB 38.22%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchSourceFromBatchResult).NextBatch
+         0     0%  0.35%    55.33MB 38.22%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.(*countedBatchSource).NextBatch
+         0     0%  0.35%    42.32MB 29.23%  sync.(*Pool).Get
+         0     0%  0.35%    41.82MB 28.89%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.(*BatchPool).Get
+         0     0%  0.35%    41.82MB 28.89%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewColumnForType
+   41.82MB 28.89% 29.23%    41.82MB 28.89%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewInt64Column (inline)
+         0     0% 29.23%    41.82MB 28.89%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewRecordBatch
+         0     0% 29.23%    41.82MB 28.89%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches.NewBatchPool.func2
+         0     0% 29.23%    28.06MB 19.38%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).planQueryWithCache
+         0     0% 29.23%       27MB 18.65%  github.com/apache/skywalking-banyandb/banyand/queue.(*local).Publish
+    0.50MB  0.35% 29.58%       27MB 18.65%  github.com/apache/skywalking-banyandb/pkg/bus.(*Bus).Publish
+         0     0% 29.58%    26.50MB 18.31%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).Rev
+         0     0% 29.58%    26.50MB 18.31%  github.com/apache/skywalking-banyandb/banyand/query.(*measureQueryProcessor).executeBatchQuery
+         0     0% 29.58%    24.50MB 16.93%  github.com/apache/skywalking-banyandb/banyand/query.dispatchMeasureBatches
+         0     0% 29.58%    24.50MB 16.93%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.DispatchBatches
+         0     0% 29.58%    24.50MB 16.93%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.dispatchBatches
+         0     0% 29.58%    24.06MB 16.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).acquire
+         0     0% 29.58%    24.06MB 16.62%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).uncached
+    0.50MB  0.35% 29.92%    21.50MB 14.85%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).Query
+    0.50MB  0.35% 30.27%    16.56MB 11.44%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*retainedSizer).references
+         0     0% 30.27%    16.56MB 11.44%  github.com/apache/skywalking-banyandb/pkg/bydbql.deepSize (inline)
+   16.06MB 11.09% 41.36%    16.06MB 11.09%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*retainedSizer).first
+         0     0% 41.36%    13.51MB  9.33%  github.com/apache/skywalking-banyandb/banyand/measure.(*queryResult).PullBatch
+    0.50MB  0.35% 41.70%    12.50MB  8.64%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchSeriesList
+         0     0% 41.70%    12.05MB  8.32%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).EstimatedSize
+         0     0% 41.70%    11.51MB  7.95%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapRaw
+    0.50MB  0.35% 42.05%    11.51MB  7.95%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressionQuery
+         0     0% 42.05%       10MB  6.91%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).Search
+         0     0% 42.05%       10MB  6.91%  github.com/apache/skywalking-banyandb/banyand/internal/storage.(*seriesIndex).search
+         0     0% 42.05%     8.51MB  5.88%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapAggregateQuery
+         0     0% 42.05%     8.01MB  5.53%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapAggregate
+         0     0% 42.05%        8MB  5.53%  github.com/apache/skywalking-banyandb/banyand/internal/storage.seriesUniverse
+         0     0% 42.05%        8MB  5.53%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).MatchTermsSet
+         0     0% 42.05%     7.50MB  5.18%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).next
+         0     0% 42.05%     7.50MB  5.18%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextUnmarked
+         0     0% 42.05%     7.01MB  4.84%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressions
+         0     0% 42.05%        7MB  4.84%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).nextPiece
+    6.01MB  4.15% 46.20%     6.01MB  4.15%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile
+         0     0% 46.20%     6.01MB  4.15%  github.com/apache/skywalking-banyandb/banyand/measure.(*queryResult).useWindowScan
+    0.50MB  0.35% 46.54%     6.01MB  4.15%  github.com/apache/skywalking-banyandb/banyand/measure.newWindowScan
+         0     0% 46.54%        6MB  4.14%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).nextPage
+         0     0% 46.54%     5.01MB  3.46%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapGroupExpressions
+         0     0% 46.54%        5MB  3.45%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*Transformer).CompileMeasure (inline)
+    0.50MB  0.35% 46.89%        5MB  3.45%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*Transformer).compileMeasure
+       1MB  0.69% 47.58%        5MB  3.45%  github.com/apache/skywalking-banyandb/banyand/measure.(*measure).searchBlocks
+         0     0% 47.58%     4.51MB  3.11%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.compiledPlanWorkBound
+         0     0% 47.58%     4.51MB  3.11%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*PreparedStatement).EstimatedSize
+         0     0% 47.58%     4.50MB  3.11%  github.com/apache/skywalking-banyandb/pkg/index/native.dictionaryMatchCandidates
+         0     0% 47.58%     4.50MB  3.11%  github.com/apache/skywalking-banyandb/pkg/index/native.exactCandidates
+         0     0% 47.58%        4MB  2.76%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).Bind
+         0     0% 47.58%     3.53MB  2.44%  google.golang.org/grpc/internal/transport.(*http2Client).reader
+         0     0% 47.58%     3.50MB  2.42%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).compileTyped
+         0     0% 47.58%     3.50MB  2.42%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).bindLocalOperators
+       1MB  0.69% 48.27%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapAggregate
+         0     0% 48.27%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).init
+         0     0% 48.27%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockMetadata).copyFrom
+         0     0% 48.27%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*columnFamilyMetadata).copyFrom
+       3MB  2.07% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*columnFamilyMetadata).resizeColumnMetadata (inline)
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).CollectGarbage
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/index/native.(*Owner).runMaintenance
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithRecovery
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/run.launchTask.func1
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered
+         0     0% 50.34%        3MB  2.07%  github.com/apache/skywalking-banyandb/pkg/run.runRecovered.func1
+    0.50MB  0.35% 50.69%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).mergeKeys
+         0     0% 50.69%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).loadData
+         0     0% 50.69%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodePool).run
+         0     0% 50.69%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodeTask).run
+         0     0% 50.69%        3MB  2.07%  github.com/apache/skywalking-banyandb/banyand/measure.decodeCursor
+    2.50MB  1.73% 52.42%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/banyand/measure.newPrefetcher
+    2.50MB  1.73% 54.15%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/banyand/measure.groupWindows
+    1.50MB  1.04% 55.18%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.BuildBatchSchema
+         0     0% 55.18%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*measureExpression).bindCompleted (inline)
+    2.50MB  1.73% 56.91%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*measureExpression).bindOutputExpression
+    1.50MB  1.04% 57.95%     2.50MB  1.73%  google.golang.org/grpc/internal/transport.(*http2Client).operateHeaders
+         0     0% 57.95%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).NewDictionaryTermIterator
+         0     0% 57.95%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.newDictionaryTermIterator
+         0     0% 57.95%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.searchDictionary
+    2.50MB  1.73% 59.67%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewBatchSchema
+         0     0% 59.67%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata
+         0     0% 59.67%     2.50MB  1.73%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.openStrictWith
+    1.76MB  1.22% 60.89%     2.33MB  1.61%  compress/flate.NewWriter (inline)
+         0     0% 60.89%     2.33MB  1.61%  compress/gzip.(*Writer).Write
+         0     0% 60.89%     2.33MB  1.61%  runtime/pprof.(*profileBuilder).appendLocsForStack
+         0     0% 60.89%     2.33MB  1.61%  runtime/pprof.(*profileBuilder).emitLocation
+         0     0% 60.89%     2.33MB  1.61%  runtime/pprof.(*profileBuilder).flush
+         0     0% 60.89%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/query/ql.WrapExpressions (inline)
+       2MB  1.38% 62.27%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/bydbql.resolveMeasureColumns
+       2MB  1.38% 63.66%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/query/ql.ResolveExpression
+    0.50MB  0.35% 64.00%        2MB  1.38%  github.com/apache/skywalking-banyandb/banyand/query.buildMeasureContext
+    0.50MB  0.35% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithBreadcrumb
+         0     0% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).bindAggregate
+         0     0% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).bindAggregateInputs
+         0     0% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.prepareBatchDispatch
+         0     0% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*vellumIndex).Iterator
+         0     0% 64.35%        2MB  1.38%  github.com/blevesearch/vellum.(*FST).Iterator (inline)
+         0     0% 64.35%        2MB  1.38%  github.com/blevesearch/vellum.(*FSTIterator).Reset
+         0     0% 64.35%        2MB  1.38%  github.com/blevesearch/vellum.(*FSTIterator).pointTo
+         0     0% 64.35%        2MB  1.38%  github.com/blevesearch/vellum.newIterator
+         0     0% 64.35%        2MB  1.38%  github.com/apache/skywalking-banyandb/banyand/internal/storage.appendSearchHit
+    1.50MB  1.04% 65.38%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/index/native.projectCandidates
+         0     0% 65.38%        2MB  1.38%  reflect.New
+       2MB  1.38% 66.76%        2MB  1.38%  reflect.unsafe_New
+       2MB  1.38% 68.15%        2MB  1.38%  github.com/RoaringBitmap/roaring.NewBitmap (inline)
+         0     0% 68.15%        2MB  1.38%  github.com/RoaringBitmap/roaring/roaring64.(*Bitmap).Add
+         0     0% 68.15%        2MB  1.38%  github.com/apache/skywalking-banyandb/pkg/index/posting/roaring.(*postingsList).Insert (inline)
+         0     0% 68.15%     1.88MB  1.30%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.TestCompositionRPC
+         0     0% 68.15%     1.88MB  1.30%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.profileArm
+         0     0% 68.15%     1.88MB  1.30%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runComposition
+         0     0% 68.15%     1.88MB  1.30%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runHarness
+         0     0% 68.15%     1.88MB  1.30%  testing.tRunner
+         0     0% 68.15%     1.53MB  1.06%  google.golang.org/grpc/internal/transport.(*framer).readFrame
+    1.50MB  1.04% 69.18%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/index/native.appendQueryHits
+         0     0% 69.18%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).compileAggregate
+         0     0% 69.18%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).compileAggregateComposition
+         0     0% 69.18%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).compileHavingExpression
+         0     0% 69.18%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).compileHavingExpression.func2
+       1MB  0.69% 69.87%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.compileMeasureExpressionRecipe
+         0     0% 69.87%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryBudget).availableSnapshot
+         0     0% 69.87%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryBudget).reserveBytes
+         0     0% 69.87%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/protector.(*memory).RefreshUsage
+    1.50MB  1.04% 70.91%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/protector.(*memory).refreshUsage
+         0     0% 70.91%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).bindExpressions
+    0.50MB  0.35% 71.26%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryBudget).AdmitMeasureContext
+         0     0% 71.26%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.Analyze
+    1.50MB  1.04% 72.29%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/panicdiag.cloneStringMap (inline)
+    1.50MB  1.04% 73.33%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).markSeriesRuns (inline)
+         0     0% 73.33%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*measureExpression).bind
+    1.50MB  1.04% 74.36%     1.50MB  1.04%  github.com/blevesearch/vellum.(*decoderV1).stateAt
+    0.50MB  0.35% 74.71%     1.50MB  1.04%  github.com/blevesearch/vellum.(*FSTIterator).next
+         0     0% 74.71%     1.50MB  1.04%  google.golang.org/grpc.(*Server).handleRawConn.func1
+         0     0% 74.71%     1.50MB  1.04%  google.golang.org/grpc.(*Server).serveStreams
+         0     0% 74.71%     1.50MB  1.04%  google.golang.org/grpc/internal/transport.(*http2Server).HandleStreams
+         0     0% 74.71%     1.50MB  1.04%  google.golang.org/protobuf/proto.Clone
+         0     0% 74.71%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).reserveWork
+         0     0% 74.71%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/measure.(*block).mustReadFrom
+         0     0% 74.71%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/measure.mustReadTimestampsFrom
+       1MB  0.69% 75.40%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.committedSnapshots
+    0.50MB  0.35% 75.75%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).appendWinner (inline)
+    1.50MB  1.04% 76.78%     1.50MB  1.04%  google.golang.org/grpc.getChainUnaryHandler (partial-inline)
+    1.50MB  1.04% 77.82%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).copyRowsFrom (inline)
+    1.50MB  1.04% 78.86%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).emitMetrics
+         0     0% 78.86%     1.50MB  1.04%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).publishStats
+         0     0% 78.86%     1.45MB  1.00%  runtime/pprof.(*profileBuilder).build
+         0     0% 78.86%     1.45MB  1.00%  runtime/pprof.profileWriter
+         0     0% 78.86%     1.03MB  0.71%  golang.org/x/net/http2.(*Framer).ReadFrameHeader
+         0     0% 78.86%     1.03MB  0.71%  golang.org/x/net/http2.readFrameHeader
+    1.03MB  0.71% 79.57%     1.03MB  0.71%  google.golang.org/grpc/internal/mem.(*SimpleBufferPool).Get
+         0     0% 79.57%     1.03MB  0.71%  google.golang.org/grpc/internal/transport/readyreader.(*bufReadyReader).Read
+         0     0% 79.57%     1.03MB  0.71%  google.golang.org/grpc/internal/transport/readyreader.(*nonBlockingReader).ReadOnReady
+         0     0% 79.57%     1.03MB  0.71%  google.golang.org/grpc/internal/transport/readyreader.NewNonBlocking.func1
+         0     0% 79.57%     1.03MB  0.71%  internal/poll.(*FD).RawRead
+         0     0% 79.57%     1.03MB  0.71%  io.ReadAtLeast
+         0     0% 79.57%     1.03MB  0.71%  io.ReadFull (inline)
+         0     0% 79.57%     1.03MB  0.71%  net.(*rawConn).Read
+         0     0% 79.57%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*MeasureTemplate).resolveAggregateInput
+         0     0% 79.57%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/bydbql.compileMeasureExpression
+    0.50MB  0.35% 79.91%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/logger.(*Logger).Named
+         0     0% 79.91%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryReservation).Charge
+         0     0% 79.91%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryReservation).chargeLocked
+       1MB  0.69% 80.60%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateOperator).compileCalls
+    0.50MB  0.35% 80.95%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapRawProjection
+       1MB  0.69% 81.64%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/index/native.(*ReadView).ProjectHit
+         0     0% 81.64%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).Lstat
+         0     0% 81.64%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.ReadStrictSnapshotMetadata.func1
+         0     0% 81.64%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.parseSnapshotSegments
+         0     0% 81.64%        1MB  0.69%  os.Lstat
+    0.50MB  0.35% 81.99%        1MB  0.69%  os.lstatNolog
+       1MB  0.69% 82.68%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*partIter).init
+         0     0% 82.68%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*tstIter).init
+       1MB  0.69% 83.37%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).slotOf (inline)
+       1MB  0.69% 84.06%        1MB  0.69%  google.golang.org/grpc/internal/transport.(*loopyWriter).clientHeaderHandler
+         0     0% 84.06%        1MB  0.69%  google.golang.org/grpc/internal/transport.(*loopyWriter).handle
+         0     0% 84.06%        1MB  0.69%  google.golang.org/grpc/internal/transport.(*loopyWriter).run
+         0     0% 84.06%        1MB  0.69%  google.golang.org/grpc/internal/transport.NewHTTP2Client.func6
+         0     0% 84.06%        1MB  0.69%  os.ignoringEINTR (inline)
+         0     0% 84.06%        1MB  0.69%  syscall.BytePtrFromString (inline)
+       1MB  0.69% 84.75%        1MB  0.69%  syscall.ByteSliceFromString
+       1MB  0.69% 85.44%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).startMergeUnit
+         0     0% 85.44%        1MB  0.69%  google.golang.org/protobuf/internal/impl.(*MessageInfo).merge
+         0     0% 85.44%        1MB  0.69%  google.golang.org/protobuf/internal/impl.(*MessageInfo).mergePointer
+         0     0% 85.44%        1MB  0.69%  google.golang.org/protobuf/internal/impl.mergeMessageSlice
+         0     0% 85.44%        1MB  0.69%  google.golang.org/protobuf/proto.mergeOptions.mergeMessage
+       1MB  0.69% 86.13%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).releaseFinished
+         0     0% 86.13%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/pb/v1.(*Series).Unmarshal
+       1MB  0.69% 86.82%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/pb/v1.unmarshalTagValue
+    0.50MB  0.35% 87.17%        1MB  0.69%  google.golang.org/grpc/internal/transport.(*http2Server).operateHeaders
+    0.50MB  0.35% 87.51%        1MB  0.69%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).fill
+         0     0% 87.51%        1MB  0.69%  github.com/RoaringBitmap/roaring.BitmapOf (inline)
+         0     0% 87.51%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).TermPostingBitmapContext
+         0     0% 87.51%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).termPostingBitmapContext
+       1MB  0.69% 88.20%        1MB  0.69%  google.golang.org/grpc/internal/status.NewWithProto
+       1MB  0.69% 88.89%        1MB  0.69%  context.WithValue
+       1MB  0.69% 89.58%        1MB  0.69%  google.golang.org/grpc/internal/transport.(*http2Server).Peer
+       1MB  0.69% 90.28%        1MB  0.69%  fmt.Sprintf
+         0     0% 90.28%        1MB  0.69%  github.com/apache/skywalking-banyandb/pkg/bytes.(*Buffer).Path
+         0     0% 90.28%     0.88MB  0.61%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.profileArm.func1
+         0     0% 90.28%     0.88MB  0.61%  runtime/pprof.(*Profile).WriteTo
+         0     0% 90.28%     0.88MB  0.61%  runtime/pprof.writeAlloc
+         0     0% 90.28%     0.88MB  0.61%  runtime/pprof.writeHeapInternal
+         0     0% 90.28%     0.88MB  0.61%  runtime/pprof.writeHeapProto
+         0     0% 90.28%     0.57MB  0.39%  compress/flate.(*compressor).init
+    0.57MB  0.39% 90.67%     0.57MB  0.39%  compress/flate.newDeflateFast (inline)
+         0     0% 90.67%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).appendToBuilder
+         0     0% 90.67%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.newMeasureBatchForSchema (inline)
+         0     0% 90.67%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/model.AcquireMeasureBatch (inline)
+         0     0% 90.67%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/model.acquireMeasureBatch
+         0     0% 90.67%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.AcquireBoundedColumn
+    0.50MB  0.35% 91.02%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.AcquireColumn
+         0     0% 91.02%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.ScanResourceSnapshot
+         0     0% 91.02%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/pool.AllRefsCount
+    0.50MB  0.35% 91.36%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/pool.AllRefsCount.func1
+         0     0% 91.36%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.assertIdle
+         0     0% 91.36%     0.50MB  0.35%  internal/sync.(*HashTrieMap[go.shape.interface {},go.shape.interface {}]).Range
+         0     0% 91.36%     0.50MB  0.35%  internal/sync.(*HashTrieMap[go.shape.interface {},go.shape.interface {}]).iter
+         0     0% 91.36%     0.50MB  0.35%  sync.(*Map).Range (inline)
+    0.50MB  0.35% 91.71%     0.50MB  0.35%  github.com/rs/zerolog.Logger.With (inline)
+    0.50MB  0.35% 92.06%     0.50MB  0.35%  google.golang.org/grpc/metadata.FromIncomingContext
+    0.50MB  0.35% 92.40%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/bydbql.havingCompletedOutput
+         0     0% 92.40%     0.50MB  0.35%  golang.org/x/net/http2.(*Framer).ReadFrameForHeader
+         0     0% 92.40%     0.50MB  0.35%  golang.org/x/net/http2.(*Framer).readMetaFrame
+    0.50MB  0.35% 92.75%     0.50MB  0.35%  golang.org/x/net/http2.(*Framer).readMetaFrame.func1
+         0     0% 92.75%     0.50MB  0.35%  golang.org/x/net/http2/hpack.(*Decoder).Write
+         0     0% 92.75%     0.50MB  0.35%  golang.org/x/net/http2/hpack.(*Decoder).callEmit
+         0     0% 92.75%     0.50MB  0.35%  golang.org/x/net/http2/hpack.(*Decoder).parseFieldLiteral
+         0     0% 92.75%     0.50MB  0.35%  golang.org/x/net/http2/hpack.(*Decoder).parseHeaderFieldRepr
+         0     0% 92.75%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/protector.(*QueryBudget).Reserve
+         0     0% 92.75%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/bytes.(*BufferPool).Generate (inline)
+         0     0% 92.75%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/bytes.(*BufferPool).GenerateBounded
+         0     0% 92.75%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/pool.(*Synced[go.shape.*uint8]).Get
+         0     0% 92.75%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionNode).arithmetic.func1
+    0.50MB  0.35% 93.09%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionNode).buffer
+         0     0% 93.09%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*expressionOperator).compile.func2
+         0     0% 93.09%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/ql.wrapExpressions.(*expressionOperator).groupKeyEvaluator.func3
+         0     0% 93.09%     0.50MB  0.35%  sync.(*Pool).pin
+    0.50MB  0.35% 93.44%     0.50MB  0.35%  sync.(*Pool).pinSlow
+    0.50MB  0.35% 93.78%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedFST).search
+         0     0% 93.78%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/native.reserveBitmapMerge
+    0.50MB  0.35% 94.13%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query.ReserveAllocationOnce
+    0.50MB  0.35% 94.47%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/logical/measure.(*schema).registerField (inline)
+         0     0% 94.47%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/logical/measure.BuildSchema
+         0     0% 94.47%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*MessageInfo).New
+         0     0% 94.47%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*messageState).New
+         0     0% 94.47%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.(*timeMerge).gather
+    0.50MB  0.35% 94.82%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.gatherNumeric[go.shape.int64]
+    0.50MB  0.35% 95.16%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.(*windowScan).sequence
+         0     0% 95.16%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.ExecuteBatches
+    0.50MB  0.35% 95.51%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure/plan.NewBatchResult
+         0     0% 95.51%     0.50MB  0.35%  google.golang.org/grpc/internal.init.func1
+         0     0% 95.51%     0.50MB  0.35%  time.AfterFunc
+    0.50MB  0.35% 95.86%     0.50MB  0.35%  time.newTimer
+         0     0% 95.86%     0.50MB  0.35%  os.lstatNolog.func1 (inline)
+         0     0% 95.86%     0.50MB  0.35%  syscall.Lstat (inline)
+         0     0% 95.86%     0.50MB  0.35%  syscall.fstatat
+         0     0% 95.86%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/fs.SyncDir
+         0     0% 95.86%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/fs.syncDir
+         0     0% 95.86%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/native.syncOwnerDirectory (inline)
+         0     0% 95.86%     0.50MB  0.35%  google.golang.org/grpc/internal/transport.(*ServerStream).WriteStatus (inline)
+    0.50MB  0.35% 96.20%     0.50MB  0.35%  google.golang.org/grpc/internal/transport.(*http2Server).writeStatus
+         0     0% 96.20%     0.50MB  0.35%  os.Open (inline)
+         0     0% 96.20%     0.50MB  0.35%  os.OpenFile
+         0     0% 96.20%     0.50MB  0.35%  os.open
+         0     0% 96.20%     0.50MB  0.35%  os.openFileNolog
+         0     0% 96.20%     0.50MB  0.35%  os.openFileNolog.func1 (inline)
+         0     0% 96.20%     0.50MB  0.35%  syscall.Open (inline)
+         0     0% 96.20%     0.50MB  0.35%  syscall.openat
+    0.50MB  0.35% 96.55%     0.50MB  0.35%  github.com/RoaringBitmap/roaring/roaring64.(*roaringArray64).insertNewKeyValueAt (inline)
+         0     0% 96.55%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1.(*bydbQLServiceClient).Query
+    0.50MB  0.35% 96.89%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.(*snapshot).getParts (inline)
+    0.50MB  0.35% 97.24%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.NewBatchPool (inline)
+         0     0% 97.24%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runComposition.func1
+         0     0% 97.24%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/verification/qg2bench/p4.runRequest
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.(*ClientConn).Invoke
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.(*clientStream).RecvMsg
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.(*clientStream).RecvMsg.func1
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.(*clientStream).withRetry
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.(*csAttempt).recvMsg
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.invoke
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc.recv
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/grpc/encoding/proto.(*codecV2).Unmarshal
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*MessageInfo).initOneofFieldCoders.func1
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshal
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshalPointer
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.(*MessageInfo).unmarshalPointerEager
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.consumeMessageInfo
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/internal/impl.consumeMessageSliceInfo
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/proto.Unmarshal
+         0     0% 97.24%     0.50MB  0.35%  google.golang.org/protobuf/proto.UnmarshalOptions.unmarshal
+         0     0% 97.24%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*Reader).VisitDocumentContext
+    0.50MB  0.35% 97.58%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).decodeDocumentIntoContext
+         0     0% 97.58%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*storedSegmentReader).visitDocument
+         0     0% 97.58%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/panicdiag.WithMutableBreadcrumbs
+         0     0% 97.58%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query.WithExistingAllocationScope (inline)
+         0     0% 97.58%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/logical.CollectHiddenCriteriaTags
+    0.50MB  0.35% 97.93%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/query/logical.NewHiddenTagSet (inline)
+    0.50MB  0.35% 98.27%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/bydbql.(*PreparedStatement).Bind
+         0     0% 98.27%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/fs.(*localFileSystem).ReadDirLimit
+         0     0% 98.27%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.readDirectoryEntries
+         0     0% 98.27%     0.50MB  0.35%  os.(*File).ReadDir
+    0.50MB  0.35% 98.62%     0.50MB  0.35%  os.(*File).readdir
+         0     0% 98.62%     0.50MB  0.35%  github.com/RoaringBitmap/roaring.(*Bitmap).AddMany
+         0     0% 98.62%     0.50MB  0.35%  github.com/RoaringBitmap/roaring.(*Bitmap).addwithptr
+    0.50MB  0.35% 98.96%     0.50MB  0.35%  github.com/RoaringBitmap/roaring.newArrayContainer (inline)
+    0.50MB  0.35% 99.31%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/measure.resolveSources
+    0.50MB  0.35% 99.65%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*compiledPlanCache).observeDuration
+         0     0% 99.65%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*DictionaryTermIterator).NextKey
+         0     0% 99.65%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).Next
+         0     0% 99.65%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).next
+    0.50MB  0.35%   100%     0.50MB  0.35%  github.com/apache/skywalking-banyandb/pkg/index/internal/nativeice.(*pagedIterator).pop

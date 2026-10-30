@@ -1,0 +1,7 @@
+{
+  "compiler_only_cpu_ns": null,
+  "binding_only_allocated_bytes": null,
+  "per_owner_peak_reserved_bytes": null,
+  "server_only_cpu_ns": null,
+  "explanation": "No isolated RPC counters expose these values. Sampled call-stack profiles identify setup/evaluation owners; process totals include client/server/background. Expression BufferBytes/ReservedBytes and native cumulative charges are not per-owner live peaks."
+}

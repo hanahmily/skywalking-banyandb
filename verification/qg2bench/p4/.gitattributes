@@ -1,0 +1,2 @@
+evidence/**/*.pprof binary
+evidence/**/*.log -text -whitespace

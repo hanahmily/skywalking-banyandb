@@ -1,5 +1,9 @@
 # QG2 RPC benchmark
 
+The current-source [P4 follow-up](p4/results.md) adds default-policy qualification,
+base/head controls, changed bindings, isolated memory and setup/expression attribution.
+The measurements below remain historical.
+
 The harness starts a standalone server and writes 64 rows across eight entities.
 The integer `value` and `prior + 1` inputs have identical values. It verifies the
 scalar and per-entity results against independently calculated totals before
