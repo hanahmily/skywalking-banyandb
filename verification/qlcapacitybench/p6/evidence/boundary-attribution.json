@@ -1,0 +1,28 @@
+{
+  "classification": "source-derived per-query admission lease exhaustion during sort candidate materialization",
+  "observed_error": "rpc error: code = ResourceExhausted desc = query memory pool exhausted",
+  "default_container_bytes": 4294967296,
+  "protector_fraction": 0.75,
+  "derived_protector_limit_bytes": 3221225472,
+  "query_pool_divisor": 4,
+  "derived_pool_bytes": 805306368,
+  "query_max_divisor": 8,
+  "derived_max_query_bytes": 100663296,
+  "fixed_admission_overhead_bytes": 1048576,
+  "observed_lease_charge_delta_bytes_each_attempt": 99614418,
+  "inferred_used_including_fixed_overhead_bytes": 100662994,
+  "inferred_remaining_bytes": 302,
+  "actual_reservation_used_snapshot_bytes": null,
+  "exact_rejected_charge_bytes": null,
+  "count_distinct_key_capacity_bytes": null,
+  "response_live_peak_bytes": null,
+  "source_exact_live_peak_bytes": null,
+  "source_references": [
+    "banyand/protector/protector.go:224",
+    "banyand/protector/query_budget.go:194",
+    "banyand/protector/query_budget.go:245",
+    "banyand/protector/query_budget.go:399",
+    "pkg/query/vectorized/memory.go:111"
+  ],
+  "interpretation": "Cumulative conservative charge, not simultaneous residency. Same failed progress twice; no avoidable copy established."
+}

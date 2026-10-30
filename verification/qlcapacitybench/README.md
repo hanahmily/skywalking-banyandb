@@ -153,3 +153,5 @@ Each process uses the same arm order, 20 warmups and 200 successful timed RPCs
 per arm. It checks equal request/result digests, request bytes and source-row
 counts before reporting differences. It never overwrites the original campaign,
 changes budgets or expands the timed workload to rejected queries.
+
+Current-source complete-export capacity and rejection/recovery evidence: [P6 results](p6/results.md). Historical campaigns above remain separate.

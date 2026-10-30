@@ -1,0 +1,89 @@
+[
+  {
+    "run": "distributed-1000",
+    "resources": {
+      "NanoCpus": 4000000000,
+      "Memory": 8589934592,
+      "MemorySwap": 8589934592,
+      "CpusetCpus": "0,1,2,3",
+      "image_id": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877"
+    },
+    "load_before": "0.64 1.53 3.78 1/1216 902715",
+    "load_after": "0.77 1.53 3.76 2/1202 903177",
+    "cgroup_peak_bytes": 48455680,
+    "cpu_delta": {
+      "usage_usec": 856918,
+      "user_usec": 628462,
+      "system_usec": 228457,
+      "nice_usec": 0,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 31,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "input_rows": 3998,
+    "output_groups": 1000,
+    "accepted": true,
+    "attempts": 1
+  },
+  {
+    "run": "standalone-1000",
+    "resources": {
+      "NanoCpus": 2000000000,
+      "Memory": 4294967296,
+      "MemorySwap": 4294967296,
+      "CpusetCpus": "0,1",
+      "image_id": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877"
+    },
+    "load_before": "0.84 1.46 3.66 2/1205 903733",
+    "load_after": "0.84 1.46 3.66 2/1276 903961",
+    "cgroup_peak_bytes": 34209792,
+    "cpu_delta": {
+      "usage_usec": 344933,
+      "user_usec": 276097,
+      "system_usec": 68835,
+      "nice_usec": 0,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 8,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "input_rows": 3998,
+    "output_groups": 1000,
+    "accepted": true,
+    "attempts": 1
+  },
+  {
+    "run": "standalone-10000",
+    "resources": {
+      "NanoCpus": 2000000000,
+      "Memory": 4294967296,
+      "MemorySwap": 4294967296,
+      "CpusetCpus": "0,1",
+      "image_id": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877"
+    },
+    "load_before": "0.84 1.46 3.66 2/1276 903961",
+    "load_after": "0.94 1.47 3.66 2/1208 904244",
+    "cgroup_peak_bytes": 111845376,
+    "cpu_delta": {
+      "usage_usec": 3214169,
+      "user_usec": 2734345,
+      "system_usec": 479825,
+      "nice_usec": 0,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 28,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "input_rows": 39998,
+    "output_groups": 10000,
+    "accepted": false,
+    "attempts": 2
+  }
+]

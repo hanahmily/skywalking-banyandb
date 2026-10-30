@@ -1,0 +1,6 @@
+{
+  "stage": "postprocessing",
+  "initial_error": "FullSort bool assertion failed",
+  "source_reason": "recordSortCompletion does not copy FullSort into process-wide counter; retained false means unavailable, not topK",
+  "correction": "Validate omitted LIMIT/OFFSET, K delta zero, N peak candidates, N output rows and full ordered oracle. No server rerun."
+}

@@ -1,0 +1,177 @@
+{"level":"info","time":"2026-10-30T03:13:40Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestSortT17BenchmarkFixtures
+=== RUN   TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=10/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=100/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=1024/keys=1/ordered/width=16/limit=10/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=32768/keys=3/reverse/width=16/limit=100/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=32768/keys=8/tied/width=16/limit=1000/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=32768/keys=8/random/width=16/limit=100/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=32768/keys=1/random/width=1024/limit=100/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=32768/keys=3/reverse/width=1024/limit=1000/offset=0
+=== RUN   TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=100/offset=90000
+--- PASS: TestSortT17BenchmarkFixtures (2.36s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=10/offset=0 (0.53s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=100/offset=0 (0.41s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=1024/keys=1/ordered/width=16/limit=10/offset=0 (0.00s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=32768/keys=3/reverse/width=16/limit=100/offset=0 (0.12s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=32768/keys=8/tied/width=16/limit=1000/offset=0 (0.22s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=32768/keys=8/random/width=16/limit=100/offset=0 (0.14s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=32768/keys=1/random/width=1024/limit=100/offset=0 (0.11s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=32768/keys=3/reverse/width=1024/limit=1000/offset=0 (0.17s)
+    --- PASS: TestSortT17BenchmarkFixtures/rows=100000/keys=3/random/width=16/limit=100/offset=90000 (0.65s)
+=== RUN   TestSortT17NarrowCandidatesReleaseMiBSources
+--- PASS: TestSortT17NarrowCandidatesReleaseMiBSources (0.02s)
+=== RUN   TestSortCountersObserveActualKeyCallsAndOutputPeak
+--- PASS: TestSortCountersObserveActualKeyCallsAndOutputPeak (0.00s)
+=== RUN   TestSortInstrumentedFullSortAndCopiedBatchCancellation
+--- PASS: TestSortInstrumentedFullSortAndCopiedBatchCancellation (0.00s)
+=== RUN   TestSortBudgetExhaustionReleasesOwnedCandidatesAndRecovers
+--- PASS: TestSortBudgetExhaustionReleasesOwnedCandidatesAndRecovers (0.00s)
+=== RUN   TestSortZeroLimitAndWideOffsetDoNotWrap
+--- PASS: TestSortZeroLimitAndWideOffsetDoNotWrap (0.00s)
+=== RUN   TestSortCancellationAndSourceErrorsReleaseEarlierCandidates
+--- PASS: TestSortCancellationAndSourceErrorsReleaseEarlierCandidates (0.00s)
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/nil-outputs
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/nil-keys
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/missing-output
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/missing-key
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/array-key
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/budget
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/canceled
+=== RUN   TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/init-error
+--- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/nil-outputs (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/nil-keys (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/missing-output (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/missing-key (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/array-key (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/budget (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/canceled (0.00s)
+    --- PASS: TestSortRejectsInvalidRecipesAndInitializationFailuresWithoutLeaks/init-error (0.00s)
+=== RUN   TestSortBoxedPackedIntegerArraysRespectOwnedMemoryBudget
+--- PASS: TestSortBoxedPackedIntegerArraysRespectOwnedMemoryBudget (0.00s)
+=== RUN   TestSortKeepsExactTypedLexicographicOrder
+=== RUN   TestSortKeepsExactTypedLexicographicOrder/int64
+=== RUN   TestSortKeepsExactTypedLexicographicOrder/float64
+=== RUN   TestSortKeepsExactTypedLexicographicOrder/string
+=== RUN   TestSortKeepsExactTypedLexicographicOrder/bytes
+--- PASS: TestSortKeepsExactTypedLexicographicOrder (0.00s)
+    --- PASS: TestSortKeepsExactTypedLexicographicOrder/int64 (0.00s)
+    --- PASS: TestSortKeepsExactTypedLexicographicOrder/float64 (0.00s)
+    --- PASS: TestSortKeepsExactTypedLexicographicOrder/string (0.00s)
+    --- PASS: TestSortKeepsExactTypedLexicographicOrder/bytes (0.00s)
+=== RUN   TestSortOrdersCompletedRowsAndPreservesMetadata
+--- PASS: TestSortOrdersCompletedRowsAndPreservesMetadata (0.00s)
+=== RUN   TestRawSortHidesKeyAndPaginatesAfterFiltering
+--- PASS: TestRawSortHidesKeyAndPaginatesAfterFiltering (0.00s)
+=== RUN   TestSortTopKMatchesFullSortWithBoundedCandidates
+--- PASS: TestSortTopKMatchesFullSortWithBoundedCandidates (0.00s)
+=== RUN   TestSortedTimestampAliasesKeepTimestampEgress
+--- PASS: TestSortedTimestampAliasesKeepTimestampEgress (0.00s)
+=== RUN   TestSortPreservesNullArrayOutputs
+--- PASS: TestSortPreservesNullArrayOutputs (0.00s)
+=== RUN   TestRawSortPaginatesAfterCompleteDistinct
+--- PASS: TestRawSortPaginatesAfterCompleteDistinct (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/query/ql	2.410s
+=== RUN   TestQueryMemoryScopeUsesProcessorLimitAtCaller
+--- PASS: TestQueryMemoryScopeUsesProcessorLimitAtCaller (0.00s)
+=== RUN   TestResponseEncodingStacksAgainstRetainedOutput
+--- PASS: TestResponseEncodingStacksAgainstRetainedOutput (0.00s)
+=== RUN   TestResponseEncodingHeldUntilTransportCompletion
+--- PASS: TestResponseEncodingHeldUntilTransportCompletion (0.00s)
+=== RUN   TestResponseEncodingDirectCallerReleasesLocally
+--- PASS: TestResponseEncodingDirectCallerReleasesLocally (0.00s)
+=== RUN   TestResponseEncodingBoundCoverageEnvelopeAndOneShot
+--- PASS: TestResponseEncodingBoundCoverageEnvelopeAndOneShot (0.00s)
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/uncovered
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/incomplete
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/early-close
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/identity
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/row-count
+=== RUN   TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/replaced
+--- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/uncovered (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/incomplete (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/early-close (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/identity (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/row-count (0.00s)
+    --- PASS: TestResponseEncodingCoverageRejectsUncoveredStaleAndIncomplete/replaced (0.00s)
+=== RUN   TestResponseEncodingBoundBudgetCancelOverflowAndTransport
+--- PASS: TestResponseEncodingBoundBudgetCancelOverflowAndTransport (0.00s)
+=== RUN   TestResponseEncodingTypedNilAfterEmptySerialization
+--- PASS: TestResponseEncodingTypedNilAfterEmptySerialization (0.00s)
+=== RUN   TestResponseEncodingInterleavedRunsFallBackWithoutFailing
+=== RUN   TestResponseEncodingInterleavedRunsFallBackWithoutFailing/false
+=== RUN   TestResponseEncodingInterleavedRunsFallBackWithoutFailing/true
+--- PASS: TestResponseEncodingInterleavedRunsFallBackWithoutFailing (0.00s)
+    --- PASS: TestResponseEncodingInterleavedRunsFallBackWithoutFailing/false (0.00s)
+    --- PASS: TestResponseEncodingInterleavedRunsFallBackWithoutFailing/true (0.00s)
+=== RUN   TestResponseEncodingConcurrentDetachAndLateRecord
+--- PASS: TestResponseEncodingConcurrentDetachAndLateRecord (0.00s)
+=== RUN   TestResponseEncodingExactFallbackAtRemainingBoundary
+=== RUN   TestResponseEncodingExactFallbackAtRemainingBoundary/parent=false/deficit=0
+=== RUN   TestResponseEncodingExactFallbackAtRemainingBoundary/parent=false/deficit=1
+=== RUN   TestResponseEncodingExactFallbackAtRemainingBoundary/parent=true/deficit=0
+=== RUN   TestResponseEncodingExactFallbackAtRemainingBoundary/parent=true/deficit=1
+--- PASS: TestResponseEncodingExactFallbackAtRemainingBoundary (0.00s)
+    --- PASS: TestResponseEncodingExactFallbackAtRemainingBoundary/parent=false/deficit=0 (0.00s)
+    --- PASS: TestResponseEncodingExactFallbackAtRemainingBoundary/parent=false/deficit=1 (0.00s)
+    --- PASS: TestResponseEncodingExactFallbackAtRemainingBoundary/parent=true/deficit=0 (0.00s)
+    --- PASS: TestResponseEncodingExactFallbackAtRemainingBoundary/parent=true/deficit=1 (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/query/vectorized	0.014s
+{"level":"info","time":"2026-10-30T03:13:41Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestFrameEgressReservationSurvivesSourceClose
+=== RUN   TestFrameEgressReservationSurvivesSourceClose/false
+=== RUN   TestFrameEgressReservationSurvivesSourceClose/true
+--- PASS: TestFrameEgressReservationSurvivesSourceClose (0.00s)
+    --- PASS: TestFrameEgressReservationSurvivesSourceClose/false (0.00s)
+    --- PASS: TestFrameEgressReservationSurvivesSourceClose/true (0.00s)
+=== RUN   TestFrameEgressRejectsBeforeEncodingAndReleasesOnCancel
+--- PASS: TestFrameEgressRejectsBeforeEncodingAndReleasesOnCancel (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure	0.017s
+{"level":"info","time":"2026-10-30T03:13:41Z","message":"maxprocs: Leaving GOMAXPROCS=32: CPU quota undefined"}
+=== RUN   TestMeasureSortedCaseCountCanScanSeries
+--- PASS: TestMeasureSortedCaseCountCanScanSeries (0.00s)
+=== RUN   TestMeasureSortVisibleAliasesAndNulls
+--- PASS: TestMeasureSortVisibleAliasesAndNulls (0.00s)
+=== RUN   TestMeasureSortHiddenExpressionRebindsBeforePagination
+--- PASS: TestMeasureSortHiddenExpressionRebindsBeforePagination (0.00s)
+=== RUN   TestMeasureSortCompletedGroupsAfterHaving
+--- PASS: TestMeasureSortCompletedGroupsAfterHaving (0.00s)
+=== RUN   TestMeasureSortHiddenAggregateAndVisibleDistinct
+--- PASS: TestMeasureSortHiddenAggregateAndVisibleDistinct (0.00s)
+=== RUN   TestMeasureSortOrdinalCountsImplicitTimeProjection
+--- PASS: TestMeasureSortOrdinalCountsImplicitTimeProjection (0.00s)
+=== RUN   TestMeasureSortRejectsInvalidOrdinals
+=== RUN   TestMeasureSortRejectsInvalidOrdinals/0
+=== RUN   TestMeasureSortRejectsInvalidOrdinals/-1
+=== RUN   TestMeasureSortRejectsInvalidOrdinals/3
+--- PASS: TestMeasureSortRejectsInvalidOrdinals (0.00s)
+    --- PASS: TestMeasureSortRejectsInvalidOrdinals/0 (0.00s)
+    --- PASS: TestMeasureSortRejectsInvalidOrdinals/-1 (0.00s)
+    --- PASS: TestMeasureSortRejectsInvalidOrdinals/3 (0.00s)
+=== RUN   TestMeasureSortParametersRemainValues
+--- PASS: TestMeasureSortParametersRemainValues (0.00s)
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs/SELECT_host_AS_node_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_node_NULLS_LAST
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs/SELECT_host_AS_node_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_v_DESC_NULLS_LAST
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs/SELECT_v_+_1_AS_value_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_value_NULLS_LAST
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs/SELECT_host,_SUM(v)_AS_total_FROM_g.m_WHERE_f_>_1.0_GROUP_BY_host_ORDER_BY_total_NULLS_LAST
+=== RUN   TestMeasureSortPreservesHiddenFilterInputs/SELECT_DISTINCT_host_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_host_NULLS_LAST
+--- PASS: TestMeasureSortPreservesHiddenFilterInputs (0.01s)
+    --- PASS: TestMeasureSortPreservesHiddenFilterInputs/SELECT_host_AS_node_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_node_NULLS_LAST (0.00s)
+    --- PASS: TestMeasureSortPreservesHiddenFilterInputs/SELECT_host_AS_node_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_v_DESC_NULLS_LAST (0.00s)
+    --- PASS: TestMeasureSortPreservesHiddenFilterInputs/SELECT_v_+_1_AS_value_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_value_NULLS_LAST (0.00s)
+    --- PASS: TestMeasureSortPreservesHiddenFilterInputs/SELECT_host,_SUM(v)_AS_total_FROM_g.m_WHERE_f_>_1.0_GROUP_BY_host_ORDER_BY_total_NULLS_LAST (0.00s)
+    --- PASS: TestMeasureSortPreservesHiddenFilterInputs/SELECT_DISTINCT_host_FROM_g.m_WHERE_f_>_1.0_ORDER_BY_host_NULLS_LAST (0.00s)
+=== RUN   TestMeasureSortQualifiedComputedTimestampAlias
+--- PASS: TestMeasureSortQualifiedComputedTimestampAlias (0.00s)
+=== RUN   TestMeasureSortQualifiedAliasRebindsOutputType
+--- PASS: TestMeasureSortQualifiedAliasRebindsOutputType (0.00s)
+PASS
+ok  	github.com/apache/skywalking-banyandb/pkg/bydbql	0.044s

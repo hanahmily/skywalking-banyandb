@@ -1,0 +1,7 @@
+{
+  "frozen_source_binary_runner_protocol_image_verified": true,
+  "scoped_lint": "0 issues",
+  "oracle_test": "PASS",
+  "harness_changed_after_frozen_build": false,
+  "source_revision": "1af21ec71f2b98bae44371e84e279b58929cc200"
+}

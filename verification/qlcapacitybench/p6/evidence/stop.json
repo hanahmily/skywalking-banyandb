@@ -1,0 +1,6 @@
+{
+  "first_reproducible_boundary_output_rows": 10000,
+  "larger_sizes_not_attempted": [
+    100000
+  ]
+}

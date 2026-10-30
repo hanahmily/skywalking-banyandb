@@ -1,0 +1,570 @@
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"honoring GOMAXPROCS=\"4\" as set in environment"}
+=== RUN   TestExportRPC
+
+██████╗  █████╗ ███╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██████╗ 
+██╔══██╗██╔══██╗████╗  ██║╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔══██╗
+██████╔╝███████║██╔██╗ ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ██║██████╔╝
+██╔══██╗██╔══██║██║╚██╗██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗
+██████╔╝██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═════╝ 
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"CPU Number: 4"}
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"starting as a data server"}
+{"level":"info","module":"DATA","time":"2026-10-30T03:19:04Z","message":"started"}
+{"level":"info","module":"DATA","roles":[1,2],"time":"2026-10-30T03:19:04Z","message":"the node will run as"}
+{"level":"info","module":"DATA","elapsed":0.14201,"name":"metric-service","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY","path":"/tmp/banyandb-test-2494889924/schema-property/data","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"SCHEMA-SERVER","root":"/tmp/banyandb-test-2494889924","time":"2026-10-30T03:19:04Z","message":"schema property database initialized"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"SCHEMA-SERVER","addr":"127.0.0.1:43515","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"METADATA","file-path":"/tmp/TestExportRPC2161162869/001/discovery.yaml","time":"2026-10-30T03:19:04Z","message":"Initializing file-based node discovery"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39201], active :[127.0.0.1:39201], evictable :[]","node":"metadata:{name:\"127.0.0.1:39201\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39201\"  property_schema_grpc_address:\"127.0.0.1:43515\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"METADATA","time":"2026-10-30T03:19:04Z","message":"property-based schema registry initialized"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":0,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"info","module":"DATA","elapsed":3.66062,"name":"metadata","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"MEMORY-PROTECTOR","limit":"6.4 GB","cgroup_limit":"8.6 GB","percent":75,"time":"2026-10-30T03:19:04Z","message":"memory protector enabled"}
+{"level":"info","module":"DATA","elapsed":0.31964,"name":"memory-protector","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.00261,"name":"native-log","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.14222,"name":"server-queue","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY","path":"/tmp/banyandb-test-2494889924/property/data","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__property_gossip","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","propID":"group__property_gossip","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"stream","propID":"stream__property_gossip/_property_gossip_trace_stream","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","propID":"stream__property_gossip/_property_gossip_trace_stream","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"property-repair-groups","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"property","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"DATA","elapsed":5.11644,"name":"property","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"MEASURE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"MEASURE","measure_wire_mode_raw":true,"time":"2026-10-30T03:19:04Z","message":"G9f wire mode published for TopicInternalMeasureQuery (data svc)"}
+{"level":"info","module":"PROPERTY.SCHEDULER.TRIGGER","name":"trigger","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"measure","kinds":[1,4,16,32,64],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"MEASURE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init measures"}
+{"level":"info","module":"DISK-MONITOR.MEASURE","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"DATA","elapsed":0.54196,"name":"measure","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"STREAM","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"stream","kinds":[1,2,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"STREAM","group":"_property_gossip","time":"2026-10-30T03:19:04Z","message":"creating a tsdb"}
+{"level":"info","module":"_PROPERTY_GOSSIP","path":"/tmp/banyandb-test-2494889924/stream/data/_property_gossip","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"_PROPERTY_GOSSIP","idle_timeout":"1h0m0s","time":"2026-10-30T03:19:04Z","message":"idle segment reclaimer enabled"}
+{"level":"info","module":"_PROPERTY_GOSSIP.SCHEDULER.RETENTION","name":"retention","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.25561,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rules"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.28955,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rule bindings"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.40653,"size":1,"time":"2026-10-30T03:19:04Z","message":"store streams"}
+{"level":"info","module":"STREAM","revision":"Group: 1793330344558427139, Measure: 0, Stream: 1793330344560101999, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init stream"}
+{"level":"info","module":"DISK-MONITOR.STREAM","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"DATA","elapsed":3.36081,"name":"stream","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"trace","kinds":[1,8,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"TRACE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init trace"}
+{"level":"info","module":"DISK-MONITOR.TRACE","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"TRACE","root":"/tmp/banyandb-test-2494889924","dataPath":"/tmp/banyandb-test-2494889924/trace/data","snapshotDir":"/tmp/banyandb-test-2494889924/trace/snapshots","time":"2026-10-30T03:19:04Z","message":"trace standalone service initialized"}
+{"level":"info","module":"DATA","elapsed":0.58446,"name":"trace","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.3334,"name":"export","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.00488,"name":"query","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PPROF-SERVICE","listenAddr":":6060","time":"2026-10-30T03:19:04Z","message":"Start pprof server"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","addr":":34347","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","entryCount":2,"time":"2026-10-30T03:19:04Z","message":"notifyHandlersFromCache: replaying cached entries to handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"SERVER-QUEUE-SUB","listenAddr":"localhost:38937","time":"2026-10-30T03:19:04Z","message":"Start healthz http server"}
+{"level":"info","module":"SERVER-QUEUE-SUB","addr":"localhost:39201","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"METRIC-SERVICE","listenAddr":":2121","time":"2026-10-30T03:19:04Z","message":"Start metric server"}
+    fixture_test.go:179: P6 worker0=localhost:39201
+{"level":"warn","module":"LIAISON","name":"failed-parts-max-size-percent","registered":8,"time":"2026-10-30T03:19:04Z","message":"ignoring duplicate flag"}
+{"level":"warn","module":"LIAISON","name":"failed-parts-max-size-percent","registered":9,"time":"2026-10-30T03:19:04Z","message":"ignoring duplicate flag"}
+
+██████╗  █████╗ ███╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██████╗ 
+██╔══██╗██╔══██╗████╗  ██║╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔══██╗
+██████╔╝███████║██╔██╗ ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ██║██████╔╝
+██╔══██╗██╔══██║██║╚██╗██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗
+██████╔╝██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═════╝ 
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"CPU Number: 4"}
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"starting as a data server"}
+{"level":"info","module":"DATA","time":"2026-10-30T03:19:04Z","message":"started"}
+{"level":"info","module":"DATA","roles":[1,2],"time":"2026-10-30T03:19:04Z","message":"the node will run as"}
+{"level":"info","module":"DATA","elapsed":0.11919,"name":"metric-service","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"PROPERTY","path":"/tmp/banyandb-test-1996097483/schema-property/data","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"SCHEMA-SERVER","root":"/tmp/banyandb-test-1996097483","time":"2026-10-30T03:19:04Z","message":"schema property database initialized"}
+{"level":"info","module":"SCHEMA-SERVER","addr":"127.0.0.1:34567","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"METADATA","file-path":"/tmp/TestExportRPC2161162869/001/discovery.yaml","time":"2026-10-30T03:19:04Z","message":"Initializing file-based node discovery"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39355], active :[127.0.0.1:39355], evictable :[]","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  property_schema_grpc_address:\"127.0.0.1:34567\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"METADATA","time":"2026-10-30T03:19:04Z","message":"property-based schema registry initialized"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":0,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"info","module":"DATA","elapsed":2.43515,"name":"metadata","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"MEMORY-PROTECTOR","limit":"6.4 GB","cgroup_limit":"8.6 GB","percent":75,"time":"2026-10-30T03:19:04Z","message":"memory protector enabled"}
+{"level":"info","module":"DATA","elapsed":0.24105,"name":"memory-protector","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.00275,"name":"native-log","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.12163,"name":"server-queue","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"PROPERTY","path":"/tmp/banyandb-test-1996097483/property/data","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__property_gossip","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","propID":"group__property_gossip","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"stream","propID":"stream__property_gossip/_property_gossip_trace_stream","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","propID":"stream__property_gossip/_property_gossip_trace_stream","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"property-repair-groups","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"property","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"DATA","elapsed":4.90219,"name":"property","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"MEASURE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"MEASURE","measure_wire_mode_raw":true,"time":"2026-10-30T03:19:04Z","message":"G9f wire mode published for TopicInternalMeasureQuery (data svc)"}
+{"level":"info","module":"PROPERTY.SCHEDULER.TRIGGER","name":"trigger","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"measure","kinds":[1,4,16,32,64],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"MEASURE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init measures"}
+{"level":"info","module":"DISK-MONITOR.MEASURE","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"DATA","elapsed":0.97874,"name":"measure","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"STREAM","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"stream","kinds":[1,2,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"STREAM","group":"_property_gossip","time":"2026-10-30T03:19:04Z","message":"creating a tsdb"}
+{"level":"info","module":"_PROPERTY_GOSSIP","path":"/tmp/banyandb-test-1996097483/stream/data/_property_gossip","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"_PROPERTY_GOSSIP","idle_timeout":"1h0m0s","time":"2026-10-30T03:19:04Z","message":"idle segment reclaimer enabled"}
+{"level":"info","module":"_PROPERTY_GOSSIP.SCHEDULER.RETENTION","name":"retention","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.28554,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rules"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.21969,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rule bindings"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.39913,"size":1,"time":"2026-10-30T03:19:04Z","message":"store streams"}
+{"level":"info","module":"STREAM","revision":"Group: 1793330344579581509, Measure: 0, Stream: 1793330344580578119, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init stream"}
+{"level":"info","module":"DISK-MONITOR.STREAM","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"DATA","elapsed":3.55527,"name":"stream","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"trace","kinds":[1,8,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"TRACE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init trace"}
+{"level":"info","module":"DISK-MONITOR.TRACE","high_watermark":95,"low_watermark":85,"check_interval":300000,"cooldown":30000,"force_cleanup_enabled":false,"time":"2026-10-30T03:19:04Z","message":"starting disk monitor"}
+{"level":"info","module":"TRACE","root":"/tmp/banyandb-test-1996097483","dataPath":"/tmp/banyandb-test-1996097483/trace/data","snapshotDir":"/tmp/banyandb-test-1996097483/trace/snapshots","time":"2026-10-30T03:19:04Z","message":"trace standalone service initialized"}
+{"level":"info","module":"DATA","elapsed":0.60906,"name":"trace","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.30103,"name":"export","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"DATA","elapsed":0.00452,"name":"query","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PPROF-SERVICE","listenAddr":":6060","time":"2026-10-30T03:19:04Z","message":"Start pprof server"}
+{"level":"info","module":"METRIC-SERVICE","listenAddr":":2121","time":"2026-10-30T03:19:04Z","message":"Start metric server"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","addr":":40029","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"SERVER-QUEUE-SUB","listenAddr":"localhost:32795","time":"2026-10-30T03:19:04Z","message":"Start healthz http server"}
+{"level":"info","module":"SERVER-QUEUE-SUB","addr":"localhost:39355","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39355 127.0.0.1:39201], active :[127.0.0.1:39355 127.0.0.1:39201], evictable :[]","node":"metadata:{name:\"127.0.0.1:39201\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39201\"  created_at:{seconds:1793330344  nanos:556632229}  property_repair_gossip_grpc_address:\"127.0.0.1:34347\"  property_schema_grpc_address:\"127.0.0.1:43515\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","entryCount":2,"time":"2026-10-30T03:19:04Z","message":"notifyHandlersFromCache: replaying cached entries to handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":1793330344580578189,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","propID":"group__property_gossip","bestRev":1793330344579581599,"deleteTime":0,"nodesToRepair":["127.0.0.1:39201"],"time":"2026-10-30T03:19:04Z","message":"repairing schema inconsistency"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+    fixture_test.go:179: P6 worker1=localhost:39355
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"liaison test directory: /tmp/banyandb-test-3301597540"}
+{"level":"warn","module":"LIAISON","name":"failed-parts-max-size-percent","registered":8,"time":"2026-10-30T03:19:04Z","message":"ignoring duplicate flag"}
+{"level":"warn","module":"LIAISON","name":"failed-parts-max-size-percent","registered":9,"time":"2026-10-30T03:19:04Z","message":"ignoring duplicate flag"}
+
+██████╗  █████╗ ███╗   ██╗██╗   ██╗ █████╗ ███╗   ██╗██████╗ ██████╗ 
+██╔══██╗██╔══██╗████╗  ██║╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔══██╗
+██████╔╝███████║██╔██╗ ██║ ╚████╔╝ ███████║██╔██╗ ██║██║  ██║██████╔╝
+██╔══██╗██╔══██║██║╚██╗██║  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗
+██████╔╝██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═════╝ 
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"CPU Number: 4"}
+{"level":"info","time":"2026-10-30T03:19:04Z","message":"starting as a liaison server"}
+{"level":"info","module":"LIAISON","time":"2026-10-30T03:19:04Z","message":"started"}
+{"level":"info","module":"LIAISON","roles":[3],"time":"2026-10-30T03:19:04Z","message":"the node will run as"}
+{"level":"info","module":"LIAISON","elapsed":0.304051,"name":"metric-service","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"METADATA","file-path":"/tmp/TestExportRPC2161162869/001/discovery.yaml","time":"2026-10-30T03:19:04Z","message":"Initializing file-based node discovery"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39355], active :[127.0.0.1:39355], evictable :[]","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  created_at:{seconds:1793330344  nanos:577794609}  property_repair_gossip_grpc_address:\"127.0.0.1:40029\"  property_schema_grpc_address:\"127.0.0.1:34567\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":0,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__property_gossip","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","propID":"group__property_gossip","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"stream","propID":"stream__property_gossip/_property_gossip_trace_stream","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","propID":"stream__property_gossip/_property_gossip_trace_stream","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39201","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39355 127.0.0.1:39201], active :[127.0.0.1:39355 127.0.0.1:39201], evictable :[]","node":"metadata:{name:\"127.0.0.1:39201\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39201\"  created_at:{seconds:1793330344  nanos:556632229}  property_repair_gossip_grpc_address:\"127.0.0.1:34347\"  property_schema_grpc_address:\"127.0.0.1:43515\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"METADATA","time":"2026-10-30T03:19:04Z","message":"property-based schema registry initialized"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":1793330344580578189,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"info","module":"LIAISON","elapsed":3.66058,"name":"metadata","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"MEMORY-PROTECTOR","limit":"6.4 GB","cgroup_limit":"8.6 GB","percent":75,"time":"2026-10-30T03:19:04Z","message":"memory protector enabled"}
+{"level":"info","module":"LIAISON","elapsed":0.185029,"name":"memory-protector","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"LIAISON","elapsed":0.045889,"name":"server-queue","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"LIAISON","elapsed":0.04118,"name":"queue-client-liaison","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"LIAISON","elapsed":0.15236,"name":"queue-client-data","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:measure-write","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.333769,"name":"v1:measure-write","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:measure-write","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.3091,"name":"v1:measure-write","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:stream-write","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.43986,"name":"v1:stream-write","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:stream-part-sync","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.428229,"name":"v1:stream-part-sync","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:trace-write","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.438429,"name":"v1:trace-write","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:trace-part-sync","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.420389,"name":"v1:trace-part-sync","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"v1:property-update","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":0.3605,"name":"v1:property-update","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"STREAM","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"STREAM","maxFailedPartsBytes":51297937858,"failedPartsMaxSizePercent":10,"maxDiskUsagePercent":95,"time":"2026-10-30T03:19:04Z","message":"configured failed parts storage limit"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"stream","kinds":[1,2,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"STREAM","group":"_property_gossip","time":"2026-10-30T03:19:04Z","message":"creating a tsdb"}
+{"level":"info","module":"_PROPERTY_GOSSIP","path":"/tmp/banyandb-test-3301597540/stream/data/_property_gossip","time":"2026-10-30T03:19:04Z","message":"initialized"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.321149,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rules"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":0.2406,"size":0,"time":"2026-10-30T03:19:04Z","message":"get index rule bindings"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","propID":"stream__property_gossip/_property_gossip_trace_stream","bestRev":1793330344580578189,"deleteTime":0,"nodesToRepair":["127.0.0.1:39201"],"time":"2026-10-30T03:19:04Z","message":"repairing schema inconsistency"}
+{"level":"info","module":"STREAM","group":"_property_gossip","duration":1.205431,"size":1,"time":"2026-10-30T03:19:04Z","message":"store streams"}
+{"level":"info","module":"STREAM","revision":"Group: 1793330344579581509, Measure: 0, Stream: 1793330344580578119, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init stream"}
+{"level":"info","module":"LIAISON","elapsed":5.29338,"name":"stream","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"MEASURE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"MEASURE","measure_wire_mode_raw":true,"time":"2026-10-30T03:19:04Z","message":"G9f wire mode published for TopicInternalMeasureQuery (liaison)"}
+{"level":"info","module":"MEASURE","maxFailedPartsBytes":51297937858,"failedPartsMaxSizePercent":10,"maxDiskUsagePercent":95,"time":"2026-10-30T03:19:04Z","message":"configured failed parts storage limit"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"measure","kinds":[1,4,16,32,64],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"MEASURE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init measures"}
+{"level":"info","module":"LIAISON","elapsed":1.67194,"name":"measure","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:04Z","message":"memory protector is initialized in PreRun"}
+{"level":"info","module":"TRACE","maxFailedPartsBytes":51297937858,"failedPartsMaxSizePercent":10,"maxDiskUsagePercent":95,"time":"2026-10-30T03:19:04Z","message":"configured failed parts storage limit"}
+{"level":"info","module":"TRACE","dataNodeList":[],"maxSizePercent":10,"time":"2026-10-30T03:19:04Z","message":"handoff configuration"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"trace","kinds":[1,8,16,32],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"TRACE","revision":"Group: 0, Measure: 0, Stream: 0, Trace: 0, IndexRule: 0, IndexRuleBinding: 0, TopNAgg: 0","time":"2026-10-30T03:19:04Z","message":"init trace"}
+{"level":"info","module":"TRACE","root":"/tmp/banyandb-test-3301597540","dataPath":"/tmp/banyandb-test-3301597540/trace/data","time":"2026-10-30T03:19:04Z","message":"trace liaison service initialized"}
+{"level":"info","module":"LIAISON","elapsed":2.06653,"name":"trace","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"LIAISON","elapsed":0.00572,"name":"distributed-query","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","propID":"group__deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","isDelete":false,"handlerCount":10,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","propID":"group__deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","propID":"group__deletion_task","cacheUpdated":false,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group__deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","propID":"group__deletion_task","cacheUpdated":false,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","propID":"group__deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"property","propID":"property__deletion_task/_deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","propID":"property__deletion_task/_deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"property","propID":"property__deletion_task/_deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","propID":"property__deletion_task/_deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"property","propID":"property__deletion_task/_deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"property","propID":"property__deletion_task/_deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"property","propID":"property__deletion_task/_deletion_task","time":"2026-10-30T03:19:04Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","propID":"property__deletion_task/_deletion_task","cacheUpdated":false,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","propID":"property__deletion_task/_deletion_task","cacheUpdated":false,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[1],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[2],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","propID":"property__deletion_task/_deletion_task","cacheUpdated":true,"time":"2026-10-30T03:19:04Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","isDelete":false,"handlerCount":0,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[4],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[4],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[8],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","name":"liaison","kinds":[256],"time":"2026-10-30T03:19:04Z","message":"registering property schema handler"}
+{"level":"info","module":"LIAISON","elapsed":3.045251,"name":"grpc","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"LIAISON-HTTP","level":"info","time":"2026-10-30T03:19:04Z","message":"Logger initialized"}
+{"level":"warn","module":"LIAISON-HTTP","time":"2026-10-30T03:19:04Z","message":"HTTP TLS is disabled, skipping TLSReloader initialization"}
+{"level":"info","module":"LIAISON","elapsed":0.00814,"name":"liaison-http","time":"2026-10-30T03:19:04Z","message":"pre-run completed"}
+{"level":"info","module":"PPROF-SERVICE","listenAddr":":6060","time":"2026-10-30T03:19:04Z","message":"Start pprof server"}
+{"level":"info","module":"LIAISON-GRPC","memory_limit":6442450944,"ratio":0.1,"conn_window_size":429496729,"stream_window_size":214748364,"time":"2026-10-30T03:19:04Z","message":"calculated gRPC buffer sizes"}
+{"level":"info","module":"LIAISON-GRPC","addr":"localhost:43837","time":"2026-10-30T03:19:04Z","message":"Starting gRPC server"}
+{"level":"info","module":"LIAISON-GRPC","addr":"localhost:43837","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"SERVER-QUEUE-SUB","addr":"localhost:38053","time":"2026-10-30T03:19:04Z","message":"Listening to"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","now":"2026-10-30T03:19:04Z","time":"2026-10-30T03:19:04Z","message":"start"}
+{"level":"info","module":"SERVER-QUEUE-SUB","listenAddr":"localhost:18913","time":"2026-10-30T03:19:04Z","message":"Start healthz http server"}
+{"level":"info","module":"METRIC-SERVICE","listenAddr":":2121","time":"2026-10-30T03:19:04Z","message":"Start metric server"}
+{"level":"info","module":"LIAISON-HTTP","listenAddr":"localhost:40097","time":"2026-10-30T03:19:04Z","message":"Start liaison http server"}
+{"level":"info","module":"SERVER-QUEUE-PUB-DATA","status":"registered: [127.0.0.1:39201], active :[127.0.0.1:39201], evictable :[]","node":"metadata:{name:\"127.0.0.1:39201\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39201\"  created_at:{seconds:1793330344  nanos:556632229}  property_repair_gossip_grpc_address:\"127.0.0.1:34347\"  property_schema_grpc_address:\"127.0.0.1:43515\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"SERVER-QUEUE-PUB-DATA","status":"registered: [127.0.0.1:39201 127.0.0.1:39355], active :[127.0.0.1:39201 127.0.0.1:39355], evictable :[]","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  created_at:{seconds:1793330344  nanos:577794609}  property_repair_gossip_grpc_address:\"127.0.0.1:40029\"  property_schema_grpc_address:\"127.0.0.1:34567\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","entryCount":4,"time":"2026-10-30T03:19:04Z","message":"notifyHandlersFromCache: replaying cached entries to handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_property_gossip","isDelete":false,"handlerCount":11,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"stream","group":"_property_gossip","name":"_property_gossip_trace_stream","isDelete":false,"handlerCount":2,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"_deletion_task","isDelete":false,"handlerCount":11,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"property","group":"_deletion_task","name":"_deletion_task","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:04Z","message":"notifying schema event handlers"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"schema server node is active"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:04Z","message":"launchWatch: starting new watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39355 127.0.0.1:39201], active :[127.0.0.1:39201 127.0.0.1:39355], evictable :[]","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  created_at:{seconds:1793330344  nanos:577794609}  property_repair_gossip_grpc_address:\"127.0.0.1:40029\"  property_schema_grpc_address:\"127.0.0.1:34567\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:04Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:04Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","maxRevision":1793330344623570478,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: sending initial replay request"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","inSync":false,"time":"2026-10-30T03:19:04Z","message":"processWatchSession: received REPLAY_DONE"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:04Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:04Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"warn","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","node":"metadata:{name:\"127.0.0.1:38053\"}  roles:ROLE_LIAISON  grpc_address:\"127.0.0.1:38053\"  http_address:\"127.0.0.1:40097\"  created_at:{seconds:1793330344  nanos:610120118}  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:06Z","message":"node does not have gossip address, skipping registration"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:06Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"warn","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","node":"metadata:{name:\"127.0.0.1:38053\"}  roles:ROLE_LIAISON  grpc_address:\"127.0.0.1:38053\"  http_address:\"127.0.0.1:40097\"  created_at:{seconds:1793330344  nanos:610120118}  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:06Z","message":"node does not have gossip address, skipping registration"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:06Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"info","module":"SERVER-QUEUE-PUB-LIAISON","status":"registered: [127.0.0.1:38053], active :[127.0.0.1:38053], evictable :[]","node":"metadata:{name:\"127.0.0.1:38053\"}  roles:ROLE_LIAISON  grpc_address:\"127.0.0.1:38053\"  http_address:\"127.0.0.1:40097\"  created_at:{seconds:1793330344  nanos:610120118}  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:06Z","message":"new node is healthy, add it to active queue"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:06Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","isDelete":false,"handlerCount":11,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"info","module":"MEASURE","group":"p6bench","time":"2026-10-30T03:19:11Z","message":"creating a tsdb"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"info","module":"MEASURE","group":"p6bench","time":"2026-10-30T03:19:11Z","message":"creating a tsdb"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","isDelete":false,"handlerCount":5,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"info","module":"MEASURE","group":"p6bench","time":"2026-10-30T03:19:11Z","message":"creating a tsdb"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"group","propID":"group_p6bench","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"group","group":"","name":"p6bench","propID":"group_p6bench","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"TRACE","event":{"Metadata":{"metadata":{"group":"p6bench","name":"activity_service","id":3459930779,"mod_revision":1793330351379125387},"tags":["service_id"],"type":1,"updated_at":{"seconds":1793330351,"nanos":379125457},"analyzer":"keyword","no_sort":true,"created_at":{"seconds":1793330351,"nanos":379125457}},"DeleteRevision":0,"Typ":0,"Kind":2},"time":"2026-10-30T03:19:11Z","message":"received an event"}
+{"level":"debug","module":"TRACE","event":{"Metadata":{"metadata":{"group":"p6bench","name":"activity_service","id":3459930779,"mod_revision":1793330351379125387},"tags":["service_id"],"type":1,"updated_at":{"seconds":1793330351,"nanos":379125457},"analyzer":"keyword","no_sort":true,"created_at":{"seconds":1793330351,"nanos":379125457}},"DeleteRevision":0,"Typ":0,"Kind":2},"time":"2026-10-30T03:19:11Z","message":"received an event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"TRACE","event":{"Metadata":{"metadata":{"group":"p6bench","name":"activity_service","id":3459930779,"mod_revision":1793330351379125387},"tags":["service_id"],"type":1,"updated_at":{"seconds":1793330351,"nanos":379125457},"analyzer":"keyword","no_sort":true,"created_at":{"seconds":1793330351,"nanos":379125457}},"DeleteRevision":0,"Typ":0,"Kind":2},"time":"2026-10-30T03:19:11Z","message":"received an event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"info","module":"P6BENCH","path":"/tmp/banyandb-test-3301597540/measure/data/p6bench","time":"2026-10-30T03:19:11Z","message":"initialized"}
+{"level":"error","module":"DISTRIBUTED-QUERY.MEASURE.P6BENCH.M","req":{"groups":["p6bench"], "name":"m", "timeRange":{"begin":"2026-10-30T02:00:00Z", "end":"2026-10-30T02:59:59.999Z"}, "criteria":{"condition":{"name":"service_id", "op":"BINARY_OP_EQ", "value":{"str":{"value":"s000000"}}}}, "tagProjection":{"tagFamilies":[{"name":"searchable", "tags":["service_id"]}, {"name":"storage-only", "tags":["entity_id"]}]}, "fieldProjection":{"names":["value"]}, "limit":4294967295},"time":"2026-10-30T03:19:11Z","message":"group not found"}
+{"level":"info","module":"P6BENCH","path":"/tmp/banyandb-test-2494889924/measure/data/p6bench","time":"2026-10-30T03:19:11Z","message":"initialized"}
+{"level":"info","module":"P6BENCH","idle_timeout":"1h0m0s","time":"2026-10-30T03:19:11Z","message":"idle segment reclaimer enabled"}
+{"level":"info","module":"P6BENCH.SCHEDULER.RETENTION","name":"retention","now":"2026-10-30T03:19:11Z","time":"2026-10-30T03:19:11Z","message":"start"}
+{"level":"info","module":"P6BENCH","path":"/tmp/banyandb-test-1996097483/measure/data/p6bench","time":"2026-10-30T03:19:11Z","message":"initialized"}
+{"level":"info","module":"P6BENCH","idle_timeout":"1h0m0s","time":"2026-10-30T03:19:11Z","message":"idle segment reclaimer enabled"}
+{"level":"info","module":"P6BENCH.SCHEDULER.RETENTION","name":"retention","now":"2026-10-30T03:19:11Z","time":"2026-10-30T03:19:11Z","message":"start"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","propID":"measure_p6bench/_top_n_result","bestRev":1793330351390346367,"deleteTime":0,"nodesToRepair":["127.0.0.1:39201"],"time":"2026-10-30T03:19:11Z","message":"repairing schema inconsistency"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","isDelete":false,"handlerCount":1,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRule","propID":"indexRule_p6bench/activity_service","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":true,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","isDelete":false,"handlerCount":3,"time":"2026-10-30T03:19:11Z","message":"notifying schema event handlers"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRule","group":"p6bench","name":"activity_service","propID":"indexRule_p6bench/activity_service","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"indexRuleBinding","propID":"indexRuleBinding_p6bench/activity_binding","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"indexRuleBinding","group":"p6bench","name":"activity_binding","propID":"indexRuleBinding_p6bench/activity_binding","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/m","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"m","propID":"measure_p6bench/m","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","eventType":"SCHEMA_EVENT_TYPE_INSERT","kind":"measure","propID":"measure_p6bench/_top_n_result","time":"2026-10-30T03:19:11Z","message":"watch: received event"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","kind":"measure","group":"p6bench","name":"_top_n_result","propID":"measure_p6bench/_top_n_result","cacheUpdated":false,"time":"2026-10-30T03:19:11Z","message":"processing initial resource from property"}
+{"level":"info","module":"P6BENCH","shard_id":0,"path":"/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-0","time":"2026-10-30T03:19:11Z","message":"created new shard"}
+{"level":"info","module":"P6BENCH","shard_id":1,"path":"/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-1","time":"2026-10-30T03:19:11Z","message":"created new shard"}
+{"level":"info","module":"P6BENCH.SEGID-20261030","seg":"SegID-20261030","time":"2026-10-30T03:19:11Z","message":"segment initialized"}
+{"level":"info","module":"P6BENCH.SEGID-20261030","seg":"SegID-20261030","time":"2026-10-30T03:19:11Z","message":"segment initialized"}
+{"level":"info","module":"P6BENCH.SEGID-20261030.SHARD0","shard_id":0,"path":"/tmp/banyandb-test-2494889924/measure/data/p6bench/seg-20261030/shard-0","time":"2026-10-30T03:19:11Z","message":"loading a shard"}
+{"level":"info","module":"P6BENCH.SEGID-20261030.SHARD1","shard_id":1,"path":"/tmp/banyandb-test-1996097483/measure/data/p6bench/seg-20261030/shard-1","time":"2026-10-30T03:19:11Z","message":"loading a shard"}
+Liaison 43837 write queue path: /tmp/banyandb-test-3301597540
+/tmp/banyandb-test-3301597540
+/tmp/banyandb-test-3301597540/measure
+/tmp/banyandb-test-3301597540/measure/data
+/tmp/banyandb-test-3301597540/measure/data/p6bench
+/tmp/banyandb-test-3301597540/measure/data/p6bench/lock
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-0
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-0/18e3307406ead7cc.snp
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-0/failed-parts
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-1
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-1/18e3307406fad9d2.snp
+/tmp/banyandb-test-3301597540/measure/data/p6bench/shard-1/failed-parts
+/tmp/banyandb-test-3301597540/stream
+/tmp/banyandb-test-3301597540/stream/data
+/tmp/banyandb-test-3301597540/stream/data/_property_gossip
+/tmp/banyandb-test-3301597540/stream/data/_property_gossip/lock
+/tmp/banyandb-test-3301597540/trace
+/tmp/banyandb-test-3301597540/trace/data
+done
+{"level":"warn","module":"LIAISON","total":15,"ran":1,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.00138,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":2,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"LIAISON","elapsed":0.02552,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":3,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"context canceled","node":"127.0.0.1:39355","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"context canceled","node":"127.0.0.1:39201","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"warn","module":"LIAISON","elapsed":0.50033,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":4,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.00462,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":5,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.00127,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":6,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"warn","module":"LIAISON","elapsed":0.29768,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":7,"name":"queue-client-liaison","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"All servers are stopped"}
+{"level":"warn","module":"LIAISON","elapsed":0.04307,"name":"queue-client-liaison","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":8,"name":"queue-client-data","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.43161,"name":"queue-client-data","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":9,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.13229,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":10,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.16309,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":11,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:12Z","message":"trace liaison service stopped"}
+{"level":"warn","module":"LIAISON","elapsed":0.01009,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":12,"name":"distributed-query","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.00421,"name":"distributed-query","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":13,"name":"grpc","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"LIAISON-GRPC","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"LIAISON-GRPC","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"warn","module":"LIAISON","elapsed":0.24798,"name":"grpc","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":14,"name":"liaison-http","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.09846,"name":"liaison-http","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"LIAISON","total":15,"ran":15,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"LIAISON","elapsed":0.00388,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":1,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00073,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":2,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00096,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":3,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.0099,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":4,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"EOF","node":"127.0.0.1:39355","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"EOF","node":"127.0.0.1:39355","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"info","module":"SCHEMA-SERVER","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"context canceled","node":"127.0.0.1:39201","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:12Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"warn","module":"DATA","elapsed":200.719049,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":5,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00213,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":6,"name":"native-log","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00399,"name":"native-log","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":7,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"warn","module":"DATA","elapsed":0.10317,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":8,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00144,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":9,"name":"property","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"PROPERTY.SCHEDULER.TRIGGER","name":"trigger","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","time":"2026-10-30T03:19:12Z","message":"GRPC server is stopped"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.12185,"name":"property","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":10,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"DISK-MONITOR.MEASURE","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"All servers are stopped"}
+{"level":"info","module":"P6BENCH.SCHEDULER.RETENTION","name":"retention","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","error":"rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: dial tcp 127.0.0.1:34567: connect: connection refused\"","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  created_at:{seconds:1793330344  nanos:577794609}  property_repair_gossip_grpc_address:\"127.0.0.1:40029\"  property_schema_grpc_address:\"127.0.0.1:34567\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:12Z","message":"healthCheck: service unhealthy, RPC error"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:12Z","message":"removeNodeIfUnhealthy: node is unhealthy, removing from active"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:12Z","message":"schema server node is inactive"}
+{"level":"debug","module":"PROPERTY-SCHEMA-REGISTRY","node":"127.0.0.1:39355","time":"2026-10-30T03:19:12Z","message":"stopWatch: canceling watch session"}
+{"level":"info","module":"PROPERTY-SCHEMA-REGISTRY","status":"registered: [127.0.0.1:39201], active :[127.0.0.1:39201], evictable :[]","node":"metadata:{name:\"127.0.0.1:39355\"}  roles:ROLE_META  roles:ROLE_DATA  grpc_address:\"127.0.0.1:39355\"  created_at:{seconds:1793330344  nanos:577794609}  property_repair_gossip_grpc_address:\"127.0.0.1:40029\"  property_schema_grpc_address:\"127.0.0.1:34567\"  version:{file_format_version:\"1.5.0\"  compatible_file_format_version:\"1.4.0\"  compatible_file_format_version:\"1.5.0\"  api_version:\"0.11\"}  tz_name:\"Etc/UTC\"","time":"2026-10-30T03:19:12Z","message":"remove node from active queue by delete event"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:12Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"warn","module":"DATA","elapsed":7.40449,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":11,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"DISK-MONITOR.STREAM","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"_PROPERTY_GOSSIP.SCHEDULER.RETENTION","name":"retention","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.128,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":12,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"DISK-MONITOR.TRACE","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:12Z","message":"trace standalone service stopped"}
+{"level":"warn","module":"DATA","elapsed":0.02637,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":13,"name":"export","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00435,"name":"export","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":14,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.0017,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":1,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00075,"name":"closer","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":2,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.0067,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":3,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"METRIC-SERVICE.SCHEDULER.METRICS-COLLECTOR","name":"metrics-collector","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.03723,"name":"metric-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":4,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"PROPERTY-SCHEMA-REGISTRY","error":"EOF","node":"127.0.0.1:39201","backoff":1000,"time":"2026-10-30T03:19:12Z","message":"watch stream disconnected, will retry"}
+{"level":"info","module":"SCHEMA-SERVER","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"info","module":"METADATA-DISCOVERY-FILE","time":"2026-10-30T03:19:12Z","message":"Configuration file reloaded successfully (fsnotify)"}
+{"level":"warn","module":"DATA","elapsed":200.911158,"name":"metadata","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":5,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.0025,"name":"memory-protector","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":6,"name":"native-log","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00348,"name":"native-log","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":7,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"warn","module":"DATA","elapsed":0.1294,"name":"server-queue","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":8,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00158,"name":"local-pipeline","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":9,"name":"property","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"SERVER-QUEUE-SUB","time":"2026-10-30T03:19:12Z","message":"All servers are stopped"}
+{"level":"info","module":"PROPERTY.SCHEDULER.TRIGGER","name":"trigger","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","time":"2026-10-30T03:19:12Z","message":"stopped gracefully"}
+{"level":"info","module":"PROPERTY.SCHEDULER.BUILD-TREE","name":"build-tree","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.1555,"name":"property","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":10,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"PROPERTY-REPAIR-GOSSIP-MESSENGER","time":"2026-10-30T03:19:12Z","message":"GRPC server is stopped"}
+{"level":"info","module":"DISK-MONITOR.MEASURE","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"P6BENCH.SCHEDULER.RETENTION","name":"retention","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":6.91357,"name":"measure","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":11,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"DISK-MONITOR.STREAM","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"_PROPERTY_GOSSIP.SCHEDULER.RETENTION","name":"retention","time":"2026-10-30T03:19:12Z","message":"closed"}
+{"level":"warn","module":"DATA","elapsed":0.15463,"name":"stream","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":12,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"info","module":"DISK-MONITOR.TRACE","time":"2026-10-30T03:19:12Z","message":"disk monitor stopped"}
+{"level":"info","module":"TRACE","time":"2026-10-30T03:19:12Z","message":"trace standalone service stopped"}
+{"level":"warn","module":"DATA","elapsed":0.01948,"name":"trace","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":13,"name":"export","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.00392,"name":"export","time":"2026-10-30T03:19:12Z","message":"stopped"}
+{"level":"warn","module":"DATA","total":14,"ran":14,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopping"}
+{"level":"warn","module":"DATA","elapsed":0.02869,"name":"pprof-service","time":"2026-10-30T03:19:12Z","message":"stopped"}
+--- PASS: TestExportRPC (8.21s)
+PASS
