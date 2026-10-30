@@ -1,0 +1,33 @@
+File: bench.test
+Build ID: b85e3d8f41a3a5e68b9b2926f5d1647bbed8d668
+Type: alloc_space
+Time: 2026-10-29 14:42:21 UTC
+Showing nodes accounting for 10322.26kB, 39.22% of 26321.91kB total
+Dropped 203 nodes (cum <= 131.61kB)
+Showing top 25 nodes out of 95
+      flat  flat%   sum%        cum   cum%
+         0     0%     0% 15121.95kB 57.45%  github.com/apache/skywalking-banyandb/verification/qlcapacitybench.TestP2RPC
+         0     0%     0% 15121.95kB 57.45%  testing.tRunner
+         0     0%     0% 14811.84kB 56.27%  github.com/apache/skywalking-banyandb/verification/qlcapacitybench.p2Profile
+         0     0%     0% 14811.84kB 56.27%  runtime/pprof.(*Profile).WriteTo
+         0     0%     0% 14811.84kB 56.27%  runtime/pprof.writeAlloc
+    1296kB  4.92%  4.92% 14811.84kB 56.27%  runtime/pprof.writeHeapInternal
+  790.12kB  3.00%  7.93% 13515.84kB 51.35%  runtime/pprof.writeHeapProto
+    4.25kB 0.016%  7.94% 10358.01kB 39.35%  runtime/pprof.(*profileBuilder).appendLocsForStack
+ 7895.88kB 30.00% 37.94%  7895.88kB 30.00%  runtime/pprof.allFrames
+     336kB  1.28% 39.22%  6538.47kB 24.84%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).loadData
+         0     0% 39.22%  6538.47kB 24.84%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodePool).run
+         0     0% 39.22%  6538.47kB 24.84%  github.com/apache/skywalking-banyandb/banyand/measure.(*decodeTask).run
+         0     0% 39.22%  6538.47kB 24.84%  github.com/apache/skywalking-banyandb/banyand/measure.decodeCursor
+         0     0% 39.22%  4612.08kB 17.52%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler
+         0     0% 39.22%  4612.08kB 17.52%  github.com/apache/skywalking-banyandb/api/proto/banyandb/bydbql/v1._BydbQLService_Query_Handler.func1
+         0     0% 39.22%  4612.08kB 17.52%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*bydbQLService).Query
+         0     0% 39.22%  4612.08kB 17.52%  github.com/apache/skywalking-banyandb/banyand/liaison/grpc.(*server).Serve.BreadcrumbUnaryInterceptor.func6
+         0     0% 39.22%  4612.08kB 17.52%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery.UnaryServerInterceptor.func1
+         0     0% 39.22%  4612.08kB 17.52%  github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/validator.UnaryServerInterceptor.func1
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.(*Server).handleStream
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.(*Server).processUnaryRPC
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.(*Server).serveStreams.func2.1
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.getChainUnaryHandler.func1
+         0     0% 39.22%  4612.08kB 17.52%  google.golang.org/grpc.getChainUnaryHandler.func1.getChainUnaryHandler.1

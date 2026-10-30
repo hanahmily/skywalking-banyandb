@@ -1,0 +1,23 @@
+{
+  "directory": "/tmp/ql-p2-final-campaign/profiles",
+  "sampling_bytes": 4096,
+  "sha256": {
+    "d50000-before.allocs.pprof": "6802bb8dda618f8a928123eba438b382c95166bea4ff438e3a1d49fa7330672b",
+    "g1-after.allocs.pprof": "929e3ce02503cdc96bbd1be83e0b586a38d88aa779a36abfea7fe776ba5eea9e",
+    "w256-after.allocs.pprof": "7817396fe345ca06f5d9f0cd05392e1867976216729d666fc4482f36b8c6f73d",
+    "d1000-after.allocs.pprof": "733b37f1ce1cce535e9e27ab40bd72b0cc98db28356c0cd32adb042c4ddedc82",
+    "r10000-before.allocs.pprof": "a64d96228e68d70e73c80342ab7ce0b55e05e4fe83b9da2034f4f924147f1501",
+    "g64-before.allocs.pprof": "fad6e1531848e633d1dd19f8508096ee4c17fa207b77f790e48f880c82a40f06",
+    "w256-before.allocs.pprof": "7c2257475732fa6b055a9ff6b3c0bf0cd22ccaecb29691d1e256ef0b35427239",
+    "d1000-before.allocs.pprof": "9d35185cb13fcfb4c7f0b12ea8c3d939cc89fae26f86b630d66abde92d5c391a",
+    "g64-after.allocs.pprof": "25a58aa3b50659111d5faf03ce29f9a401b57055a3b2350f0ea04453dc8b31a6",
+    "r100000-after.allocs.pprof": "88f180625e46288dbaec7dd9b911d11692efc0571064c7b20dec4721ff0500ff",
+    "g1-before.allocs.pprof": "d40a17780a80c8eb66030763bebc423569a7f718b7bd36bc535765af073e0272",
+    "r10000-after.allocs.pprof": "852148fa249cee6ee3996435031905923a1db46b0acd86b6d890437da60da069",
+    "d10000-before.allocs.pprof": "cf82c531ae02dbb686ce8815d4038d9c5ad05c9fcf3296419a8f6826c5106034",
+    "r100000-before.allocs.pprof": "c8e8b5be6f402d71cd96791bb4f300fcc45af92a3bf72070fe3786c6633e6165",
+    "d50000-after.allocs.pprof": "c28897f2d84351a489a89e2ddee80f48b299d6a0e8e39c4bf3e6074eb6fe2828",
+    "d10000-after.allocs.pprof": "d41399e1d97c123dd35fecd9d7b56c352283ad89415217dfcc06f3604374b81d"
+  },
+  "limitation": "Cumulative sampled allocation profiles include profiler self-allocation. Filtered views explicitly ignore runtime/pprof; neither allocation nor tracked reservation equals live per-owner heap."
+}

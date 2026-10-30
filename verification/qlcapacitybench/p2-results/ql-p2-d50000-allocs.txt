@@ -1,0 +1,28 @@
+File: bench.test
+Build ID: b85e3d8f41a3a5e68b9b2926f5d1647bbed8d668
+Type: alloc_space
+Time: 2026-10-29 14:42:21 UTC
+Showing nodes accounting for 25.04MB, 97.43% of 25.70MB total
+Dropped 203 nodes (cum <= 0.13MB)
+Showing top 20 nodes out of 95
+      flat  flat%   sum%        cum   cum%
+    7.71MB 30.00% 30.00%     7.71MB 30.00%  runtime/pprof.allFrames
+    2.49MB  9.70% 39.70%     2.49MB  9.70%  github.com/apache/skywalking-banyandb/pkg/query/ql.(*aggregateGroups).grow
+    2.27MB  8.81% 48.51%     3.01MB 11.70%  github.com/apache/skywalking-banyandb/banyand/measure.copyDecodedFamily
+       2MB  7.78% 56.30%     2.40MB  9.34%  runtime/pprof.(*profileBuilder).emitLocation
+    1.42MB  5.53% 61.83%     1.42MB  5.53%  github.com/apache/skywalking-banyandb/pkg/encoding.decodeUint64List
+    1.38MB  5.35% 67.18%     1.38MB  5.35%  github.com/apache/skywalking-banyandb/pkg/query/ql.init.func1
+    1.27MB  4.92% 72.10%    14.46MB 56.27%  runtime/pprof.writeHeapInternal
+    1.12MB  4.35% 76.45%     1.12MB  4.35%  runtime/pprof.(*protobuf).string (inline)
+    0.98MB  3.81% 80.26%     3.03MB 11.80%  github.com/apache/skywalking-banyandb/pkg/encoding.(*BytesBlockDecoder).Decode
+    0.77MB  3.00% 83.26%    13.20MB 51.35%  runtime/pprof.writeHeapProto
+    0.74MB  2.89% 86.15%     0.74MB  2.89%  github.com/apache/skywalking-banyandb/banyand/measure.(*column).copyRowsFrom (inline)
+    0.63MB  2.46% 88.61%     1.15MB  4.45%  compress/flate.NewWriter (inline)
+    0.51MB  1.98% 90.58%     0.63MB  2.46%  github.com/apache/skywalking-banyandb/pkg/encoding.decompressBlockLimit
+    0.37MB  1.43% 92.02%     0.37MB  1.43%  runtime/pprof.(*profileBuilder).stringIndex (inline)
+    0.33MB  1.28% 93.30%     6.39MB 24.84%  github.com/apache/skywalking-banyandb/banyand/measure.(*blockCursor).loadData
+    0.31MB  1.22% 94.51%     0.51MB  1.99%  compress/flate.(*compressor).init
+    0.29MB  1.13% 95.64%     0.29MB  1.13%  github.com/apache/skywalking-banyandb/pkg/pool.AllRefsCount.func1
+    0.20MB  0.76% 96.40%     0.20MB  0.76%  compress/flate.newDeflateFast (inline)
+    0.16MB  0.61% 97.01%     0.16MB  0.61%  github.com/apache/skywalking-banyandb/pkg/query/vectorized.AcquireColumn
+    0.11MB  0.42% 97.43%     0.19MB  0.73%  github.com/apache/skywalking-banyandb/pkg/query/vectorized/measure.(*BatchLimit).Process

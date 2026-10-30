@@ -1,0 +1,55 @@
+{
+  "base_time": "2026-10-29T00:00:00Z",
+  "rows": 6,
+  "status": "passed",
+  "witnesses": [
+    {
+      "expected": ":6",
+      "expression": "COUNT(entity_id)",
+      "query": "SELECT COUNT(entity_id) AS n FROM MEASURE activity IN qlperf ON (hot) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "hot"
+    },
+    {
+      "expected": ":4",
+      "expression": "COUNT(entity_id)",
+      "query": "SELECT COUNT(entity_id) AS n FROM MEASURE activity IN qlperf ON (warm) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "warm"
+    },
+    {
+      "expected": ":2",
+      "expression": "COUNT(DISTINCT entity_id)",
+      "query": "SELECT COUNT(DISTINCT entity_id) AS n FROM MEASURE activity IN qlperf ON (hot) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "hot"
+    },
+    {
+      "expected": ":2",
+      "expression": "COUNT(DISTINCT entity_id)",
+      "query": "SELECT COUNT(DISTINCT entity_id) AS n FROM MEASURE activity IN qlperf ON (warm) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "warm"
+    },
+    {
+      "expected": ":2",
+      "expression": "COUNT(DISTINCT entity_id)",
+      "query": "SELECT COUNT(DISTINCT entity_id) AS n FROM MEASURE activity IN qlperf ON (cold) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "cold"
+    },
+    {
+      "expected": ":3",
+      "expression": "COUNT(DISTINCT entity_id)",
+      "query": "SELECT COUNT(DISTINCT entity_id) AS n FROM MEASURE activity IN qlperf ON (hot,warm) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "hot,warm"
+    },
+    {
+      "expected": ":4",
+      "expression": "COUNT(DISTINCT entity_id)",
+      "query": "SELECT COUNT(DISTINCT entity_id) AS n FROM MEASURE activity IN qlperf ON (hot,warm,cold) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "hot,warm,cold"
+    },
+    {
+      "expected": ":6",
+      "expression": "SUM(value::FIELD)",
+      "query": "SELECT SUM(value::FIELD) AS n FROM MEASURE activity IN qlperf ON (hot,warm,cold) STAGES TIME BETWEEN '2026-10-16T00:00:00Z' AND '2026-10-29T01:00:00Z'",
+      "stages": "hot,warm,cold"
+    }
+  ]
+}

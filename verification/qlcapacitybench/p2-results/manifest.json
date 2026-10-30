@@ -1,0 +1,78 @@
+{
+  "utc": "2026-10-29T14:40:00.547547+00:00",
+  "revision": "5e78df39d0ca171aa61b97dbb4383dab32c434e6",
+  "branch": "verify/measure-ql-p1",
+  "source_sha256": "691777509954546fc89806af2e9657bf21c2b7e4560714f314c5d4559d6d23b1",
+  "runner_sha256": "1ae25c2c85bbede369514695839d445e98c98acb38925ea75848b4a330cb3e55",
+  "go": "go version go1.26.10 linux/amd64",
+  "image": "sha256:09c665d7ce2302ef883da73a11f72161ee18a66336dfb7d03f52fd817875d877",
+  "build_tags": [
+    "querymetrics"
+  ],
+  "seed": 1412,
+  "fixture": {
+    "arms": {
+      "d1000": {
+        "rows": 50000,
+        "distinct_entries": 1000,
+        "groups": 8,
+        "key_width": 16
+      },
+      "d10000": {
+        "rows": 50000,
+        "distinct_entries": 10000,
+        "groups": 8,
+        "key_width": 16
+      },
+      "d50000": {
+        "rows": 50000,
+        "distinct_entries": 50000,
+        "groups": 8,
+        "key_width": 16
+      },
+      "r10000": {
+        "rows": 10000,
+        "distinct_entries": 1000,
+        "groups": 8,
+        "key_width": 16
+      },
+      "r100000": {
+        "rows": 100000,
+        "distinct_entries": 1000,
+        "groups": 8,
+        "key_width": 16
+      },
+      "g1": {
+        "rows": 50000,
+        "distinct_entries": 1000,
+        "groups": 1,
+        "key_width": 16
+      },
+      "g64": {
+        "rows": 50000,
+        "distinct_entries": 1000,
+        "groups": 64,
+        "key_width": 16
+      },
+      "w256": {
+        "rows": 50000,
+        "distinct_entries": 1000,
+        "groups": 8,
+        "key_width": 256
+      }
+    }
+  },
+  "protocol": {
+    "rounds": 5,
+    "warmups": 3,
+    "timed": 30,
+    "callers": 1,
+    "query_allowance_mib": 256,
+    "process_protector": "default cgroup-derived"
+  },
+  "binaries": {
+    "standalone": "cf439aafaf61b25bd211a046044ad0834fa1eecd5e0d183d52a0c05dba2d0dc8",
+    "distributed": "ad2c98d05b4ec6ab6a430a6f8bd1d9262b7a1f79802fcb2d2be7acfe34b0b968",
+    "bench": "78b1a113ff10fd65f5d209b9d7ed9ac1f540efd218aa01c07876cdec0f855184"
+  }
+}

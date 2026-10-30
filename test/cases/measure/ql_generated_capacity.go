@@ -94,24 +94,82 @@ func registerGeneratedQLCapacityScenarios(suite qlgen.Suite, base *time.Time) {
 	})
 }
 
+func registerGeneratedQLShardAggregateScenarios(suite qlgen.Suite, base *time.Time) {
+	if os.Getenv("P2_VERIFY") != "1" {
+		return
+	}
+	g.Describe("P2 shard aggregates", g.Ordered, g.Label("QL-P2"), func() {
+		var fixtureBase time.Time
+		var calls, completed int
+		g.BeforeAll(func() {
+			fixtureBase = base.Truncate(6 * time.Second)
+			readiness := append([]qlgen.AggregateFixture(nil), suite.CapacityReadiness...)
+			readiness[0].Cases = append([]qlgen.Case(nil), readiness[0].Cases...)
+			readiness[0].Cases = append(readiness[0].Cases, suite.ShardAggregateReadiness[0].Cases...)
+			prepareGeneratedCapacityFixtures(fixtureBase, readiness)
+		})
+		g.AfterAll(func() {
+			g.GinkgoWriter.Printf("P2 generated: completed_specs=%d registered_specs=%d verification_rpcs=%d fixture=%s\n",
+				completed, len(suite.ShardAggregateScenarios), calls, suite.CapacityFixtureDigest)
+		})
+		for _, scenario := range suite.ShardAggregateScenarios {
+			g.It(scenario.Name, func() {
+				var capacityRejections int
+				verify := func(c qlgen.Case) {
+					calls++
+					before := vectorized.QueryMemoryStats()
+					batchBefore := vmeasure.BatchExecutionStats()
+					defer func() {
+						gm.Eventually(func() int64 { return vectorized.QueryMemoryStats().LiveReservedBytes }, 5*time.Second).Should(gm.Equal(before.LiveReservedBytes))
+						gm.Expect(vmeasure.BatchExecutionStats().LiveResults).To(gm.Equal(batchBefore.LiveResults))
+					}()
+					query, expected := renderGeneratedQLCase(fixtureBase, c)
+					ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+					defer cancel()
+					_, queryErr := measuredata.VerifyQL(ctx, SharedContext.Connection, query, expected, c.Ordered)
+					if status.Code(queryErr) == codes.ResourceExhausted {
+						capacityRejections++
+						g.GinkgoWriter.Printf("P2 capacity rejection: case=%s error=%v\n", c.Name, queryErr)
+						return
+					}
+					gm.Expect(queryErr).NotTo(gm.HaveOccurred(), c.Name)
+				}
+				liaisongrpc.ClearBydbQLPlanCachesForTest()
+				for _, c := range scenario.Cases {
+					verify(c)
+				}
+				func() {
+					restore := liaisongrpc.SetBydbQLPlanCacheHooksForTest(liaisongrpc.PlanCacheTestHooks{ForceBypass: true})
+					defer restore()
+					for _, c := range scenario.Cases {
+						verify(c)
+					}
+				}()
+				gm.Expect(capacityRejections).To(gm.BeZero(), "P2 full-cohort correctness remains unqualified when native admission rejects")
+				completed++
+			})
+		}
+	})
+}
+
 func prepareGeneratedCapacityFixtures(base time.Time, fixtures []qlgen.AggregateFixture) {
 	ctx, cancel := context.WithTimeout(context.Background(), flags.EventuallyTimeout)
 	defer cancel()
 	_, groupErr := databasev1.NewGroupRegistryServiceClient(SharedContext.Connection).Create(ctx,
 		&databasev1.GroupRegistryServiceCreateRequest{Group: qlgen.P1FixtureGroup()})
-	gm.Expect(groupErr).NotTo(gm.HaveOccurred())
+	gm.Expect(groupErr == nil || status.Code(groupErr) == codes.AlreadyExists).To(gm.BeTrue(), "group registration: %v", groupErr)
 	registry := databasev1.NewMeasureRegistryServiceClient(SharedContext.Connection)
 	var readinessCalls int
 	for _, fixture := range fixtures {
 		for _, rule := range qlgen.P1IndexRules() {
 			_, indexErr := databasev1.NewIndexRuleRegistryServiceClient(SharedContext.Connection).Create(ctx, &databasev1.IndexRuleRegistryServiceCreateRequest{IndexRule: rule})
-			gm.Expect(indexErr).NotTo(gm.HaveOccurred())
+			gm.Expect(indexErr == nil || status.Code(indexErr) == codes.AlreadyExists).To(gm.BeTrue(), "index registration: %v", indexErr)
 		}
 		bindingRegistry := databasev1.NewIndexRuleBindingRegistryServiceClient(SharedContext.Connection)
 		_, bindingErr := bindingRegistry.Create(ctx, &databasev1.IndexRuleBindingRegistryServiceCreateRequest{
 			IndexRuleBinding: qlgen.P1IndexBinding(),
 		})
-		gm.Expect(bindingErr).NotTo(gm.HaveOccurred())
+		gm.Expect(bindingErr == nil || status.Code(bindingErr) == codes.AlreadyExists).To(gm.BeTrue(), "binding registration: %v", bindingErr)
 		schema := qlgen.P1FixtureSchema()
 		registered, getErr := registry.Get(ctx, &databasev1.MeasureRegistryServiceGetRequest{Metadata: schema.GetMetadata()})
 		if status.Code(getErr) == codes.NotFound {
@@ -145,6 +203,15 @@ func prepareGeneratedCapacityFixtures(base time.Time, fixtures []qlgen.Aggregate
 						total += rows
 					}
 					wantRows := int64(320)
+					if c.Name == "p2_worker_contribution" {
+						// Raw frames include two zero-value idle rows; positive filtering
+						// occurs at the coordinator. More than two rows per worker proves
+						// both workers contribute positive identities as well.
+						wantRows = 10
+						for _, rows := range workers {
+							inner.Expect(rows).To(gm.BeNumerically(">", 2), "each worker must contribute positive rows")
+						}
+					}
 					inner.Expect(total).To(gm.Equal(wantRows), "naturally partitioned shards must return exactly one copy of each page row")
 
 					g.GinkgoWriter.Printf("P1 worker contributions: %v\n", workers)

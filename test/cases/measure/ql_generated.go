@@ -193,6 +193,7 @@ func RegisterGeneratedQLTable(description string) bool {
 		registerGeneratedQLSortingScenarios(suite, &base)
 		registerGeneratedQLParentChildScenarios(suite, &base)
 		registerGeneratedQLCapacityScenarios(suite, &base)
+		registerGeneratedQLShardAggregateScenarios(suite, &base)
 		registerGeneratedQLPatternScenarios(suite, &base)
 		registerGeneratedQLLegacyCompatibility(suite, &base)
 	})

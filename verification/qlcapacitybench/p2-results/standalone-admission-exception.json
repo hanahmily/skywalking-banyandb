@@ -1,0 +1,7 @@
+{
+  "standalone_status": "failed_capacity_qualification",
+  "attempts": 48,
+  "correct": 40,
+  "resource_exhausted": 8,
+  "scope": "independent count-only capacity timings; standalone full SUM remains unqualified"
+}

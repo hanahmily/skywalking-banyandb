@@ -1,0 +1,26 @@
+{
+  "scoped_lint": {
+    "command": "source /tmp/pr4-env.sh; golangci-lint run --new-from-rev=HEAD --timeout=5m ./verification/qlcapacitybench ./test/cases/measure/qlgen ./test/cases/measure",
+    "result": "0 issues; exit0"
+  },
+  "focused_final_generator": {
+    "command": "source /tmp/pr4-env.sh; go test ./test/cases/measure/qlgen -run '^TestP2' -count=1",
+    "result": "passed3.757s"
+  },
+  "harness_compile": {
+    "command": "source /tmp/pr4-env.sh; go test -tags=querymetrics ./verification/qlcapacitybench -run '^TestP2RPC$' -count=1",
+    "result": "passed0.016s; opt-in runtime skipped"
+  },
+  "full_generator": {
+    "result": "deliberately interrupted after approximately4.5minutes; no completed pass"
+  },
+  "format": {
+    "result": "repository gci/gofumpt applied to all changedGo; diff --check clean"
+  },
+  "per_owner_live_residency": {
+    "source": null,
+    "transport": null,
+    "coordinator": null,
+    "reason": "Not directly instrumented in this harness; allocation stacks and process-wide tracked peak are reported separately."
+  }
+}
