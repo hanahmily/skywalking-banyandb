@@ -73,6 +73,10 @@ func runSingleShotScenario(t *testing.T, cfg Config) {
 	if initErr := logger.Init(logger.Logging{Env: "dev", Level: "info"}); initErr != nil {
 		t.Fatalf("initialize logger: %v", initErr)
 	}
+	if cfg.Engine == engineStream {
+		runStreamSingleShot(t, cfg)
+		return
+	}
 	gomega.RegisterTestingT(t)
 	if cfg.Scenario == ScenarioQLBT05 {
 		runQLBT05SingleShot(t, cfg)

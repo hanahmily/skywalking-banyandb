@@ -78,6 +78,7 @@ type Result struct {
 	BatchMetrics        map[string]uint64   `json:"batch_metrics,omitempty"`
 	EvidenceArtifacts   map[string]string   `json:"evidence_artifacts,omitempty"`
 	RawLatenciesNS      []time.Duration     `json:"raw_latencies_ns,omitempty"`
+	Stream              *StreamExtra        `json:"stream,omitempty"`
 	Variants            []Result            `json:"variants,omitempty"`
 	Variant             string              `json:"variant,omitempty"`
 	UnavailableMetrics  []string            `json:"unavailable_metrics,omitempty"`
@@ -151,6 +152,55 @@ type ResourceStats struct {
 	HeapAllocBytes  uint64  `json:"heap_alloc_bytes,omitempty"`
 	HeapSysBytes    uint64  `json:"heap_sys_bytes,omitempty"`
 	NumGC           uint32  `json:"num_gc,omitempty"`
+}
+
+// StreamExtra carries the stream-engine measurements that the shared Result fields do not cover. The cluster is
+// in-process, so process-wide figures include the data nodes and the client; the Liaison* figures are the part of the
+// profile whose stack runs through the liaison query path (see liaisonFrameRE).
+type StreamExtra struct {
+	SampleIDs                []string        `json:"sample_ids"`
+	SerialLatencies          []time.Duration `json:"serial_latencies_ns,omitempty"`
+	Oracle                   string          `json:"oracle"`
+	BudgetNote               string          `json:"budget_note,omitempty"`
+	SerialLatency            LatencyStats    `json:"serial_latency"`
+	DataNodes                int             `json:"data_nodes"`
+	Replicas                 int             `json:"replicas"`
+	ShardNum                 int             `json:"shard_num"`
+	PayloadBytes             int             `json:"payload_bytes"`
+	Limit                    uint32          `json:"limit"`
+	Offset                   uint32          `json:"offset"`
+	Trace                    bool            `json:"trace"`
+	SampleContentHash        uint64          `json:"sample_content_hash"`
+	LiaisonAllocBytesPerQ    float64         `json:"liaison_alloc_bytes_per_query"`
+	LiaisonAllocObjectsPerQ  float64         `json:"liaison_alloc_objects_per_query"`
+	ProfileAllocBytesPerQ    float64         `json:"profile_alloc_bytes_per_query"`
+	ProfileAllocObjectsPerQ  float64         `json:"profile_alloc_objects_per_query"`
+	LiaisonCPUSeconds        float64         `json:"liaison_cpu_seconds"`
+	ProfiledCPUSeconds       float64         `json:"profiled_cpu_seconds"`
+	PeakHeapBytes            uint64          `json:"peak_heap_objects_bytes"`
+	PeakLiveHeapBytes        uint64          `json:"peak_live_heap_bytes"`
+	BaselineLiveHeapBytes    uint64          `json:"baseline_live_heap_bytes"`
+	SerialPeakLiveHeapBytes  uint64          `json:"serial_peak_live_heap_bytes"`
+	SerialBaselineLiveBytes  uint64          `json:"serial_baseline_live_heap_bytes"`
+	SettleSeconds            float64         `json:"settle_seconds"`
+	LiaisonLiveIdleBytes     float64         `json:"liaison_live_idle_bytes"`
+	LiaisonLiveMaxBytes      float64         `json:"liaison_live_max_bytes"`
+	LiaisonLiveMeanBytes     float64         `json:"liaison_live_mean_bytes"`
+	LiaisonLiveMaxObjects    float64         `json:"liaison_live_max_objects"`
+	LiaisonLiveSamples       int             `json:"liaison_live_samples"`
+	LiaisonLiveSampleBytes   []float64       `json:"liaison_live_sample_bytes,omitempty"`
+	BaselineHeapBytes        uint64          `json:"baseline_heap_objects_bytes"`
+	PeakRSSBytes             uint64          `json:"peak_rss_hwm_bytes"`
+	PeakRSSPolledBytes       uint64          `json:"peak_rss_polled_bytes"`
+	BaselineRSSBytes         uint64          `json:"baseline_rss_bytes"`
+	SerialPeakHeapBytes      uint64          `json:"serial_peak_heap_objects_bytes"`
+	SerialBaselineHeapBytes  uint64          `json:"serial_baseline_heap_objects_bytes"`
+	VecPeakReservedBytes     int64           `json:"vec_peak_reserved_bytes"`
+	VecLeaseChargedPerQuery  float64         `json:"vec_lease_charged_bytes_per_query"`
+	VecMetricsEnabled        bool            `json:"vec_metrics_enabled"`
+	SerialIterations         int             `json:"serial_iterations"`
+	RSSHighWaterMarkResetOK  bool            `json:"rss_hwm_reset_ok"`
+	ResponseBytesProtoSample int             `json:"response_proto_bytes"`
 }
 
 // AllocationStats records allocation counters for the timed read phase.
@@ -254,6 +304,9 @@ func writeShard(result Result, reportDir string) (string, error) {
 }
 
 func (r Result) shardFileName() string {
+	if r.Engine == engineStream {
+		return fmt.Sprintf("stream_%s_%s_n%d_%s.json", r.Mode, r.Scenario, r.Cardinality, sanitizeProfilePath(r.Variant))
+	}
 	if r.Engine != engineTrace {
 		return fmt.Sprintf("%s_%s_%d.json", r.Mode, r.Scenario, r.Cardinality)
 	}
@@ -401,6 +454,20 @@ func renderMarkdown(report Report) string {
 }
 
 func renderPerModeTable(b *strings.Builder, report Report) {
+	if report.Config.Engine == engineStream {
+		b.WriteString("| Scenario | Variant | Elements | p50 ms | p95 ms | p99 ms | QPS | Rows | Serial p50 ms | Liaison alloc B/query | Liaison objs/query | Oracle |\n")
+		b.WriteString("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n")
+		for _, result := range report.Results {
+			extra := result.Stream
+			if extra == nil {
+				continue
+			}
+			fmt.Fprintf(b, "| %s | %s | %d | %.2f | %.2f | %.2f | %.2f | %d | %.2f | %.0f | %.0f | %s |\n",
+				result.Scenario, result.Variant, result.Cardinality, result.Latency.P50Ms, result.Latency.P95Ms, result.Latency.P99Ms,
+				result.QPS, result.ResponseRows, extra.SerialLatency.P50Ms, extra.LiaisonAllocBytesPerQ, extra.LiaisonAllocObjectsPerQ, extra.Oracle)
+		}
+		return
+	}
 	if report.Config.Engine == engineTrace {
 		b.WriteString("| Scenario | Cardinality | Mode | p50 ms | p95 ms | p99 ms | QPS | Response traces | Response spans | Mallocs/query | Bytes/query |\n")
 		b.WriteString("| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n")

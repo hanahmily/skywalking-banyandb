@@ -14,6 +14,30 @@ Trace scenarios:
 - `trace_by_id`: trace ID point/bulk lookup using `trace_id IN (...)`, with `limit` pinned to the trace ID batch size.
 - `trace_tag_filter`: ordered tag filter using `service_id = svc-0`, `order_by timestamp DESC`, and a pinned trace-count limit.
 
+Stream scenarios (`DQB_ENGINE=stream`, liaison distributed-query merge):
+
+- `stream_time_window`: time-descending window over the whole range, limit {20,100,1000} x offset {0,100}.
+- `stream_index_order`: ascending order by the indexed `row_key` tag (index-ordered path), limit {20,1000}.
+- `stream_filter`: `region = r-7` (about 1% of elements, inverted index), limit 100.
+- `stream_traced`: `stream_time_window` L=100 with `trace=true` (the liaison falls back to the row merge).
+
+One stream process is started per (cardinality, `DQB_STREAM_NODES`, `DQB_STREAM_REPLICAS_LIST`) data set: it writes the data once
+(every element has a unique timestamp and a unique, permuted `row_key`, `DQB_STREAM_PAYLOAD_BYTES` of storage-only payload, 64 entity
+series) and runs every variant of the selected scenarios against it, one timed phase per variant. Replicas = 1 stores every element
+on two nodes, so the liaison must deduplicate. Each variant checks its result against an independent oracle of the expected ordered
+element IDs, records the concurrent phase (latency, QPS, CPU, allocation delta, heap/RSS peaks) and an unloaded serial phase.
+A final probe phase (`DQB_STREAM_HEAP_PROBE_QUERIES`, default 8 serial queries) samples the heap profile while a query runs and sums the in-use heap whose allocation stack runs through the liaison query path, which isolates the memory the liaison retains from the data nodes' scan buffers.
+The cluster is in-process, so process-wide figures include the data nodes and the client; the `liaison_*` figures keep only profile
+samples whose stack runs through the liaison query path. The liaison's per-query lease has no peak counter, so its budget peak is
+not reported.
+
+`DQB_STREAM_VARIANTS=scenario:limit:offset,...` replaces the default variant table with the listed windows (for example at 1M elements, where one query takes seconds, or a large limit).
+
+`DQB_DOCKER_ENV="KEY=VALUE ..."` passes extra environment into the container (for example `BYDB_ALLOWED_BYTES`, which sizes the nodes' query memory pool).
+
+`DQB_HOST_WORK_DIR` puts the Go caches and the report directory (which holds the cluster data files) on another host directory,
+mounted at `/report`, and `DQB_GO_MOD_CACHE` names a host module cache to mount.
+
 Default measure cardinalities: `1024,10000,100000,1000000,2000000`.
 Default trace cardinalities: `1000,10000,100000,1000000,2000000`.
 

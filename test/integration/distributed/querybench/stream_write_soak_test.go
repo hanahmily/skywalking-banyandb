@@ -55,8 +55,6 @@ import (
 //	  go test ./test/integration/distributed/querybench -run TestStreamWriteSoak -count=1 -v -timeout 20m
 
 const (
-	engineStream = "stream"
-
 	benchStreamGroupName = "bench-stream-group"
 	benchStreamName      = "sw"
 

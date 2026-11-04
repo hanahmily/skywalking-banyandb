@@ -44,6 +44,9 @@ CARDINALITIES="${DQB_CARDINALITIES:-1024,10000,100000,1000000,2000000}"
 if [[ "${ENGINE}" == "trace" ]]; then
   CARDINALITIES="${DQB_CARDINALITIES:-1000,10000,100000,1000000,2000000}"
   SCENARIOS="${DQB_SCENARIOS:-trace_by_id,trace_tag_filter}"
+elif [[ "${ENGINE}" == "stream" ]]; then
+  CARDINALITIES="${DQB_CARDINALITIES:-10000,100000,1000000}"
+  SCENARIOS="${DQB_SCENARIOS:-stream_time_window,stream_index_order,stream_filter,stream_traced}"
 else
   SCENARIOS="${DQB_SCENARIOS:-scan_all,top_with_filter}"
 fi
@@ -230,7 +233,35 @@ run_matrix_b() {
   run_variant "${card}" "20" "uniform" "0.01" "1" "2" "4" "${DQB_SPAN_BYTES:-1024}"
 }
 
-if [[ "${ENGINE}" == "trace" ]]; then
+# Stream engine: one test-binary process per (cardinality, data nodes, replicas) data set. The process writes the data
+# once and then runs every window variant of every selected scenario against it, one timed phase per variant.
+run_stream_matrix() {
+  local node_list="${DQB_STREAM_NODES:-${DQB_DATA_NODES:-2}}"
+  local replica_list="${DQB_STREAM_REPLICAS_LIST:-${DQB_STREAM_REPLICAS:-0}}"
+  local card nodes replicas
+  local -a node_arr replica_arr
+  IFS=',' read -ra node_arr <<< "${node_list}"
+  IFS=',' read -ra replica_arr <<< "${replica_list}"
+  for card in "${CARD_ARR[@]}"; do
+    for nodes in "${node_arr[@]}"; do
+      for replicas in "${replica_arr[@]}"; do
+        echo "[orchestrate] === engine=stream cardinality=${card} nodes=${nodes} replicas=${replicas} scenarios=${SCENARIOS} ==="
+        DQB_ENGINE=stream \
+          DQB_MODE=vec \
+          DQB_SCENARIO="${SCENARIOS}" \
+          DQB_CARDINALITY="${card}" \
+          DQB_DATA_NODES="${nodes}" \
+          DQB_STREAM_REPLICAS="${replicas}" \
+          DQB_SHARD_NUM="${DQB_SHARD_NUM:-4}" \
+          "${BINARY}" -test.run TestDistributedQueryBench -test.v -test.timeout 6h
+      done
+    done
+  done
+}
+
+if [[ "${ENGINE}" == "stream" ]]; then
+  run_stream_matrix
+elif [[ "${ENGINE}" == "trace" ]]; then
   case "${MATRIX}" in
     A)
       run_matrix_a

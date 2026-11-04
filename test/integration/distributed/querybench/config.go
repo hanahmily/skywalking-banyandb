@@ -56,11 +56,19 @@ const (
 	envSpanBytes         = "DQB_SPAN_BYTES"
 	envQueryMemoryMiB    = "DQB_QUERY_MEMORY_MIB"
 	envSoak              = "DQB_SOAK"
+	envStreamReplicas    = "DQB_STREAM_REPLICAS"
+	envStreamPayload     = "DQB_STREAM_PAYLOAD_BYTES"
+	envStreamSerialIters = "DQB_STREAM_SERIAL_ITERATIONS"
+	envStreamVariants    = "DQB_STREAM_VARIANTS"
+	envStreamHeapProbe   = "DQB_STREAM_HEAP_PROBE_QUERIES"
 	envSoakHeapGrowthPct = "SOAK_HEAP_GROWTH_MAX_PCT"
 	// Measure soak bounds (TestMeasureVecSoak): the soak stops at whichever of the
 	// two is reached first.
 	envSoakMeasureIterations = "DQB_MEASURE_SOAK_ITERATIONS"
 	envSoakMeasureDuration   = "DQB_MEASURE_SOAK_DURATION"
+
+	defaultStreamPayloadBytes = 512
+	defaultStreamSerialIters  = 30
 
 	defaultReportDir    = ".omx/bench-reports/distributed-query"
 	defaultQueryWorkers = 4
@@ -87,6 +95,7 @@ const (
 
 	engineMeasure = "measure"
 	engineTrace   = "trace"
+	engineStream  = "stream"
 
 	matrixA    = "A"
 	matrixB    = "B"
@@ -130,6 +139,14 @@ const (
 	ScenarioQLBT16 Scenario = "qlb_t16"
 	// ScenarioQLBT17 benchmarks identical full-sort/top-k pages and one composed cached query.
 	ScenarioQLBT17 Scenario = "qlb_t17"
+	// ScenarioStreamTimeWindow benchmarks time-ordered windows (limit x offset) over the whole range.
+	ScenarioStreamTimeWindow Scenario = "stream_time_window"
+	// ScenarioStreamIndexOrder benchmarks windows ordered by an indexed string tag.
+	ScenarioStreamIndexOrder Scenario = "stream_index_order"
+	// ScenarioStreamFilter benchmarks a selective indexed tag filter.
+	ScenarioStreamFilter Scenario = "stream_filter"
+	// ScenarioStreamTraced benchmarks the time window with query tracing on (proto reply fallback).
+	ScenarioStreamTraced Scenario = "stream_traced"
 	// ScenarioTraceByID benchmarks distributed trace-id lookup.
 	ScenarioTraceByID Scenario = "trace_by_id"
 	// ScenarioTraceTagFilter benchmarks distributed ordered trace tag filters.
@@ -176,6 +193,16 @@ type Config struct {
 	Merge                bool
 	Soak                 bool
 	SoakHeapGrowthMaxPct int
+	// StreamReplicas is the group replica count of the stream engine (0 = no copy, 1 = every element stored twice).
+	StreamReplicas int
+	// StreamPayloadBytes is the size of the storage-only payload tag of the stream engine.
+	StreamPayloadBytes int
+	// StreamHeapProbeQueries is the number of serial queries of the liaison retained-heap probe (0 disables it).
+	StreamHeapProbeQueries int
+	// StreamVariants optionally restricts the variants to run, as comma-separated scenario:limit:offset entries.
+	StreamVariants string
+	// StreamSerialIterations is the number of unloaded single-worker queries per stream combo.
+	StreamSerialIterations int
 	// SoakMeasureIterations and SoakMeasureDuration bound the measure soak.
 	SoakMeasureIterations int
 	SoakMeasureDuration   time.Duration
@@ -184,36 +211,41 @@ type Config struct {
 // LoadConfig reads benchmark settings from environment variables.
 func LoadConfig() Config {
 	return Config{
-		RunBench:              getBool(envRunBench),
-		InContainer:           getBool(envInContainer),
-		Profile:               getBool(envProfile),
-		Merge:                 getBool(envMerge),
-		Soak:                  getBool(envSoak),
-		SoakHeapGrowthMaxPct:  getInt(envSoakHeapGrowthPct, defaultSoakHeapGrowthPct),
-		SoakMeasureIterations: getInt(envSoakMeasureIterations, defaultSoakMeasureIterations),
-		SoakMeasureDuration:   getDuration(envSoakMeasureDuration, defaultSoakMeasureDuration),
-		ReportDir:             getString(envReportDir, defaultReportDir),
-		DockerImage:           getString(envDockerImage, ""),
-		CPULimit:              getString(envCPULimit, ""),
-		MemoryLimit:           getString(envMemoryLimit, ""),
-		Engine:                getString(envEngine, engineMeasure),
-		Matrix:                getString(envMatrix, matrixA),
-		Mode:                  getString(envMode, ""),
-		Scenario:              Scenario(getString(envScenario, "")),
-		Cardinality:           getInt(envCardinality, 0),
-		SpansPerTrace:         getInt(envSpansPerTrace, defaultSpansPerTrace),
-		SpanDist:              getString(envSpanDist, defaultSpanDist),
-		FilterSelectivity:     getFloat(envSelectivity, defaultSelectivity),
-		TraceIDBatch:          getInt(envTraceIDBatch, defaultTraceIDBatch),
-		ShardNum:              getInt(envShardNum, defaultShardNum),
-		DataNodes:             getInt(envDataNodes, defaultDataNodes),
-		SpanBytes:             getInt(envSpanBytes, defaultSpanBytes),
-		QueryMemoryMiB:        getInt(envQueryMemoryMiB, defaultQueryMemoryMiB),
-		QueryWorkers:          getInt(envQueryWorkers, defaultQueryWorkers),
-		QueryIterations:       getInt(envQueryIters, defaultQueryIters),
-		ByIDIterations:        getInt(envByIDIters, defaultByIDIters),
-		WarmupIterations:      getInt(envWarmupIters, defaultWarmupIters),
-		Writers:               getInt(envWriters, defaultWriters),
+		RunBench:               getBool(envRunBench),
+		InContainer:            getBool(envInContainer),
+		Profile:                getBool(envProfile),
+		Merge:                  getBool(envMerge),
+		Soak:                   getBool(envSoak),
+		SoakHeapGrowthMaxPct:   getInt(envSoakHeapGrowthPct, defaultSoakHeapGrowthPct),
+		SoakMeasureIterations:  getInt(envSoakMeasureIterations, defaultSoakMeasureIterations),
+		SoakMeasureDuration:    getDuration(envSoakMeasureDuration, defaultSoakMeasureDuration),
+		StreamVariants:         getString(envStreamVariants, ""),
+		StreamHeapProbeQueries: getInt(envStreamHeapProbe, 8),
+		StreamReplicas:         getInt(envStreamReplicas, 0),
+		StreamPayloadBytes:     getInt(envStreamPayload, defaultStreamPayloadBytes),
+		StreamSerialIterations: getInt(envStreamSerialIters, defaultStreamSerialIters),
+		ReportDir:              getString(envReportDir, defaultReportDir),
+		DockerImage:            getString(envDockerImage, ""),
+		CPULimit:               getString(envCPULimit, ""),
+		MemoryLimit:            getString(envMemoryLimit, ""),
+		Engine:                 getString(envEngine, engineMeasure),
+		Matrix:                 getString(envMatrix, matrixA),
+		Mode:                   getString(envMode, ""),
+		Scenario:               Scenario(getString(envScenario, "")),
+		Cardinality:            getInt(envCardinality, 0),
+		SpansPerTrace:          getInt(envSpansPerTrace, defaultSpansPerTrace),
+		SpanDist:               getString(envSpanDist, defaultSpanDist),
+		FilterSelectivity:      getFloat(envSelectivity, defaultSelectivity),
+		TraceIDBatch:           getInt(envTraceIDBatch, defaultTraceIDBatch),
+		ShardNum:               getInt(envShardNum, defaultShardNum),
+		DataNodes:              getInt(envDataNodes, defaultDataNodes),
+		SpanBytes:              getInt(envSpanBytes, defaultSpanBytes),
+		QueryMemoryMiB:         getInt(envQueryMemoryMiB, defaultQueryMemoryMiB),
+		QueryWorkers:           getInt(envQueryWorkers, defaultQueryWorkers),
+		QueryIterations:        getInt(envQueryIters, defaultQueryIters),
+		ByIDIterations:         getInt(envByIDIters, defaultByIDIters),
+		WarmupIterations:       getInt(envWarmupIters, defaultWarmupIters),
+		Writers:                getInt(envWriters, defaultWriters),
 	}
 }
 
@@ -233,9 +265,9 @@ func (c Config) Validate() error {
 		return fmt.Errorf("%s must be set", envEngine)
 	}
 	switch c.Engine {
-	case engineMeasure, engineTrace:
+	case engineMeasure, engineTrace, engineStream:
 	default:
-		return fmt.Errorf("%s must be %q or %q, got %q", envEngine, engineMeasure, engineTrace, c.Engine)
+		return fmt.Errorf("%s must be %q, %q or %q, got %q", envEngine, engineMeasure, engineTrace, engineStream, c.Engine)
 	}
 	if !c.InContainer {
 		return fmt.Errorf("%s=1 requires %s=1; invoke via test/integration/distributed/querybench/run-docker.sh", envRunBench, envInContainer)
@@ -272,6 +304,13 @@ func (c Config) Validate() error {
 		case ScenarioTraceByID, ScenarioTraceTagFilter:
 		default:
 			return fmt.Errorf("%s unsupported for %s=%s: %q", envScenario, envEngine, c.Engine, c.Scenario)
+		}
+	case engineStream:
+		if _, scenarioErr := c.streamScenarios(); scenarioErr != nil {
+			return scenarioErr
+		}
+		if c.DataNodes < 2 || c.ShardNum <= 0 || c.StreamReplicas < 0 || c.StreamReplicas >= c.DataNodes || c.StreamPayloadBytes <= 0 {
+			return fmt.Errorf("stream engine needs %s>=2, %s>0, 0<=%s<%s and %s>0", envDataNodes, envShardNum, envStreamReplicas, envDataNodes, envStreamPayload)
 		}
 	}
 	if c.Cardinality <= 0 {
